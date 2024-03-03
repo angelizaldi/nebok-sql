@@ -1,0 +1,14 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: SQL
+    chapters:
+    - file: parts/teoria/teoria-index
+      sections:
+      - file: parts/teoria/queries
+    - file: parts/postgresql/postgre-index
+      sections:
+      - file: parts/postgresql/operadores

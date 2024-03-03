@@ -1,0 +1,655 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Conceptos y teoría &#8212; Manual de SQL</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'parts/teoria/queries';</script>
+    <link rel="icon" href="../../_static/nebok-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="PostgreSQL" href="../postgresql/postgre-index.html" />
+    <link rel="prev" title="Conceptos y teoría" href="teoria-index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nebok-logo.png" class="logo__image only-light" alt="Manual de SQL - Home"/>
+    <script>document.write(`<img src="../../_static/nebok-logo.png" class="logo__image only-dark" alt="Manual de SQL - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Manual de SQL
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="teoria-index.html">Conceptos y teoría</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Conceptos y teoría</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../postgresql/postgre-index.html">PostgreSQL</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/operadores.html">Operadores</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/parts/teoria/queries.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Conceptos y teoría</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comandos-de-sql">Comandos de SQL.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#queries">Queries.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-de-ejecucion-de-un-query">Orden de ejecución de un query:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-al-escribir-queries">Orden al escribir queries:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mejores-practicas-al-escribir-queries">Mejores prácticas al escribir queries:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subqueries">Subqueries:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlated-subqueries">Correlated Subqueries:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-subqueries">Nested subqueries:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-table-expressions">Common Table Expressions:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queries-recursivos">Queries Recursivos:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="conceptos-y-teoria">
+<h1>Conceptos y teoría<a class="headerlink" href="#conceptos-y-teoria" title="Link to this heading">#</a></h1>
+<section id="comandos-de-sql">
+<h2>Comandos de SQL.<a class="headerlink" href="#comandos-de-sql" title="Link to this heading">#</a></h2>
+<p>Los comandos de SQL son instrucciones, se usan para comunicarse con la base de datos y para realizar acciones específicas, funciones y queries. Existen cinco principales tipos de comandos en SQL:</p>
+<ul class="simple">
+<li><p><strong>Data Definition Language (DDL)</strong>: Son los comandos relacionados con crear, alterar o eliminar información, están asociados a todo el database o al sever. Estos comandos son <em>‘auto-committed’</em>, lo que significan que los cambios se guardan permanentemente. Los principales comandos son <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, <code class="docutils literal notranslate"><span class="pre">ALTER</span></code>, <code class="docutils literal notranslate"><span class="pre">DROP</span></code> y <code class="docutils literal notranslate"><span class="pre">TRUNCATE</span></code>.</p></li>
+<li><p><strong>Data Manipulation Language (DML)</strong>: Son los comandos para manipular la información de las tablas, son responsables de todas las modificaciones en la base de datos. Estos comandos son <em>‘not auto-committed’</em>, lo que significan que los cambios son reversibles. Los principales comandos son <code class="docutils literal notranslate"><span class="pre">INSERT</span></code>, <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> y <code class="docutils literal notranslate"><span class="pre">DELETE</span></code>.</p></li>
+<li><p><strong>Data Control Language (DCL)</strong>: Son los comandos relacionados con otorgar o quitar privilegios a los usuarios para manipular las bases de datos. Los principales comandos son <code class="docutils literal notranslate"><span class="pre">GRANT</span></code> y <code class="docutils literal notranslate"><span class="pre">REVOKE</span></code>.</p></li>
+<li><p><strong>Transaction Control Language (TCL)</strong>: Son comandos que solo se pueden usar con comandos <em>DML</em>, se realizan automáticamente. Los principales comandos son <code class="docutils literal notranslate"><span class="pre">COMMIT</span></code>, <code class="docutils literal notranslate"><span class="pre">ROLLBACK</span></code> y <code class="docutils literal notranslate"><span class="pre">SAVEPOINT</span></code>.</p></li>
+<li><p><strong>Data Query Language (DQL)</strong>: Son los comandos para obtener datos de la base de datos. El principal comando es <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>.</p></li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="queries">
+<h2>Queries.<a class="headerlink" href="#queries" title="Link to this heading">#</a></h2>
+<p>Un <em>query</em> es una solicitud de información en una base de datos. Los <em>queries</em> están constituidos por <em>statements</em>, que son palabras especiales que realizan determinada acción.</p>
+<p>La mayoría de las acciones en SQL se hacen a través de los <em>statements</em>. SQL no es sensible a mayúsculas y minúsculas, pero se recomienda poner los <em>statements</em> en mayúsculas, así como el nombre de las funciones.</p>
+<br/>
+<section id="orden-de-ejecucion-de-un-query">
+<h3>Orden de ejecución de un query:<a class="headerlink" href="#orden-de-ejecucion-de-un-query" title="Link to this heading">#</a></h3>
+<p>El orden con el que se ejecutan las sentencias en un query de consulta es:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FROM</span></code></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">JOIN</span></code></p></li>
+</ol>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WHERE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HAVING</span></code></p></li>
+</ol>
+</li>
+<li><p><em>Aggregations functions</em> (<code class="docutils literal notranslate"><span class="pre">SUM</span></code>, <code class="docutils literal notranslate"><span class="pre">COUNT</span></code>, <code class="docutils literal notranslate"><span class="pre">AVG</span></code>, etc.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIMIT</span></code></p></li>
+</ol>
+<br/>
+</section>
+<section id="orden-al-escribir-queries">
+<h3>Orden al escribir queries:<a class="headerlink" href="#orden-al-escribir-queries" title="Link to this heading">#</a></h3>
+<p>Al escribir queries en PostgreSQL se debe respetar el siguiente orden:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FROM</span></code></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">JOIN</span></code></p></li>
+</ol>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WHERE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HAVING</span></code></p></li>
+</ol>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIMIT</span></code></p></li>
+</ol>
+</section>
+<section id="mejores-practicas-al-escribir-queries">
+<h3>Mejores prácticas al escribir queries:<a class="headerlink" href="#mejores-practicas-al-escribir-queries" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Finalizar el query con punto y coma (<code class="docutils literal notranslate"><span class="pre">;</span></code>).</p></li>
+<li><p>Utiliza alias (<code class="docutils literal notranslate"><span class="pre">AS</span></code>) siempre.</p></li>
+<li><p>Especificar explícitamente el tipo de <em>JOIN</em> (solo usar <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> es lo mismo que usar <code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span></code>, pero se recomienda explícitamente decir qué tipo de <em>JOIN</em> es).</p></li>
+<li><p>Los alias de las tablas en <em>JOIN</em> se recomienda que sean la primer letra o una corta abreviación del nombre de la palabra.</p></li>
+<li><p>Usar comentarios para decir qué hace el <em>query</em> y aspectos importantes. Ya sean simples (<code class="docutils literal notranslate"><span class="pre">--</span></code>) o de múltiples líneas (<code class="docutils literal notranslate"><span class="pre">/*</span> <span class="pre">texto</span> <span class="pre">*/</span></code>).</p></li>
+<li><p>Poner en mayúsculas los comandos de SQL, ejemplo, <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>, <code class="docutils literal notranslate"><span class="pre">FROM</span></code>, <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>, etc.</p></li>
+<li><p>Procurar no poner todo en una solo línea, como los <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> y <code class="docutils literal notranslate"><span class="pre">ON</span></code> o las columnas en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>.</p></li>
+<li><p>Identar las líneas, por ejemplo, múltiples columnas en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>.</p></li>
+<li><p>Se recomienda usar <em>snake_case</em>, esto es, para nombres largos usar ‘_’ como separador de palabra. Ejemplo, “esto_es_un_ejemplo”, en lugar de “estoesunejemplo” o “EstoEsUnEjemplo” (no usar <em>CamelCase</em>).</p></li>
+<li><p>Usar <code class="docutils literal notranslate"><span class="pre">IN</span></code> o <code class="docutils literal notranslate"><span class="pre">ANY(ARRAY(...))</span></code> en lugar de <code class="docutils literal notranslate"><span class="pre">OR</span></code> anidados y <code class="docutils literal notranslate"><span class="pre">BETWEEN</span></code> en lugar de dos <code class="docutils literal notranslate"><span class="pre">AND</span></code>.</p></li>
+<li><p>No abusar de los comentarios.</p></li>
+<li><p>De preferencia no usar <code class="docutils literal notranslate"><span class="pre">*</span></code> en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>. Limitar los resultados.</p></li>
+<li><p>No usar SQL como un lenguaje de programación, no lo es.
+ 
+<br/></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="subqueries">
+<h2>Subqueries:<a class="headerlink" href="#subqueries" title="Link to this heading">#</a></h2>
+<p>Los <em>subqueries</em> son <em>queries</em> anidados, es decir un <em>query</em> dentro de otro <em>query</em>. Los <em>queries</em> internos se encierran entre paréntesis. Se pueden usar en las sentencias <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>, <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>, <code class="docutils literal notranslate"><span class="pre">FROM</span></code>, <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>, etc. Se ejecutan antes que el <em>main query</em>. Pueden retornar valores escalares, columnas y tablas.</p>
+<p>Cuando usar cada caso:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>: Cuando el <em>subquerie</em> va a regresar un solo valor, se usa para hacer cálculos. Es importante tener en cuenta que, si se van a filtrar los datos, se necesita filtrarlos tanto en el <em>subquery</em> como en el <em>query</em> principal.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FROM</span></code>: Cuando se quiere transformar o filtrar una tabla que se puede usar para seleccionar campos o unir con otras tablas. También se puede utilizar para calcular <em>aggregates de aggregates</em> (como los 3 máximos promedios). Es necesario ponerles un alias. En <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> se tiene que seleccionar al menos la columna que se usará como <strong>ID</strong> en el <strong>JOIN</strong> y las otras que se usarán para cualquier otra cosa.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WHERE</span></code>: Cuando se quiere filtrar información que se tiene que calcular aparte o para generar una lista que se pueda usar para filtrar, que se use con <code class="docutils literal notranslate"><span class="pre">IN</span></code>, <code class="docutils literal notranslate"><span class="pre">ANY</span></code>, <code class="docutils literal notranslate"><span class="pre">ALL</span></code>.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>No se puede usar la sentencia <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> en un <em>subquerie</em>.</p>
+</div>
+<p>Algunas buenas prácticas para trabajar con <em>subqueries</em> son:</p>
+<ul class="simple">
+<li><p>Hacer comentarios de qué hacen.</p></li>
+<li><p>Indentar de manera correcta los queries.</p></li>
+</ul>
+<br/>
+<section id="correlated-subqueries">
+<h3>Correlated Subqueries:<a class="headerlink" href="#correlated-subqueries" title="Link to this heading">#</a></h3>
+<p>Son <em>subqueries</em> que utilizan información del <em>outer query</em>, por lo tanto, no se puede correr de forma independiente, por lo que usa un <em>loop</em> para evaluar el <em>subquery</em> en cada fila , esto provoca que sea más lento.</p>
+<p>El <em>subquerie</em> se ejecuta una vez por cada fila en el <em>outer query</em>, a diferencia de un <em>query</em> normal que solo se ejecuta una vez.</p>
+<p>Es útil cuando hay limitaciones al unir <em>queries</em> y <em>subqueries</em>.</p>
+<br/>
+</section>
+<section id="nested-subqueries">
+<h3>Nested subqueries:<a class="headerlink" href="#nested-subqueries" title="Link to this heading">#</a></h3>
+<p>Son <em>subqueries</em> dentro de otros <em>subqueries</em> que pueden ser <em>correlated</em> o <em>uncorrelated</em>. Son útiles cuando se harán múltiples y secuenciales transformaciones.</p>
+<br/>
+<p>—</p>
+</section>
+</section>
+<section id="common-table-expressions">
+<h2>Common Table Expressions:<a class="headerlink" href="#common-table-expressions" title="Link to this heading">#</a></h2>
+<p>Son <em>queries</em> declarados antes del <em>query</em> principal. Se utilizan para hacer más sencilla la organización y lectura de los <em>queries</em>, también son útiles cuando el resultado de un <em>subquery</em> se utilizará más de una vez en el query principal o para organizar los subqueries de manera secuencial. Las CTEs solo están disponibles en el <em>query</em> en el que se especificaron, no es posible acceder a ellas fuera de ese <em>query</em>.</p>
+<br/>
+<section id="queries-recursivos">
+<h3>Queries Recursivos:<a class="headerlink" href="#queries-recursivos" title="Link to this heading">#</a></h3>
+<p><strong>Recursión</strong>:</p>
+<p>Es el proceso de usar una subrutina, función, procedimiento, etc, que se llama así misma de manera repetitiva hasta que se cumpla una condición. En SQL para hacer recursión se utilizan CTE recursivos.</p>
+<p>Un recursive CTE consta de 5 partes:</p>
+<ol class="arabic simple">
+<li><p>Definición del CTE.</p></li>
+<li><p>Definir el primer paso del proceso, al que se le denomina <em>anchor</em>.</p></li>
+<li><p>Usar <code class="docutils literal notranslate"><span class="pre">UNION</span> <span class="pre">ALL</span></code>/<code class="docutils literal notranslate"><span class="pre">UNION</span></code></p></li>
+<li><p>Definir el proceso recursivo, al que se le denomina <em>recursive</em>, que hace referencia hacia sí mismo (al mismo CTE).</p></li>
+<li><p>Llamar al <em>recursive CTE</em> desde el <em>query</em> principal.</p></li>
+</ol>
+<p>SQL ejecuta el <em>recursive CTE</em> de la siguiente manera:</p>
+<ol class="arabic simple">
+<li><p>Ejecuta el <em>anchor</em>, dando un resultado <span class="math notranslate nohighlight">\(R_0\)</span>.</p></li>
+<li><p>Ejecuta el <em>recursive</em> iterativamente, usando a <span class="math notranslate nohighlight">\(R_{i-1}\)</span> como input y retorna <span class="math notranslate nohighlight">\(R_i\)</span>.</p></li>
+<li><p>Se repite el paso dos hasta que un set vacío sea retornado o hasta que se cumple una condición (<em>termination</em>).</p></li>
+<li><p>El resultado final será la unión de todos los resultados <em>R0</em>, <em>R1</em>, <em>R2</em>, etc.</p></li>
+</ol>
+<p>Para una explicación ejemplificada revisar <a class="reference external" href="https://www.postgresqltutorial.com/postgresql-recursive-query/">esta página</a>.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./parts/teoria"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="teoria-index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Conceptos y teoría</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../postgresql/postgre-index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">PostgreSQL</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comandos-de-sql">Comandos de SQL.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#queries">Queries.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-de-ejecucion-de-un-query">Orden de ejecución de un query:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-al-escribir-queries">Orden al escribir queries:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mejores-practicas-al-escribir-queries">Mejores prácticas al escribir queries:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subqueries">Subqueries:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlated-subqueries">Correlated Subqueries:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-subqueries">Nested subqueries:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-table-expressions">Common Table Expressions:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queries-recursivos">Queries Recursivos:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nebok
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
