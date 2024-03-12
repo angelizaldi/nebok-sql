@@ -1,6 +1,6 @@
 # Conceptos y teoría
 
-## Comandos de SQL.
+## Comandos de SQL
 
 Los comandos de SQL son instrucciones, se usan para comunicarse con la base de datos y para realizar acciones específicas, funciones y queries. Existen cinco principales tipos de comandos en SQL:
 -	**Data Definition Language (DDL)**: Son los comandos relacionados con crear, alterar o eliminar información, están asociados a todo el database o al sever. Estos comandos son _'auto-committed'_, lo que significan que los cambios se guardan permanentemente. Los principales comandos son `CREATE`, `ALTER`, `DROP` y `TRUNCATE`.
@@ -12,7 +12,7 @@ Los comandos de SQL son instrucciones, se usan para comunicarse con la base de d
 <br/>
 
 ---
-## Queries.
+## Queries
 
 Un _query_ es una solicitud de información en una base de datos. Los _queries_ están constituidos por _statements_, que son palabras especiales que realizan determinada acción.
 
@@ -21,7 +21,7 @@ La mayoría de las acciones en SQL se hacen a través de los _statements_. SQL n
 <br/>
 
 
-### Orden de ejecución de un query:
+### Orden de ejecución de un query
 
 El orden con el que se ejecutan las sentencias en un query de consulta es:
 1. `FROM`
@@ -37,7 +37,7 @@ El orden con el que se ejecutan las sentencias en un query de consulta es:
 
 <br/>
 
-### Orden al escribir queries:
+### Orden al escribir queries
 
 Al escribir queries en PostgreSQL se debe respetar el siguiente orden:
 
@@ -50,7 +50,7 @@ Al escribir queries en PostgreSQL se debe respetar el siguiente orden:
 5.	`ORDER BY`
 6.	`LIMIT`
 
-### Mejores prácticas al escribir queries:
+### Mejores prácticas al escribir queries
 
 -	Finalizar el query con punto y coma (`;`).
 -	Utiliza alias (`AS`) siempre.
@@ -69,7 +69,7 @@ Al escribir queries en PostgreSQL se debe respetar el siguiente orden:
 <br/>
 
 ---
-## Subqueries:
+## Subqueries
 
 Los _subqueries_ son _queries_ anidados, es decir un _query_ dentro de otro _query_. Los _queries_ internos se encierran entre paréntesis. Se pueden usar en las sentencias `WHERE`, `SELECT`, `FROM`, `GROUP BY`, etc. Se ejecutan antes que el _main query_. Pueden retornar valores escalares, columnas y tablas.
 
@@ -88,7 +88,7 @@ Algunas buenas prácticas para trabajar con _subqueries_ son:
 
 <br/>
 
-### Correlated Subqueries:
+### Correlated Subqueries
 
 Son _subqueries_ que utilizan información del _outer query_, por lo tanto, no se puede correr de forma independiente, por lo que usa un _loop_ para evaluar el _subquery_ en cada fila , esto provoca que sea más lento.
 
@@ -98,20 +98,20 @@ Es útil cuando hay limitaciones al unir _queries_ y _subqueries_.
 
 <br/>
 
-### Nested subqueries:
+### Nested subqueries
 
 Son _subqueries_ dentro de otros _subqueries_ que pueden ser _correlated_ o _uncorrelated_. Son útiles cuando se harán múltiples y secuenciales transformaciones.
 
 <br/>
 
 --- 
-## Common Table Expressions:
+## Common Table Expressions
 
 Son _queries_ declarados antes del _query_ principal. Se utilizan para hacer más sencilla la organización y lectura de los _queries_, también son útiles cuando el resultado de un _subquery_ se utilizará más de una vez en el query principal o para organizar los subqueries de manera secuencial. Las CTEs solo están disponibles en el _query_ en el que se especificaron, no es posible acceder a ellas fuera de ese _query_.
 
 <br/>
 
-### Queries Recursivos:
+### Queries Recursivos
 
 **Recursión**:
 
@@ -123,6 +123,8 @@ Un recursive CTE consta de 5 partes:
 3.	Usar `UNION ALL`/`UNION`
 4.	Definir el proceso recursivo, al que se le denomina _recursive_, que hace referencia hacia sí mismo (al mismo CTE). 
 5.	Llamar al _recursive CTE_ desde el _query_ principal.
+
+<br/>
 
 SQL ejecuta el _recursive CTE_ de la siguiente manera:
 

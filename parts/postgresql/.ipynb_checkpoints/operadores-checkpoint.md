@@ -1,6 +1,6 @@
 # Operadores
 
-## Comparación:
+## Comparación
 
 ```{list-table}
 :header-rows: 1
@@ -23,8 +23,7 @@
 
 <br/>
 
----
-## Operadores Bitwise:
+## Operadores Bitwise
 
 ```{list-table}
 :header-rows: 1
@@ -42,8 +41,7 @@
 
 <br/>
 
----
-## Aritméticos:
+## Aritméticos
 
 ```{list-table}
 :header-rows: 1
@@ -66,8 +64,7 @@
 
 <br/>
 
----
-## Membresía:
+## Membresía
 
 ```{list-table}
 :header-rows: 1
@@ -88,7 +85,6 @@ Para más información revisa:
 
 <br/>
 
----
 ## Lógicos:
 ```{list-table}
 :header-rows: 1
@@ -117,8 +113,7 @@ Para más información consulta:
 
 <br/>
 
----
-### Concatenar:
+## Concatenar:
 Para concatenar cadenas se puede hacer uso de los operadores `||`, por ejemplo: 
 ```sql
 col1 || ' ' || col2
