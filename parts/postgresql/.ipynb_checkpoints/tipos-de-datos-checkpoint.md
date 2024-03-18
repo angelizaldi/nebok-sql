@@ -1,11 +1,11 @@
-## Tipos de Datos
+# Tipos de Datos
 
-En esta sección se explica brevenmente los tipos de datos más comunes en PostgreSQL. Los tipos de datos definen lo que se denomina _el dominio_ de una columna, así como las operaciones posibles de los datos. 
+En esta sección se explica brevemente los tipos de datos más comunes en PostgreSQL. Los tipos de datos definen lo que se denomina _el dominio_ de una columna, así como las operaciones posibles de los datos. 
 
 <br/>
 
 ---
-### Bool
+## Bool
 
 Almacena valores booleanos.
 -	Su nombre en SQL es: `BOOLEAN` | `BOOL`.
@@ -23,7 +23,7 @@ Almacena valores booleanos.
 <br/>
 
 --- 
-### Carácter
+## Carácter
 
 ```{important}
 SQL es sensible a mayúsculas y minúsculas. Además al ordenar cadenas se priorizará primero los espacios en blanco, después las mayúsculas y finalmente las minúsculas.
@@ -34,13 +34,13 @@ Para usar cadenas en el _query_ se deben de poner entre comillas simples: `'text
 ```
 
 Existen tres tipos de datos de carácter/cadenas:
--	`CHAR(N)` | `CHARACTER(N)`: Cadena de longitud fija de _n_ caracteres. Si se agrega una cadena de longitud menor a n, PostgreSQL añadirá espacios al final para que su longitud sea de _n_. Si se agrega una cadena de longitud mayor a _n_, se arrojará un error. Los espacios extras se ignorarán al hacer comparaciones entre este tipo de cadenas. Si no se especifica _n_, equivale a `CHAR(1)`.
+-	`CHAR(N)` | `CHARACTER(N)`: Cadena de longitud fija de _n_ caracteres. Si se agrega una cadena de longitud menor a _n_, PostgreSQL añadirá espacios al final para que su longitud sea de _n_. Si se agrega una cadena de longitud mayor a _n_, se arrojará un error. Los espacios extras se ignorarán al hacer comparaciones entre este tipo de cadenas. Si no se especifica _n_, equivale a `CHAR(1)`.
 -	`VARCHAR(N)` | `CHARACTER VARYING(N)`: Cadena que almacena hasta un máximo de _n_ caracteres, puede ser menor, pero no mayor.
 -	`TEXT` | `VARCHAR`: Cadena de longitud variable.
 
 <br/>
 
-#### Concatenación
+### Concatenación
 
 Para concatenar cadenas se puede hacer uso de los operadores `||`. Ejemplo:
 ```sql
@@ -53,14 +53,14 @@ col1 || ' ' || col2
 <br/>
 
 ---
-### Numéricos
+## Numéricos
 
 Existen tres tipos de datos numéricos para número enteros y para números décimales que se explican a continuación.
 - Enteros.
 - Flotantes.
 - `NaN`.
 
-#### Enteros
+### Enteros
 
 Existen los siguientes tipos de datos numéricos enteros:
 -	`SMALLINT` | `INT2`: Rango de -32,768 a 32,767.
@@ -73,21 +73,21 @@ Existen los siguientes tipos de datos numéricos enteros:
 
 <br/>
 
-#### Flotantes
+### Flotantes
 
 Existen tres tipos de datos numéricos flotantes:
 -	`REAL` | `FLOAT4`: Número décimal de 4 bytes. 6 décimales de precisión.
 -	`DOUBLE PRECISION` | `FLOAT8`: Número decimal de 8 bytes. 15 décimales de precisión.
 -	`NUMERIC` |  `NUMERIC(P, S)`: Número de _p_ dígitos, con _s_ décimales. Puede soportar 131,072 dígitos y 16,383 décimales. 
 
-#### NaN
+### NaN
 
 Es un valor especial que significa _'Not a Number'_, se puede definir usando `'NaN'` (entre comillas simples).
 
 <br/>
 
 ---
-### Fechas y Tiempo
+## Fechas y Tiempo
 
 Existen 4 tipos principales para almacenar fechas y tiempo, todas ella respetan _ISO 8601_ y para hacer referencia a una fecha en el _query_ es necesario ponerla como una cadena (entre comillas simples), pero **no** es necesario convertir la cadena a una fecha por medio de algún método para convertir datos explícitamente. Por ejemplo, para hacer referencia a una fecha en un _query_ usar: <br> `'YYYY-MM-DD'`
 
@@ -106,7 +106,7 @@ _ISO 8601_ se define una fecha y tiempo siguiendo el siguiente formato:
 
 <br/>
 
-#### Creación de un valor de tipo fecha.
+### Creación de un valor de tipo fecha.
 
 Para crear una fecha o intervalo en el _query_ se pueden utilizar tres opciones (ejemplos para el 31 de agosto del 2012 a la 1 en SELECT):
 ```sql
@@ -119,11 +119,11 @@ SELECT '2012-08-31 01:00:00'::TIMESTAMP;
 -- Convirtiendo una cadena a una fecha con la función CAST:
 SELECT CAST('2012-08-31 01:00:00' AS TIMESTAMP);
 ```
-- No necesariamente tiene que ser `TIMESTAMP` puede ser cualquier otro tipo de dato de fecha o tiempo.
+- No necesariamente tiene que ser `TIMESTAMP` puede ser cualquier otro tipo de dato de fecha o tiempo, siempre y cuando tenga el formato apropiado.
 
 <br/>
 
-#### DATE
+### DATE
 
 `DATE` Almacena fechas y se deben de ingresar como cadena (entre comillas simples). El formato válido es el siguiente:
 ```sql
@@ -140,7 +140,7 @@ Para obtener la fecha actual usar el comando: <br/> `CURRENT_DATE`
 
 <br/>
 
-#### Time
+### Time
 
 `TIME(PRECISION)`: Almacena tiempo. Algunos formatos admisibles son:
 ```sql
@@ -171,7 +171,7 @@ Para obtener la hora actual con zona horaria usar el comando: <br/> `CURRENT_TIM
 Para revisar como crear `TIME` con zona horaria revisar {ref}`tipos-zona-horaria`.
 :::
 
-#### Timestamp
+### Timestamp
 
 `TIMESTAMP` almacena fechas y tiempo, se deben de ingresar como cadenas (entre comillas simples). 
 
@@ -204,16 +204,16 @@ Para revisar como crear `TIMESTAMP` con zona horaria revisar {ref}`tipos-zona-ho
 :::
 
 (tipos-zona-horaria)=
-#### Zonas horarias
+### Zonas horarias
 
-El tiempo puede tener una zona horaria, cuando se declare una columna del tipo `TIME` es necesario indicar que debe incluir zona horaria:
+El tiempo puede tener una zona horaria, cuando se declare una columna del tipo `TIME` o `TIMESTAMP` es necesario indicar que debe incluir zona horaria:
 ```sql
 -- Agregar zona horaria
 expression AT TIME ZONE 'time_zone'
 expression AT TIMESTAMP ZONE 'time_zone'
 ```
--	_expression_ puede ser una columna o un valor de tipo `TIME`.
--	_'time\_zone'_ es una abreviación en cadena de la zona horaria o una cadena de tipo `'Continent/City'`. Para consultar los códigos visitar [esta página](http://www.healthstream.com/hlchelp/Administrator/Classes/HLC_Time_Zone_Abbreviations.htm).t
+-	_expression_ puede ser una columna o un valor de tipo `TIME` o `TIMESTAMP`.
+-	_'time\_zone'_ es una abreviación en cadena de la zona horaria o una cadena de tipo `'Continent/City'`. Para consultar los códigos visitar [esta página](http://www.healthstream.com/hlchelp/Administrator/Classes/HLC_Time_Zone_Abbreviations.htm).
 
 Si un tiempo tiene zona horaria, aparecerá al final con un _+N_, que significará que está _N_ horas por delante (+) o detrás (-) de _UTC_.
 ```sql
@@ -227,10 +227,10 @@ Para convertir a otra zona horaria usar:
 expression AT TIME ZONE 'time_zone'
 expression AT TIMESTAMP ZONE 'time_zone'
 ```
--	_expression_ puede ser una columna o un valor de tipo `TIME` con zona horaria.
+-	_expression_ puede ser una columna o un valor de tipo `TIME` o `TIMESTAMP` con zona horaria.
 -	_'time\_zone'_ es una abreviación en cadena de la zona horaria o una cadena de tipo `'Continent/City'`. Para consultar los códigos visitar [esta página](http://www.healthstream.com/hlchelp/Administrator/Classes/HLC_Time_Zone_Abbreviations.htm).
 
-Existen unos comandos especiales para establecer o mostrar la zona horaria actual del servidor (no se usa dentro de `SELECT`):
+Existen unos comandos especiales para establecer o mostrar la zona horaria actual del servidor (no se usan con `SELECT`):
 ```sql
 -- Para establecer la zona horaria del servidor.
 SET timezone = 'time_zone'
@@ -242,7 +242,7 @@ SHOW timezone
 
 <br/>
 
-#### Interval
+### Interval
 
 `INTERVAL` Permite almacenar y manipular periodos de tiempo en años, meses, días, horas, minutos, segundos, etc. 
 
@@ -300,7 +300,7 @@ P quantity unit [ quantity unit ...] [ T [ quantity unit ...]]
     -	_M_: Minutes (en la parte de tiempo)
     -	_S_: Seconds
 -	Por ejemplo, el intervalo "6 years 5 months 4 days 3 hours 2 minutes 1 second", se escribe: <br> `P6Y5M4DT3H2M1S`
--	Otra alternativa sería:  <br> `P [YYYY-MM-DD][T HH:MM:SS]` <br> entonces el intervalo anterior se escribiría como: <br>  `P0006-05-04T03:02:01`
+-	Otra alternativa sería:  <br> `P[YYYY-MM-DD][T HH:MM:SS]` <br> entonces el intervalo anterior se escribiría como: <br>  `P0006-05-04T03:02:01`
 
 Los mismo ejemplos dados anteriormente, pero ahora como intervalos usando ISO 8601:
 ```sql
@@ -322,25 +322,38 @@ INTERVAL 'P0001-02-03';
 
 <br/>
 
-#### Operaciones y comparaciones con fechas
+### Operaciones y comparaciones con fechas
 
 Algunas características de realizar operaciones con fechas:
-- Se pueden hacer comparaciones entre fechas con los operadores de {ref}`operadores-comparacion` y retornar valores `BOOL`. Ejemplo con 'mayor que' y `DATE`: <br> `DATE 'YYYY-MM-DD' > DATE 'YYYY-MM-DD'`
-- Se pueden extraer dos fechas dando como resultado un entero o un intervalo. Si una de las fechas no es una columna se debe de poner _DATE/TIMESTAMP_ antes de la fecha. Ejemplo de restarle a una columna de fecha una fecha específica: <br> `col - DATE|TIMESTAMP 'YYYY-MM-DD'`
+- Se pueden hacer comparaciones entre fechas con los {ref}`operadores-comparacion` y retornar valores `BOOL`. Ejemplo con 'mayor que' y `DATE`: <br> `DATE 'YYYY-MM-DD' > DATE 'YYYY-MM-DD'`
+- Se pueden extraer dos fechas dando como resultado un entero o un intervalo. Si una de las fechas no es una columna se debe de poner `DATE`/`TIMESTAMP` antes de la fecha. Ejemplo de restarle a una columna de fecha una fecha específica: <br> `col - DATE|TIMESTAMP 'YYYY-MM-DD'`
 - A una `DATE`/`TIMESTAMP` se le puede sumar/extraer un entero que representa días, dando como resultado `DATE`/`TIMESTAMP`. Ejemplo de agregar _N_ días a una fecha. No es estrictamente necesario poner `INT`. **IMPORTANTE**: si se quiere agregar una unidad diferente a días usar `INTERVAL`. <BR> `DATE 'YYYY-MM-DD' + INT N`
 - Si se extraen dos `TIMESTAMPS` dará como resultado `INTERVAL`.
 - Se puede usar `INTERVAL` para hacer operaciones más complejas con fechas y tiempos.
 
+**Ejemplos**:
+
+```sql
+-- Comparación
+DATE '2020-05-20' > DATE '2021-05-20' -- Retorna FALSE
+
+-- Restar dos fechas
+DATE '2020-05-20' - DATE '2021-05-20' -- Retorna -365
+
+-- Restar dos fechas
+DATE '2020-05-21' - 365 -- Retorna 2020-05-20
+```
+
 <br/>
 
 ---
-### Arrays
+## Arrays
 
 Cada tipo de dato tiene su contraparte en array, por ejemplo, la contraparte de `INTEGER` es `INTEGER[]`. 
 
-#### Crear columnas de tipo array
+### Crear columnas de tipo array
 
-Cualquier columna puede ser del tipo _array_, para ello solo agregar los corchetes al momento de definir la columna (ejemplo con CHAR):
+Cualquier columna puede ser del tipo _array_, para ello solo agregar los corchetes al momento de definir la columna (ejemplo con `CHAR`):
 ```sql
 -- Crear tabla con columnas de tipo array
 CREATE TABLE table(
@@ -354,10 +367,10 @@ CREATE TABLE table(
 
 <br/>
 
-#### Insertar valores a un array
+### Insertar valores a un array
 
 Para insertar valores a una columna de tipo _array_ en una tabla usar:
-```SQL
+```sql
 -- Insertar valores a columnas de tipo _array_
 INSERT INTO TABLE (col1, col2, ...)
 VALUES(val1, ARRAY[vali, vali+1 ], ...)
@@ -365,17 +378,17 @@ VALUES(val1, ARRAY[vali, vali+1 ], ...)
 -	En este caso _col2_ es un _array_, al momento de insertar los valores se ponen entre corchetes junto a la sentencia `ARRAY` y cada uno de los valores del _array_ separados por coma.
 -	En lugar de usar `ARRAY` se puede usar llaves, debe de ir entre comillas simples. Si los elementos son de tipo carácter, cada elemento debe de ir entre comillas dobles y todo entre comillas simples: <br> `VALUES(val1, '{"vali", "valj", ...}', ...)`
 -	Para array de dos dimensiones usar:
-```SQL
+```sql
 -- Con la sentencia ARRAY
 ARRAY[[val1,1, val1,2, ...], [val2,1, val2,2, ...]]
 	
 -- Con la notación entre llaves:
-{{val1, val2, ...}, {val1, val2, ...}, ...}
+\{\{val1, val2, ...}, \{val1, val2, ...}, ...}
 ```
 
 <br/>
 
-#### Seleccionar elementos de un array
+### Seleccionar elementos de un array
 
 Para seleccionar elementos de un _array_ se hace uso de corchetes y los índices de los elementos:
 ```sql
@@ -390,7 +403,7 @@ col[i][j]
 
 <br/>
 
-#### Modificar un elementos
+### Modificar un elementos
 
 Para modificar un elemento en concreto de una columna de tipo _array_, se debe seleccionar y asignar un nuevo valor:
 
@@ -400,14 +413,14 @@ UPDATE table
 SET col[i] = val
 [WHERE condición];
 ```
--	_table_ y _col_ son el nombre de la tabla y columna respectivamente. La columna tiene que ser del tipo _array_.
--	Se puede especificar una condición con respecto a las columnas y valores de la tabla, no del _array_.
--	**IMPORTANTE**: Si no se especifica el índice, todo el _array_ será reemplazado por _val_.
--	**IMPORTANTE**: Si el _array_ es de dos dimensiones indicar ambos índices.
+- _table_ y _col_ son el nombre de la tabla y columna respectivamente. La columna tiene que ser del tipo _array_.
+- Se puede especificar una condición con respecto a las columnas y valores de la tabla, no del _array_.
+- **IMPORTANTE**: Si no se especifica el índice, todo el _array_ será reemplazado por _val_.
+- **IMPORTANTE**: Si el _array_ es de dos dimensiones indicar ambos índices.
 
 <br/>
 
-#### Verificar que un elemento esté en un array
+### Verificar que un elemento esté en un array
 
 
 Se puede utilizar la función `ANY()` para verificar que un elemento esté en un _array_:
@@ -418,16 +431,17 @@ val = ANY(col);
 -- Otra formar sería:
 nomArray @> ARRAY[val] 
 ```
-- si `val` es una cadena, se debe de poner entre comillas simples.
+- Si `val` es una cadena, se debe de poner entre comillas simples.
 - Las expresiones anteriores retornan valores `TRUE` o `FALSE`.
 
 <br/>
- 
-### NULL
+
+---
+## NULL
 
 Es un campo sin valor. Al insertar una nueva fila, si no se especifica el valor de determinada columna, entonces un valor `NULL` será puesto en esa columna (siempre y cuando la columna pueda contener valores `NULL`). `NULL` puede significar muchas cosas, como desconocido, que no existe, que no aplica, etc.
 
-#### Verificar que un campo sea nulo
+### Verificar que un campo sea nulo
 
 No se puede verificar que un campo sea `NULL` con operadores de comparación (`=` o `<>`), es necesario usar `IS` o `IS NOT`.
 ```sql
@@ -440,7 +454,8 @@ col IS NOT NULL
 
 <br/>
 
-### Tipos personalizados
+---
+## Tipos personalizados
 
 Es posible crear tipos de datos personalizados para ello usar:
 ```sql
@@ -448,12 +463,13 @@ Es posible crear tipos de datos personalizados para ello usar:
 CREATE TYPE nom AS 
 ENUM('exp1', 'exp2', ...);
 ```
--	No estrictamente se tiene que usar `ENUM()`.
--	Usar `ENUM()` solo es recomendado para establecer una lista de valores personalizados que rara vez cambia, como los días de las semanas, ciudades o estados, etc.
+- No estrictamente se tiene que usar `ENUM()`.
+- Usar `ENUM()` solo es recomendado para establecer una lista de valores personalizados que rara vez cambia, como los días de las semanas, ciudades o estados, etc.
 
 <br/>
- 
-### Otros
+
+---
+## Otros
 
 Otros tipos de datos existentes en PostgreSQL son:
 - `JSON`
@@ -469,7 +485,7 @@ Otros tipos de datos existentes en PostgreSQL son:
 
 <br/>
  
-### Conversión
+## Conversión
 
 Para convertir un tipo de dato a otro usar:
 ```sql

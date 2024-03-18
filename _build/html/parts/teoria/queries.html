@@ -195,6 +195,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../postgresql/postgre-index.html">PostgreSQL</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../postgresql/operadores.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/tipos-de-datos.html">Tipos de Datos</a></li>
 </ul>
 </li>
 </ul>
@@ -345,20 +346,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comandos-de-sql">Comandos de SQL.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#queries">Queries.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-de-ejecucion-de-un-query">Orden de ejecución de un query:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-al-escribir-queries">Orden al escribir queries:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mejores-practicas-al-escribir-queries">Mejores prácticas al escribir queries:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comandos-de-sql">Comandos de SQL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#queries">Queries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-de-ejecucion-de-un-query">Orden de ejecución de un query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-al-escribir-queries">Orden al escribir queries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mejores-practicas-al-escribir-queries">Mejores prácticas al escribir queries</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subqueries">Subqueries:</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlated-subqueries">Correlated Subqueries:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-subqueries">Nested subqueries:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subqueries">Subqueries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlated-subqueries">Correlated Subqueries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-subqueries">Nested subqueries</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-table-expressions">Common Table Expressions:</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queries-recursivos">Queries Recursivos:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-table-expressions">Common Table Expressions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queries-recursivos">Queries Recursivos</a></li>
 </ul>
 </li>
 </ul>
@@ -375,7 +376,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="conceptos-y-teoria">
 <h1>Conceptos y teoría<a class="headerlink" href="#conceptos-y-teoria" title="Link to this heading">#</a></h1>
 <section id="comandos-de-sql">
-<h2>Comandos de SQL.<a class="headerlink" href="#comandos-de-sql" title="Link to this heading">#</a></h2>
+<h2>Comandos de SQL<a class="headerlink" href="#comandos-de-sql" title="Link to this heading">#</a></h2>
 <p>Los comandos de SQL son instrucciones, se usan para comunicarse con la base de datos y para realizar acciones específicas, funciones y queries. Existen cinco principales tipos de comandos en SQL:</p>
 <ul class="simple">
 <li><p><strong>Data Definition Language (DDL)</strong>: Son los comandos relacionados con crear, alterar o eliminar información, están asociados a todo el database o al sever. Estos comandos son <em>‘auto-committed’</em>, lo que significan que los cambios se guardan permanentemente. Los principales comandos son <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, <code class="docutils literal notranslate"><span class="pre">ALTER</span></code>, <code class="docutils literal notranslate"><span class="pre">DROP</span></code> y <code class="docutils literal notranslate"><span class="pre">TRUNCATE</span></code>.</p></li>
@@ -388,12 +389,12 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="queries">
-<h2>Queries.<a class="headerlink" href="#queries" title="Link to this heading">#</a></h2>
+<h2>Queries<a class="headerlink" href="#queries" title="Link to this heading">#</a></h2>
 <p>Un <em>query</em> es una solicitud de información en una base de datos. Los <em>queries</em> están constituidos por <em>statements</em>, que son palabras especiales que realizan determinada acción.</p>
 <p>La mayoría de las acciones en SQL se hacen a través de los <em>statements</em>. SQL no es sensible a mayúsculas y minúsculas, pero se recomienda poner los <em>statements</em> en mayúsculas, así como el nombre de las funciones.</p>
 <br/>
 <section id="orden-de-ejecucion-de-un-query">
-<h3>Orden de ejecución de un query:<a class="headerlink" href="#orden-de-ejecucion-de-un-query" title="Link to this heading">#</a></h3>
+<h3>Orden de ejecución de un query<a class="headerlink" href="#orden-de-ejecucion-de-un-query" title="Link to this heading">#</a></h3>
 <p>El orden con el que se ejecutan las sentencias en un query de consulta es:</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">FROM</span></code></p>
@@ -416,7 +417,7 @@ document.write(`
 <br/>
 </section>
 <section id="orden-al-escribir-queries">
-<h3>Orden al escribir queries:<a class="headerlink" href="#orden-al-escribir-queries" title="Link to this heading">#</a></h3>
+<h3>Orden al escribir queries<a class="headerlink" href="#orden-al-escribir-queries" title="Link to this heading">#</a></h3>
 <p>Al escribir queries en PostgreSQL se debe respetar el siguiente orden:</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code></p></li>
@@ -436,7 +437,7 @@ document.write(`
 </ol>
 </section>
 <section id="mejores-practicas-al-escribir-queries">
-<h3>Mejores prácticas al escribir queries:<a class="headerlink" href="#mejores-practicas-al-escribir-queries" title="Link to this heading">#</a></h3>
+<h3>Mejores prácticas al escribir queries<a class="headerlink" href="#mejores-practicas-al-escribir-queries" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Finalizar el query con punto y coma (<code class="docutils literal notranslate"><span class="pre">;</span></code>).</p></li>
 <li><p>Utiliza alias (<code class="docutils literal notranslate"><span class="pre">AS</span></code>) siempre.</p></li>
@@ -458,7 +459,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="subqueries">
-<h2>Subqueries:<a class="headerlink" href="#subqueries" title="Link to this heading">#</a></h2>
+<h2>Subqueries<a class="headerlink" href="#subqueries" title="Link to this heading">#</a></h2>
 <p>Los <em>subqueries</em> son <em>queries</em> anidados, es decir un <em>query</em> dentro de otro <em>query</em>. Los <em>queries</em> internos se encierran entre paréntesis. Se pueden usar en las sentencias <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>, <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>, <code class="docutils literal notranslate"><span class="pre">FROM</span></code>, <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>, etc. Se ejecutan antes que el <em>main query</em>. Pueden retornar valores escalares, columnas y tablas.</p>
 <p>Cuando usar cada caso:</p>
 <ul class="simple">
@@ -477,25 +478,25 @@ document.write(`
 </ul>
 <br/>
 <section id="correlated-subqueries">
-<h3>Correlated Subqueries:<a class="headerlink" href="#correlated-subqueries" title="Link to this heading">#</a></h3>
+<h3>Correlated Subqueries<a class="headerlink" href="#correlated-subqueries" title="Link to this heading">#</a></h3>
 <p>Son <em>subqueries</em> que utilizan información del <em>outer query</em>, por lo tanto, no se puede correr de forma independiente, por lo que usa un <em>loop</em> para evaluar el <em>subquery</em> en cada fila , esto provoca que sea más lento.</p>
 <p>El <em>subquerie</em> se ejecuta una vez por cada fila en el <em>outer query</em>, a diferencia de un <em>query</em> normal que solo se ejecuta una vez.</p>
 <p>Es útil cuando hay limitaciones al unir <em>queries</em> y <em>subqueries</em>.</p>
 <br/>
 </section>
 <section id="nested-subqueries">
-<h3>Nested subqueries:<a class="headerlink" href="#nested-subqueries" title="Link to this heading">#</a></h3>
+<h3>Nested subqueries<a class="headerlink" href="#nested-subqueries" title="Link to this heading">#</a></h3>
 <p>Son <em>subqueries</em> dentro de otros <em>subqueries</em> que pueden ser <em>correlated</em> o <em>uncorrelated</em>. Son útiles cuando se harán múltiples y secuenciales transformaciones.</p>
 <br/>
 <p>—</p>
 </section>
 </section>
 <section id="common-table-expressions">
-<h2>Common Table Expressions:<a class="headerlink" href="#common-table-expressions" title="Link to this heading">#</a></h2>
+<h2>Common Table Expressions<a class="headerlink" href="#common-table-expressions" title="Link to this heading">#</a></h2>
 <p>Son <em>queries</em> declarados antes del <em>query</em> principal. Se utilizan para hacer más sencilla la organización y lectura de los <em>queries</em>, también son útiles cuando el resultado de un <em>subquery</em> se utilizará más de una vez en el query principal o para organizar los subqueries de manera secuencial. Las CTEs solo están disponibles en el <em>query</em> en el que se especificaron, no es posible acceder a ellas fuera de ese <em>query</em>.</p>
 <br/>
 <section id="queries-recursivos">
-<h3>Queries Recursivos:<a class="headerlink" href="#queries-recursivos" title="Link to this heading">#</a></h3>
+<h3>Queries Recursivos<a class="headerlink" href="#queries-recursivos" title="Link to this heading">#</a></h3>
 <p><strong>Recursión</strong>:</p>
 <p>Es el proceso de usar una subrutina, función, procedimiento, etc, que se llama así misma de manera repetitiva hasta que se cumpla una condición. En SQL para hacer recursión se utilizan CTE recursivos.</p>
 <p>Un recursive CTE consta de 5 partes:</p>
@@ -506,6 +507,7 @@ document.write(`
 <li><p>Definir el proceso recursivo, al que se le denomina <em>recursive</em>, que hace referencia hacia sí mismo (al mismo CTE).</p></li>
 <li><p>Llamar al <em>recursive CTE</em> desde el <em>query</em> principal.</p></li>
 </ol>
+<br/>
 <p>SQL ejecuta el <em>recursive CTE</em> de la siguiente manera:</p>
 <ol class="arabic simple">
 <li><p>Ejecuta el <em>anchor</em>, dando un resultado <span class="math notranslate nohighlight">\(R_0\)</span>.</p></li>
@@ -582,20 +584,20 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comandos-de-sql">Comandos de SQL.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#queries">Queries.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-de-ejecucion-de-un-query">Orden de ejecución de un query:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-al-escribir-queries">Orden al escribir queries:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mejores-practicas-al-escribir-queries">Mejores prácticas al escribir queries:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comandos-de-sql">Comandos de SQL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#queries">Queries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-de-ejecucion-de-un-query">Orden de ejecución de un query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-al-escribir-queries">Orden al escribir queries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mejores-practicas-al-escribir-queries">Mejores prácticas al escribir queries</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subqueries">Subqueries:</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlated-subqueries">Correlated Subqueries:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-subqueries">Nested subqueries:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subqueries">Subqueries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlated-subqueries">Correlated Subqueries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-subqueries">Nested subqueries</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-table-expressions">Common Table Expressions:</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queries-recursivos">Queries Recursivos:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-table-expressions">Common Table Expressions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queries-recursivos">Queries Recursivos</a></li>
 </ul>
 </li>
 </ul>

@@ -1,0 +1,1065 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tipos de Datos &#8212; Manual de SQL</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'parts/postgresql/tipos-de-datos';</script>
+    <link rel="icon" href="../../_static/nebok-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Operadores" href="operadores.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nebok-logo.png" class="logo__image only-light" alt="Manual de SQL - Home"/>
+    <script>document.write(`<img src="../../_static/nebok-logo.png" class="logo__image only-dark" alt="Manual de SQL - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Manual de SQL
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../teoria/teoria-index.html">Conceptos y teoría</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../teoria/queries.html">Conceptos y teoría</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="postgre-index.html">PostgreSQL</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="comentarios.html">Comentarios.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operadores.html">Operadores</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Tipos de Datos</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/parts/postgresql/tipos-de-datos.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tipos de Datos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bool">Bool</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caracter">Carácter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concatenacion">Concatenación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numericos">Numéricos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enteros">Enteros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flotantes">Flotantes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nan">NaN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fechas-y-tiempo">Fechas y Tiempo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-un-valor-de-tipo-fecha">Creación de un valor de tipo fecha.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date">DATE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time">Time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timestamp">Timestamp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonas-horarias">Zonas horarias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interval">Interval</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operaciones-y-comparaciones-con-fechas">Operaciones y comparaciones con fechas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays">Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-columnas-de-tipo-array">Crear columnas de tipo array</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insertar-valores-a-un-array">Insertar valores a un array</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccionar-elementos-de-un-array">Seleccionar elementos de un array</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modificar-un-elementos">Modificar un elementos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verificar-que-un-elemento-este-en-un-array">Verificar que un elemento esté en un array</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#null">NULL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verificar-que-un-campo-sea-nulo">Verificar que un campo sea nulo</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-personalizados">Tipos personalizados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otros">Otros</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion">Conversión</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="tipos-de-datos">
+<h1>Tipos de Datos<a class="headerlink" href="#tipos-de-datos" title="Link to this heading">#</a></h1>
+<p>En esta sección se explica brevemente los tipos de datos más comunes en PostgreSQL. Los tipos de datos definen lo que se denomina <em>el dominio</em> de una columna, así como las operaciones posibles de los datos.</p>
+<br/>
+<hr class="docutils" />
+<section id="bool">
+<h2>Bool<a class="headerlink" href="#bool" title="Link to this heading">#</a></h2>
+<p>Almacena valores booleanos.</p>
+<ul class="simple">
+<li><p>Su nombre en SQL es: <code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code> | <code class="docutils literal notranslate"><span class="pre">BOOL</span></code>.</p></li>
+<li><p>Puede tomar tres posibles valores: <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> o <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p></li>
+<li><p>Si se inserta datos a una columna <code class="docutils literal notranslate"><span class="pre">BOOL</span></code> se hacen las siguientes conversiones:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code>: ‘1’, ‘yes’, ‘y’, ‘t’, true.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FALSE</span></code>: ‘0’, ‘no’, ‘n’, ‘f’, false.</p></li>
+<li><p>Cualquiera de los valores anteriores se pueden utilizar en lugar de <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> o <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Cuando se hacen comparaciones con columnas <code class="docutils literal notranslate"><span class="pre">BOOL</span></code>, no es necesario poner como tal la comparación, ya que los valores ya son <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> o <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>.</p></li>
+<li><p>Si se selecciona datos de una columna <code class="docutils literal notranslate"><span class="pre">BOOL</span></code> se hacen las siguientes conversiones:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code>: ‘t’</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FALSE</span></code>: ‘f’</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code>: <em>espacio</em>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="caracter">
+<h2>Carácter<a class="headerlink" href="#caracter" title="Link to this heading">#</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>SQL es sensible a mayúsculas y minúsculas. Además al ordenar cadenas se priorizará primero los espacios en blanco, después las mayúsculas y finalmente las minúsculas.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Para usar cadenas en el <em>query</em> se deben de poner entre comillas simples: <code class="docutils literal notranslate"><span class="pre">'texto'</span></code>.</p>
+</div>
+<p>Existen tres tipos de datos de carácter/cadenas:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CHAR(N)</span></code> | <code class="docutils literal notranslate"><span class="pre">CHARACTER(N)</span></code>: Cadena de longitud fija de <em>n</em> caracteres. Si se agrega una cadena de longitud menor a n, PostgreSQL añadirá espacios al final para que su longitud sea de <em>n</em>. Si se agrega una cadena de longitud mayor a <em>n</em>, se arrojará un error. Los espacios extras se ignorarán al hacer comparaciones entre este tipo de cadenas. Si no se especifica <em>n</em>, equivale a <code class="docutils literal notranslate"><span class="pre">CHAR(1)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VARCHAR(N)</span></code> | <code class="docutils literal notranslate"><span class="pre">CHARACTER</span> <span class="pre">VARYING(N)</span></code>: Cadena que almacena hasta un máximo de <em>n</em> caracteres, puede ser menor, pero no mayor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code> | <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code>: Cadena de longitud variable.</p></li>
+</ul>
+<br/>
+<section id="concatenacion">
+<h3>Concatenación<a class="headerlink" href="#concatenacion" title="Link to this heading">#</a></h3>
+<p>Para concatenar cadenas se puede hacer uso de los operadores <code class="docutils literal notranslate"><span class="pre">||</span></code>. Ejemplo:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">col1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">col2</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Se concatenará el contenido de <em>col1</em> y <em>col2</em>, separados por un espacio.</p></li>
+<li><p><strong>IMPORTANTE</strong>: No se puede concatenar valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, si se utiliza un <code class="docutils literal notranslate"><span class="pre">NULL</span></code> convertirá toda la cadena en <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p></li>
+<li><p><strong>IMPORTANTE</strong>: También se puede usar la función <code class="docutils literal notranslate"><span class="pre">CONCAT()</span></code>.</p></li>
+</ul>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="numericos">
+<h2>Numéricos<a class="headerlink" href="#numericos" title="Link to this heading">#</a></h2>
+<p>Existen tres tipos de datos numéricos para número enteros y para números décimales que se explican a continuación.</p>
+<ul class="simple">
+<li><p>Enteros.</p></li>
+<li><p>Flotantes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p></li>
+</ul>
+<section id="enteros">
+<h3>Enteros<a class="headerlink" href="#enteros" title="Link to this heading">#</a></h3>
+<p>Existen los siguientes tipos de datos numéricos enteros:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code> | <code class="docutils literal notranslate"><span class="pre">INT2</span></code>: Rango de -32,768 a 32,767.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INT</span></code> | <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> | <code class="docutils literal notranslate"><span class="pre">INT4</span></code>: Rango de -2,147,483,648 a 2,147,483,647.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code> | <code class="docutils literal notranslate"><span class="pre">INT8</span></code>: Rango de -9,223,372,036,854,775,808 a +9,223,372,036,854,775,807.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SERIAL</span></code>: Igual que <code class="docutils literal notranslate"><span class="pre">INT</span></code>, pero PostgreSQL generará y llenará de manera automática las columnas que sean de este tipo.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SMALLSERIAL</span></code> | <code class="docutils literal notranslate"><span class="pre">INT8</span></code>: 1 a 32,767.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> | <code class="docutils literal notranslate"><span class="pre">SERIAL2</span></code>: 1 to 2,147,483,647.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BIGSERIAL</span></code> | <code class="docutils literal notranslate"><span class="pre">SERIAL8</span></code>: 1 to 9,223,372,036,854,775,807.</p></li>
+</ul>
+<br/>
+</section>
+<section id="flotantes">
+<h3>Flotantes<a class="headerlink" href="#flotantes" title="Link to this heading">#</a></h3>
+<p>Existen tres tipos de datos numéricos flotantes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">REAL</span></code> | <code class="docutils literal notranslate"><span class="pre">FLOAT4</span></code>: Número décimal de 4 bytes. 6 décimales de precisión.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DOUBLE</span> <span class="pre">PRECISION</span></code> | <code class="docutils literal notranslate"><span class="pre">FLOAT8</span></code>: Número decimal de 8 bytes. 15 décimales de precisión.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> |  <code class="docutils literal notranslate"><span class="pre">NUMERIC(P,</span> <span class="pre">S)</span></code>: Número de <em>p</em> dígitos, con <em>s</em> décimales. Puede soportar 131,072 dígitos y 16,383 décimales.</p></li>
+</ul>
+</section>
+<section id="nan">
+<h3>NaN<a class="headerlink" href="#nan" title="Link to this heading">#</a></h3>
+<p>Es un valor especial que significa <em>‘Not a Number’</em>, se puede definir usando <code class="docutils literal notranslate"><span class="pre">'NaN'</span></code> (entre comillas simples).</p>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fechas-y-tiempo">
+<h2>Fechas y Tiempo<a class="headerlink" href="#fechas-y-tiempo" title="Link to this heading">#</a></h2>
+<p>Existen 4 tipos principales para almacenar fechas y tiempo, todas ella respetan <em>ISO 8601</em> y para hacer referencia a una fecha en el <em>query</em> es necesario ponerla como una cadena (entre comillas simples), pero <strong>no</strong> es necesario convertir la cadena a una fecha por medio de algún método para convertir datos explícitamente. Por ejemplo, para hacer referencia a una fecha en un <em>query</em> usar: <br> <code class="docutils literal notranslate"><span class="pre">'YYYY-MM-DD'</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>ISO 8601</em> se define una fecha y tiempo siguiendo el siguiente formato:</p>
+<p><code class="docutils literal notranslate"><span class="pre">YYYY-MM-DDTHH:MM:SS</span></code></p>
+<ul class="simple">
+<li><p><em>YYYY</em>: Año de cuatro dígitos, desde 0000 a 9999.</p></li>
+<li><p><em>MM</em>: Mes de dos dígitos, del 01 a 12.</p></li>
+<li><p><em>DD</em>: Día de dos dígitos, del 01 al 31.</p></li>
+<li><p><em>HH</em>: Horas de dos dígitos, desde 00 a 23.</p></li>
+<li><p><em>MM</em>: Minutos de dos dígitos, desde 00 a 59.</p></li>
+<li><p><em>SS</em>: Segundos de dos dígitos, desde 00 a 59.</p></li>
+<li><p><strong>Importante</strong>: Los campos de fechas son obligatorios, mientras que los campos de tiempo son opcionales.</p></li>
+</ul>
+</div>
+<br/>
+<section id="creacion-de-un-valor-de-tipo-fecha">
+<h3>Creación de un valor de tipo fecha.<a class="headerlink" href="#creacion-de-un-valor-de-tipo-fecha" title="Link to this heading">#</a></h3>
+<p>Para crear una fecha o intervalo en el <em>query</em> se pueden utilizar tres opciones (ejemplos para el 31 de agosto del 2012 a la 1 en SELECT):</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Usando TIMESTAMP o algún tipo de dato de fecha:</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="s1">&#39;2012-08-31 01:00:00&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Convirtiendo una cadena a una fecha:</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;2012-08-31 01:00:00&#39;</span><span class="p">::</span><span class="k">TIMESTAMP</span><span class="p">;</span>
+
+<span class="c1">-- Convirtiendo una cadena a una fecha con la función CAST:</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">CAST</span><span class="p">(</span><span class="s1">&#39;2012-08-31 01:00:00&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>No necesariamente tiene que ser <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> puede ser cualquier otro tipo de dato de fecha o tiempo.</p></li>
+</ul>
+<br/>
+</section>
+<section id="date">
+<h3>DATE<a class="headerlink" href="#date" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">DATE</span></code> Almacena fechas y se deben de ingresar como cadena (entre comillas simples). El formato válido es el siguiente:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Formato válidos para crear un tipo DATE</span>
+<span class="s1">&#39;YYYY-MM-DD&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>YYYY</em>: Año de cuatro dígitos, desde 0000 a 9999.</p></li>
+<li><p><em>MM</em>: Mes de dos dígitos, del 01 a 12.</p></li>
+<li><p><em>DD</em>: Día de dos dígitos, del 01 al 31.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Para obtener la fecha actual usar el comando: <br/> <code class="docutils literal notranslate"><span class="pre">CURRENT_DATE</span></code></p>
+</div>
+<br/>
+</section>
+<section id="time">
+<h3>Time<a class="headerlink" href="#time" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">TIME(PRECISION)</span></code>: Almacena tiempo. Algunos formatos admisibles son:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Formatos válidos para crear un tipo TIME</span>
+<span class="s1">&#39;HH:MM:SS&#39;</span>
+<span class="s1">&#39;HHMMSS&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>HH</em>: Horas de dos dígitos, desde 00 a 23.</p></li>
+<li><p><em>MM</em>: Minutos de dos dígitos, desde 00 a 59.</p></li>
+<li><p><em>SS</em>: Segundos de dos dígitos, desde 00 a 59.</p></li>
+</ul>
+<p>El tiempo puede almacenar la precisión, para ello solo agregar hasta 6 dígitos:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Time con precisión de hasta 6 dígitos</span>
+<span class="s1">&#39;HH:MM:SS.pppppp&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>HH</em>: Horas de dos dígitos, desde 00 a 23.</p></li>
+<li><p><em>MM</em>: Minutos de dos dígitos, desde 00 a 59.</p></li>
+<li><p><em>SS</em>: Segundos de dos dígitos, desde 00 a 59.</p></li>
+<li><p><em>p</em> son dígitos.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Para obtener la hora actual con zona horaria usar el comando: <br/> <code class="docutils literal notranslate"><span class="pre">CURRENT_TIME</span></code></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Para revisar como crear <code class="docutils literal notranslate"><span class="pre">TIME</span></code> con zona horaria revisar <a class="reference internal" href="#tipos-zona-horaria"><span class="std std-ref">Zonas horarias</span></a>.</p>
+</div>
+</section>
+<section id="timestamp">
+<h3>Timestamp<a class="headerlink" href="#timestamp" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> almacena fechas y tiempo, se deben de ingresar como cadenas (entre comillas simples).</p>
+<p>Existen dos tipos:</p>
+<ul class="simple">
+<li><p><strong>timestamp</strong>: No almacena la zona horaria, por lo que modificaciones en la zona horaria del sistema no actualizará las horas almacenadas en la base de datos.</p></li>
+<li><p><strong>timestamptz</strong>: Almacena la zona horaria, por lo que modificaciones en la zona horaria del sistema actualizará las horas almacenadas en la base de datos. Éstas se almacenan en UTC.</p></li>
+</ul>
+<p>Los formatos válidos son los siguiente:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- TIMESTAMP sin zona horaria</span>
+<span class="s1">&#39;YYYY-MM-DD HH:MM:SS&#39;</span>
+
+<span class="c1">-- TIMESTAMP con zona horaria</span>
+<span class="s1">&#39;YYYY-MM-DD HH:MM:SS&#39;</span><span class="w"> </span><span class="k">AT</span><span class="w"> </span><span class="k">TIME</span><span class="w"> </span><span class="k">ZONE</span><span class="w"> </span><span class="s1">&#39;time_zone&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>YYYY</em>: Año de cuatro dígitos, desde 0000 a 9999.</p></li>
+<li><p><em>MM</em>: Mes de dos dígitos, del 01 a 12.</p></li>
+<li><p><em>DD</em>: Día de dos dígitos, del 01 al 31.</p></li>
+<li><p><em>HH</em>: Horas de dos dígitos, desde 00 a 23.</p></li>
+<li><p><em>MM</em>: Minutos de dos dígitos, desde 00 a 59.</p></li>
+<li><p><em>SS</em>: Segundos de dos dígitos, desde 00 a 59.</p></li>
+<li><p><em>‘time_zone’</em> es una abreviación en cadena de la zona horaria o una cadena de tipo <code class="docutils literal notranslate"><span class="pre">'Continent/City'</span></code>. Para consultar los códigos visitar <a class="reference external" href="http://www.healthstream.com/hlchelp/Administrator/Classes/HLC_Time_Zone_Abbreviations.htm">esta página</a>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Para obtener la fecha y hora actual con zona horaria usar el comando: <br/> <code class="docutils literal notranslate"><span class="pre">CURRENT_TIMESTAMP</span></code></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Para revisar como crear <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> con zona horaria revisar <a class="reference internal" href="#tipos-zona-horaria"><span class="std std-ref">Zonas horarias</span></a>.</p>
+</div>
+</section>
+<section id="zonas-horarias">
+<span id="tipos-zona-horaria"></span><h3>Zonas horarias<a class="headerlink" href="#zonas-horarias" title="Link to this heading">#</a></h3>
+<p>El tiempo puede tener una zona horaria, cuando se declare una columna del tipo <code class="docutils literal notranslate"><span class="pre">TIME</span></code> es necesario indicar que debe incluir zona horaria:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Agregar zona horaria</span>
+<span class="n">expression</span><span class="w"> </span><span class="k">AT</span><span class="w"> </span><span class="k">TIME</span><span class="w"> </span><span class="k">ZONE</span><span class="w"> </span><span class="s1">&#39;time_zone&#39;</span>
+<span class="n">expression</span><span class="w"> </span><span class="k">AT</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">ZONE</span><span class="w"> </span><span class="s1">&#39;time_zone&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>expression</em> puede ser una columna o un valor de tipo <code class="docutils literal notranslate"><span class="pre">TIME</span></code>.</p></li>
+<li><p><em>‘time_zone’</em> es una abreviación en cadena de la zona horaria o una cadena de tipo <code class="docutils literal notranslate"><span class="pre">'Continent/City'</span></code>. Para consultar los códigos visitar <a class="reference external" href="http://www.healthstream.com/hlchelp/Administrator/Classes/HLC_Time_Zone_Abbreviations.htm">esta página</a>.t</p></li>
+</ul>
+<p>Si un tiempo tiene zona horaria, aparecerá al final con un <em>+N</em>, que significará que está <em>N</em> horas por delante (+) o detrás (-) de <em>UTC</em>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Time con zona horaria</span>
+<span class="s1">&#39;HH:MM:SS.pppppp+N&#39;</span>
+</pre></div>
+</div>
+<p>Para convertir a otra zona horaria usar:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Modificar zona horaria</span>
+<span class="n">expression</span><span class="w"> </span><span class="k">AT</span><span class="w"> </span><span class="k">TIME</span><span class="w"> </span><span class="k">ZONE</span><span class="w"> </span><span class="s1">&#39;time_zone&#39;</span>
+<span class="n">expression</span><span class="w"> </span><span class="k">AT</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">ZONE</span><span class="w"> </span><span class="s1">&#39;time_zone&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>expression</em> puede ser una columna o un valor de tipo <code class="docutils literal notranslate"><span class="pre">TIME</span></code> con zona horaria.</p></li>
+<li><p><em>‘time_zone’</em> es una abreviación en cadena de la zona horaria o una cadena de tipo <code class="docutils literal notranslate"><span class="pre">'Continent/City'</span></code>. Para consultar los códigos visitar <a class="reference external" href="http://www.healthstream.com/hlchelp/Administrator/Classes/HLC_Time_Zone_Abbreviations.htm">esta página</a>.</p></li>
+</ul>
+<p>Existen unos comandos especiales para establecer o mostrar la zona horaria actual del servidor (no se usa dentro de <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>):</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Para establecer la zona horaria del servidor.</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">timezone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;time_zone&#39;</span>
+
+<span class="c1">-- Para mostrar la zona horaria del servidor.</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="n">timezone</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>‘time_zone’</em> es una abreviación en cadena de la zona horaria o una cadena de tipo <code class="docutils literal notranslate"><span class="pre">'Continent/City'</span></code>. Para consultar los códigos visitar <a class="reference external" href="http://www.healthstream.com/hlchelp/Administrator/Classes/HLC_Time_Zone_Abbreviations.htm">esta página</a>.</p></li>
+</ul>
+<br/>
+</section>
+<section id="interval">
+<h3>Interval<a class="headerlink" href="#interval" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code> Permite almacenar y manipular periodos de tiempo en años, meses, días, horas, minutos, segundos, etc.</p>
+<p>Se definen como cadenas, especificando el número y el campo, pueden ser más de uno y estos se se puede estar en singular o plural, además se puede definir una dirección, la sintaxis general es:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Definir un intervalo</span>
+<span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;quantity unit [quantity2 unit2] ... [AGO]&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>quantity</em> es un número positivo o negativo.</p></li>
+<li><p><em>unit</em> es la unidad de tiempo, puede ser:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">millennium</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">century</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">decade</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">year</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">month</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">week</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">day</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hour</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minute</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">second</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">millisecond</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">microsecond</span></code></p></li>
+<li><p>o abreviaciones de los anteriores (<code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">d</span></code>, etc.) o formas plurales (<code class="docutils literal notranslate"><span class="pre">months</span></code>, <code class="docutils literal notranslate"><span class="pre">days</span></code>, etc.).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AGO</span></code> convierte el intervalo en un intervalo negativo.</p></li>
+</ul>
+</li>
+</ul>
+<p>Algunos ejemplos de intervalos:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Intervalo de 2 meses</span>
+<span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;2 months&#39;</span>
+
+<span class="c1">-- Intervalo de 3 horas y 20 minutos</span>
+<span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;3 hours 20 minutes&#39;</span>
+
+<span class="c1">-- Intervalo de 1 año, 2 meses y 3 días</span>
+<span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;1 year 2 months 3 days&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Intervalo para representar 2 semanas atrás, es decir -14 días</span>
+<span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;2 weeks AGO&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Existe otra forma de definir los intervalos respetando <em>ISO 8601</em>. El formato ISO es de la forma:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Formato ISO 8601 para intervalos</span>
+<span class="n">P</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="p">...]]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Empieza por la letra <em>P</em>.</p></li>
+<li><p><em>T</em> es para indicar el comienzo de las unidades de tiempo.</p></li>
+<li><p>Se escribe todo junto con las abreviaciones de las unidades.</p></li>
+<li><p>Las abreviaciones de las unidades son:</p>
+<ul>
+<li><p><em>Y</em>: Years</p></li>
+<li><p><em>M</em>: Months (en la parte de fecha)</p></li>
+<li><p><em>W</em>: Weeks</p></li>
+<li><p><em>D</em>: Days</p></li>
+<li><p><em>H</em>: Hours</p></li>
+<li><p><em>M</em>: Minutes (en la parte de tiempo)</p></li>
+<li><p><em>S</em>: Seconds</p></li>
+</ul>
+</li>
+<li><p>Por ejemplo, el intervalo “6 years 5 months 4 days 3 hours 2 minutes 1 second”, se escribe: <br> <code class="docutils literal notranslate"><span class="pre">P6Y5M4DT3H2M1S</span></code></p></li>
+<li><p>Otra alternativa sería:  <br> <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">[YYYY-MM-DD][T</span> <span class="pre">HH:MM:SS]</span></code> <br> entonces el intervalo anterior se escribiría como: <br>  <code class="docutils literal notranslate"><span class="pre">P0006-05-04T03:02:01</span></code></p></li>
+</ul>
+<p>Los mismo ejemplos dados anteriormente, pero ahora como intervalos usando ISO 8601:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Intervalo de 2 meses</span>
+<span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;P2M&#39;</span>
+<span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;P0000-02-00&#39;</span>
+
+<span class="c1">-- Intervalo de 3 horas y 20 minutos</span>
+<span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;PT3H20M&#39;</span>
+<span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;PT03:20:00&#39;</span>
+
+<span class="c1">-- Intervalo de 1 año, 2 meses y 3 días</span>
+<span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;P1Y2M3D&#39;</span><span class="p">;</span>
+<span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;P0001-02-03&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Intervalo para representar 2 semanas atrás, es decir -14 días</span>
+<span class="o">-</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;P2W&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<br/>
+</section>
+<section id="operaciones-y-comparaciones-con-fechas">
+<h3>Operaciones y comparaciones con fechas<a class="headerlink" href="#operaciones-y-comparaciones-con-fechas" title="Link to this heading">#</a></h3>
+<p>Algunas características de realizar operaciones con fechas:</p>
+<ul class="simple">
+<li><p>Se pueden hacer comparaciones entre fechas con los operadores de <span class="xref std std-ref">operadores-comparacion</span> y retornar valores <code class="docutils literal notranslate"><span class="pre">BOOL</span></code>. Ejemplo con ‘mayor que’ y <code class="docutils literal notranslate"><span class="pre">DATE</span></code>: <br> <code class="docutils literal notranslate"><span class="pre">DATE</span> <span class="pre">'YYYY-MM-DD'</span> <span class="pre">&gt;</span> <span class="pre">DATE</span> <span class="pre">'YYYY-MM-DD'</span></code></p></li>
+<li><p>Se pueden extraer dos fechas dando como resultado un entero o un intervalo. Si una de las fechas no es una columna se debe de poner <em>DATE/TIMESTAMP</em> antes de la fecha. Ejemplo de restarle a una columna de fecha una fecha específica: <br> <code class="docutils literal notranslate"><span class="pre">col</span> <span class="pre">-</span> <span class="pre">DATE|TIMESTAMP</span> <span class="pre">'YYYY-MM-DD'</span></code></p></li>
+<li><p>A una <code class="docutils literal notranslate"><span class="pre">DATE</span></code>/<code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> se le puede sumar/extraer un entero que representa días, dando como resultado <code class="docutils literal notranslate"><span class="pre">DATE</span></code>/<code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>. Ejemplo de agregar <em>N</em> días a una fecha. No es estrictamente necesario poner <code class="docutils literal notranslate"><span class="pre">INT</span></code>. <strong>IMPORTANTE</strong>: si se quiere agregar una unidad diferente a días usar <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code>. <BR> <code class="docutils literal notranslate"><span class="pre">DATE</span> <span class="pre">'YYYY-MM-DD'</span> <span class="pre">+</span> <span class="pre">INT</span> <span class="pre">N</span></code></p></li>
+<li><p>Si se extraen dos <code class="docutils literal notranslate"><span class="pre">TIMESTAMPS</span></code> dará como resultado <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code>.</p></li>
+<li><p>Se puede usar <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code> para hacer operaciones más complejas con fechas y tiempos.</p></li>
+</ul>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="arrays">
+<h2>Arrays<a class="headerlink" href="#arrays" title="Link to this heading">#</a></h2>
+<p>Cada tipo de dato tiene su contraparte en array, por ejemplo, la contraparte de <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> es <code class="docutils literal notranslate"><span class="pre">INTEGER[]</span></code>.</p>
+<section id="crear-columnas-de-tipo-array">
+<h3>Crear columnas de tipo array<a class="headerlink" href="#crear-columnas-de-tipo-array" title="Link to this heading">#</a></h3>
+<p>Cualquier columna puede ser del tipo <em>array</em>, para ello solo agregar los corchetes al momento de definir la columna (ejemplo con CHAR):</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Crear tabla con columnas de tipo array</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table</span><span class="p">(</span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">En</span><span class="w"> </span><span class="n">este</span><span class="w"> </span><span class="n">ejempo</span><span class="w"> </span><span class="n">son</span><span class="w"> </span><span class="n">arreglos</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">cadenas</span>
+<span class="w">    </span><span class="n">col1</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">[]</span><span class="w"> 	</span><span class="c1">-- Vector</span>
+<span class="w">    </span><span class="n">col2</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">[][]</span><span class="w">	</span><span class="c1">-- Matriz</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>col1</em>, <em>col2</em> será los nombres de la columnas.</p></li>
+</ul>
+<br/>
+</section>
+<section id="insertar-valores-a-un-array">
+<h3>Insertar valores a un array<a class="headerlink" href="#insertar-valores-a-un-array" title="Link to this heading">#</a></h3>
+<p>Para insertar valores a una columna de tipo <em>array</em> en una tabla usar:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Insertar valores a columnas de tipo _array_</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="p">(</span><span class="n">col1</span><span class="p">,</span><span class="w"> </span><span class="n">col2</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+<span class="k">VALUES</span><span class="p">(</span><span class="n">val1</span><span class="p">,</span><span class="w"> </span><span class="nb">ARRAY</span><span class="p">[</span><span class="n">vali</span><span class="p">,</span><span class="w"> </span><span class="n">vali</span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="p">...)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>En este caso <em>col2</em> es un <em>array</em>, al momento de insertar los valores se ponen entre corchetes junto a la sentencia <code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> y cada uno de los valores del <em>array</em> separados por coma.</p></li>
+<li><p>En lugar de usar <code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> se puede usar llaves, debe de ir entre comillas simples. Si los elementos son de tipo carácter, cada elemento debe de ir entre comillas dobles y todo entre comillas simples: <br> <code class="docutils literal notranslate"><span class="pre">VALUES(val1,</span> <span class="pre">'{&quot;vali&quot;,</span> <span class="pre">&quot;valj&quot;,</span> <span class="pre">...}',</span> <span class="pre">...)</span></code></p></li>
+<li><p>Para array de dos dimensiones usar:</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Con la sentencia ARRAY</span>
+<span class="nb">ARRAY</span><span class="p">[[</span><span class="n">val1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">val1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">...],</span><span class="w"> </span><span class="p">[</span><span class="n">val2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">val2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">...]]</span>
+<span class="w">	</span>
+<span class="c1">-- Con la notación entre llaves:</span>
+<span class="err">{{</span><span class="n">val1</span><span class="p">,</span><span class="w"> </span><span class="n">val2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="err">{</span><span class="n">val1</span><span class="p">,</span><span class="w"> </span><span class="n">val2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="err">}</span>
+</pre></div>
+</div>
+<br/>
+</section>
+<section id="seleccionar-elementos-de-un-array">
+<h3>Seleccionar elementos de un array<a class="headerlink" href="#seleccionar-elementos-de-un-array" title="Link to this heading">#</a></h3>
+<p>Para seleccionar elementos de un <em>array</em> se hace uso de corchetes y los índices de los elementos:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Seleccionar elemento en el índice &#39;i&#39;</span>
+<span class="n">col</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="c1">-- Seleccionar elemento la coordenada &#39;(i,j)&#39;</span>
+<span class="n">col</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>col</em> es el nombre de una columna de tipo <em>array</em>.</p></li>
+<li><p><em>i</em>, <em>j</em> son los índices del elemento, empiezan por uno.</p></li>
+</ul>
+<br/>
+</section>
+<section id="modificar-un-elementos">
+<h3>Modificar un elementos<a class="headerlink" href="#modificar-un-elementos" title="Link to this heading">#</a></h3>
+<p>Para modificar un elemento en concreto de una columna de tipo <em>array</em>, se debe seleccionar y asignar un nuevo valor:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Modificar elemento en el índice &#39;i&#39;</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="k">table</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">col</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span>
+<span class="p">[</span><span class="k">WHERE</span><span class="w"> </span><span class="n">condición</span><span class="p">];</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table</em> y <em>col</em> son el nombre de la tabla y columna respectivamente. La columna tiene que ser del tipo <em>array</em>.</p></li>
+<li><p>Se puede especificar una condición con respecto a las columnas y valores de la tabla, no del <em>array</em>.</p></li>
+<li><p><strong>IMPORTANTE</strong>: Si no se especifica el índice, todo el <em>array</em> será reemplazado por <em>val</em>.</p></li>
+<li><p><strong>IMPORTANTE</strong>: Si el <em>array</em> es de dos dimensiones indicar ambos índices.</p></li>
+</ul>
+<br/>
+</section>
+<section id="verificar-que-un-elemento-este-en-un-array">
+<h3>Verificar que un elemento esté en un array<a class="headerlink" href="#verificar-que-un-elemento-este-en-un-array" title="Link to this heading">#</a></h3>
+<p>Se puede utilizar la función <code class="docutils literal notranslate"><span class="pre">ANY()</span></code> para verificar que un elemento esté en un <em>array</em>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Usando la función ANY()</span>
+<span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">ANY</span><span class="p">(</span><span class="n">col</span><span class="p">);</span>
+
+<span class="c1">-- Otra formar sería:</span>
+<span class="n">nomArray</span><span class="w"> </span><span class="o">@&gt;</span><span class="w"> </span><span class="nb">ARRAY</span><span class="p">[</span><span class="n">val</span><span class="p">]</span><span class="w"> </span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Si <code class="docutils literal notranslate"><span class="pre">val</span></code> es una cadena, se debe de poner entre comillas simples.</p></li>
+<li><p>Las expresiones anteriores retornan valores <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> o <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>.</p></li>
+</ul>
+<br/>
+</section>
+</section>
+<section id="null">
+<h2>NULL<a class="headerlink" href="#null" title="Link to this heading">#</a></h2>
+<p>Es un campo sin valor. Al insertar una nueva fila, si no se especifica el valor de determinada columna, entonces un valor <code class="docutils literal notranslate"><span class="pre">NULL</span></code> será puesto en esa columna (siempre y cuando la columna pueda contener valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code>). <code class="docutils literal notranslate"><span class="pre">NULL</span></code> puede significar muchas cosas, como desconocido, que no existe, que no aplica, etc.</p>
+<section id="verificar-que-un-campo-sea-nulo">
+<h3>Verificar que un campo sea nulo<a class="headerlink" href="#verificar-que-un-campo-sea-nulo" title="Link to this heading">#</a></h3>
+<p>No se puede verificar que un campo sea <code class="docutils literal notranslate"><span class="pre">NULL</span></code> con operadores de comparación (<code class="docutils literal notranslate"><span class="pre">=</span></code> o <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code>), es necesario usar <code class="docutils literal notranslate"><span class="pre">IS</span></code> o <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NOT</span></code>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Verificar que los valores se una columnas sean o no sean NULL</span>
+<span class="n">col</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span>
+<span class="n">col</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>col</em> es el nombre de una columna.</p></li>
+<li><p>Normalmente esta comparación se hará en la sentencia <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>.</p></li>
+</ul>
+<br/>
+</section>
+</section>
+<section id="tipos-personalizados">
+<h2>Tipos personalizados<a class="headerlink" href="#tipos-personalizados" title="Link to this heading">#</a></h2>
+<p>Es posible crear tipos de datos personalizados para ello usar:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Crear un tipo personalizado</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TYPE</span><span class="w"> </span><span class="n">nom</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span>
+<span class="n">ENUM</span><span class="p">(</span><span class="s1">&#39;exp1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;exp2&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>No estrictamente se tiene que usar <code class="docutils literal notranslate"><span class="pre">ENUM()</span></code>.</p></li>
+<li><p>Usar <code class="docutils literal notranslate"><span class="pre">ENUM()</span></code> solo es recomendado para establecer una lista de valores personalizados que rara vez cambia, como los días de las semanas, ciudades o estados, etc.</p></li>
+</ul>
+<br/>
+</section>
+<section id="otros">
+<h2>Otros<a class="headerlink" href="#otros" title="Link to this heading">#</a></h2>
+<p>Otros tipos de datos existentes en PostgreSQL son:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">JSON</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UUID</span></code>.</p></li>
+<li><p>Epeciales:</p>
+<ul>
+<li><p>box`</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">line</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">point</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lseg</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">polygon</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inet</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">macaddr</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+</section>
+<section id="conversion">
+<h2>Conversión<a class="headerlink" href="#conversion" title="Link to this heading">#</a></h2>
+<p>Para convertir un tipo de dato a otro usar:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Converter &#39;expression&#39; a &#39;type&#39;</span>
+<span class="n">expression</span><span class="w"> </span><span class="p">::</span><span class="w"> </span><span class="k">type</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>expression</em> es un valor o columna de algún tipo de dato.</p></li>
+<li><p><em>type</em> es el tipo de dato al que se desea convertir.</p></li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>No todas las conversiones entre tipos de datos son válidas.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>También es posible usar la función <code class="docutils literal notranslate"><span class="pre">CAST()</span></code>.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./parts/postgresql"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="operadores.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Operadores</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bool">Bool</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caracter">Carácter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concatenacion">Concatenación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numericos">Numéricos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enteros">Enteros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flotantes">Flotantes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nan">NaN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fechas-y-tiempo">Fechas y Tiempo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-un-valor-de-tipo-fecha">Creación de un valor de tipo fecha.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date">DATE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time">Time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timestamp">Timestamp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonas-horarias">Zonas horarias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interval">Interval</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operaciones-y-comparaciones-con-fechas">Operaciones y comparaciones con fechas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays">Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-columnas-de-tipo-array">Crear columnas de tipo array</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insertar-valores-a-un-array">Insertar valores a un array</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccionar-elementos-de-un-array">Seleccionar elementos de un array</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modificar-un-elementos">Modificar un elementos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verificar-que-un-elemento-este-en-un-array">Verificar que un elemento esté en un array</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#null">NULL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verificar-que-un-campo-sea-nulo">Verificar que un campo sea nulo</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-personalizados">Tipos personalizados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otros">Otros</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion">Conversión</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nebok
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
