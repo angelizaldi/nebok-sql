@@ -69,6 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="icon" href="../../_static/nebok-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data Query Language (DQL)" href="dql-index.html" />
     <link rel="prev" title="Operadores" href="operadores.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -194,6 +195,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="comentarios.html">Comentarios.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="operadores.html">Operadores</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Tipos de Datos</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dql-index.html">Data Query Language (DQL)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="sentencias-seleccion.html">Sentencias de Selección</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sentencias-ordenar.html">Sentencias para Ordenar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sentencias-filtrado.html">Sentencias de Filtrado</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -433,7 +440,7 @@ document.write(`
 </div>
 <p>Existen tres tipos de datos de carácter/cadenas:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CHAR(N)</span></code> | <code class="docutils literal notranslate"><span class="pre">CHARACTER(N)</span></code>: Cadena de longitud fija de <em>n</em> caracteres. Si se agrega una cadena de longitud menor a n, PostgreSQL añadirá espacios al final para que su longitud sea de <em>n</em>. Si se agrega una cadena de longitud mayor a <em>n</em>, se arrojará un error. Los espacios extras se ignorarán al hacer comparaciones entre este tipo de cadenas. Si no se especifica <em>n</em>, equivale a <code class="docutils literal notranslate"><span class="pre">CHAR(1)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CHAR(N)</span></code> | <code class="docutils literal notranslate"><span class="pre">CHARACTER(N)</span></code>: Cadena de longitud fija de <em>n</em> caracteres. Si se agrega una cadena de longitud menor a <em>n</em>, PostgreSQL añadirá espacios al final para que su longitud sea de <em>n</em>. Si se agrega una cadena de longitud mayor a <em>n</em>, se arrojará un error. Los espacios extras se ignorarán al hacer comparaciones entre este tipo de cadenas. Si no se especifica <em>n</em>, equivale a <code class="docutils literal notranslate"><span class="pre">CHAR(1)</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">VARCHAR(N)</span></code> | <code class="docutils literal notranslate"><span class="pre">CHARACTER</span> <span class="pre">VARYING(N)</span></code>: Cadena que almacena hasta un máximo de <em>n</em> caracteres, puede ser menor, pero no mayor.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code> | <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code>: Cadena de longitud variable.</p></li>
 </ul>
@@ -523,7 +530,7 @@ document.write(`
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>No necesariamente tiene que ser <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> puede ser cualquier otro tipo de dato de fecha o tiempo.</p></li>
+<li><p>No necesariamente tiene que ser <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> puede ser cualquier otro tipo de dato de fecha o tiempo, siempre y cuando tenga el formato apropiado.</p></li>
 </ul>
 <br/>
 </section>
@@ -614,15 +621,15 @@ document.write(`
 </section>
 <section id="zonas-horarias">
 <span id="tipos-zona-horaria"></span><h3>Zonas horarias<a class="headerlink" href="#zonas-horarias" title="Link to this heading">#</a></h3>
-<p>El tiempo puede tener una zona horaria, cuando se declare una columna del tipo <code class="docutils literal notranslate"><span class="pre">TIME</span></code> es necesario indicar que debe incluir zona horaria:</p>
+<p>El tiempo puede tener una zona horaria, cuando se declare una columna del tipo <code class="docutils literal notranslate"><span class="pre">TIME</span></code> o <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> es necesario indicar que debe incluir zona horaria:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Agregar zona horaria</span>
 <span class="n">expression</span><span class="w"> </span><span class="k">AT</span><span class="w"> </span><span class="k">TIME</span><span class="w"> </span><span class="k">ZONE</span><span class="w"> </span><span class="s1">&#39;time_zone&#39;</span>
 <span class="n">expression</span><span class="w"> </span><span class="k">AT</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">ZONE</span><span class="w"> </span><span class="s1">&#39;time_zone&#39;</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><em>expression</em> puede ser una columna o un valor de tipo <code class="docutils literal notranslate"><span class="pre">TIME</span></code>.</p></li>
-<li><p><em>‘time_zone’</em> es una abreviación en cadena de la zona horaria o una cadena de tipo <code class="docutils literal notranslate"><span class="pre">'Continent/City'</span></code>. Para consultar los códigos visitar <a class="reference external" href="http://www.healthstream.com/hlchelp/Administrator/Classes/HLC_Time_Zone_Abbreviations.htm">esta página</a>.t</p></li>
+<li><p><em>expression</em> puede ser una columna o un valor de tipo <code class="docutils literal notranslate"><span class="pre">TIME</span></code> o <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>.</p></li>
+<li><p><em>‘time_zone’</em> es una abreviación en cadena de la zona horaria o una cadena de tipo <code class="docutils literal notranslate"><span class="pre">'Continent/City'</span></code>. Para consultar los códigos visitar <a class="reference external" href="http://www.healthstream.com/hlchelp/Administrator/Classes/HLC_Time_Zone_Abbreviations.htm">esta página</a>.</p></li>
 </ul>
 <p>Si un tiempo tiene zona horaria, aparecerá al final con un <em>+N</em>, que significará que está <em>N</em> horas por delante (+) o detrás (-) de <em>UTC</em>.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Time con zona horaria</span>
@@ -636,10 +643,10 @@ document.write(`
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><em>expression</em> puede ser una columna o un valor de tipo <code class="docutils literal notranslate"><span class="pre">TIME</span></code> con zona horaria.</p></li>
+<li><p><em>expression</em> puede ser una columna o un valor de tipo <code class="docutils literal notranslate"><span class="pre">TIME</span></code> o <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> con zona horaria.</p></li>
 <li><p><em>‘time_zone’</em> es una abreviación en cadena de la zona horaria o una cadena de tipo <code class="docutils literal notranslate"><span class="pre">'Continent/City'</span></code>. Para consultar los códigos visitar <a class="reference external" href="http://www.healthstream.com/hlchelp/Administrator/Classes/HLC_Time_Zone_Abbreviations.htm">esta página</a>.</p></li>
 </ul>
-<p>Existen unos comandos especiales para establecer o mostrar la zona horaria actual del servidor (no se usa dentro de <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>):</p>
+<p>Existen unos comandos especiales para establecer o mostrar la zona horaria actual del servidor (no se usan con <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>):</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Para establecer la zona horaria del servidor.</span>
 <span class="k">SET</span><span class="w"> </span><span class="n">timezone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;time_zone&#39;</span>
 
@@ -716,7 +723,7 @@ document.write(`
 </ul>
 </li>
 <li><p>Por ejemplo, el intervalo “6 years 5 months 4 days 3 hours 2 minutes 1 second”, se escribe: <br> <code class="docutils literal notranslate"><span class="pre">P6Y5M4DT3H2M1S</span></code></p></li>
-<li><p>Otra alternativa sería:  <br> <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">[YYYY-MM-DD][T</span> <span class="pre">HH:MM:SS]</span></code> <br> entonces el intervalo anterior se escribiría como: <br>  <code class="docutils literal notranslate"><span class="pre">P0006-05-04T03:02:01</span></code></p></li>
+<li><p>Otra alternativa sería:  <br> <code class="docutils literal notranslate"><span class="pre">P[YYYY-MM-DD][T</span> <span class="pre">HH:MM:SS]</span></code> <br> entonces el intervalo anterior se escribiría como: <br>  <code class="docutils literal notranslate"><span class="pre">P0006-05-04T03:02:01</span></code></p></li>
 </ul>
 <p>Los mismo ejemplos dados anteriormente, pero ahora como intervalos usando ISO 8601:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Intervalo de 2 meses</span>
@@ -741,12 +748,23 @@ document.write(`
 <h3>Operaciones y comparaciones con fechas<a class="headerlink" href="#operaciones-y-comparaciones-con-fechas" title="Link to this heading">#</a></h3>
 <p>Algunas características de realizar operaciones con fechas:</p>
 <ul class="simple">
-<li><p>Se pueden hacer comparaciones entre fechas con los operadores de <span class="xref std std-ref">operadores-comparacion</span> y retornar valores <code class="docutils literal notranslate"><span class="pre">BOOL</span></code>. Ejemplo con ‘mayor que’ y <code class="docutils literal notranslate"><span class="pre">DATE</span></code>: <br> <code class="docutils literal notranslate"><span class="pre">DATE</span> <span class="pre">'YYYY-MM-DD'</span> <span class="pre">&gt;</span> <span class="pre">DATE</span> <span class="pre">'YYYY-MM-DD'</span></code></p></li>
-<li><p>Se pueden extraer dos fechas dando como resultado un entero o un intervalo. Si una de las fechas no es una columna se debe de poner <em>DATE/TIMESTAMP</em> antes de la fecha. Ejemplo de restarle a una columna de fecha una fecha específica: <br> <code class="docutils literal notranslate"><span class="pre">col</span> <span class="pre">-</span> <span class="pre">DATE|TIMESTAMP</span> <span class="pre">'YYYY-MM-DD'</span></code></p></li>
+<li><p>Se pueden hacer comparaciones entre fechas con los <span class="xref std std-ref">operadores-comparacion</span> y retornar valores <code class="docutils literal notranslate"><span class="pre">BOOL</span></code>. Ejemplo con ‘mayor que’ y <code class="docutils literal notranslate"><span class="pre">DATE</span></code>: <br> <code class="docutils literal notranslate"><span class="pre">DATE</span> <span class="pre">'YYYY-MM-DD'</span> <span class="pre">&gt;</span> <span class="pre">DATE</span> <span class="pre">'YYYY-MM-DD'</span></code></p></li>
+<li><p>Se pueden extraer dos fechas dando como resultado un entero o un intervalo. Si una de las fechas no es una columna se debe de poner <code class="docutils literal notranslate"><span class="pre">DATE</span></code>/<code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> antes de la fecha. Ejemplo de restarle a una columna de fecha una fecha específica: <br> <code class="docutils literal notranslate"><span class="pre">col</span> <span class="pre">-</span> <span class="pre">DATE|TIMESTAMP</span> <span class="pre">'YYYY-MM-DD'</span></code></p></li>
 <li><p>A una <code class="docutils literal notranslate"><span class="pre">DATE</span></code>/<code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> se le puede sumar/extraer un entero que representa días, dando como resultado <code class="docutils literal notranslate"><span class="pre">DATE</span></code>/<code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>. Ejemplo de agregar <em>N</em> días a una fecha. No es estrictamente necesario poner <code class="docutils literal notranslate"><span class="pre">INT</span></code>. <strong>IMPORTANTE</strong>: si se quiere agregar una unidad diferente a días usar <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code>. <BR> <code class="docutils literal notranslate"><span class="pre">DATE</span> <span class="pre">'YYYY-MM-DD'</span> <span class="pre">+</span> <span class="pre">INT</span> <span class="pre">N</span></code></p></li>
 <li><p>Si se extraen dos <code class="docutils literal notranslate"><span class="pre">TIMESTAMPS</span></code> dará como resultado <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code>.</p></li>
 <li><p>Se puede usar <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code> para hacer operaciones más complejas con fechas y tiempos.</p></li>
 </ul>
+<p><strong>Ejemplos</strong>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Comparación</span>
+<span class="nb">DATE</span><span class="w"> </span><span class="s1">&#39;2020-05-20&#39;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="s1">&#39;2021-05-20&#39;</span><span class="w"> </span><span class="c1">-- Retorna FALSE</span>
+
+<span class="c1">-- Restar dos fechas</span>
+<span class="nb">DATE</span><span class="w"> </span><span class="s1">&#39;2020-05-20&#39;</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="s1">&#39;2021-05-20&#39;</span><span class="w"> </span><span class="c1">-- Retorna -365</span>
+
+<span class="c1">-- Restar dos fechas</span>
+<span class="nb">DATE</span><span class="w"> </span><span class="s1">&#39;2020-05-21&#39;</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">365</span><span class="w"> </span><span class="c1">-- Retorna 2020-05-20</span>
+</pre></div>
+</div>
 <br/>
 </section>
 </section>
@@ -756,7 +774,7 @@ document.write(`
 <p>Cada tipo de dato tiene su contraparte en array, por ejemplo, la contraparte de <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> es <code class="docutils literal notranslate"><span class="pre">INTEGER[]</span></code>.</p>
 <section id="crear-columnas-de-tipo-array">
 <h3>Crear columnas de tipo array<a class="headerlink" href="#crear-columnas-de-tipo-array" title="Link to this heading">#</a></h3>
-<p>Cualquier columna puede ser del tipo <em>array</em>, para ello solo agregar los corchetes al momento de definir la columna (ejemplo con CHAR):</p>
+<p>Cualquier columna puede ser del tipo <em>array</em>, para ello solo agregar los corchetes al momento de definir la columna (ejemplo con <code class="docutils literal notranslate"><span class="pre">CHAR</span></code>):</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Crear tabla con columnas de tipo array</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table</span><span class="p">(</span>
 <span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">En</span><span class="w"> </span><span class="n">este</span><span class="w"> </span><span class="n">ejempo</span><span class="w"> </span><span class="n">son</span><span class="w"> </span><span class="n">arreglos</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">cadenas</span>
@@ -788,7 +806,7 @@ document.write(`
 <span class="nb">ARRAY</span><span class="p">[[</span><span class="n">val1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">val1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">...],</span><span class="w"> </span><span class="p">[</span><span class="n">val2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">val2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">...]]</span>
 <span class="w">	</span>
 <span class="c1">-- Con la notación entre llaves:</span>
-<span class="err">{{</span><span class="n">val1</span><span class="p">,</span><span class="w"> </span><span class="n">val2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="err">{</span><span class="n">val1</span><span class="p">,</span><span class="w"> </span><span class="n">val2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="err">}</span>
+<span class="err">\{\{</span><span class="n">val1</span><span class="p">,</span><span class="w"> </span><span class="n">val2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="err">\{</span><span class="n">val1</span><span class="p">,</span><span class="w"> </span><span class="n">val2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="err">}</span>
 </pre></div>
 </div>
 <br/>
@@ -843,6 +861,7 @@ document.write(`
 <br/>
 </section>
 </section>
+<hr class="docutils" />
 <section id="null">
 <h2>NULL<a class="headerlink" href="#null" title="Link to this heading">#</a></h2>
 <p>Es un campo sin valor. Al insertar una nueva fila, si no se especifica el valor de determinada columna, entonces un valor <code class="docutils literal notranslate"><span class="pre">NULL</span></code> será puesto en esa columna (siempre y cuando la columna pueda contener valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code>). <code class="docutils literal notranslate"><span class="pre">NULL</span></code> puede significar muchas cosas, como desconocido, que no existe, que no aplica, etc.</p>
@@ -861,6 +880,7 @@ document.write(`
 <br/>
 </section>
 </section>
+<hr class="docutils" />
 <section id="tipos-personalizados">
 <h2>Tipos personalizados<a class="headerlink" href="#tipos-personalizados" title="Link to this heading">#</a></h2>
 <p>Es posible crear tipos de datos personalizados para ello usar:</p>
@@ -875,6 +895,7 @@ document.write(`
 </ul>
 <br/>
 </section>
+<hr class="docutils" />
 <section id="otros">
 <h2>Otros<a class="headerlink" href="#otros" title="Link to this heading">#</a></h2>
 <p>Otros tipos de datos existentes en PostgreSQL son:</p>
@@ -955,6 +976,15 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Operadores</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="dql-index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Query Language (DQL)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

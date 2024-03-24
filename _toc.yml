@@ -6,11 +6,16 @@ root: intro
 parts:
   - caption: SQL
     chapters:
-    - file: parts/teoria/teoria-index
-      sections:
-      - file: parts/teoria/queries
+    - file: parts/teoria/queries
     - file: parts/postgresql/postgre-index
       sections:
       - file: parts/postgresql/comentarios
       - file: parts/postgresql/operadores
       - file: parts/postgresql/tipos-de-datos
+      - file: parts/postgresql/dql-index
+        sections:
+        - file: parts/postgresql/sentencias-seleccion
+        - file: parts/postgresql/sentencias-ordenar
+        - file: parts/postgresql/sentencias-filtrado
+        - file: parts/postgresql/sentencias-condicionales
+        - file: parts/postgresql/sentencias-conjuntos
