@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Tipos de Datos" href="tipos-de-datos.html" />
-    <link rel="prev" title="PostgreSQL" href="postgre-index.html" />
+    <link rel="prev" title="Comentarios." href="comentarios.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -188,12 +188,51 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../teoria/teoria-index.html">Conceptos y teoría</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../teoria/queries.html">Conceptos y teoría</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../teoria/teoria.html">Teoría</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../teoria/sql.html">SQL</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="postgre-index.html">PostgreSQL</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="comentarios.html">Comentarios.</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Operadores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tipos-de-datos.html">Tipos de Datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="udf.html">Funciones (UDF)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dql/dql-index.html">Data Query Language (DQL)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dql/seleccion.html">Seleccionar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/filtrado.html">Filtrar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/ordenar.html">Ordenar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/joins.html">Join</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/agrupar.html">Agrupar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/operaciones-conjuntos.html">Operaciones de conjuntos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/expresiones-condicionales.html">Sentencias condicionales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/window-functions.html">Window Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/subqueries.html">Subqueries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/common-table-expression.html">Common Table Expression (CTE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/full_text_search.html">Full text search</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dml/dml-index.html">Data Manipulation Language (DML)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dml/insertar.html">Insertar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dml/actualizar.html">Actualizar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dml/eliminar.html">Eliminar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="ddl/ddl-index.html">Data Definition Language (DDL)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="ddl/crear.html">Crear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ddl/modificar.html">Modificar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ddl/eliminar.html">Eliminar y Truncar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dcl/dcl-index.html">Data Control Language (DCL)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dcl/conceder.html">Otorgar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dcl/revocar.html">Revocar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="funciones.html">Funciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensiones.html">Extensiones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psql.html">psql</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anexos.html">Anexos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookbook.html">Cookbook</a></li>
 </ul>
 </li>
 </ul>
@@ -348,7 +387,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operadores-bitwise">Operadores Bitwise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aritmeticos">Aritméticos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membresia">Membresía</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logicos">Lógicos:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logicos">Lógicos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concatenar">Concatenar</a></li>
 </ul>
             </nav>
@@ -363,9 +402,12 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="operadores">
 <h1>Operadores<a class="headerlink" href="#operadores" title="Link to this heading">#</a></h1>
+<p>En esta sección se presentan los operadores en SQL.</p>
 <section id="comparacion">
-<span id="operadores-comparacion"></span><h2>Comparación<a class="headerlink" href="#comparacion" title="Link to this heading">#</a></h2>
-<table class="table" id="id1">
+<h2>Comparación<a class="headerlink" href="#comparacion" title="Link to this heading">#</a></h2>
+<p>Operadores útiles para comparar valores.</p>
+<table class="table" id="operadores-comparacion">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Operadores de Comparación</span><a class="headerlink" href="#operadores-comparacion" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Descripción</p></th>
@@ -396,7 +438,8 @@ document.write(`
 </section>
 <section id="operadores-bitwise">
 <h2>Operadores Bitwise<a class="headerlink" href="#operadores-bitwise" title="Link to this heading">#</a></h2>
-<table class="table" id="id2">
+<table class="table" id="id1">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Operadores Bitwise</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Descripción</p></th>
@@ -418,7 +461,9 @@ document.write(`
 </section>
 <section id="aritmeticos">
 <h2>Aritméticos<a class="headerlink" href="#aritmeticos" title="Link to this heading">#</a></h2>
+<p>Operadores útiles para realizar operaciones aritméticas con valores.</p>
 <table class="table" id="operadores-aritmeticos">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">Operadores Aritméticos</span><a class="headerlink" href="#operadores-aritmeticos" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Descripción</p></th>
@@ -442,12 +487,17 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p>* Si los números son enteros, devolverá un entero. Para hacer divisiones de enteros y que devuelva decimales se necesita agregar un <em>.0</em> al menos a un número.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>En una división, si los números son enteros, el resultado será un entero. Para hacer divisiones de enteros y que devuelva decimales se necesita agregar un <em>.0</em> al menos a un número.</p>
+</div>
 <br/>
 </section>
 <section id="membresia">
 <h2>Membresía<a class="headerlink" href="#membresia" title="Link to this heading">#</a></h2>
+<p>Operadores útiles para verificar si los valores están dentro de un conjunto de valores, rangos o cumplen un patrón.</p>
 <table class="table" id="operadores-membresia">
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">Operadores de Membresía</span><a class="headerlink" href="#operadores-membresia" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Descripción</p></th>
@@ -465,16 +515,19 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p>Para más información revisa:</p>
+<p>Para más información revisar:</p>
 <ul class="simple">
-<li><p><span class="xref std std-ref">IN y BETWEEN</span>.</p></li>
-<li><p><span class="xref std std-ref">LIKE</span>.</p></li>
+<li><p><a class="reference internal" href="dql/filtrado.html#dql-filtrado-in"><span class="std std-ref">IN</span></a>.</p></li>
+<li><p><a class="reference internal" href="dql/filtrado.html#dql-filtrado-between"><span class="std std-ref">BETWEEN</span></a>.</p></li>
+<li><p><a class="reference internal" href="dql/filtrado.html#dql-filtrado-like"><span class="std std-ref">LIKE</span></a>.</p></li>
 </ul>
 <br/>
 </section>
 <section id="logicos">
-<h2>Lógicos:<a class="headerlink" href="#logicos" title="Link to this heading">#</a></h2>
+<h2>Lógicos<a class="headerlink" href="#logicos" title="Link to this heading">#</a></h2>
+<p>Operadores útiles para manipular valores <em>booleanos</em>.</p>
 <table class="table" id="operadores-logicos">
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">Operadores Lógicos</span><a class="headerlink" href="#operadores-logicos" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Descripción</p></th>
@@ -491,36 +544,54 @@ document.write(`
 <td><p>Niega el valor/rango.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ALL</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> si todos los valores de un subquery cumple una condición.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> si todos los valores de un <em>subquery</em> cumple una condición.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ANY</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> si al menos uno de los valores de un subquery cumple una condición.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> si al menos uno de los valores de un <em>subquery</em> cumple una condición.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EXISTS</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> si el subquery retorna al menos un registro.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> si el <em>subquery</em> retorna al menos un registro.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SOME</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> si cualquiera de los valores de un subquery cumple una condición.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> si cualquiera de los valores de un <em>subquery</em> cumple una condición.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Para más información consulta:</p>
+<p>Para más información consultar:</p>
 <ul class="simple">
-<li><p><span class="xref std std-ref">ANY y ALL</span></p></li>
-<li><p><span class="xref std std-ref">EXISTS</span></p></li>
+<li><p><a class="reference internal" href="dql/subqueries.html#subquery-all"><span class="std std-ref">ALL</span></a> y <a class="reference internal" href="dql/subqueries.html#subquery-any"><span class="std std-ref">ANY</span></a></p></li>
+<li><p><a class="reference internal" href="dql/subqueries.html#subquery-exists"><span class="std std-ref">EXISTS</span></a></p></li>
 </ul>
 <br/>
 </section>
 <section id="concatenar">
 <h2>Concatenar<a class="headerlink" href="#concatenar" title="Link to this heading">#</a></h2>
-<p>Para concatenar cadenas se puede hacer uso de los operadores <code class="docutils literal notranslate"><span class="pre">||</span></code>, por ejemplo:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">col1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">col2</span>
+<p>Para concatenar cadenas se puede hacer uso de los operadores <code class="docutils literal notranslate"><span class="pre">||</span></code>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Concatenar los valores de dos columnas</span>
+<span class="n">col1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">col2</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Se concatenará el contenido de <em>col1</em> y <em>col2</em>, separados por un espacio.</p></li>
-<li><p><strong>IMPORTANTE</strong>: No se puede concatenar valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, si se utiliza un <code class="docutils literal notranslate"><span class="pre">NULL</span></code> convertirá toda la cadena en <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p></li>
-<li><p><strong>IMPORTANTE</strong>: También se puede usar la función <code class="docutils literal notranslate"><span class="pre">CONCAT()</span></code>.</p></li>
+<li><p>En este ejemplo se concatena el contenido de <em>col1</em> y <em>col2</em>, separados por un espacio.</p></li>
+<li><p>En lugar de columnas se pueden concatenar otras cadenas.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>No se puede concatenar valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, si se utiliza un <code class="docutils literal notranslate"><span class="pre">NULL</span></code> convertirá toda la cadena en <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>También se puede usar la función <code class="docutils literal notranslate"><span class="pre">CONCAT()</span></code>.</p>
+</div>
+<br/>
+<p><strong>Ejemplo</strong>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Concatenación de columnas y cadenas</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">surname</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;, &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">firstname</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">members</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pgexercises.com/questions/string/concat.html">Concatenación de columnas y cadenas</a>: En este ejemplo se concatenan los valores de dos columnas, junto con una cadena que representa una coma y un espacio en blanco.</p></li>
 </ul>
 </section>
 </section>
@@ -556,12 +627,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="postgre-index.html"
+       href="comentarios.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">PostgreSQL</p>
+        <p class="prev-next-title">Comentarios.</p>
       </div>
     </a>
     <a class="right-next"
@@ -593,7 +664,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operadores-bitwise">Operadores Bitwise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aritmeticos">Aritméticos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membresia">Membresía</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logicos">Lógicos:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logicos">Lógicos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concatenar">Concatenar</a></li>
 </ul>
   </nav></div>

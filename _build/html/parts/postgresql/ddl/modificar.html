@@ -1,0 +1,1009 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Modificar &#8212; Manual de SQL</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'parts/postgresql/ddl/modificar';</script>
+    <link rel="icon" href="../../../_static/nebok-favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Eliminar y Truncar" href="eliminar.html" />
+    <link rel="prev" title="Crear" href="crear.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/nebok-logo.png" class="logo__image only-light" alt="Manual de SQL - Home"/>
+    <script>document.write(`<img src="../../../_static/nebok-logo.png" class="logo__image only-dark" alt="Manual de SQL - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Manual de SQL
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../teoria/teoria-index.html">Conceptos y teoría</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../teoria/teoria.html">Teoría</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../teoria/sql.html">SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../postgre-index.html">PostgreSQL</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../comentarios.html">Comentarios.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operadores.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tipos-de-datos.html">Tipos de Datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../udf.html">Funciones (UDF)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dql/dql-index.html">Data Query Language (DQL)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dql/seleccion.html">Seleccionar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/filtrado.html">Filtrar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/ordenar.html">Ordenar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/joins.html">Join</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/agrupar.html">Agrupar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/operaciones-conjuntos.html">Operaciones de conjuntos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/expresiones-condicionales.html">Sentencias condicionales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/window-functions.html">Window Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/subqueries.html">Subqueries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/common-table-expression.html">Common Table Expression (CTE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/full_text_search.html">Full text search</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dml/dml-index.html">Data Manipulation Language (DML)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dml/insertar.html">Insertar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dml/actualizar.html">Actualizar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dml/eliminar.html">Eliminar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="ddl-index.html">Data Definition Language (DDL)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="crear.html">Crear</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Modificar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eliminar.html">Eliminar y Truncar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dcl/dcl-index.html">Data Control Language (DCL)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dcl/conceder.html">Otorgar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dcl/revocar.html">Revocar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../funciones.html">Funciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensiones.html">Extensiones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../psql.html">psql</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../anexos.html">Anexos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html">Cookbook</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/parts/postgresql/ddl/modificar.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modificar</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alter-database">ALTER DATABASE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renombrar">Renombrar</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alter-group">ALTER GROUP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alter-index">ALTER INDEX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alter-role">ALTER ROLE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modificar-un-rol">Modificar un rol</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asignar-una-contrasena">Asignar una contraseña</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alter-table">ALTER TABLE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-column">ADD COLUMN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-constraint">ADD CONSTRAINT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-primary-key">ADD PRIMARY KEY</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alter-column">ALTER COLUMN</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-default">DROP DEFAULT</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-not-null">DROP NOT NULL</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-default">SET DEFAULT</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-not-null">SET NOT NULL</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#type">TYPE</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-column">DROP COLUMN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-constraint">DROP CONSTRAINT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#owner-to">OWNER TO</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-column">RENAME COLUMN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-to">RENAME TO</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alter-view">ALTER VIEW</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modificar">
+<h1>Modificar<a class="headerlink" href="#modificar" title="Link to this heading">#</a></h1>
+<p>En esta sección se presentan algunas acciones comunes relacionadas con modificar objetos en la base de datos.</p>
+<section id="alter-database">
+<h2>ALTER DATABASE<a class="headerlink" href="#alter-database" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>En esta sección no se cubren todos los detalles del comando <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">DATABASE</span></code>, para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/current/sql-alterdatabase.html">documentación</a> de PostgreSQL.</p>
+</div>
+<p>Modifica una base de datos.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Modificar una base de datos</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span>
+<span class="p">[[</span><span class="k">WITH</span><span class="p">]</span><span class="w"> </span><span class="k">option</span><span class="w"> </span><span class="p">[...]]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>name</em> es nombre de la base de datos.</p></li>
+<li><p><em>option</em>: Las posibles opciones son:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALLOW_CONNECTIONS</span> <span class="pre">allowconn</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONNECTION</span> <span class="pre">LIMIT</span> <span class="pre">connlimit</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IS_TEMPLATE</span> <span class="pre">istemplate</span></code></p></li>
+</ul>
+</li>
+</ul>
+<section id="renombrar">
+<h3>Renombrar<a class="headerlink" href="#renombrar" title="Link to this heading">#</a></h3>
+<p>Para renombrar una base de datos usar:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Renombrar una base de datos</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">DB_name</span>
+<span class="k">RENAME</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">new_name</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>DB_name</em> es el nombre de la base de datos actual.</p></li>
+<li><p><em>new_name</em> es el nuevo nombre. Debe de empezar con un carácter o <code class="docutils literal notranslate"><span class="pre">_</span></code> (guión bajo) y no debe ser mayor a 30 caracteres.</p></li>
+</ul>
+</section>
+</section>
+<section id="alter-group">
+<h2>ALTER GROUP<a class="headerlink" href="#alter-group" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>En esta sección no se cubren todos los detalles del comando <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">GROUP</span></code>, para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/current/sql-altergroup.html">documentación</a> de PostgreSQL.</p>
+</div>
+<p>Modifica la membresía o nomber de un rol.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Modificar un grupo</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="n">name_grupo</span><span class="w"> </span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">name_user1</span><span class="p">,</span><span class="w"> </span><span class="n">nom_user2</span><span class="p">,</span><span class="w"> </span><span class="p">...;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>name_group</em> es el nombre del grupo.</p></li>
+<li><p><em>useri</em> es el nombre de cada usuario.</p></li>
+</ul>
+</section>
+<section id="alter-index">
+<h2>ALTER INDEX<a class="headerlink" href="#alter-index" title="Link to this heading">#</a></h2>
+<p>Modifica la definición de un índice.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>En esta sección no se cubren todos los detalles de la sentencia <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">INDEX</span></code>, únicamente cómo modificar el nombre, para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/current/sql-altertable.html">documentación</a> de PostgreSQL.</p>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Modificar nombre de un índice</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="n">index_name</span><span class="w"> </span><span class="k">RENAME</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">new_name</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>index_name</em> es el nombre actual del índice.</p></li>
+<li><p><em>new_name</em> será el nuevo nombre del índice</p></li>
+</ul>
+</section>
+<section id="alter-role">
+<h2>ALTER ROLE<a class="headerlink" href="#alter-role" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>En esta sección no se cubren todos los detalles del comando <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">ROLE</span></code>, para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/current/sql-alterrole.html">documentación</a> de PostgreSQL.</p>
+</div>
+<p>Es un alias de <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">USER</span></code>. Se utiliza para modificar la configuración de un rol.</p>
+<section id="modificar-un-rol">
+<h3>Modificar un rol<a class="headerlink" href="#modificar-un-rol" title="Link to this heading">#</a></h3>
+<p>Para modificar un rol existente, como agregar algún privilegio general (no en un objeto en específico) usar:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Modificar un rol</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">name</span>
+<span class="p">[</span><span class="n">privilages</span><span class="p">];</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>name</em> es el nombre que tendrá el rol.</p></li>
+<li><p><em>privilege</em>: Los privilegios nuevos. Si son más de uno, separar por comas.</p></li>
+</ul>
+</section>
+<section id="asignar-una-contrasena">
+<h3>Asignar una contraseña<a class="headerlink" href="#asignar-una-contrasena" title="Link to this heading">#</a></h3>
+<p>Para asignar una contraseña a un rol existente utilizar</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Asignar contraseña a un rol</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">name</span>
+<span class="k">WITH</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>name</em> es el nombre que tiene el rol.</p></li>
+<li><p><em>‘password’</em> es la contraseña.</p></li>
+</ul>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="alter-table">
+<h2>ALTER TABLE<a class="headerlink" href="#alter-table" title="Link to this heading">#</a></h2>
+<p>Se usa para agregar, eliminar o modificar columnas en una tabla existente o la configuración de la tabla misma.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>En esta sección no se cubren todos los detalles de la sentencia <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code>, para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/current/sql-altertable.html">documentación</a> de PostgreSQL.</p>
+</div>
+<section id="add-column">
+<h3>ADD COLUMN<a class="headerlink" href="#add-column" title="Link to this heading">#</a></h3>
+<p>Para agregar una columna a una tabla usar <code class="docutils literal notranslate"><span class="pre">ADD</span> <span class="pre">COLUMN</span></code>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Agregar una columna a una tabla</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w">  </span><span class="k">table_name</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="p">[</span><span class="n">rest</span><span class="p">];</span>
+
+<span class="c1">-- Agregar múltiples columnas a una tabla</span>
+<span class="k">ALTER</span><span class="w">  </span><span class="k">table_name</span><span class="w"> </span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">col1</span><span class="w"> </span><span class="n">type1</span><span class="w"> </span><span class="p">[</span><span class="n">rest1</span><span class="p">],</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">col2</span><span class="w"> </span><span class="n">type2</span><span class="w"> </span><span class="p">[</span><span class="n">rest2</span><span class="p">],</span>
+<span class="p">...</span>
+
+<span class="c1">-- Agregar columna serial</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="p">[</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">];</span><span class="w"> </span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>col</em> será el nombre de la columna.</p></li>
+<li><p><em>type</em> es el tipo de dato que contendrá la columna.</p></li>
+<li><p><em>rest</em> son las restricciones opcionales que tendrá la nueva columna.</p></li>
+<li><p>Se pueden agregar más de una columna al mismo tiempo, repitiendo la sentencia las veces que sea necesario (agregar una coma después de cada sentencia).</p></li>
+</ul>
+<br/>
+</section>
+<section id="add-constraint">
+<h3>ADD CONSTRAINT<a class="headerlink" href="#add-constraint" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ADD</span> <span class="pre">CONSTRAINT</span></code> es útil para añadir restricciones a columna existentes en una tabla. Algunas de las restricciones que se pueden añadir incluyen:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FOREIGN</span> <span class="pre">KEY</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CHECK</span></code>.</p></li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Para la restricción <em>not-null</em> revisar <a class="reference internal" href="#ddl-modificar-alter-table-set-not-null"><span class="std std-ref">SET NOT NULL</span></a></p>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Añadir restricción UNIQUE</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">rest_name</span>
+<span class="k">UNIQUE</span><span class="w"> </span><span class="p">(</span><span class="n">col</span><span class="p">[,</span><span class="w"> </span><span class="p">...]);</span>
+
+<span class="c1">-- Añadir restricción PRIMARY KEY</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">rest_name</span>
+<span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">col</span><span class="p">[,</span><span class="w"> </span><span class="p">...]);</span>
+
+<span class="c1">-- Añadir restricción FOREIGN KEY</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">rest_name</span><span class="w"> </span><span class="c1">--Existe la convención de usar other_table_name_id</span>
+<span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">col</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">other_table</span><span class="w"> </span><span class="p">(</span><span class="n">colPK</span><span class="p">);</span>
+
+<span class="c1">-- Añadir restricción CHECK</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">rest_name</span>
+<span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">condiditon</span><span class="p">)</span><span class="w"> </span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>col</em> es la columna que se modificará.</p></li>
+<li><p><em>rest_name</em> será el nombre de la restricción.</p></li>
+<li><p><em>other_table</em> es el nombre de la tabla donde está la <em>primary key</em>.</p></li>
+<li><p><em>condition</em> normalmente es una comparación que involucra a esa misma columna, utilizando los <a class="reference internal" href="../operadores.html#operadores-comparacion"><span class="std std-ref">Operadores de Comparación</span></a>, por ejemplo: <code class="docutils literal notranslate"><span class="pre">col</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.</p></li>
+</ul>
+<br/>
+</section>
+<section id="add-primary-key">
+<h3>ADD PRIMARY KEY<a class="headerlink" href="#add-primary-key" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ADD</span> <span class="pre">PRIMARY</span> <span class="pre">KEY</span></code> es útil para modificar una columna como la <em>primary key</em> de la tabla.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Modificar primary key</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">col</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>col</em> es la columna que se modificará.</p></li>
+<li><p>Pueden ser más de una columna, solo separar los nombres de las columnas con comas.</p></li>
+</ul>
+<br/>
+</section>
+<section id="alter-column">
+<h3>ALTER COLUMN<a class="headerlink" href="#alter-column" title="Link to this heading">#</a></h3>
+<p>Es una acción especial para modificar columnas de una tabla.</p>
+<section id="drop-default">
+<h4>DROP DEFAULT<a class="headerlink" href="#drop-default" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">DEFAULT</span></code> es útil para eliminar el valor por default de una columna.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Eliminar el valor por default de una columna</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">col</span>
+<span class="k">DROP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>col</em> es la columna que se modificará.</p></li>
+</ul>
+<br/>
+</section>
+<section id="drop-not-null">
+<h4>DROP NOT NULL<a class="headerlink" href="#drop-not-null" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">NOT</span> <span class="pre">NULL</span></code> se utilizar para eliminar la restricción <em>not-null</em> de una columna.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Eliminar not-null de una columna</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">col</span>
+<span class="k">DROP</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>col</em> es la columna que se modificará.</p></li>
+</ul>
+<br/>
+</section>
+<section id="set-default">
+<h4>SET DEFAULT<a class="headerlink" href="#set-default" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">DEFAULT</span></code> es útil para modificar el valor por default de una columna.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Modificar el valor por default de una columna</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">col</span>
+<span class="k">SET</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">default_value</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>col</em> es la columna que se modificará.</p></li>
+<li><p><em>default_value</em> es el nuevo valor por default. Debe de coincidir con el tipo de dato de la columna.</p></li>
+</ul>
+<br/>
+</section>
+<section id="set-not-null">
+<span id="ddl-modificar-alter-table-set-not-null"></span><h4>SET NOT NULL<a class="headerlink" href="#set-not-null" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">NOT</span> <span class="pre">NULL</span></code> se utilizar para establecer una columna con la restricción <em>not-null</em>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Establecer columna como not-null</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">col</span>
+<span class="k">SET</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>col</em> es la columna que se modificará</p></li>
+</ul>
+<br/>
+</section>
+<section id="type">
+<h4>TYPE<a class="headerlink" href="#type" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">TYPE</span></code> se puede utilizar para modificar el tipo de dato de una columna.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Modificar el tipo de dato de una columna</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">col</span>
+<span class="k">TYPE</span><span class="w"> </span><span class="n">new_type</span><span class="p">;</span>
+
+<span class="c1">-- Modificar mútiples columnas al mismo tiempo</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="k">TYPE</span><span class="w"> </span><span class="n">new_type</span><span class="p">,</span><span class="w"> </span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="k">TYPE</span><span class="w"> </span><span class="n">new_type</span><span class="p">,</span>
+<span class="p">...</span>
+
+<span class="c1">-- Modificar tipo y los valores al mismo tiempo</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">col</span>
+<span class="k">TYPE</span><span class="w"> </span><span class="n">new_type</span><span class="p">;</span>
+<span class="k">USING</span><span class="w"> </span><span class="n">func_name</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>En lugar de <code class="docutils literal notranslate"><span class="pre">TYPE</span></code> se puede utilizar <code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">DATA</span></code>.</p></li>
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>new_type</em> es el nuevo tipo de dato, ver <span class="xref std std-doc">../tipos_de_datos</span>.</p></li>
+<li><p>Para modificar más de una columna a la vez usar la clausula las veces necesarias, usando una coma después de cada una.</p></li>
+<li><p>Se puede modificar el tipo y los valores de una columna usando alguna función en específico (solo en PostgreSQL):</p>
+<ul>
+<li><p><em>func_name</em> normalmente será una función de conversión. También es posible utilizar <code class="docutils literal notranslate"><span class="pre">col_name::new_type</span></code>.</p></li>
+<li><p>Por ejemplo, si antes <em>col_name</em> era <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> y ahora se quiere que sea entero, entonces en <em>new_type</em> se pondría <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> y en <em>func_name()</em> se podría utiizar <code class="docutils literal notranslate"><span class="pre">ROUND()</span></code>. Otro ejemplo sería un usar <code class="docutils literal notranslate"><span class="pre">SUBSTRING(col,</span> <span class="pre">1,</span> <span class="pre">N)</span></code> para un <code class="docutils literal notranslate"><span class="pre">VARCHAR(N)</span></code> de <em>N</em> caracteres.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+</section>
+</section>
+<section id="drop-column">
+<h3>DROP COLUMN<a class="headerlink" href="#drop-column" title="Link to this heading">#</a></h3>
+<p>Para eliminar una columna de una tabla usar <code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">COLUMN</span></code>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Eliminar una columna de una tabla</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">col</span><span class="p">;</span>
+
+<span class="c1">-- Eliminar múltiples columnas de una tabla</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">col1</span><span class="p">,</span>
+<span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">col2</span><span class="p">,</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>col</em> será el nombre de la columna.</p></li>
+<li><p>Se pueden eliminar más de una columna al mismo tiempo, repitiendo la sentencia las veces que sea necesario (agregar una coma después de cada sentencia).</p></li>
+<li><p>Si la columna a eliminar es usada en objetos como <em>views</em>, <em>triggers</em>, etc. No se podrá eliminar la columna de la manera anterior. Para efectivamente eliminarla será necesario agregar la palabra <code class="docutils literal notranslate"><span class="pre">CASCADE</span></code>: <br/> <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span> <span class="pre">table_name</span> <span class="pre">DROP</span> <span class="pre">COLUMN</span> <span class="pre">col</span> <span class="pre">CASCADE;</span></code></p></li>
+</ul>
+<br/>
+</section>
+<section id="drop-constraint">
+<h3>DROP CONSTRAINT<a class="headerlink" href="#drop-constraint" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">CONSTRAINT</span></code> es útil para eliminar restricciones de columnas por su nombre.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Eliminar restriccion</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">DROP</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">rest_name</span><span class="p">;</span><span class="w">  </span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>rest_name</em> es el nombre que se le asignó a esa restricción al momento de crearla. Para conocer los nombres de las restricciones consulta el <a class="reference internal" href="../cookbook.html#cookbook-informacion-enlistar-restricciones"><span class="std std-ref">Información de las restricciones de una tabla</span></a>.</p></li>
+</ul>
+<br/>
+</section>
+<section id="owner-to">
+<h3>OWNER TO<a class="headerlink" href="#owner-to" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">OWNER</span> <span class="pre">TO</span></code> es útil para traspasar el <em>ownership</em> de una tabla a un usuario.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Transpasar la propiedad de una tabla</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span>
+<span class="k">OWNER</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">user_name</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>user_name</em> es el nombre del usuario.</p></li>
+</ul>
+<br/>
+</section>
+<section id="rename-column">
+<h3>RENAME COLUMN<a class="headerlink" href="#rename-column" title="Link to this heading">#</a></h3>
+<p>Para renombrar una columna de una tabla usar <code class="docutils literal notranslate"><span class="pre">RENAME</span> <span class="pre">COLUMN</span></code>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Modificar el nombre de una columna</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">RENAME</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">old_name</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">new_name</span><span class="p">;</span>
+
+<span class="c1">-- Modificar el nombre de múltiples columnas</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">RENAME</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">old_name1</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">new_name1</span><span class="p">,</span>
+<span class="k">RENAME</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">old_name2</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">new_name2</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>old_name</em> y <em>new_name</em> son los nombres anterior y nuevo, respectivamente, de la columna.</p>
+<ul>
+<li><p><strong>Nota</strong>: Si se quiere poner un nombre con caracteres especiales o espacios se debe poner entre comillas dobles, aunque no es recomendado utilizar espacios o caracteres especiales: <br/> <code class="docutils literal notranslate"><span class="pre">RENAME</span> <span class="pre">COLUMN</span> <span class="pre">&quot;old_name&quot;</span> <span class="pre">TO</span> <span class="pre">&quot;new</span> <span class="pre">view_name&quot;</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Si se quiere renombrar más de una columna al mismo tiempo es necesario ejecutar toda la sentencia <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code> la cantidad de veces que sea necesaria o separar con una coma cada clausula <code class="docutils literal notranslate"><span class="pre">RENAME</span> <span class="pre">COLUMN</span></code>.</p></li>
+</ul>
+<br/>
+</section>
+<section id="rename-to">
+<h3>RENAME TO<a class="headerlink" href="#rename-to" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">RENAME</span> <span class="pre">TO</span></code> es útil para renombrar tablas, <em>views</em>, secuencias e índices.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Renombrar una tabla</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">old_table_name</span>
+<span class="k">RENAME</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">new_table_name</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>old_table_name</em> es el nombre antiguo de la tabla.</p></li>
+<li><p><em>new_table_name</em> es el nombre antiguo de la tabla.</p></li>
+</ul>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="alter-view">
+<h2>ALTER VIEW<a class="headerlink" href="#alter-view" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>En esta sección no se cubren todos los detalles de la sentencia <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">VIEW</span></code>, para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/current/sql-alterview.html">documentación</a> de PostgreSQL.</p>
+</div>
+<p>De manera similar a <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code>, esta sentencia se usa para agregar, eliminar o modificar columnas en una <em>view</em> existente. A continuación se presentará un resumen de algunas sentencias válidas.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Modificar valor por default de una columna</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">]</span><span class="w"> </span><span class="n">view_name</span><span class="w"> </span><span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">col_name</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">expression</span><span class="w"> </span>
+
+<span class="c1">-- Eliminar valor por default de una columna</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">]</span><span class="w"> </span><span class="n">view_name</span><span class="w"> </span><span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">col_name</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">DEFAULT</span>
+
+<span class="c1">-- Modificar el ownership de una view</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">]</span><span class="w"> </span><span class="n">view_name</span><span class="w"> </span><span class="k">OWNER</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">owner_name</span>
+
+<span class="c1">-- Renombrar la view    </span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">]</span><span class="w"> </span><span class="n">view_name</span><span class="w"> </span><span class="k">RENAME</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">new_name</span>
+
+<span class="c1">-- Cambiar el schema de la view    </span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">]</span><span class="w"> </span><span class="n">view_name</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">new_schema</span>
+
+<span class="c1">-- Modificar la configuración de la view    </span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">]</span><span class="w"> </span><span class="n">view_name</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="p">(</span><span class="n">view_option_name</span><span class="w"> </span><span class="p">[</span><span class="o">=</span><span class="w"> </span><span class="n">view_option_value</span><span class="p">]</span><span class="w"> </span><span class="p">[,...])</span>
+
+<span class="c1">-- Resetear la configuración de la view    </span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">]</span><span class="w"> </span><span class="n">view_name</span><span class="w"> </span><span class="k">RESET</span><span class="w"> </span><span class="p">(</span><span class="n">view_option_name</span><span class="w"> </span><span class="p">[,...])</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>view_name</em> es el nombre de la <em>view</em>.</p></li>
+<li><p><em>col_name</em> es el nombre de alguna columna.</p></li>
+<li><p><em>owner_name</em> es el nombre de algún usuario.</p></li>
+<li><p><em>view_option_name</em> es el nombre de alguna propiedad de la <em>view</em>. La propiedad más común es <code class="docutils literal notranslate"><span class="pre">check_option</span></code> y sus posibles valores son:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOCAL</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CASCADED</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./parts/postgresql/ddl"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="crear.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Crear</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="eliminar.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Eliminar y Truncar</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alter-database">ALTER DATABASE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renombrar">Renombrar</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alter-group">ALTER GROUP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alter-index">ALTER INDEX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alter-role">ALTER ROLE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modificar-un-rol">Modificar un rol</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asignar-una-contrasena">Asignar una contraseña</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alter-table">ALTER TABLE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-column">ADD COLUMN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-constraint">ADD CONSTRAINT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-primary-key">ADD PRIMARY KEY</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alter-column">ALTER COLUMN</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-default">DROP DEFAULT</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-not-null">DROP NOT NULL</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-default">SET DEFAULT</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-not-null">SET NOT NULL</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#type">TYPE</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-column">DROP COLUMN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-constraint">DROP CONSTRAINT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#owner-to">OWNER TO</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-column">RENAME COLUMN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-to">RENAME TO</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alter-view">ALTER VIEW</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nebok
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

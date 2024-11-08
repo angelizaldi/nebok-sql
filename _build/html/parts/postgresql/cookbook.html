@@ -1,0 +1,1019 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Cookbook &#8212; Manual de SQL</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'parts/postgresql/cookbook';</script>
+    <link rel="icon" href="../../_static/nebok-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Anexos" href="anexos.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nebok-logo.png" class="logo__image only-light" alt="Manual de SQL - Home"/>
+    <script>document.write(`<img src="../../_static/nebok-logo.png" class="logo__image only-dark" alt="Manual de SQL - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Manual de SQL
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../teoria/teoria-index.html">Conceptos y teoría</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../teoria/teoria.html">Teoría</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../teoria/sql.html">SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="postgre-index.html">PostgreSQL</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="comentarios.html">Comentarios.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operadores.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipos-de-datos.html">Tipos de Datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="udf.html">Funciones (UDF)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dql/dql-index.html">Data Query Language (DQL)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dql/seleccion.html">Seleccionar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/filtrado.html">Filtrar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/ordenar.html">Ordenar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/joins.html">Join</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/agrupar.html">Agrupar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/operaciones-conjuntos.html">Operaciones de conjuntos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/expresiones-condicionales.html">Sentencias condicionales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/window-functions.html">Window Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/subqueries.html">Subqueries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/common-table-expression.html">Common Table Expression (CTE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/full_text_search.html">Full text search</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dml/dml-index.html">Data Manipulation Language (DML)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dml/insertar.html">Insertar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dml/actualizar.html">Actualizar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dml/eliminar.html">Eliminar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="ddl/ddl-index.html">Data Definition Language (DDL)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="ddl/crear.html">Crear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ddl/modificar.html">Modificar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ddl/eliminar.html">Eliminar y Truncar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dcl/dcl-index.html">Data Control Language (DCL)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dcl/conceder.html">Otorgar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dcl/revocar.html">Revocar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="funciones.html">Funciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensiones.html">Extensiones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psql.html">psql</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anexos.html">Anexos</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Cookbook</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/parts/postgresql/cookbook.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Cookbook</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-bins-de-datos">Crear bins de datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joins">Joins</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#join-de-una-tabla-consigo-misma">JOIN de una tabla consigo misma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#escribir-un-left-join-como-un-right-join">Escribir un LEFT JOIN como un RIGHT JOIN:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-join">Semi-Join</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anti-join">Anti-Join</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtrado">Filtrado</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtrar-con-un-case-en-where">Filtrar con un CASE en WHERE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion">Información</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion-de-las-views">Información de las views</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion-de-las-columnas">Información de las columnas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion-de-las-tablas">Información de las tablas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion-de-las-restricciones-de-una-tabla">Información de las restricciones de una tabla</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion-sobre-los-tipos-de-datos">Información sobre los tipos de datos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bases-de-datos">Bases de datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-una-base-de-datos-en-pgadmin">Crear una base de datos en PgAdmin:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-una-respaldo-de-una-base-de-datos-en-pgadmin">Crear una respaldo de una base de datos en pgAdmin</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#restaurar-base-de-datos-desde-archivo-tar-en-pgaming">Restaurar base de datos desde archivo .TAR en pgAming:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion">Importación y Exportación.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-csv">Importación CSV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-txt">Importación TXT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exportar-csv">Exportar CSV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-perdidos">Valores perdidos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proporcion-de-valores-perdidos-en-una-columna-de-una-tabla">Proporción de valores pérdidos en una columna de una tabla</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cookbook">
+<h1>Cookbook<a class="headerlink" href="#cookbook" title="Link to this heading">#</a></h1>
+<p>En esta sección se presentan algunas <em>recetas</em> útiles en SQL.</p>
+<section id="crear-bins-de-datos">
+<h2>Crear bins de datos<a class="headerlink" href="#crear-bins-de-datos" title="Link to this heading">#</a></h2>
+<p>Este es un ejemplo de referencia de cómo crear <em>bins</em> para una columna numérica y calcular frecuencias, en este ejemplo los bins se calculan desde el valor mínimo hasta el máximo con <em>n</em> bins en total, 20 en este ejemplo:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Definir el límite inferior de los bins</span>
+<span class="k">WITH</span><span class="w"> </span><span class="n">bins</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="c1">-- 20 bins desde el mínimo hasta el máximo</span>
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">generate_series</span><span class="p">(</span>
+<span class="w">               </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="k">values</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">my_table</span><span class="p">),</span>
+<span class="w">               </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="k">values</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">my_table</span><span class="p">),</span>
+<span class="w">               </span><span class="p">((</span><span class="k">SELECT</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="k">values</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">my_table</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="k">values</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">my_table</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">20</span><span class="w">  </span><span class="c1">-- Tamaño de cada bin</span>
+<span class="w">           </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">lower</span>
+<span class="p">),</span>
+<span class="c1">-- Definir los bins</span>
+<span class="n">upper_bounds</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="k">lower</span><span class="p">,</span><span class="w"> </span><span class="k">lower</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">((</span><span class="k">SELECT</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="k">values</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">my_table</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="k">values</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">my_table</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">upper</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">bins</span>
+<span class="p">)</span>
+
+<span class="c1">-- Crear la tabla de frecuencias</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="k">lower</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="k">upper</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="k">values</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">frequency</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">upper_bounds</span><span class="w"> </span><span class="n">b</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">my_table</span><span class="w"> </span><span class="n">t</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="k">values</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="k">lower</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="k">values</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="k">upper</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="k">lower</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="k">upper</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="k">lower</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Si se conoce previamente los valores mínimos, máximos y el tamaño de cada bin se puede crear solo un CTE similiar a: <br/> <code class="docutils literal notranslate"><span class="pre">WITH</span> <span class="pre">bins</span> <span class="pre">AS</span> <span class="pre">(SELECT</span> <span class="pre">generate_series(min_bin_1,</span> <span class="pre">min_bin_n,</span> <span class="pre">step)</span> <span class="pre">AS</span> <span class="pre">lower,</span> <span class="pre">generate_series(max_bin_1,</span> <span class="pre">max_bin_n,</span> <span class="pre">step)</span> <span class="pre">AS</span> <span class="pre">upper)</span></code></p></li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="joins">
+<h2>Joins<a class="headerlink" href="#joins" title="Link to this heading">#</a></h2>
+<p>Aquí se presentaran algunos patrones comúnes al hacer <em>joins</em> entre tablas.</p>
+<section id="join-de-una-tabla-consigo-misma">
+<h3>JOIN de una tabla consigo misma<a class="headerlink" href="#join-de-una-tabla-consigo-misma" title="Link to this heading">#</a></h3>
+<p>Para crear un <em>join</em> de una tabla consigo misma simplemente otorgarle un nombre distinto a cada tabla y definir en cuáles columnas hacer el <em>join</em>.</p>
+<p>En el siguiente ejemplo se realizará:</p>
+<ul class="simple">
+<li><p>Realizar un <em>Join</em> de <code class="docutils literal notranslate"><span class="pre">populations</span></code> consigo mismo basado en <code class="docutils literal notranslate"><span class="pre">country_code</span></code>.</p></li>
+<li><p>Selecciona <code class="docutils literal notranslate"><span class="pre">country_code</span></code> de <em>p1</em> y el campo <code class="docutils literal notranslate"><span class="pre">size</span></code>, de <em>p1</em> y <em>p2</em>. SQL no acepta campos con el mismo nombre, por lo que será necesario renombrarlos. Se utilizará el alias <em>size2010</em> para <em>p1.size</em> y <em>size2015</em> para <em>p2.size</em>.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Selecciona los campos con los nuevos nombres</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">country_code</span><span class="p">,</span>
+<span class="n">p1</span><span class="p">.</span><span class="k">size</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">size2010</span><span class="p">,</span>
+<span class="n">p2</span><span class="p">.</span><span class="k">size</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">size2015</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">populations</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">p1</span>
+<span class="c1">-- Unir consigo misma</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">populations</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">p2</span>
+<span class="c1">-- Utiliza country_code para el join</span>
+<span class="k">USING</span><span class="p">(</span><span class="n">country_code</span><span class="p">);</span>
+</pre></div>
+</div>
+<br/>
+</section>
+<section id="escribir-un-left-join-como-un-right-join">
+<h3>Escribir un LEFT JOIN como un RIGHT JOIN:<a class="headerlink" href="#escribir-un-left-join-como-un-right-join" title="Link to this heading">#</a></h3>
+<p>Utilzar el siguiente ejemplo para conceptualizar cómo escribir un <em>join</em> utilizando <em>right join</em> en lugar de <em>left join</em>, que produzca el mismo resultado.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Convertir este query, usando RIGHT JOIN en lugar de LEFT JOIN.</span>
+<span class="cm">/*</span>
+<span class="cm">SELECT cities.name AS city, urbanarea_pop, countries.name AS country,</span>
+<span class="cm">       indep_year, languages.name AS language, percent</span>
+<span class="cm">FROM cities</span>
+<span class="cm">  LEFT JOIN countries</span>
+<span class="cm">    ON cities.country_code = countries.code</span>
+<span class="cm">  LEFT JOIN languages</span>
+<span class="cm">    ON countries.code = languages.code</span>
+<span class="cm">ORDER BY city, language;</span>
+<span class="cm">*/</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cities</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">city</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">urbanarea_pop</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">countries</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">country</span><span class="p">,</span>
+<span class="w">    </span><span class="n">indep_year</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">languages</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">language</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">percent</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">languages</span>
+<span class="w">  </span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">countries</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">languages</span><span class="p">.</span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">countries</span><span class="p">.</span><span class="n">code</span>
+<span class="w">  </span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">cities</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">countries</span><span class="p">.</span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cities</span><span class="p">.</span><span class="n">country_code</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">city</span><span class="p">,</span><span class="w"> </span><span class="k">language</span><span class="p">;</span>
+</pre></div>
+</div>
+<br/>
+</section>
+<section id="semi-join">
+<h3>Semi-Join<a class="headerlink" href="#semi-join" title="Link to this heading">#</a></h3>
+<p><strong>Semi-Join</strong>: Selecciona las observaciones en la primer tabla que cumple una condición en la segunda tabla. Usualmente para llevar a cabo esa tarea se usa un <em>subquerie</em> en la clausula <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>.</p>
+<p>En el siguiente ejemplo se determina las lenguas únicas que se hablan en medio oriente. Usando las tablas <em>languages</em> y <em>countries</em></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Seleccionar los nombres distintos</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">name</span>
+<span class="w">  </span><span class="c1">-- De languages</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">languages</span>
+<span class="c1">-- Sentencia WHERE.</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="k">IN</span>
+<span class="w">  </span><span class="c1">-- Código de países en Medio oriente.</span>
+<span class="w">  </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">code</span>
+<span class="w">   </span><span class="k">FROM</span><span class="w"> </span><span class="n">countries</span>
+<span class="w">   </span><span class="k">WHERE</span><span class="w"> </span><span class="n">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Middle East&#39;</span><span class="p">)</span>
+<span class="c1">-- Ordenar por nombre</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</pre></div>
+</div>
+<br/>
+</section>
+<section id="anti-join">
+<h3>Anti-Join<a class="headerlink" href="#anti-join" title="Link to this heading">#</a></h3>
+<p><strong>Anti-Join</strong>: Selecciona las observaciones en la primer tabla las cuales no cumplen una condición en la segunda tabla. Usualmente para llevar a cabo esa tarea se usa un <em>subquerie</em> en la clausula <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>.</p>
+<p>En el siguiente ejemplo el objetivo es identificar las monedas utilizadas en países de Oceanía.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">code</span><span class="p">,</span><span class="w"> </span><span class="n">name</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">countries</span>
+<span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">continent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Oceania&#39;</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">IN</span>
+<span class="w">   </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">code</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">currencies</span><span class="p">);</span>
+</pre></div>
+</div>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="filtrado">
+<h2>Filtrado<a class="headerlink" href="#filtrado" title="Link to this heading">#</a></h2>
+<p>Aquí se presentarán algunos patrones comúnes al filtrar tablas.</p>
+<br/>
+<section id="filtrar-con-un-case-en-where">
+<h3>Filtrar con un CASE en WHERE<a class="headerlink" href="#filtrar-con-un-case-en-where" title="Link to this heading">#</a></h3>
+<p>En este ejemplo se genera una lista de partidos ganados por el equipo de Bologna de Italia. En esencia se generá un valor TRUE o FALSE por cada fila y con base a eso se filtra el resultado final.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Seleccionar columnas</span>
+<span class="k">SELECT</span><span class="w"> </span>
+<span class="w"> </span><span class="n">season</span><span class="p">,</span>
+<span class="w">     </span><span class="nb">date</span><span class="p">,</span>
+<span class="w"> </span><span class="n">home_goal</span><span class="p">,</span>
+<span class="w"> </span><span class="n">away_goal</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">matches_italy</span>
+<span class="k">WHERE</span><span class="w"> </span>
+<span class="c1">-- Excluir los partidos en los que no ganó Bologna</span>
+<span class="w"> </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">hometeam_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9857</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">home_goal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">away_goal</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Bologna Win&#39;</span>
+<span class="w">  </span><span class="k">WHEN</span><span class="w"> </span><span class="n">awayteam_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9857</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">away_goal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">home_goal</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Bologna Win&#39;</span><span class="w"> </span>
+<span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>En esencia solo muestra las filas que cumplen alguna de las condiciones en <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>, es decir las que no son <code class="docutils literal notranslate"><span class="pre">NULL</span></code> (porque si una fila no cumple un <code class="docutils literal notranslate"><span class="pre">WHEN</span></code> automáticamente se le asigna <code class="docutils literal notranslate"><span class="pre">NULL</span></code>).</p></li>
+</ul>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="informacion">
+<h2>Información<a class="headerlink" href="#informacion" title="Link to this heading">#</a></h2>
+<p>Aquí se presentan algunos patrones comúnes de información sobre objetos en la base de datos o de la base de datos misma. Forma parte de SQL estándar aunque el nombre de las columnas puede diferir de un RDBMS a otro.</p>
+<section id="informacion-de-las-views">
+<h3>Información de las views<a class="headerlink" href="#informacion-de-las-views" title="Link to this heading">#</a></h3>
+<p>Permite obtener información sobre todas las <em>views</em> en la base de datos:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Retornar información sobre las views en la DB</span>
+<span class="k">SELECT</span><span class="w"> </span>
+<span class="w">   </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span>
+<span class="w">   </span><span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">VIEWS</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>En lugar de poner <code class="docutils literal notranslate"><span class="pre">*</span></code>, se puede poner atributos en específico que se quiera retornar. Los atributos son pueden ser (se se puede poner varias separadas por coma):</p>
+<ul>
+<li><p><em>table_name</em>: Nombre de la tabla (<em>view</em>).</p></li>
+<li><p><em>view_definition</em>: Definición de la <em>view</em>, es decir, el query que la produce.</p></li>
+<li><p><em>table_schema</em>: Esquema al que pertenece la tabla.</p></li>
+<li><p><em>table_catalog</em>: Base de datos a la que pertenece la tabla.</p></li>
+<li><p><em>is_updatable</em>: Indica si la <em>view</em> se puede actualizar.</p></li>
+<li><p><em>is_insertable_into</em>: Indica si a la <em>view</em> se le pueden agregar nuevos registros.</p></li>
+<li><p>Entre otros, para revisar todos utiliza <code class="docutils literal notranslate"><span class="pre">*</span></code> en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INFORMATION_SCHEMA.VIEWS</span></code> es la tabla que almacena la información.</p></li>
+<li><p>Se puede filtrar con base a valores de cualquier atributo con <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>, para ello se tiene que conocer los valores de los atributos y el nombre del atributo. Es recomendado filtrar para la <em>table_schema</em> usando: <br/> <code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">table_schema</span> <span class="pre">NOT</span> <span class="pre">IN</span> <span class="pre">('pg_catalog',</span> <span class="pre">'information_schema')</span></code>.</p></li>
+</ul>
+<br/>
+</section>
+<section id="informacion-de-las-columnas">
+<span id="postgresql-cookbook-information-columns"></span><h3>Información de las columnas<a class="headerlink" href="#informacion-de-las-columnas" title="Link to this heading">#</a></h3>
+<p>Permite recuperar información sobre todas las columnas en todas las tablas y <em>views</em> de la base de datos. Forma parte de SQL estándar aunque el nombre de las columnas puede diferir de un RDBMS a otro.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Retornar información sobre las columnas en la DB</span>
+<span class="k">SELECT</span><span class="w"> </span>
+<span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span>
+<span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">COLUMNS</span>
+
+<span class="c1">-- Nombre de todas las columnas para cada tabla</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">table_name</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STRING_AGG</span><span class="p">(</span><span class="k">column_name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;, &#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">columns</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">COLUMNS</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">table_schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;public&#39;</span><span class="w"> </span><span class="c1">-- No necesariamente tiene que ser public</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">table_name</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>En lugar de poner <code class="docutils literal notranslate"><span class="pre">*</span></code>, se puede poner atributos en específico que se quiera retornar. Los atributos son pueden ser (se puede poner varias separadas por coma):</p>
+<ul>
+<li><p><em>column_name:</em> Nombre de las columna</p></li>
+<li><p><em>column_default</em>: Valor por default de la columna.</p></li>
+<li><p><em>table_type</em>: Tipo de tabla (física (<em>BASE TABLE</em>) o <em>view</em>).</p></li>
+<li><p><em>table_name</em>: Tabla a la que pertenece la columna.</p></li>
+<li><p><em>table_schema</em>: Esquema al que pertenece la tabla.</p></li>
+<li><p><em>table_catalog</em>: Base de datos a la que pertenece la tabla.</p></li>
+<li><p><em>is_nullable</em>: Indica si la columna puede contener valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p></li>
+<li><p><em>data_type</em>: Tipo de dato de la columna.</p></li>
+<li><p><em>character_maximum_length</em>: Longitud máxima de la cadena.</p></li>
+<li><p>Otros: <em>ordinal_position</em>, <em>character_maximum_length</em>, <em>character_octet_length</em>, <em>numeric_precision_radix</em>, <em>numeric_scale</em>, <em>datetime_precision</em>, <em>interval_type</em>, <em>interval_precision</em>, etc.</p></li>
+<li><p>Entre muchos otros, para revisar todos utiliza <code class="docutils literal notranslate"><span class="pre">*</span></code> en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INFORMATION_SCHEMA.COLUMNS</span></code> es la tabla que almacena la información.</p></li>
+<li><p>Se puede filtrar con base a valores de cualquier atributo con <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>, para ello se tiene que conocer los valores de los atributos y el nombre del atributo. Es recomendado filtrar para la <em>table_schema</em> o <em>table_catalog</em> usando <code class="docutils literal notranslate"><span class="pre">'public'</span></code> y el nombre de la base de datos respectivamente, para mostrar solo tablas que están en la base de datos. : <br/> <code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">table_schema</span> <span class="pre">=</span> <span class="pre">'public'</span></code> <br/> <code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">table_catalog</span> <span class="pre">=</span> <span class="pre">'DB_name'</span></code>.</p></li>
+</ul>
+<br/>
+</section>
+<section id="informacion-de-las-tablas">
+<h3>Información de las tablas<a class="headerlink" href="#informacion-de-las-tablas" title="Link to this heading">#</a></h3>
+<p>Existen dos formas para ver información de tablas desde un query, la primera es:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Consultar información sobre tablas (es mulitplataforma)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">TABLES</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>En lugar de poner <code class="docutils literal notranslate"><span class="pre">*</span></code>, se puede poner atributos en específico que se quiera retornar. Los atributos pueden ser (se puede poner varias separadas por coma):</p>
+<ul>
+<li><p><em>table_name</em>: Nombre de la tabla.</p></li>
+<li><p><em>table_schema</em>: Esquema al que pertenece la tabla.</p></li>
+<li><p><em>table_catalog</em>: Base de datos a la que pertenece la tabla.</p></li>
+<li><p><em>table_type</em>: Tipo de tabla (base, <em>view</em>, etc).</p></li>
+<li><p><em>is_insertable_into</em>: Indica si se pueden insertar valores a la tabla.</p></li>
+<li><p>Otros: <em>self_referencing_column_name</em>, <em>reference_generation</em>, <em>user_defined_type_catalog</em>, <em>user_defined_type_schema</em>, <em>user_defined_type_name</em>, <em>is_typed</em>, <em>commit_action</em>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INFORMATION_SCHEMA.TABLES</span></code> es la tabla que almacena la información.</p></li>
+<li><p>Se puede filtrar con base a valores de cualquier atributo con <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>, para ello tiene que conocer los valores de los atributos y el nombre del atributo.</p></li>
+</ul>
+<p>Otra forma que es exclusiva de PostgreSQL es con:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Consultar información sobre tablas (solo en PostgreSQL)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">pg_catalog</span><span class="p">.</span><span class="n">pg_tables</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>En lugar de poner <code class="docutils literal notranslate"><span class="pre">*</span></code>, se puede poner atributos en específico que se quiera retornar. Los atributos son pueden ser (se se puede poner varias separadas por coma):</p>
+<ul>
+<li><p><em>schemaname</em>: Nombre del <em>schema</em> donde están las tablas.</p></li>
+<li><p><em>table_name</em>: Nombre de la tabla.</p></li>
+<li><p><em>table_owner</em>: Dueño de la tabla.</p></li>
+<li><p><em>hasindexes</em>: Indica si la tabla tiene un <em>Index</em>.</p></li>
+<li><p><em>hasrules</em>: Indica si la tabla tiene reglas.</p></li>
+<li><p><em>hastriggers</em>: Indica si la tabla tiene <em>triggers</em>.</p></li>
+<li><p>Otros: <em>tablespace</em>, <em>rowsecurity</em>.</p></li>
+<li><p>Entre muchos otros, para revisar todos utiliza <code class="docutils literal notranslate"><span class="pre">*</span></code> en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pg_catalog.pg_tables</span></code> es la tabla que almacena la información.</p></li>
+<li><p>Se puede filtrar con base a valores de cualquier atributo con <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>, para ello tiene que conocer los valores de los atributos y el nombre del atributo.</p></li>
+</ul>
+<br/>
+</section>
+<section id="informacion-de-las-restricciones-de-una-tabla">
+<span id="cookbook-informacion-enlistar-restricciones"></span><h3>Información de las restricciones de una tabla<a class="headerlink" href="#informacion-de-las-restricciones-de-una-tabla" title="Link to this heading">#</a></h3>
+<p>Permite conocer las restricciones e información de las tablas en un DB. Forma parte de SQL estándar aunque el nombre de las columnas puede diferir de un RDBMS a otro.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Retornar información sobre las restricciones de las tablas</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">TABLE_CONSTRAINTS</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>En lugar de poner <code class="docutils literal notranslate"><span class="pre">*</span></code>, se puede poner atributos en específico que se quiera retornar. Los atributos son pueden ser (se se puede poner varias separadas por coma):</p>
+<ul>
+<li><p><em>constraint_name</em>: Nombre de la restricción.</p></li>
+<li><p><em>constraint_type</em>: Tipo de restricción.</p></li>
+<li><p><em>table_name</em>: Nombre de la tabla.</p></li>
+<li><p><em>table_schema</em>: Esquema al que pertenece la tabla.</p></li>
+<li><p><em>table_catalog</em>: Base de datos a la que pertenece la tabla.</p></li>
+<li><p>Entre muchos otros, para revisar todos utiliza <code class="docutils literal notranslate"><span class="pre">*</span></code> en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INFORMATION_SCHEMA.TABLE_CONSTRAINTS</span></code> es la tabla que almacena la información.</p></li>
+<li><p>Se puede filtrar con base a valores de cualquier atributo con <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>, para ello tiene que conocer los valores de los atributos y el nombre del atributo. Se recomienda filtrar para <code class="docutils literal notranslate"><span class="pre">table_name</span></code> y <code class="docutils literal notranslate"><span class="pre">table_schema</span> <span class="pre">=</span> <span class="pre">'public'</span></code>.</p></li>
+</ul>
+<br/>
+</section>
+<section id="informacion-sobre-los-tipos-de-datos">
+<h3>Información sobre los tipos de datos<a class="headerlink" href="#informacion-sobre-los-tipos-de-datos" title="Link to this heading">#</a></h3>
+<p>Permite conocer información sobre los tipos de datos en el sistema. Es exclusivo de PostgreSQL.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Retornar información sobre los tipos de datos</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">typname</span><span class="p">,</span><span class="w"> </span><span class="n">typcategory</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">pg_type</span>
+<span class="p">[</span><span class="k">WHERE</span><span class="w"> </span><span class="n">typname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;nom&#39;</span><span class="p">]</span><span class="w"> </span><span class="c1">-- Opcional</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>`pg_type_ es la tabla donde se almacena la información de los tipos de datos.</p></li>
+<li><p>Las columnas que se pueden seleccionar son:</p>
+<ul>
+<li><p><em>typename</em>: Nombre del tipo de dato.</p></li>
+<li><p>_typecategory`: Categoría del tipo de dato.</p></li>
+<li><p>Entre muchos otros, se puede revisarlos al usar <code class="docutils literal notranslate"><span class="pre">*</span></code> en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Se puede especificar un tipo de dato en <code class="docutils literal notranslate"><span class="pre">WHERE</span></code></p></li>
+<li><p><strong>IMPORTANTE</strong>: Para ver los tipos de datos de las columnas de una tabla en específico ver <a class="reference internal" href="#postgresql-cookbook-information-columns"><span class="std std-ref">Información de las columnas</span></a>.</p></li>
+</ul>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="bases-de-datos">
+<h2>Bases de datos<a class="headerlink" href="#bases-de-datos" title="Link to this heading">#</a></h2>
+<p>Aquí se presentarán algunos patrones comúnes al trabajar con bases de datos.</p>
+<section id="crear-una-base-de-datos-en-pgadmin">
+<h3>Crear una base de datos en PgAdmin:<a class="headerlink" href="#crear-una-base-de-datos-en-pgadmin" title="Link to this heading">#</a></h3>
+<p>Para crear una base de datos desde cero usando <em>PgAdmin</em> se debe de seguir los siguientes pasos:</p>
+<ol class="arabic simple">
+<li><p>Crear la base de datos. Seleccionando el servidor donde se almacenará la base de datos dar click derecho y seguir <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">&gt;</span> <span class="pre">DataBase</span></code>. Ponerle nombre y ajustar las opciones</p></li>
+<li><p>Crear las tablas: En la base de datos que se acaba de crear, ubicar <code class="docutils literal notranslate"><span class="pre">Schemas</span> <span class="pre">&gt;</span> <span class="pre">public</span> <span class="pre">&gt;</span> <span class="pre">Tables</span></code> (en lugar de <em>public</em> se puede elegir o crear otro <em>schema</em>) dar click derecho en <em>Tables</em> y seguir <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">&gt;</span> <span class="pre">Table</span></code>, en la ventana que se abra se crean las tablas indicando, las columnas, sus tipos de datos y sus restricciones (si tienen), así como otras configuraciones que se desea que tengan las tablas.</p></li>
+<li><p>Agregar los datos manualmente o importarlos desde un archivo.</p></li>
+</ol>
+<br/>
+</section>
+<section id="crear-una-respaldo-de-una-base-de-datos-en-pgadmin">
+<h3>Crear una respaldo de una base de datos en pgAdmin<a class="headerlink" href="#crear-una-respaldo-de-una-base-de-datos-en-pgadmin" title="Link to this heading">#</a></h3>
+<p>Para crear un respaldo de una base de datos y desde <em>pgAdmin</em>:</p>
+<ol class="arabic simple">
+<li><p>Seleccionar la base de datos y con el click derecho seleccionar <em>BackUp</em>.</p></li>
+<li><p>Elegir una carpeta y un formato. El formato por default es <em>.sql</em>.</p></li>
+<li><p>Es posible especificar de cuáles objetos crear el respaldo desde la pestaña <em>Objects</em>.</p></li>
+<li><p>Después de configurar el respaldo, presionar <em>Backup</em> en la parte inferior derecha.</p></li>
+</ol>
+<br/>
+</section>
+<section id="restaurar-base-de-datos-desde-archivo-tar-en-pgaming">
+<h3>Restaurar base de datos desde archivo .TAR en pgAming:<a class="headerlink" href="#restaurar-base-de-datos-desde-archivo-tar-en-pgaming" title="Link to this heading">#</a></h3>
+<p>Si se tiene una base de datos en un archivo <em>.TAR</em> entonces (en Windows) y desde <em>pgAdmin</em>:</p>
+<ol class="arabic simple">
+<li><p>Colocar el archivo <em>.TAR</em> en la carpeta <em>‘data’</em> de PostgreSQL (Se debe de ubicar esa carpeta en el sistema y dentro de ella crear otra carpeta con cualquier nombre, aí debe de estar ubicado el archivo).</p></li>
+<li><p>Crear la base de datos en <em>pgAdmin</em>.</p></li>
+<li><p>Seleccionar la base de datos y con el click derecho seleccionar <em>Restore</em>.</p></li>
+<li><p>En <em>Filename</em> elegir el archivo con extensión <em>.TAR</em> en la ruta donde está ubicado.</p></li>
+<li><p>Presionar <em>Restore</em> en la esquina inferior derecha.</p></li>
+</ol>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="importacion-y-exportacion">
+<h2>Importación y Exportación.<a class="headerlink" href="#importacion-y-exportacion" title="Link to this heading">#</a></h2>
+<section id="importacion-csv">
+<h3>Importación CSV<a class="headerlink" href="#importacion-csv" title="Link to this heading">#</a></h3>
+<p>Para importar unos datos a una tabla existente, desde un archivo <em>.csv</em> se utiliza <code class="docutils literal notranslate"><span class="pre">COPY</span></code>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Importar datos a una tabla desde un archivo csv</span>
+<span class="k">COPY</span><span class="w"> </span><span class="k">table_name</span><span class="p">[(</span><span class="n">col_names</span><span class="p">)]</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;path/filename.csv&#39;</span>
+<span class="k">DELIMITER</span><span class="w"> </span><span class="s1">&#39;,&#39;</span>
+<span class="p">[</span><span class="n">CSV</span><span class="w"> </span><span class="n">HEADER</span><span class="p">]</span><span class="w"> </span><span class="c1">--Indica si la primer fila son encabezados</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>col_names</em> son las columnas de la tabla a las que se añadirá los datos del <em>csv</em>. Si se va insertar datos en todas las columnas no es necesario poner las columnas, solo el nombre de la tabla (tampoco los paréntesis).</p></li>
+<li><p>En el <code class="docutils literal notranslate"><span class="pre">FROM</span></code> se pone la ruta, el nombre del archivo y la extensión.</p></li>
+<li><p>En necesario especificar el delimitador del archivo.</p></li>
+<li><p>Opcionalmente, se puede indicar que la primer fila son los encabezados, para que se ignoren a la hora de leer el archivo, para eso se utiliza <code class="docutils literal notranslate"><span class="pre">CSV</span> <span class="pre">HEADER</span></code>. Solo aplica en archivos <em>csv</em>.</p></li>
+<li><p><strong>IMPORTANTE</strong>: En Windows no se pueden importar archivos si éstos no están en una carpeta en específico.</p></li>
+</ul>
+<br/>
+</section>
+<section id="importacion-txt">
+<h3>Importación TXT<a class="headerlink" href="#importacion-txt" title="Link to this heading">#</a></h3>
+<p>Para importar unos datos a una tabla existente, desde un archivo <em>.txt</em> se utiliza <code class="docutils literal notranslate"><span class="pre">COPY</span></code>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Importar datos a una tabla desde un archivo txt</span>
+<span class="k">COPY</span><span class="w"> </span><span class="k">table_name</span><span class="p">[(</span><span class="n">col_names</span><span class="p">)]</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;path/filename.txt&#39;</span>
+<span class="k">DELIMITER</span><span class="w"> </span><span class="s1">&#39;,&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>col_names</em> son las columnas de la tabla a las que se añadirá los datos del <em>txt</em>. Si se va insertar datos en todas las columnas no es necesario poner las columnas, solo el nombre de la tabla (tampoco los paréntesis).</p></li>
+<li><p>En el <code class="docutils literal notranslate"><span class="pre">FROM</span></code> se pone la ruta, el nombre del archivo y la extensión.</p></li>
+<li><p>En necesario especificar el delimitador del archivo.</p></li>
+<li><p><strong>IMPORTANTE</strong>: El archivo no debe de tener los encabezados de las columnas, es decir, deben de ser solo el cuerpo de la tabla.</p></li>
+<li><p><strong>IMPORTANTE</strong>: En Windows no se pueden importar archivos si éstos no están en una carpeta en específico.</p></li>
+</ul>
+<br/>
+</section>
+<section id="exportar-csv">
+<h3>Exportar CSV<a class="headerlink" href="#exportar-csv" title="Link to this heading">#</a></h3>
+<p>Para exportar unos datos desde tabla existente, a un archivo <em>.csv</em> se utiliza <code class="docutils literal notranslate"><span class="pre">COPY</span></code>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Exportar datos de una tabla a un archivo csv</span>
+<span class="k">COPY</span><span class="w"> </span><span class="k">table_name</span><span class="p">[(</span><span class="n">col_names</span><span class="p">)]</span>
+<span class="k">TO</span><span class="w"> </span><span class="s1">&#39;path/filename.csv&#39;</span>
+<span class="k">DELIMITER</span><span class="w"> </span><span class="s1">&#39;,&#39;</span>
+<span class="p">[</span><span class="n">CSV</span><span class="w"> </span><span class="n">HEADER</span><span class="p">]</span>
+
+<span class="c1">-- Alternativa si no se cuenta con permisos para usar COPY</span>
+<span class="err">\</span><span class="k">copy</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">)</span><span class="w"> </span>
+<span class="k">TO</span><span class="w"> </span><span class="s1">&#39;path/filename.csv&#39;</span><span class="w"> </span>
+<span class="k">WITH</span><span class="w"> </span><span class="n">csv</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>col_names</em> son las columnas de la tabla que se exportarán a <em>csv</em>. Si se va exportar todas las columnas no es necesario poner las columnas, solo el nombre de la tabla (tampoco los paréntesis).</p></li>
+<li><p>En el <code class="docutils literal notranslate"><span class="pre">TO</span></code> se pone la ruta, el nombre del archivo y la extensión.</p></li>
+<li><p>En necesario especificar el delimitador del archivo.</p></li>
+<li><p>Opcionalmente, se puede indicar que la primer fila sean los encabezados, para que se incluya a la hora de escribir el archivo, para ellos se usa <code class="docutils literal notranslate"><span class="pre">CSV</span> <span class="pre">HEADER</span></code>.</p></li>
+</ul>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="valores-perdidos">
+<h2>Valores perdidos<a class="headerlink" href="#valores-perdidos" title="Link to this heading">#</a></h2>
+<section id="proporcion-de-valores-perdidos-en-una-columna-de-una-tabla">
+<h3>Proporción de valores pérdidos en una columna de una tabla<a class="headerlink" href="#proporcion-de-valores-perdidos-en-una-columna-de-una-tabla" title="Link to this heading">#</a></h3>
+<p>Para calcular la proporción que representan los valores perdidos en una columna usar</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span>
+<span class="w">            </span><span class="k">WHEN</span><span class="w"> </span><span class="n">col_name</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span>
+<span class="w">        </span><span class="k">END</span><span class="p">)</span><span class="o">/</span><span class="k">SUM</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">00</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./parts/postgresql"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="anexos.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Anexos</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-bins-de-datos">Crear bins de datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joins">Joins</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#join-de-una-tabla-consigo-misma">JOIN de una tabla consigo misma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#escribir-un-left-join-como-un-right-join">Escribir un LEFT JOIN como un RIGHT JOIN:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-join">Semi-Join</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anti-join">Anti-Join</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtrado">Filtrado</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtrar-con-un-case-en-where">Filtrar con un CASE en WHERE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion">Información</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion-de-las-views">Información de las views</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion-de-las-columnas">Información de las columnas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion-de-las-tablas">Información de las tablas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion-de-las-restricciones-de-una-tabla">Información de las restricciones de una tabla</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion-sobre-los-tipos-de-datos">Información sobre los tipos de datos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bases-de-datos">Bases de datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-una-base-de-datos-en-pgadmin">Crear una base de datos en PgAdmin:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-una-respaldo-de-una-base-de-datos-en-pgadmin">Crear una respaldo de una base de datos en pgAdmin</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#restaurar-base-de-datos-desde-archivo-tar-en-pgaming">Restaurar base de datos desde archivo .TAR en pgAming:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion">Importación y Exportación.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-csv">Importación CSV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-txt">Importación TXT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exportar-csv">Exportar CSV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-perdidos">Valores perdidos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proporcion-de-valores-perdidos-en-una-columna-de-una-tabla">Proporción de valores pérdidos en una columna de una tabla</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nebok
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

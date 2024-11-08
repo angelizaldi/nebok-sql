@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="icon" href="_static/nebok-favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Conceptos y teoría" href="parts/teoria/queries.html" />
+    <link rel="next" title="Conceptos y teoría" href="parts/teoria/teoria-index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,19 +189,51 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="parts/teoria/teoria-index.html">Conceptos y teoría</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="parts/teoria/queries.html">Conceptos y teoría</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parts/teoria/teoria.html">Teoría</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parts/teoria/sql.html">SQL</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="parts/postgresql/postgre-index.html">PostgreSQL</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="parts/postgresql/comentarios.html">Comentarios.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parts/postgresql/operadores.html">Operadores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parts/postgresql/tipos-de-datos.html">Tipos de Datos</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="parts/postgresql/dql-index.html">Data Query Language (DQL)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/sentencias-seleccion.html">Sentencias de Selección</a></li>
-<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/sentencias-ordenar.html">Sentencias para Ordenar</a></li>
-<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/sentencias-filtrado.html">Sentencias de Filtrado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/udf.html">Funciones (UDF)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="parts/postgresql/dql/dql-index.html">Data Query Language (DQL)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/seleccion.html">Seleccionar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/filtrado.html">Filtrar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/ordenar.html">Ordenar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/joins.html">Join</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/agrupar.html">Agrupar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/operaciones-conjuntos.html">Operaciones de conjuntos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/expresiones-condicionales.html">Sentencias condicionales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/window-functions.html">Window Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/subqueries.html">Subqueries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/common-table-expression.html">Common Table Expression (CTE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/full_text_search.html">Full text search</a></li>
 </ul>
 </li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="parts/postgresql/dml/dml-index.html">Data Manipulation Language (DML)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dml/insertar.html">Insertar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dml/actualizar.html">Actualizar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dml/eliminar.html">Eliminar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="parts/postgresql/ddl/ddl-index.html">Data Definition Language (DDL)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/ddl/crear.html">Crear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/ddl/modificar.html">Modificar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/ddl/eliminar.html">Eliminar y Truncar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="parts/postgresql/dcl/dcl-index.html">Data Control Language (DCL)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dcl/conceder.html">Otorgar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dcl/revocar.html">Revocar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/funciones.html">Funciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/extensiones.html">Extensiones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/psql.html">psql</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/anexos.html">Anexos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/cookbook.html">Cookbook</a></li>
 </ul>
 </li>
 </ul>
@@ -372,17 +404,52 @@ document.write(`
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="parts/teoria/queries.html">Conceptos y teoría</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parts/teoria/teoria-index.html">Conceptos y teoría</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parts/teoria/teoria.html">Teoría</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parts/teoria/sql.html">SQL</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="parts/postgresql/postgre-index.html">PostgreSQL</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="parts/postgresql/comentarios.html">Comentarios.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parts/postgresql/operadores.html">Operadores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parts/postgresql/tipos-de-datos.html">Tipos de Datos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/dql-index.html">Data Query Language (DQL)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/sentencias-seleccion.html">Sentencias de Selección</a></li>
-<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/sentencias-ordenar.html">Sentencias para Ordenar</a></li>
-<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/sentencias-filtrado.html">Sentencias de Filtrado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/udf.html">Funciones (UDF)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/dql/dql-index.html">Data Query Language (DQL)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/seleccion.html">Seleccionar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/filtrado.html">Filtrar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/ordenar.html">Ordenar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/joins.html">Join</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/agrupar.html">Agrupar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/operaciones-conjuntos.html">Operaciones de conjuntos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/expresiones-condicionales.html">Sentencias condicionales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/window-functions.html">Window Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/subqueries.html">Subqueries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/common-table-expression.html">Common Table Expression (CTE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dql/full_text_search.html">Full text search</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/dml/dml-index.html">Data Manipulation Language (DML)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dml/insertar.html">Insertar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dml/actualizar.html">Actualizar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dml/eliminar.html">Eliminar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/ddl/ddl-index.html">Data Definition Language (DDL)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/ddl/crear.html">Crear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/ddl/modificar.html">Modificar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/ddl/eliminar.html">Eliminar y Truncar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/dcl/dcl-index.html">Data Control Language (DCL)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dcl/conceder.html">Otorgar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parts/postgresql/dcl/revocar.html">Revocar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/funciones.html">Funciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/extensiones.html">Extensiones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/psql.html">psql</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/anexos.html">Anexos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parts/postgresql/cookbook.html">Cookbook</a></li>
 </ul>
 </li>
 </ul>
@@ -421,7 +488,7 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="parts/teoria/queries.html"
+       href="parts/teoria/teoria-index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>

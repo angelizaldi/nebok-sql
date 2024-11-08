@@ -1,0 +1,1364 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>psql &#8212; Manual de SQL</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'parts/postgresql/psql';</script>
+    <link rel="icon" href="../../_static/nebok-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Anexos" href="anexos.html" />
+    <link rel="prev" title="Extensiones" href="extensiones.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nebok-logo.png" class="logo__image only-light" alt="Manual de SQL - Home"/>
+    <script>document.write(`<img src="../../_static/nebok-logo.png" class="logo__image only-dark" alt="Manual de SQL - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Manual de SQL
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../teoria/teoria-index.html">Conceptos y teoría</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../teoria/teoria.html">Teoría</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../teoria/sql.html">SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="postgre-index.html">PostgreSQL</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="comentarios.html">Comentarios.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operadores.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipos-de-datos.html">Tipos de Datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="udf.html">Funciones (UDF)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dql/dql-index.html">Data Query Language (DQL)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dql/seleccion.html">Seleccionar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/filtrado.html">Filtrar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/ordenar.html">Ordenar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/joins.html">Join</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/agrupar.html">Agrupar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/operaciones-conjuntos.html">Operaciones de conjuntos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/expresiones-condicionales.html">Sentencias condicionales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/window-functions.html">Window Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/subqueries.html">Subqueries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/common-table-expression.html">Common Table Expression (CTE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/full_text_search.html">Full text search</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dml/dml-index.html">Data Manipulation Language (DML)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dml/insertar.html">Insertar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dml/actualizar.html">Actualizar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dml/eliminar.html">Eliminar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="ddl/ddl-index.html">Data Definition Language (DDL)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="ddl/crear.html">Crear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ddl/modificar.html">Modificar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ddl/eliminar.html">Eliminar y Truncar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dcl/dcl-index.html">Data Control Language (DCL)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dcl/conceder.html">Otorgar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dcl/revocar.html">Revocar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="funciones.html">Funciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensiones.html">Extensiones</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">psql</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anexos.html">Anexos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookbook.html">Cookbook</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/parts/postgresql/psql.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>psql</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comandos">Comandos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argumentos">Argumentos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ayuda">Ayuda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conexion">Conexión</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formato">Formato</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general">General</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion">Información</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-output">Input/Output</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetos-grandes">Objetos grandes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#query-buffer">Query Buffer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentencias-condicionales">Sentencias condicionales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sistema-operativo">Sistema operativo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psql-variables">Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-de-psql">Variables de psql</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-de-display">Variables de display</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-de-entorno">Variables de entorno</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="psql">
+<h1>psql<a class="headerlink" href="#psql" title="Link to this heading">#</a></h1>
+<p><em>psql</em> permite de manera interactiva y por medio de comandos acceder y manipular bases de datos de PostgreSQL desde la terminal. Existen dos formas de utilizar <em>psql</em>:</p>
+<ul class="simple">
+<li><p>Se puede conectar con una base de datos y poder ejecutar queries desde la terminal o desde archivos de manera interactiva, permite además ejecutar comandos de <em>psql</em>. Se puede identificar que se está conectado a una base de datos desde <em>psql</em> porque en la terminal se mostrará el nombre de la base de datos a la que se está conectado de una de las siguientes maneras: <br/> <code class="docutils literal notranslate"><span class="pre">dbname=#</span></code> <br/> <code class="docutils literal notranslate"><span class="pre">dbname=&gt;</span></code></p></li>
+<li><p>Se pueden correr queries y comandos sin necesidad de conectarse de manera interactiva, para ello se deben especificar opciones como <code class="docutils literal notranslate"><span class="pre">-c</span></code> o <code class="docutils literal notranslate"><span class="pre">-f</span></code> al momento de llamar a <em>psql</em>.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uso de psql</span>
+psql<span class="w"> </span><span class="o">[</span>OPTION<span class="o">]</span>...<span class="w"> </span><span class="o">[</span>DBNAME<span class="w"> </span><span class="o">[</span>USERNAME<span class="o">]]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Opciones de conexión</strong>: Especifican cómo realizar la conexión con la base de datos.</p>
+<ul>
+<li><p><em>-h, –host=HOSTNAME</em>: Directorio de <em>socket</em> o <em>host</em> del servidor de la base de datos (default: “local socket”).</p></li>
+<li><p><em>-p, –port=PORT</em>: Puerto del servidor de la base de datos.</p></li>
+<li><p><em>-U, –username=USERNAME</em>: Nombre de usuario con el cual conectarse a la base de datos. No es estrictamente necesario especificar esta opción. Tanto la base de datos como el nombre de usuario se pueden especificar directamente después de las opciones.</p></li>
+<li><p><em>-w, –no-password</em>: Indica que nunca se debe solicitar la contraseña.</p></li>
+<li><p><em>-W, –password</em>: Indica que se debe de solicitar la contraseña.</p></li>
+</ul>
+</li>
+<li><p><strong>Opciones generales</strong>:</p>
+<ul>
+<li><p><em>-c, –command=COMMAND</em> : Ejecuta un único commando (interno o de SQL) y se sale. El comando o <em>query</em> se debe de poner entre comillas simples: <br/> <code class="docutils literal notranslate"><span class="pre">psql</span> <span class="pre">-c</span> <span class="pre">'\x'</span> <span class="pre">-c</span> <span class="pre">'SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">foo;'</span></code></p></li>
+<li><p><em>-d, –dbname=DBNAME</em>: Nombre de la base de datos a conectar. No es estrictamente necesario especificar esta opción. Tanto la base de datos como el nombre de usuario se pueden especificar directamente después de las opciones.</p></li>
+<li><p><em>-f, –file=FILENAME</em>: Ejecuta los comandos en el archivo y se sale.</p></li>
+<li><p><em>-l, –list</em>: Enlista las base datos y se sale.</p></li>
+<li><p><em>-v, –set=, –variable=NAME=VALUE</em>: Estable la variable psql <em>NAME</em> a <em>VALUE</em>, ejm: <br/> <code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">ON_ERROR_STOP=1</span></code></p></li>
+<li><p><em>-V, –version</em>: Imprime la version de psql y se sale.</p></li>
+<li><p>-?, –help: Muesta ayuda sobre psql y las opciones del comando. Equivale a usar <code class="docutils literal notranslate"><span class="pre">--help=options</span></code>.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--help=commands</span></code>: Enlista los comandos del tipo <em>/command</em> (meta comandos) y se sale.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--help=variables</span></code>: Enlista las variables especiales y se sale.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Opciones de <em>IO</em></strong>: Opciones para <em>input</em>/<em>output</em>.</p>
+<ul>
+<li><p><em>-a, –echo-all</em>: Imprime todas las entradas del <em>script</em>.</p></li>
+<li><p><em>-b, –echo-errors</em>: Imprime todos los comandos de SQL fallidos.</p></li>
+<li><p><em>-e, –echo-queries</em>: Imprime los comandos mandados al servidor.</p></li>
+<li><p><em>-E, –echo-hidden</em>: Muestra los queries que los comandos internos generan.</p></li>
+<li><p><em>-L, –log-file=FILENAME</em>: Almacena el <em>log</em> de la sesión en un archivo.</p></li>
+<li><p><em>-n, –no-readline</em>: Deshábilita la edición de línea mejorada (readline).</p></li>
+<li><p><em>-o, –output=FILENAME</em>: Almacena los resultados de un <em>query</em> en un archivo.</p></li>
+<li><p><em>-q, –quiet</em>: Ejecuta los comandos de manera silencionsa, es decir, no muestra ningún mensaje salvo los resultados del <em>query</em>.</p></li>
+<li><p><em>-s, –single-step</em>: Modo paso por paso, es necesario confirmar cada <em>query</em>.</p></li>
+<li><p><em>-S, –single-line</em>: Modo de una sola línea. Un salto de línea finaliza el comando de SQL.</p></li>
+</ul>
+</li>
+<li><p><strong>Opciones de formato para <em>outputs</em></strong>:</p>
+<ul>
+<li><p><em>-A, –no-align</em>: Modo de no alineación del resultado.</p></li>
+<li><p><em>–csv</em>: Modo de resultado como <em>csv</em>.</p></li>
+<li><p><em>-F, –field-separator=STRINGfield</em>: Indica el separador de valores para resultados no alineados (default: “|”).</p></li>
+<li><p><em>-H, –html</em>: Modo de resultado como HTML.</p></li>
+<li><p><em>-P, –pset=VAR[=ARG]</em>: Establece la opción de impression <em>VAR</em> al valor <em>ARG</em> (ver el comando <code class="docutils literal notranslate"><span class="pre">\pset</span></code>).</p></li>
+<li><p><em>-R, –record-separator=STRING</em>: Indica el separador de líneas para resultados no alineados (default: <em>newline</em>).</p></li>
+<li><p><em>-t, –tuples-only</em>: Imprime únicame las filas.</p></li>
+<li><p><em>-T, –table-attr=TEXT</em>: Establece valores de los atributos del <em>tag</em> <code class="docutils literal notranslate"><span class="pre">&lt;table/&gt;</span></code> de HTML.</p></li>
+<li><p><em>-x, –expanded</em>: Indica que el resultado debe ser de tipo expandido.</p></li>
+<li><p><em>-z, –field-separator-zero</em>: Establece el separador de valores para resultados no alineados a cero bytes.</p></li>
+<li><p><em>-0, –record-separator-zero</em>: Establece el separador de filas para resultados no alineados a cero bytes.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Ejemplos</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conexión a una base de datos de manera interactiva</span>
+psql<span class="w"> </span>-d<span class="w"> </span>database_name<span class="w"> </span>-U<span class="w"> </span>username<span class="w"> </span><span class="c1"># Equivale a: psql database_name username</span>
+
+<span class="c1"># Ejecutar un query desde un archivo, almacenar el resultado en un csv y sale de psql</span>
+psql<span class="w"> </span>-U<span class="w"> </span>username<span class="w"> </span>-d<span class="w"> </span>database_name<span class="w"> </span>-f<span class="w"> </span>query.sql<span class="w"> </span>--csv<span class="w"> </span>-o<span class="w"> </span>output.csv
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Considerar que el directorio que se toma es desde el cual se ejecutó <em>psql</em> desde la terminal.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Mientras estés en la terminal para poder volver a escribir en ella presiona la tecla <em>Q</em>.</p>
+</div>
+<br/>
+<hr class="docutils" />
+<section id="comandos">
+<h2>Comandos<a class="headerlink" href="#comandos" title="Link to this heading">#</a></h2>
+<p>Los comandos permiten administrar y hacer <em>scripting</em> desde <em>psql</em>, para poder ejecutarlos es necesario utilizarlos adentro de <em>psql</em> de manera interactiva o con la opción <code class="docutils literal notranslate"><span class="pre">--command=COMMAND</span></code>.</p>
+<section id="argumentos">
+<h3>Argumentos<a class="headerlink" href="#argumentos" title="Link to this heading">#</a></h3>
+<p>Muchos comandos reciben argumentos, tener en cuenta las siguientes características al momento de definir los argumentos:</p>
+<ul class="simple">
+<li><p><strong>Espacios</strong> en blanco: En caso de que el argumento tenga espacios en blanco se debe de poner el argumento entre comillas simples: <code class="docutils literal notranslate"><span class="pre">'with</span> <span class="pre">blanks'</span></code>.</p></li>
+<li><p><strong>Variable</strong>: Se pueden usar valores de variables como argumentos, para ello se debe de poner el nombre de la variable precedido por dos puntos: <br/> <code class="docutils literal notranslate"><span class="pre">:var_name</span></code> <br/> <code class="docutils literal notranslate"><span class="pre">:'var_name'</span></code> <br/> <code class="docutils literal notranslate"><span class="pre">:&quot;var_name&quot;</span></code> <br/> <code class="docutils literal notranslate"><span class="pre">:{?var_name}</span></code> <br/> Para más información revisar <a class="reference internal" href="#psql-variables"><span class="std std-ref">Variables</span></a>.</p></li>
+<li><p><strong>Comandos de <em>shell</em></strong>: Se pueden utilizar comandos que se pasan a <em>shell</em>, se ejecutan en <em>shell</em> y cuyos resultados se retornan en formato de texto, para ello se debe de poner el comando entre <em>backsticks</em>: <br/> `shell command`. <br/> Dentro del comando es posibles utilizar valores de variables usando <code class="docutils literal notranslate"><span class="pre">:var_name</span></code> o <code class="docutils literal notranslate"><span class="pre">:'var_name'</span></code>.</p></li>
+</ul>
+<br/>
+</section>
+<section id="ayuda">
+<h3>Ayuda<a class="headerlink" href="#ayuda" title="Link to this heading">#</a></h3>
+<p>Estos comandos retornan ayuda sobre <em>psql</em>, los comandos, opciones, variables y SQL.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Comando</strong></p></th>
+<th class="head"><p><strong>Descripción</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\?</span> <span class="pre">[commands]</span></code></p></td>
+<td><p>Muestra ayuda sobre los comandos con barra invertida.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\?</span> <span class="pre">options</span></code></p></td>
+<td><p>Muestra ayuda sobre las opciones de línea del comando <code class="docutils literal notranslate"><span class="pre">psql</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\?</span> <span class="pre">variables</span></code></p></td>
+<td><p>Muestra ayuda sobre las variables especiales.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\h</span> <span class="pre">[NAME]</span></code></p></td>
+<td><p>Muestra ayuda sobre la sintaxis de comandos SQL, utilizar <code class="docutils literal notranslate"><span class="pre">*</span></code> para todos los comandos.</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+</section>
+<section id="conexion">
+<h3>Conexión<a class="headerlink" href="#conexion" title="Link to this heading">#</a></h3>
+<p>Comandos relaciones con la conexión a la base de datos.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Comando</strong></p></th>
+<th class="head"><p><strong>Descripción</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\c\[onnect\]</span> <span class="pre">\{\[DBNAME|-</span> <span class="pre">USER|-</span> <span class="pre">HOST|-</span> <span class="pre">PORT|-\]</span> <span class="pre">|</span> <span class="pre">conninfo\}</span></code></p></td>
+<td><p>Se conecta a una nueva base de datos (actualmente desconectada).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\conninfo</span></code></p></td>
+<td><p>Muestra información sobre la conexión actual.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\encoding</span> <span class="pre">[ENCODING]</span></code></p></td>
+<td><p>Muestra o establece la codificación del cliente.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\password</span> <span class="pre">[USERNAME]</span></code></p></td>
+<td><p>Cambia de forma segura la contraseña de un usuario.</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+</section>
+<section id="formato">
+<h3>Formato<a class="headerlink" href="#formato" title="Link to this heading">#</a></h3>
+<p>Comandos para controlar el formato de salida, en operaciones <em>output</em>.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Comando</strong></p></th>
+<th class="head"><p><strong>Descripción</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\a</span></code></p></td>
+<td><p>Alterna entre el modo de salida alineado y no alineado.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\C</span> <span class="pre">[STRING]</span></code></p></td>
+<td><p>Establece el título de la tabla o lo desactiva si no hay ninguno.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\f</span> <span class="pre">[STRING]</span></code></p></td>
+<td><p>Muestra o establece el separador de campo para la salida de consulta no alineada.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\pset</span> <span class="pre">[NAME</span> <span class="pre">[VALUE]]</span></code></p></td>
+<td><p>Establece opciones de salida de tabla.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\T</span> <span class="pre">[STRING]</span></code></p></td>
+<td><p>Establece los atributos de la etiqueta <code class="docutils literal notranslate"><span class="pre">&lt;table&gt;</span></code> de HTML o los desactiva si no hay ninguno.</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+</section>
+<section id="general">
+<h3>General<a class="headerlink" href="#general" title="Link to this heading">#</a></h3>
+<p>Comandos de caracter general.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Comando</strong></p></th>
+<th class="head"><p><strong>Descripción</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\bind</span> <span class="pre">[PARAM]...</span></code></p></td>
+<td><p>Establece los parámetros de los <em>query</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\copyright</span></code></p></td>
+<td><p>Muestra los términos de uso y distribución de PostgreSQL.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\crosstabview</span> <span class="pre">[COLUMNS]</span></code></p></td>
+<td><p>Ejecuta una consulta y muestra el resultado en un <em>crosstab</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\errverbose</span></code></p></td>
+<td><p>Muestra el mensaje de error más reciente con la máxima verbosidad.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\g</span> <span class="pre">[(OPTIONS)]</span> <span class="pre">[FILE]</span></code></p></td>
+<td><p>Ejecuta la consulta (y envía el resultado a un archivo o <em>pipe</em> (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\gdesc</span></code></p></td>
+<td><p>Describe el resultado de la consulta, sin ejecutarla.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\gexec</span></code></p></td>
+<td><p>Ejecuta la consulta y luego ejecuta cada valor en su resultado.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\gset</span> <span class="pre">[PREFIX]</span></code></p></td>
+<td><p>Ejecuta la consulta y almacena el resultado en variables de <code class="docutils literal notranslate"><span class="pre">psql</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\gx</span> <span class="pre">[(OPTIONS)]</span> <span class="pre">[FILE]</span></code></p></td>
+<td><p>Igual que <code class="docutils literal notranslate"><span class="pre">\g</span></code>, pero fuerza el modo de salida expandida.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\q</span></code></p></td>
+<td><p>Sale de <code class="docutils literal notranslate"><span class="pre">psql</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\watch</span> <span class="pre">[[i=]SEC]</span> <span class="pre">[c=N]</span></code></p></td>
+<td><p>Ejecuta la consulta cada <em>SEC</em> segundos, hasta <em>N</em> veces.</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+</section>
+<section id="informacion">
+<h3>Información<a class="headerlink" href="#informacion" title="Link to this heading">#</a></h3>
+<p>Estos comandos retornan información sobre la base de datos y sus objetos.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Comando</strong></p></th>
+<th class="head"><p><strong>Descripción</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\d[S+]</span></code></p></td>
+<td><p>Enlista tablas, <em>views</em> y secuencias.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\d[S+]</span>&#160; <span class="pre">NAME</span></code></p></td>
+<td><p>Describe una tabla, <em>view</em>, secuencia o índice.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\da[S]</span>&#160; <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista funciones agregadas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dA[+]</span>&#160; <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista métodos de acceso.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\dAc[+]</span> <span class="pre">[AMPTRN</span> <span class="pre">[TYPEPTRN]]</span></code></p></td>
+<td><p>Enlista clases de operadores.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dAf[+]</span> <span class="pre">[AMPTRN</span> <span class="pre">[TYPEPTRN]]</span></code></p></td>
+<td><p>Enlista familias de operadores.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\dAo[+]</span> <span class="pre">[AMPTRN</span> <span class="pre">[OPFPTRN]]</span></code></p></td>
+<td><p>Enlista operadores de las familias de operadores.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dAp[+]</span> <span class="pre">[AMPTRN</span> <span class="pre">[OPFPTRN]]</span></code></p></td>
+<td><p>Enlista funciones de soporte de las familias de operadores.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\db[+]</span>&#160; <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista <em>tablespaces</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dc[S+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista conversiones.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\dconfig[+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista parámetros de configuración.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dC[+]</span>&#160; <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista <em>casts</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\dd[S]</span>&#160; <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Muestra descripciones de objetos no mostrados en otro lugar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dD[S+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista dominios.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\ddp</span>&#160;&#160;&#160; <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista privilegios por defecto.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dE[S+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista tablas externas.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\des[+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista servidores externos.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\det[+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista tablas externas.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\deu[+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista mapeos de usuarios.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dew[+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista <em>wrappers</em> de datos externos.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\df[anptw][S+]</span> <span class="pre">[FUNCPTRN</span> <span class="pre">[TYPEPTRN</span> <span class="pre">...]]</span></code></p></td>
+<td><p>Enlista funciones [solo agregadas/normales/procedimientos/<em>triggers</em>/<em>window</em>].</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dF[+]</span>&#160; <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista configuraciones de búsqueda de texto (<em>text search</em>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\dFd[+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista diccionarios de búsqueda de texto (<em>text search</em>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dFp[+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista analizadores de búsqueda de texto (<em>text search</em>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\dFt[+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista plantillas de búsqueda de texto (<em>text search</em>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dg[S+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista roles.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\di[S+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista índices.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dl[+]</span></code></p></td>
+<td><p>Enlista objetos grandes, igual que <code class="docutils literal notranslate"><span class="pre">\lo_list</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\dL[S+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista lenguajes procedurales.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dm[S+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista <em>views</em> materializadas.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\dn[S+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista esquemas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\do[S+]</span> <span class="pre">[OPPTRN</span> <span class="pre">[TYPEPTRN</span> <span class="pre">[TYPEPTRN]]]</span></code></p></td>
+<td><p>Enlista operadores.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\dO[S+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista <em>collations</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dp[S]</span>&#160; <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista privilegios de acceso a tablas, <em>views</em> y secuencias.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\dP[itn+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista relaciones particionadas [solo índices/tablas] [n=nested].</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\drds</span> <span class="pre">[ROLEPTRN</span> <span class="pre">[DBPTRN]]</span></code></p></td>
+<td><p>Enlista configuraciones de roles por base de datos.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\drg[S]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista permisos de roles.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dRp[+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista publicaciones de replicación.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\dRs[+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista suscripciones de replicación.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\ds[S+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista secuencias.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\dt[S+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista tablas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dT[S+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista tipos de datos.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\du[S+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista roles.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dv[S+]</span> <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista <em>views</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\dx[+]</span>&#160; <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista extensiones.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\dX</span>&#160;&#160;&#160;&#160; <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista estadísticas extendidas.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\dy[+]</span>&#160; <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista <em>triggers</em> de eventos.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\l[+]</span>&#160;&#160; <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Enlista bases de datos.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\sf[+]</span>&#160; <span class="pre">FUNCNAME</span></code></p></td>
+<td><p>Muestra la definición de una función.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\sv[+]</span>&#160; <span class="pre">VIEWNAME</span></code></p></td>
+<td><p>Muestra la definición de una <em>view</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\z[S]</span>&#160;&#160; <span class="pre">[PATTERN]</span></code></p></td>
+<td><p>Igual que <code class="docutils literal notranslate"><span class="pre">\dp</span></code> (enlista privilegios de acceso a tablas, <em>views</em> y secuencias.).</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+</section>
+<section id="input-output">
+<h3>Input/Output<a class="headerlink" href="#input-output" title="Link to this heading">#</a></h3>
+<p>Comandos relacionados con operaciones de entrada y salida.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Comando</strong></p></th>
+<th class="head"><p><strong>Descripción</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\copy</span> <span class="pre">...</span></code></p></td>
+<td><p>Realiza la copia de SQL con un flujo de datos al <em>host</em> del cliente.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\echo</span> <span class="pre">[-n]</span> <span class="pre">[STRING]</span></code></p></td>
+<td><p>Escribe una cadena en la salida estándar (usar <em>-n</em> para no agregar nueva línea).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\i</span> <span class="pre">FILE</span></code></p></td>
+<td><p>Ejecuta comandos desde un archivo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\ir</span> <span class="pre">FILE</span></code></p></td>
+<td><p>Igual que <code class="docutils literal notranslate"><span class="pre">\i</span></code>, pero relativo a la ubicación del script actual.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\o</span> <span class="pre">[FILE]</span></code></p></td>
+<td><p>Envía todos los resultados de consultas a un archivo o <em>pie</em> (`</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\qecho</span> <span class="pre">[-n]</span> <span class="pre">[STRING]</span></code></p></td>
+<td><p>Escribe una cadena en el flujo de salida <code class="docutils literal notranslate"><span class="pre">\o</span></code> (usar <em>-n</em> para no agregar nueva línea).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\warn</span> <span class="pre">[-n]</span> <span class="pre">[STRING]</span></code></p></td>
+<td><p>Escribe una cadena en la salida de error estándar (usar <em>-n</em> para no agregar nueva línea).</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+</section>
+<section id="objetos-grandes">
+<h3>Objetos grandes<a class="headerlink" href="#objetos-grandes" title="Link to this heading">#</a></h3>
+<p>Comandos relacionados con objetos grandes.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Comando</strong></p></th>
+<th class="head"><p><strong>Descripción</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\lo_export</span> <span class="pre">LOBOID</span> <span class="pre">FILE</span></code></p></td>
+<td><p>Escribe un objeto grande a un archivo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\lo_import</span> <span class="pre">FILE</span> <span class="pre">[COMMENT]</span></code></p></td>
+<td><p>Lee un objeto grande desde un archivo.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\lo_list[+]</span></code></p></td>
+<td><p>Enlista objetos grandes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\lo_unlink</span> <span class="pre">LOBOID</span></code></p></td>
+<td><p>Elimina un objeto grande.</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+</section>
+<section id="query-buffer">
+<h3>Query Buffer<a class="headerlink" href="#query-buffer" title="Link to this heading">#</a></h3>
+<p>Comandos relacionados con el búfer de consultas.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Comando</strong></p></th>
+<th class="head"><p><strong>Descripción</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\e</span> <span class="pre">[FILE]</span> <span class="pre">[LINE]</span></code></p></td>
+<td><p>Edita el búfer de consultas (o archivo) con un editor externo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\ef</span> <span class="pre">[FUNCNAME</span> <span class="pre">[LINE]]</span></code></p></td>
+<td><p>Edita la definición de una función con un editor externo.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\ev</span> <span class="pre">[VIEWNAME</span> <span class="pre">[LINE]]</span></code></p></td>
+<td><p>Edita la definición de una <em>view</em> con un editor externo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\p</span></code></p></td>
+<td><p>Muestra el contenido del búfer de consultas.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\r</span></code></p></td>
+<td><p>Restablece (limpia) el búfer de consultas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\s</span> <span class="pre">[FILE]</span></code></p></td>
+<td><p>Muestra el historial o lo guarda en un archivo.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\w</span> <span class="pre">FILE</span></code></p></td>
+<td><p>Escribe el búfer de consultas en un archivo.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Al ejecutar comandos como <code class="docutils literal notranslate"><span class="pre">\e</span></code>, <code class="docutils literal notranslate"><span class="pre">\ef</span></code> o <code class="docutils literal notranslate"><span class="pre">\ev</span></code> tener en cuenta lo siguiente</p>
+<ul class="simple">
+<li><p>Se abrirá un editor donde se puede escribir el <em>query</em>, función o <em>view</em>, por default ser abrirá <em>vim</em>, es posible modificar el editor con las <a class="reference internal" href="#psql-variables-entorno"><span class="std std-ref">Variables de entorno</span></a>.</p></li>
+<li><p>En <em>vim</em>, una vez que se haya escrito el <em>query</em>, presionar <em>esc</em> y escribir <code class="docutils literal notranslate"><span class="pre">:wq</span></code>, automáticamente se cerrará el editor y se ejecutará el <em>query</em>.</p></li>
+</ul>
+</div>
+<br/>
+</section>
+<section id="sentencias-condicionales">
+<h3>Sentencias condicionales<a class="headerlink" href="#sentencias-condicionales" title="Link to this heading">#</a></h3>
+<p>Comandos para poder ejecutar sentencias condicionales.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Comando</strong></p></th>
+<th class="head"><p><strong>Descripción</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\if</span> <span class="pre">EXPR</span></code></p></td>
+<td><p>Inicia un bloque condicional.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\elif</span> <span class="pre">EXPR</span></code></p></td>
+<td><p>Alternativa dentro del bloque condicional actual.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\else</span></code></p></td>
+<td><p>Alternativa final dentro del bloque condicional actual.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\endif</span></code></p></td>
+<td><p>Finaliza el bloque condicional.</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+</section>
+<section id="sistema-operativo">
+<h3>Sistema operativo<a class="headerlink" href="#sistema-operativo" title="Link to this heading">#</a></h3>
+<p>Comandos que interactúan con el sistema operativo de la computadora.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Comando</strong></p></th>
+<th class="head"><p><strong>Descripción</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\cd</span> <span class="pre">[DIR]</span></code></p></td>
+<td><p>Cambia el directorio de trabajo actual.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\getenv</span> <span class="pre">PSQLVAR</span> <span class="pre">ENVVAR</span></code></p></td>
+<td><p>Obtiene una variable de entorno.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\setenv</span> <span class="pre">NAME</span> <span class="pre">[VALUE]</span></code></p></td>
+<td><p>Establece o desactiva una variable de entorno.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\!</span> <span class="pre">[COMMAND]</span></code></p></td>
+<td><p>Ejecuta un comando <em>shell</em> en el sistema o inicia un <em>shell</em> interactivo.</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+</section>
+<section id="variables">
+<h3>Variables<a class="headerlink" href="#variables" title="Link to this heading">#</a></h3>
+<p>Comandos relacionados con variables.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Comando</strong></p></th>
+<th class="head"><p><strong>Descripción</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\prompt</span> <span class="pre">[TEXT]</span> <span class="pre">NAME</span></code></p></td>
+<td><p>Solicita al usuario que establezca una variable interna.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\set</span> <span class="pre">[NAME</span> <span class="pre">[VALUE]]</span></code></p></td>
+<td><p>Establece una variable interna, o las lista todas si no se pasan parámetros.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\unset</span> <span class="pre">NAME</span></code></p></td>
+<td><p>Desactiva (elimina) una variable interna.</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+<hr class="docutils" />
+</section>
+</section>
+<section id="psql-variables">
+<span id="id1"></span><h2>Variables<a class="headerlink" href="#psql-variables" title="Link to this heading">#</a></h2>
+<p><em>psql</em> provee de variables que son pares de <em>nombre-valor</em> que permiten almacenar cualquier cadena de cualquier longitud. Los nombres de las variables deben de contener únicamente caracteres alfanuméricos o guión bajo.</p>
+<p>Se puede establecer el valor de una variable ya sea con el comando <code class="docutils literal notranslate"><span class="pre">\set</span></code> una vez que ya se está dentro de <em>psql</em> o con la opción <code class="docutils literal notranslate"><span class="pre">--set</span></code> al momento de ejecutar <em>psql</em>. Para desestablecer una variable se puede usar el comando <code class="docutils literal notranslate"><span class="pre">\unset</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establecer como opción: Establecer la variable foo con el valor bar</span>
+psql<span class="w"> </span>--set<span class="o">=</span><span class="nv">FOO</span><span class="o">=</span>BAR
+
+<span class="c1"># Establecer como comando: Establecer la variable foo con el valor bar</span>
+<span class="nv">dbname</span><span class="o">=</span>&gt;<span class="w"> </span><span class="se">\s</span>et<span class="w"> </span>foo<span class="w"> </span>bar
+
+<span class="c1"># Desestablecer como comando: Desestablecer la variable foo</span>
+<span class="nv">dbname</span><span class="o">=</span>&gt;<span class="w"> </span><span class="se">\u</span>nset<span class="w"> </span>foo
+</pre></div>
+</div>
+<p>Para recuperar el valor de una variable se deben de usar dos puntos antes del nombre de la variable:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imprimir el valor de la variable foo</span>
+<span class="nv">dbname</span><span class="o">=</span>&gt;<span class="w"> </span><span class="se">\e</span>cho<span class="w"> </span>:foo<span class="w"> </span><span class="c1"># imprime &#39;bar&#39;</span>
+</pre></div>
+</div>
+<br/>
+<section id="variables-de-psql">
+<h3>Variables de psql<a class="headerlink" href="#variables-de-psql" title="Link to this heading">#</a></h3>
+<p>Las variables especiales de <em>psql</em> son variables que forman parte de manera nativa en <em>psql</em>, estas variables generalmente no se pueden desestablecer ni establecer con valores inválidos. Todas las variables especiales en <em>psql</em> tienen nombres en mayúsculas. A continuación se enlistan algunas de las variables más importantes:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Esta no es una lista extensiva de las variables disponibles en <em>psql</em>. Para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/17/app-psql.html">documnetación</a> de <em>psql</em>.</p>
+</div>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Tipo de valor</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">AUTOCOMMIT</span></code></p></td>
+<td><p>{on, off}</p></td>
+<td><p>Controla si las sentencias de SQL se “consolidan” (<em>commit</em>) automáticamente.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DBNAME</span></code></p></td>
+<td><p><em>any</em></p></td>
+<td><p>Nombre de la base de datos a la que se está conectado actualmente.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ECHO</span></code></p></td>
+<td><p>{all, errors, none, queries}</p></td>
+<td><p>Indica qué tipo de información se imprimen de manera estándar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ENCODING</span></code></p></td>
+<td><p><em>any</em></p></td>
+<td><p>Indica el conjunto de caracteres de codificación actual.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ERROR</span></code></p></td>
+<td><p><em>boolean</em></p></td>
+<td><p>Indica si el último <em>SQL query</em> fue un error (<em>true</em>) o no (<em>false</em>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FETCH_COUNT</span></code></p></td>
+<td><p><em>numeric</em></p></td>
+<td><p>Indica el número máximo de filas a mostrar en el <em>result set</em> (0 = ilimitado).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">HISTFILE</span></code></p></td>
+<td><p><em>any</em></p></td>
+<td><p>Define el nombre y la ubicación del archivo donde se guarda el historial de comandos.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">HISTSIZE</span></code></p></td>
+<td><p><em>numeric</em></p></td>
+<td><p>Determina el número de comandos que se guardan en el historial (default 500).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">HOST</span></code></p></td>
+<td><p><em>any</em></p></td>
+<td><p><em>Host</em> del servidor al que se está conectado actualmente.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ON_ERROR_ROLLBACK</span></code></p></td>
+<td><p>{on, off}</p></td>
+<td><p>Controla si se debe hacer <code class="docutils literal notranslate"><span class="pre">ROLLBACK</span></code> automáticamente al encontrar un error en una transacción.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ON_ERROR_STOP</span></code></p></td>
+<td><p>{on, off}</p></td>
+<td><p>Detiene la ejecución de scripts al encontrar un error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PORT</span></code></p></td>
+<td><p><em>any</em></p></td>
+<td><p><em>Puerto</em> del servidor al que se está conectado actualmente.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">QUIET</span></code></p></td>
+<td><p>{on, off}</p></td>
+<td><p>Suprime las salidas de los comandos, útil para ejecutar scripts en silencio.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ROW_COUNT</span></code></p></td>
+<td><p><em>numeric</em></p></td>
+<td><p>Indica el número de filas retornadas o afectadas por el último <em>SQL query</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SINGLELINE</span></code></p></td>
+<td><p>{on, off}</p></td>
+<td><p>Controla si psql acepta solo una línea de entrada (igual que la opción <code class="docutils literal notranslate"><span class="pre">-S</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SINGLESTEP</span></code></p></td>
+<td><p>{on, off}</p></td>
+<td><p>Pide confirmación antes de ejecutar cada comando (igual que la opción <code class="docutils literal notranslate"><span class="pre">-s</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">USER</span></code></p></td>
+<td><p><em>any</em></p></td>
+<td><p>Usuario del servidor desde el que se está conectado actualmente.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">VERBOSITY</span></code></p></td>
+<td><p>[default, verbose, terse, sqlstate]</p></td>
+<td><p>Controla la cantidad de información que se muestra en los mensajes de error.</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+</section>
+<section id="variables-de-display">
+<h3>Variables de display<a class="headerlink" href="#variables-de-display" title="Link to this heading">#</a></h3>
+<p>Son variables que controlan el formato de las tablas de resultados de <em>queries</em> de SQL. Estas variables también se pueden establecer con el comando <code class="docutils literal notranslate"><span class="pre">\pset</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Esta no es una lista extensiva de las variables disponibles en <em>psql</em>. Para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/17/app-psql.html#APP-PSQL-META-COMMAND-PSET">documnetación</a> de <em>psql</em>.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>En la tabla si el tipo de valor es <em>string</em> se debe de poner entre comillas simples</p>
+</div>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Valor</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">border</span></code></p></td>
+<td><p><em>numeric</em></p></td>
+<td><p>Estilo del borde.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">columns</span></code></p></td>
+<td><p><em>numeric</em></p></td>
+<td><p>Ancho de las columnas en el formato <em>wrapped</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">csv_fieldsep</span></code></p></td>
+<td><p><em>string</em></p></td>
+<td><p>Separador a usar para formatos <em>csv</em> (default <code class="docutils literal notranslate"><span class="pre">','</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fieldsep</span></code></p></td>
+<td><p><em>string</em></p></td>
+<td><p>Separador de campos a usar para el formato no alineado (default <code class="docutils literal notranslate"><span class="pre">'|'</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">format</span></code></p></td>
+<td><p>[aligned, asciidoc, csv, html, latex, latex-longtable, troff-ms, unaligned, wrapped]</p></td>
+<td><p>Formato del <em>output</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">linestyle</span></code></p></td>
+<td><p>[ascii, old-ascii, unicode]</p></td>
+<td><p>Estilo de línea del borde.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">null</span></code></p></td>
+<td><p><em>string</em></p></td>
+<td><p>Cadena a usar en lugar de valores <em>null</em> (default es una cadena vacía).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">recordsep</span></code></p></td>
+<td><p><em>string</em></p></td>
+<td><p>Separador de registros (saltos de línea) en el formato no alineado.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tableattr</span></code></p></td>
+<td><p><em>string</em></p></td>
+<td><p>Especifica atributos del <em>tag</em> <code class="docutils literal notranslate"><span class="pre">&lt;table/&gt;</span></code> de HTML para formato HTML.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></td>
+<td><p><em>string</em></p></td>
+<td><p>Título de tabla para tablas subsecuentes.</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+</section>
+<section id="variables-de-entorno">
+<span id="psql-variables-entorno"></span><h3>Variables de entorno<a class="headerlink" href="#variables-de-entorno" title="Link to this heading">#</a></h3>
+<p>Las variables de entorno son variables a nivel de sistema que determinan como <em>psql</em> y PostgreSQL funcionan. Estas variables se utilizan para determinar la conexión por default de <em>psql</em> por lo que es útil personalizarlas. Para establecer el valor de una variable de entorno usar <code class="docutils literal notranslate"><span class="pre">export</span></code> (fuera de <em>psql</em>):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establecer variable de entorno (ejemplo con PGUSER)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PGUSER</span><span class="o">=</span>username
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Algunas de las variables de entorno útiles son <code class="docutils literal notranslate"><span class="pre">PGDATABASE</span></code>, <code class="docutils literal notranslate"><span class="pre">PGHOST</span></code>, <code class="docutils literal notranslate"><span class="pre">PGPORT</span></code> y <code class="docutils literal notranslate"><span class="pre">PGUSER</span></code> que representan el nombre de una base de datos, el <em>host</em>, el puerto y nombre de usuario por default que utilizará <em>psql</em> para conectarse al servidor.</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Tipo de valor</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PGDATABASE</span></code></p></td>
+<td><p><em>any</em></p></td>
+<td><p>Parámetro de conexión del nombre de la base de datos (<em>dbname</em>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PGHOST</span></code></p></td>
+<td><p><em>any</em></p></td>
+<td><p>Parámetro de conexión del <em>host</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PGPASSFILE</span></code></p></td>
+<td><p><em>any</em></p></td>
+<td><p>Nombre del archivo de contraseña.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PGPASSWORD</span></code></p></td>
+<td><p><em>any</em></p></td>
+<td><p>Parámetro de conexión la contraseña (no recomendado).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PGPORT</span></code></p></td>
+<td><p><em>any</em></p></td>
+<td><p>Parámetro de conexión del <em>port</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">USER</span></code></p></td>
+<td><p><em>any</em></p></td>
+<td><p>Parámetro de conexión del <em>user</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SQL_EDITOR,</span> <span class="pre">EDITOR,</span> <span class="pre">VISUAL</span></code></p></td>
+<td><p><em>any</em></p></td>
+<td><p>Editor usado por los comandos <code class="docutils literal notranslate"><span class="pre">\e</span></code>, <code class="docutils literal notranslate"><span class="pre">\ef</span></code> y <code class="docutils literal notranslate"><span class="pre">\ev</span></code> respectivamente.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SHELL</span></code></p></td>
+<td><p><em>any</em></p></td>
+<td><p><em>Shell</em> usado por el comando <code class="docutils literal notranslate"><span class="pre">\!</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TMPDIR</span></code></p></td>
+<td><p><em>any</em></p></td>
+<td><p>Directorio para los archivos temporales.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./parts/postgresql"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="extensiones.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Extensiones</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="anexos.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Anexos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comandos">Comandos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argumentos">Argumentos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ayuda">Ayuda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conexion">Conexión</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formato">Formato</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general">General</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion">Información</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-output">Input/Output</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetos-grandes">Objetos grandes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#query-buffer">Query Buffer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentencias-condicionales">Sentencias condicionales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sistema-operativo">Sistema operativo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#psql-variables">Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-de-psql">Variables de psql</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-de-display">Variables de display</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-de-entorno">Variables de entorno</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nebok
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

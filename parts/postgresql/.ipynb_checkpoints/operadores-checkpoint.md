@@ -1,8 +1,12 @@
 # Operadores
 
+En esta sección se presentan los operadores en SQL.
+
 ## Comparación
 
-```{list-table}
+Operadores útiles para comparar valores.
+
+```{list-table} Operadores de Comparación
 :header-rows: 1
 :name: operadores-comparacion
 * - Operador
@@ -25,7 +29,7 @@
 
 ## Operadores Bitwise
 
-```{list-table}
+```{list-table} Operadores Bitwise
 :header-rows: 1
 :name: operadores-bitwise
 
@@ -43,7 +47,9 @@
 
 ## Aritméticos
 
-```{list-table}
+Operadores útiles para realizar operaciones aritméticas con valores.
+
+```{list-table} Operadores Aritméticos
 :header-rows: 1
 :name: operadores-aritmeticos
 
@@ -60,13 +66,18 @@
 * - `%`
   - Módulo
 ```
-\* Si los números son enteros, devolverá un entero. Para hacer divisiones de enteros y que devuelva decimales se necesita agregar un _.0_ al menos a un número.
+
+:::{warning}
+En una división, si los números son enteros, el resultado será un entero. Para hacer divisiones de enteros y que devuelva decimales se necesita agregar un _.0_ al menos a un número.
+:::
 
 <br/>
 
 ## Membresía
 
-```{list-table}
+Operadores útiles para verificar si los valores están dentro de un conjunto de valores, rangos o cumplen un patrón.
+
+```{list-table} Operadores de Membresía
 :header-rows: 1
 :name: operadores-membresia
 
@@ -79,14 +90,18 @@
 * - `LIKE`
   - Para buscar patrones en cadenas.
 ```
-Para más información revisa:
-- {ref}`IN y BETWEEN`.
-- {ref}`LIKE`.
+Para más información revisar:
+- {ref}`dql-filtrado-in`.
+- {ref}`dql-filtrado-between`.
+- {ref}`dql-filtrado-like`.
 
 <br/>
 
-## Lógicos:
-```{list-table}
+## Lógicos
+
+Operadores útiles para manipular valores _booleanos_.
+
+```{list-table} Operadores Lógicos
 :header-rows: 1
 :name: operadores-logicos
 
@@ -99,25 +114,43 @@ Para más información revisa:
 * - `NOT`
   - Niega el valor/rango.
 * - `ALL`
-  - `TRUE` si todos los valores de un subquery cumple una condición.
+  - `TRUE` si todos los valores de un _subquery_ cumple una condición.
 * - `ANY`
-  - `TRUE` si al menos uno de los valores de un subquery cumple una condición.
+  - `TRUE` si al menos uno de los valores de un _subquery_ cumple una condición.
 * - `EXISTS`
-  - `TRUE` si el subquery retorna al menos un registro.
+  - `TRUE` si el _subquery_ retorna al menos un registro.
 * - `SOME`
-  - `TRUE` si cualquiera de los valores de un subquery cumple una condición.
+  - `TRUE` si cualquiera de los valores de un _subquery_ cumple una condición.
 ```
-Para más información consulta:
-- {ref}`ANY y ALL`
-- {ref}`EXISTS`
+Para más información consultar:
+- {ref}`subquery-all` y {ref}`subquery-any`
+- {ref}`subquery-exists`
 
 <br/>
 
-## Concatenar:
-Para concatenar cadenas se puede hacer uso de los operadores `||`, por ejemplo: 
+## Concatenar
+
+Para concatenar cadenas se puede hacer uso de los operadores `||`.
+
 ```sql
+-- Concatenar los valores de dos columnas
 col1 || ' ' || col2
 ``` 
--	Se concatenará el contenido de _col1_ y _col2_, separados por un espacio. 
--	**IMPORTANTE**: No se puede concatenar valores `NULL`, si se utiliza un `NULL` convertirá toda la cadena en `NULL`.
--	**IMPORTANTE**: También se puede usar la función `CONCAT()`.
+- En este ejemplo se concatena el contenido de _col1_ y _col2_, separados por un espacio.
+- En lugar de columnas se pueden concatenar otras cadenas.
+:::{warning} No se puede concatenar valores `NULL`, si se utiliza un `NULL` convertirá toda la cadena en `NULL`.
+:::
+
+:::{tip} También se puede usar la función `CONCAT()`.
+:::
+
+<br/>
+
+**Ejemplo**:
+
+```sql
+-- Concatenación de columnas y cadenas
+SELECT surname || ', ' || firstname
+FROM cd.members;
+```
+- [Concatenación de columnas y cadenas](https://pgexercises.com/questions/string/concat.html): En este ejemplo se concatenan los valores de dos columnas, junto con una cadena que representa una coma y un espacio en blanco.

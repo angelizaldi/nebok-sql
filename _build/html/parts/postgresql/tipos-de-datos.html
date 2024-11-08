@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="icon" href="../../_static/nebok-favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Data Query Language (DQL)" href="dql-index.html" />
+    <link rel="next" title="Funciones (UDF)" href="udf.html" />
     <link rel="prev" title="Operadores" href="operadores.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -188,19 +188,51 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../teoria/teoria-index.html">Conceptos y teoría</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../teoria/queries.html">Conceptos y teoría</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../teoria/teoria.html">Teoría</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../teoria/sql.html">SQL</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="postgre-index.html">PostgreSQL</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="comentarios.html">Comentarios.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="operadores.html">Operadores</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Tipos de Datos</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="dql-index.html">Data Query Language (DQL)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="sentencias-seleccion.html">Sentencias de Selección</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sentencias-ordenar.html">Sentencias para Ordenar</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sentencias-filtrado.html">Sentencias de Filtrado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="udf.html">Funciones (UDF)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dql/dql-index.html">Data Query Language (DQL)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dql/seleccion.html">Seleccionar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/filtrado.html">Filtrar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/ordenar.html">Ordenar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/joins.html">Join</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/agrupar.html">Agrupar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/operaciones-conjuntos.html">Operaciones de conjuntos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/expresiones-condicionales.html">Sentencias condicionales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/window-functions.html">Window Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/subqueries.html">Subqueries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/common-table-expression.html">Common Table Expression (CTE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/full_text_search.html">Full text search</a></li>
 </ul>
 </li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dml/dml-index.html">Data Manipulation Language (DML)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dml/insertar.html">Insertar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dml/actualizar.html">Actualizar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dml/eliminar.html">Eliminar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="ddl/ddl-index.html">Data Definition Language (DDL)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="ddl/crear.html">Crear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ddl/modificar.html">Modificar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ddl/eliminar.html">Eliminar y Truncar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dcl/dcl-index.html">Data Control Language (DCL)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dcl/conceder.html">Otorgar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dcl/revocar.html">Revocar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="funciones.html">Funciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensiones.html">Extensiones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psql.html">psql</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anexos.html">Anexos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookbook.html">Cookbook</a></li>
 </ul>
 </li>
 </ul>
@@ -352,7 +384,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bool">Bool</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caracter">Carácter</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cadenas">Cadenas</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concatenacion">Concatenación</a></li>
 </ul>
 </li>
@@ -364,7 +396,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fechas-y-tiempo">Fechas y Tiempo</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-un-valor-de-tipo-fecha">Creación de un valor de tipo fecha.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date">DATE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date">Date</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time">Time</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timestamp">Timestamp</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonas-horarias">Zonas horarias</a></li>
@@ -374,10 +406,10 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays">Arrays</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-columnas-de-tipo-array">Crear columnas de tipo array</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insertar-valores-a-un-array">Insertar valores a un array</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccionar-elementos-de-un-array">Seleccionar elementos de un array</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modificar-un-elementos">Modificar un elementos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verificar-que-un-elemento-este-en-un-array">Verificar que un elemento esté en un array</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insertar-valores">Insertar valores</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccionar-elementos">Seleccionar elementos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modificar-elementos">Modificar elementos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verificar-membresia">Verificar membresía</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#null">NULL</a><ul class="nav section-nav flex-column">
@@ -409,53 +441,62 @@ document.write(`
 <ul class="simple">
 <li><p>Su nombre en SQL es: <code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code> | <code class="docutils literal notranslate"><span class="pre">BOOL</span></code>.</p></li>
 <li><p>Puede tomar tres posibles valores: <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> o <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p></li>
-<li><p>Si se inserta datos a una columna <code class="docutils literal notranslate"><span class="pre">BOOL</span></code> se hacen las siguientes conversiones:</p>
+<li><p>Los valores <code class="docutils literal notranslate"><span class="pre">BOOL</span></code> tienen otros equivalente, que se consideran también como valores <code class="docutils literal notranslate"><span class="pre">BOOL</span></code>, considerar las siguientes conversiones:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code>: ‘1’, ‘yes’, ‘y’, ‘t’, true.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FALSE</span></code>: ‘0’, ‘no’, ‘n’, ‘f’, false.</p></li>
 <li><p>Cualquiera de los valores anteriores se pueden utilizar en lugar de <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> o <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>.</p></li>
 </ul>
 </li>
-<li><p>Cuando se hacen comparaciones con columnas <code class="docutils literal notranslate"><span class="pre">BOOL</span></code>, no es necesario poner como tal la comparación, ya que los valores ya son <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> o <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>.</p></li>
-<li><p>Si se selecciona datos de una columna <code class="docutils literal notranslate"><span class="pre">BOOL</span></code> se hacen las siguientes conversiones:</p>
+<li><p>Si se seleccionan datos de una columna <code class="docutils literal notranslate"><span class="pre">BOOL</span></code> se hacen las siguientes conversiones:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code>: ‘t’</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FALSE</span></code>: ‘f’</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code>: <em>espacio</em>.</p></li>
 </ul>
 </li>
+<li><p>Para más información visitar la <a class="reference external" href="https://www.postgresql.org/docs/current/datatype-boolean.html">documentación de PostgreSQL</a>.</p></li>
 </ul>
 <br/>
 </section>
 <hr class="docutils" />
-<section id="caracter">
-<h2>Carácter<a class="headerlink" href="#caracter" title="Link to this heading">#</a></h2>
+<section id="cadenas">
+<h2>Cadenas<a class="headerlink" href="#cadenas" title="Link to this heading">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>SQL es sensible a mayúsculas y minúsculas. Además al ordenar cadenas se priorizará primero los espacios en blanco, después las mayúsculas y finalmente las minúsculas.</p>
+<p>Al ordenar cadenas se priorizará primero los espacios en blanco, después las mayúsculas y finalmente las minúsculas.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Para usar cadenas en el <em>query</em> se deben de poner entre comillas simples: <code class="docutils literal notranslate"><span class="pre">'texto'</span></code>.</p>
 </div>
-<p>Existen tres tipos de datos de carácter/cadenas:</p>
+<p>Existen tres tipos de datos de cadenas:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CHAR(N)</span></code> | <code class="docutils literal notranslate"><span class="pre">CHARACTER(N)</span></code>: Cadena de longitud fija de <em>n</em> caracteres. Si se agrega una cadena de longitud menor a <em>n</em>, PostgreSQL añadirá espacios al final para que su longitud sea de <em>n</em>. Si se agrega una cadena de longitud mayor a <em>n</em>, se arrojará un error. Los espacios extras se ignorarán al hacer comparaciones entre este tipo de cadenas. Si no se especifica <em>n</em>, equivale a <code class="docutils literal notranslate"><span class="pre">CHAR(1)</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">VARCHAR(N)</span></code> | <code class="docutils literal notranslate"><span class="pre">CHARACTER</span> <span class="pre">VARYING(N)</span></code>: Cadena que almacena hasta un máximo de <em>n</em> caracteres, puede ser menor, pero no mayor.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code> | <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code>: Cadena de longitud variable.</p></li>
+<li><p>Para más información visitar la <a class="reference external" href="https://www.postgresql.org/docs/current/datatype-character.html">documentación de PostgreSQL</a>.</p></li>
 </ul>
 <br/>
 <section id="concatenacion">
 <h3>Concatenación<a class="headerlink" href="#concatenacion" title="Link to this heading">#</a></h3>
 <p>Para concatenar cadenas se puede hacer uso de los operadores <code class="docutils literal notranslate"><span class="pre">||</span></code>. Ejemplo:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">col1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">col2</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Concatenación de dos columnas</span>
+<span class="n">col1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">col2</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Se concatenará el contenido de <em>col1</em> y <em>col2</em>, separados por un espacio.</p></li>
-<li><p><strong>IMPORTANTE</strong>: No se puede concatenar valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, si se utiliza un <code class="docutils literal notranslate"><span class="pre">NULL</span></code> convertirá toda la cadena en <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p></li>
-<li><p><strong>IMPORTANTE</strong>: También se puede usar la función <code class="docutils literal notranslate"><span class="pre">CONCAT()</span></code>.</p></li>
+<li><p>En este ejemplo se concatena el contenido de <em>col1</em> y <em>col2</em>, separados por un espacio.</p></li>
+<li><p>En lugar de columnas se pueden concatenar otras cadenas.</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>No se puede concatenar valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, si se utiliza un <code class="docutils literal notranslate"><span class="pre">NULL</span></code> convertirá toda la cadena en <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>También se puede usar la función <code class="docutils literal notranslate"><span class="pre">CONCAT()</span></code>.</p>
+</div>
 <br/>
 </section>
 </section>
@@ -467,9 +508,10 @@ document.write(`
 <li><p>Enteros.</p></li>
 <li><p>Flotantes.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p></li>
+<li><p>Para más información visitar la <a class="reference external" href="https://www.postgresql.org/docs/current/datatype-numeric.html">documentación de PostgreSQL</a>.</p></li>
 </ul>
 <section id="enteros">
-<h3>Enteros<a class="headerlink" href="#enteros" title="Link to this heading">#</a></h3>
+<span id="tipos-numericos-enteros"></span><h3>Enteros<a class="headerlink" href="#enteros" title="Link to this heading">#</a></h3>
 <p>Existen los siguientes tipos de datos numéricos enteros:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code> | <code class="docutils literal notranslate"><span class="pre">INT2</span></code>: Rango de -32,768 a 32,767.</p></li>
@@ -493,7 +535,7 @@ document.write(`
 </section>
 <section id="nan">
 <h3>NaN<a class="headerlink" href="#nan" title="Link to this heading">#</a></h3>
-<p>Es un valor especial que significa <em>‘Not a Number’</em>, se puede definir usando <code class="docutils literal notranslate"><span class="pre">'NaN'</span></code> (entre comillas simples).</p>
+<p>Es un valor especial que significa <em>‘Not a Number’</em>, se puede definir usando <code class="docutils literal notranslate"><span class="pre">'NaN'</span></code> (entre comillas simples, como una cadena).</p>
 <br/>
 </section>
 </section>
@@ -503,7 +545,11 @@ document.write(`
 <p>Existen 4 tipos principales para almacenar fechas y tiempo, todas ella respetan <em>ISO 8601</em> y para hacer referencia a una fecha en el <em>query</em> es necesario ponerla como una cadena (entre comillas simples), pero <strong>no</strong> es necesario convertir la cadena a una fecha por medio de algún método para convertir datos explícitamente. Por ejemplo, para hacer referencia a una fecha en un <em>query</em> usar: <br> <code class="docutils literal notranslate"><span class="pre">'YYYY-MM-DD'</span></code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><em>ISO 8601</em> se define una fecha y tiempo siguiendo el siguiente formato:</p>
+<p>Para más información sobre los tipos de fechas y tiempo visitar la <a class="reference external" href="https://www.postgresql.org/docs/current/datatype-datetime.html">documentación de PostgreSQL</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>En <em>ISO 8601</em> se define una fecha y tiempo siguiendo el siguiente formato:</p>
 <p><code class="docutils literal notranslate"><span class="pre">YYYY-MM-DDTHH:MM:SS</span></code></p>
 <ul class="simple">
 <li><p><em>YYYY</em>: Año de cuatro dígitos, desde 0000 a 9999.</p></li>
@@ -518,7 +564,7 @@ document.write(`
 <br/>
 <section id="creacion-de-un-valor-de-tipo-fecha">
 <h3>Creación de un valor de tipo fecha.<a class="headerlink" href="#creacion-de-un-valor-de-tipo-fecha" title="Link to this heading">#</a></h3>
-<p>Para crear una fecha o intervalo en el <em>query</em> se pueden utilizar tres opciones (ejemplos para el 31 de agosto del 2012 a la 1 en SELECT):</p>
+<p>Para crear una fecha o intervalo en el <em>query</em> se pueden utilizar tres opciones (ejemplos para el 31 de agosto del 2012 a la 1 AM en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>):</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Usando TIMESTAMP o algún tipo de dato de fecha:</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="s1">&#39;2012-08-31 01:00:00&#39;</span><span class="p">;</span>
 
@@ -531,13 +577,14 @@ document.write(`
 </div>
 <ul class="simple">
 <li><p>No necesariamente tiene que ser <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> puede ser cualquier otro tipo de dato de fecha o tiempo, siempre y cuando tenga el formato apropiado.</p></li>
+<li><p>Notar que la hora tiene que estar en formato de <strong>24 horas</strong>.</p></li>
 </ul>
 <br/>
 </section>
 <section id="date">
-<h3>DATE<a class="headerlink" href="#date" title="Link to this heading">#</a></h3>
+<h3>Date<a class="headerlink" href="#date" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">DATE</span></code> Almacena fechas y se deben de ingresar como cadena (entre comillas simples). El formato válido es el siguiente:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Formato válidos para crear un tipo DATE</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Formato válido para crear un tipo DATE</span>
 <span class="s1">&#39;YYYY-MM-DD&#39;</span>
 </pre></div>
 </div>
@@ -548,25 +595,18 @@ document.write(`
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Para obtener la fecha actual usar el comando: <br/> <code class="docutils literal notranslate"><span class="pre">CURRENT_DATE</span></code></p>
+<p>Para obtener la fecha actual usar la función especial: <br/> <code class="docutils literal notranslate"><span class="pre">CURRENT_DATE</span></code></p>
 </div>
 <br/>
 </section>
 <section id="time">
 <h3>Time<a class="headerlink" href="#time" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">TIME(PRECISION)</span></code>: Almacena tiempo. Algunos formatos admisibles son:</p>
+<p><code class="docutils literal notranslate"><span class="pre">TIME(PRECISION)</span></code> Almacena tiempo. Algunos formatos admisibles son:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Formatos válidos para crear un tipo TIME</span>
 <span class="s1">&#39;HH:MM:SS&#39;</span>
 <span class="s1">&#39;HHMMSS&#39;</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p><em>HH</em>: Horas de dos dígitos, desde 00 a 23.</p></li>
-<li><p><em>MM</em>: Minutos de dos dígitos, desde 00 a 59.</p></li>
-<li><p><em>SS</em>: Segundos de dos dígitos, desde 00 a 59.</p></li>
-</ul>
-<p>El tiempo puede almacenar la precisión, para ello solo agregar hasta 6 dígitos:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Time con precisión de hasta 6 dígitos</span>
+
+<span class="c1">-- Time con precisión de hasta 6 dígitos</span>
 <span class="s1">&#39;HH:MM:SS.pppppp&#39;</span>
 </pre></div>
 </div>
@@ -574,16 +614,21 @@ document.write(`
 <li><p><em>HH</em>: Horas de dos dígitos, desde 00 a 23.</p></li>
 <li><p><em>MM</em>: Minutos de dos dígitos, desde 00 a 59.</p></li>
 <li><p><em>SS</em>: Segundos de dos dígitos, desde 00 a 59.</p></li>
+<li><p>El tiempo puede almacenar la precisión, para ello solo agregar hasta 6 dígitos:</p>
+<ul>
 <li><p><em>p</em> son dígitos.</p></li>
+</ul>
+</li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Para obtener la hora actual con zona horaria usar el comando: <br/> <code class="docutils literal notranslate"><span class="pre">CURRENT_TIME</span></code></p>
+<p>Para obtener la hora actual con zona horaria usar la función especial: <br/> <code class="docutils literal notranslate"><span class="pre">CURRENT_TIME</span></code></p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Para revisar como crear <code class="docutils literal notranslate"><span class="pre">TIME</span></code> con zona horaria revisar <a class="reference internal" href="#tipos-zona-horaria"><span class="std std-ref">Zonas horarias</span></a>.</p>
 </div>
+<br/>
 </section>
 <section id="timestamp">
 <h3>Timestamp<a class="headerlink" href="#timestamp" title="Link to this heading">#</a></h3>
@@ -609,19 +654,21 @@ document.write(`
 <li><p><em>MM</em>: Minutos de dos dígitos, desde 00 a 59.</p></li>
 <li><p><em>SS</em>: Segundos de dos dígitos, desde 00 a 59.</p></li>
 <li><p><em>‘time_zone’</em> es una abreviación en cadena de la zona horaria o una cadena de tipo <code class="docutils literal notranslate"><span class="pre">'Continent/City'</span></code>. Para consultar los códigos visitar <a class="reference external" href="http://www.healthstream.com/hlchelp/Administrator/Classes/HLC_Time_Zone_Abbreviations.htm">esta página</a>.</p></li>
+<li><p><strong>Importante</strong>: Si no se especifican los campos de tiempo por default tendrán valor de cero: <br/> <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span> <span class="pre">'2012-08-31'</span> <span class="pre">-&gt;</span> <span class="pre">TIMESTAMP</span> <span class="pre">'2012-08-31</span> <span class="pre">00:00:00'</span></code></p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Para obtener la fecha y hora actual con zona horaria usar el comando: <br/> <code class="docutils literal notranslate"><span class="pre">CURRENT_TIMESTAMP</span></code></p>
+<p>Para obtener la fecha y hora actual con zona horaria usar la función especial: <br/> <code class="docutils literal notranslate"><span class="pre">CURRENT_TIMESTAMP</span></code></p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Para revisar como crear <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> con zona horaria revisar <a class="reference internal" href="#tipos-zona-horaria"><span class="std std-ref">Zonas horarias</span></a>.</p>
 </div>
+<br/>
 </section>
 <section id="zonas-horarias">
 <span id="tipos-zona-horaria"></span><h3>Zonas horarias<a class="headerlink" href="#zonas-horarias" title="Link to this heading">#</a></h3>
-<p>El tiempo puede tener una zona horaria, cuando se declare una columna del tipo <code class="docutils literal notranslate"><span class="pre">TIME</span></code> o <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> es necesario indicar que debe incluir zona horaria:</p>
+<p>El tiempo puede tener una zona horaria, cuando se declare una columna del tipo <code class="docutils literal notranslate"><span class="pre">TIME</span></code> o <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> es necesario indicar si debe incluir zona horaria:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Agregar zona horaria</span>
 <span class="n">expression</span><span class="w"> </span><span class="k">AT</span><span class="w"> </span><span class="k">TIME</span><span class="w"> </span><span class="k">ZONE</span><span class="w"> </span><span class="s1">&#39;time_zone&#39;</span>
 <span class="n">expression</span><span class="w"> </span><span class="k">AT</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">ZONE</span><span class="w"> </span><span class="s1">&#39;time_zone&#39;</span>
@@ -646,7 +693,7 @@ document.write(`
 <li><p><em>expression</em> puede ser una columna o un valor de tipo <code class="docutils literal notranslate"><span class="pre">TIME</span></code> o <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> con zona horaria.</p></li>
 <li><p><em>‘time_zone’</em> es una abreviación en cadena de la zona horaria o una cadena de tipo <code class="docutils literal notranslate"><span class="pre">'Continent/City'</span></code>. Para consultar los códigos visitar <a class="reference external" href="http://www.healthstream.com/hlchelp/Administrator/Classes/HLC_Time_Zone_Abbreviations.htm">esta página</a>.</p></li>
 </ul>
-<p>Existen unos comandos especiales para establecer o mostrar la zona horaria actual del servidor (no se usan con <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>):</p>
+<p>Existen unos comandos especiales para establecer o mostrar la zona horaria actual del servidor:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Para establecer la zona horaria del servidor.</span>
 <span class="k">SET</span><span class="w"> </span><span class="n">timezone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;time_zone&#39;</span>
 
@@ -661,7 +708,7 @@ document.write(`
 </section>
 <section id="interval">
 <h3>Interval<a class="headerlink" href="#interval" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code> Permite almacenar y manipular periodos de tiempo en años, meses, días, horas, minutos, segundos, etc.</p>
+<p><code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code> permite almacenar y manipular periodos de tiempo en años, meses, días, horas, minutos, segundos, etc.</p>
 <p>Se definen como cadenas, especificando el número y el campo, pueden ser más de uno y estos se se puede estar en singular o plural, además se puede definir una dirección, la sintaxis general es:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Definir un intervalo</span>
 <span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;quantity unit [quantity2 unit2] ... [AGO]&#39;</span>
@@ -684,9 +731,9 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">millisecond</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">microsecond</span></code></p></li>
 <li><p>o abreviaciones de los anteriores (<code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">d</span></code>, etc.) o formas plurales (<code class="docutils literal notranslate"><span class="pre">months</span></code>, <code class="docutils literal notranslate"><span class="pre">days</span></code>, etc.).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">AGO</span></code> convierte el intervalo en un intervalo negativo.</p></li>
 </ul>
 </li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AGO</span></code> convierte el intervalo en un intervalo negativo.</p></li>
 </ul>
 <p>Algunos ejemplos de intervalos:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Intervalo de 2 meses</span>
@@ -748,21 +795,54 @@ document.write(`
 <h3>Operaciones y comparaciones con fechas<a class="headerlink" href="#operaciones-y-comparaciones-con-fechas" title="Link to this heading">#</a></h3>
 <p>Algunas características de realizar operaciones con fechas:</p>
 <ul class="simple">
-<li><p>Se pueden hacer comparaciones entre fechas con los <span class="xref std std-ref">operadores-comparacion</span> y retornar valores <code class="docutils literal notranslate"><span class="pre">BOOL</span></code>. Ejemplo con ‘mayor que’ y <code class="docutils literal notranslate"><span class="pre">DATE</span></code>: <br> <code class="docutils literal notranslate"><span class="pre">DATE</span> <span class="pre">'YYYY-MM-DD'</span> <span class="pre">&gt;</span> <span class="pre">DATE</span> <span class="pre">'YYYY-MM-DD'</span></code></p></li>
-<li><p>Se pueden extraer dos fechas dando como resultado un entero o un intervalo. Si una de las fechas no es una columna se debe de poner <code class="docutils literal notranslate"><span class="pre">DATE</span></code>/<code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> antes de la fecha. Ejemplo de restarle a una columna de fecha una fecha específica: <br> <code class="docutils literal notranslate"><span class="pre">col</span> <span class="pre">-</span> <span class="pre">DATE|TIMESTAMP</span> <span class="pre">'YYYY-MM-DD'</span></code></p></li>
-<li><p>A una <code class="docutils literal notranslate"><span class="pre">DATE</span></code>/<code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> se le puede sumar/extraer un entero que representa días, dando como resultado <code class="docutils literal notranslate"><span class="pre">DATE</span></code>/<code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>. Ejemplo de agregar <em>N</em> días a una fecha. No es estrictamente necesario poner <code class="docutils literal notranslate"><span class="pre">INT</span></code>. <strong>IMPORTANTE</strong>: si se quiere agregar una unidad diferente a días usar <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code>. <BR> <code class="docutils literal notranslate"><span class="pre">DATE</span> <span class="pre">'YYYY-MM-DD'</span> <span class="pre">+</span> <span class="pre">INT</span> <span class="pre">N</span></code></p></li>
-<li><p>Si se extraen dos <code class="docutils literal notranslate"><span class="pre">TIMESTAMPS</span></code> dará como resultado <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code>.</p></li>
-<li><p>Se puede usar <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code> para hacer operaciones más complejas con fechas y tiempos.</p></li>
+<li><p><strong>Comparaciones</strong></p>
+<ul>
+<li><p>Se pueden hacer comparaciones entre fechas e intervalos con los <a class="reference internal" href="operadores.html#operadores-comparacion"><span class="std std-ref">Operadores de Comparación</span></a> y retornar valores <code class="docutils literal notranslate"><span class="pre">BOOL</span></code>. Ejemplos : <br> <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">DATE</span> <span class="pre">'YYYY-MM-DD'</span> <span class="pre">&gt;</span> <span class="pre">DATE</span> <span class="pre">'YYYY-MM-DD'</span></code> <br> <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">INTERVAL</span> <span class="pre">'quantity</span> <span class="pre">unit'</span> <span class="pre">=</span> <span class="pre">INTERVAL</span> <span class="pre">'quantity</span> <span class="pre">unit'</span></code></p></li>
 </ul>
+</li>
+<li><p><strong>Operaciones entre datos de fechas y tiempo</strong></p>
+<ul>
+<li><p>Se pueden extraer dos fechas dando como resultado <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> o <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code>. Las operaciones se pueden hacer entre columnas, valores directamente o combinación de los anteriores. Ejemplo de restarle a una columna de fecha una fecha específica: <br> <code class="docutils literal notranslate"><span class="pre">col</span> <span class="pre">-</span> <span class="pre">DATE|TIMESTAMP</span> <span class="pre">'YYYY-MM-DD'</span></code></p></li>
+<li><p>Si se extraen dos <code class="docutils literal notranslate"><span class="pre">TIMESTAMPS</span></code> dará como resultado <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Operaciones entre fechas y tiempo y otros tipos</strong></p>
+<ul>
+<li><p>A una <code class="docutils literal notranslate"><span class="pre">DATE</span></code>/<code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> se le puede sumar/extraer un <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> que representa días, dando como resultado <code class="docutils literal notranslate"><span class="pre">DATE</span></code>/<code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>. Ejemplo de agregar <em>N</em> días a una fecha. No es estrictamente necesario poner <code class="docutils literal notranslate"><span class="pre">INT</span></code>. <br/> <code class="docutils literal notranslate"><span class="pre">DATE</span> <span class="pre">'YYYY-MM-DD'</span> <span class="pre">+</span> <span class="pre">INT</span> <span class="pre">N</span></code></p></li>
+<li><p>Se puede usar <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code> para hacer operaciones más complejas con fechas y tiempos y los operadores de suma y resta. <br/> <code class="docutils literal notranslate"><span class="pre">DATE</span> <span class="pre">'YYYY-MM-DD'</span> <span class="pre">+|-</span> <span class="pre">INTERVAL</span> <span class="pre">'quantity</span> <span class="pre">unit'</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Operaciones entre intervalos y enteros</strong></p>
+<ul>
+<li><p>Un intervalo se puede múltiplicar o dividir con <code class="docutils literal notranslate"><span class="pre">INTERGER</span></code> y dar como resultado otro <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code>. <br/> <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">*</span> <span class="pre">INTERVAL'quantity</span> <span class="pre">unit'</span></code></p></li>
+</ul>
+</li>
+</ul>
+<br/>
 <p><strong>Ejemplos</strong>:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Comparación</span>
 <span class="nb">DATE</span><span class="w"> </span><span class="s1">&#39;2020-05-20&#39;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="s1">&#39;2021-05-20&#39;</span><span class="w"> </span><span class="c1">-- Retorna FALSE</span>
 
+<span class="c1">-- Comparación en WHERE</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">date_column</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2020-05-20&#39;</span>
+<span class="w">    </span>
+<span class="c1">-- Comparación de INTERVAL</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;30 minutes&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;0.5 hours&#39;</span><span class="p">;</span>
+
 <span class="c1">-- Restar dos fechas</span>
 <span class="nb">DATE</span><span class="w"> </span><span class="s1">&#39;2020-05-20&#39;</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="s1">&#39;2021-05-20&#39;</span><span class="w"> </span><span class="c1">-- Retorna -365</span>
 
-<span class="c1">-- Restar dos fechas</span>
+<span class="c1">-- Restar días a una fecha</span>
 <span class="nb">DATE</span><span class="w"> </span><span class="s1">&#39;2020-05-21&#39;</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">365</span><span class="w"> </span><span class="c1">-- Retorna 2020-05-20</span>
+
+<span class="c1">-- Sumar a una fecha un intervalo</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="s1">&#39;2023-01-01 00:00:00&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;30 minutes&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Restar dos intervalos</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;1 day&#39;</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;2 hours&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Multiplicar un intervalo</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;1 hour&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">5</span><span class="p">;</span>
 </pre></div>
 </div>
 <br/>
@@ -771,7 +851,11 @@ document.write(`
 <hr class="docutils" />
 <section id="arrays">
 <h2>Arrays<a class="headerlink" href="#arrays" title="Link to this heading">#</a></h2>
-<p>Cada tipo de dato tiene su contraparte en array, por ejemplo, la contraparte de <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> es <code class="docutils literal notranslate"><span class="pre">INTEGER[]</span></code>.</p>
+<p>Cada tipo de dato tiene su contraparte en <em>array</em>, por ejemplo, la contraparte de <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> es <code class="docutils literal notranslate"><span class="pre">INTEGER[]</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Para más información sobre los <em>arrays</em> visitar la <a class="reference external" href="https://www.postgresql.org/docs/current/arrays.html">documentación de PostgreSQL</a>.</p>
+</div>
 <section id="crear-columnas-de-tipo-array">
 <h3>Crear columnas de tipo array<a class="headerlink" href="#crear-columnas-de-tipo-array" title="Link to this heading">#</a></h3>
 <p>Cualquier columna puede ser del tipo <em>array</em>, para ello solo agregar los corchetes al momento de definir la columna (ejemplo con <code class="docutils literal notranslate"><span class="pre">CHAR</span></code>):</p>
@@ -789,8 +873,8 @@ document.write(`
 </ul>
 <br/>
 </section>
-<section id="insertar-valores-a-un-array">
-<h3>Insertar valores a un array<a class="headerlink" href="#insertar-valores-a-un-array" title="Link to this heading">#</a></h3>
+<section id="insertar-valores">
+<h3>Insertar valores<a class="headerlink" href="#insertar-valores" title="Link to this heading">#</a></h3>
 <p>Para insertar valores a una columna de tipo <em>array</em> en una tabla usar:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Insertar valores a columnas de tipo _array_</span>
 <span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="p">(</span><span class="n">col1</span><span class="p">,</span><span class="w"> </span><span class="n">col2</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
@@ -800,24 +884,22 @@ document.write(`
 <ul class="simple">
 <li><p>En este caso <em>col2</em> es un <em>array</em>, al momento de insertar los valores se ponen entre corchetes junto a la sentencia <code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> y cada uno de los valores del <em>array</em> separados por coma.</p></li>
 <li><p>En lugar de usar <code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> se puede usar llaves, debe de ir entre comillas simples. Si los elementos son de tipo carácter, cada elemento debe de ir entre comillas dobles y todo entre comillas simples: <br> <code class="docutils literal notranslate"><span class="pre">VALUES(val1,</span> <span class="pre">'{&quot;vali&quot;,</span> <span class="pre">&quot;valj&quot;,</span> <span class="pre">...}',</span> <span class="pre">...)</span></code></p></li>
-<li><p>Para array de dos dimensiones usar:</p></li>
+<li><p>Para array de dos dimensiones usar:</p>
+<ul>
+<li><p>Con la sentencia ARRAY: <code class="docutils literal notranslate"><span class="pre">ARRAY[[val1,1,</span> <span class="pre">val1,2,</span> <span class="pre">...],</span> <span class="pre">[val2,1,</span> <span class="pre">val2,2,</span> <span class="pre">...]]</span></code></p></li>
+<li><p>Con la notación entre llaves: <code class="docutils literal notranslate"><span class="pre">{{val1,</span> <span class="pre">val2,</span> <span class="pre">...},</span> <span class="pre">{val1,</span> <span class="pre">val2,</span> <span class="pre">...},</span> <span class="pre">...}</span></code></p></li>
 </ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Con la sentencia ARRAY</span>
-<span class="nb">ARRAY</span><span class="p">[[</span><span class="n">val1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">val1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">...],</span><span class="w"> </span><span class="p">[</span><span class="n">val2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">val2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">...]]</span>
-<span class="w">	</span>
-<span class="c1">-- Con la notación entre llaves:</span>
-<span class="err">\{\{</span><span class="n">val1</span><span class="p">,</span><span class="w"> </span><span class="n">val2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="err">\{</span><span class="n">val1</span><span class="p">,</span><span class="w"> </span><span class="n">val2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="err">}</span>
-</pre></div>
-</div>
+</li>
+</ul>
 <br/>
 </section>
-<section id="seleccionar-elementos-de-un-array">
-<h3>Seleccionar elementos de un array<a class="headerlink" href="#seleccionar-elementos-de-un-array" title="Link to this heading">#</a></h3>
+<section id="seleccionar-elementos">
+<h3>Seleccionar elementos<a class="headerlink" href="#seleccionar-elementos" title="Link to this heading">#</a></h3>
 <p>Para seleccionar elementos de un <em>array</em> se hace uso de corchetes y los índices de los elementos:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Seleccionar elemento en el índice &#39;i&#39;</span>
 <span class="n">col</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 
-<span class="c1">-- Seleccionar elemento la coordenada &#39;(i,j)&#39;</span>
+<span class="c1">-- Seleccionar elemento en la coordenada &#39;(i, j)&#39;</span>
 <span class="n">col</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -827,8 +909,8 @@ document.write(`
 </ul>
 <br/>
 </section>
-<section id="modificar-un-elementos">
-<h3>Modificar un elementos<a class="headerlink" href="#modificar-un-elementos" title="Link to this heading">#</a></h3>
+<section id="modificar-elementos">
+<h3>Modificar elementos<a class="headerlink" href="#modificar-elementos" title="Link to this heading">#</a></h3>
 <p>Para modificar un elemento en concreto de una columna de tipo <em>array</em>, se debe seleccionar y asignar un nuevo valor:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Modificar elemento en el índice &#39;i&#39;</span>
 <span class="k">UPDATE</span><span class="w"> </span><span class="k">table</span>
@@ -844,18 +926,18 @@ document.write(`
 </ul>
 <br/>
 </section>
-<section id="verificar-que-un-elemento-este-en-un-array">
-<h3>Verificar que un elemento esté en un array<a class="headerlink" href="#verificar-que-un-elemento-este-en-un-array" title="Link to this heading">#</a></h3>
-<p>Se puede utilizar la función <code class="docutils literal notranslate"><span class="pre">ANY()</span></code> para verificar que un elemento esté en un <em>array</em>:</p>
+<section id="verificar-membresia">
+<h3>Verificar membresía<a class="headerlink" href="#verificar-membresia" title="Link to this heading">#</a></h3>
+<p>Se puede utilizar la función <code class="docutils literal notranslate"><span class="pre">ANY()</span></code> para verificar que un elemento exista en un <em>array</em>:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Usando la función ANY()</span>
 <span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">ANY</span><span class="p">(</span><span class="n">col</span><span class="p">);</span>
 
-<span class="c1">-- Otra formar sería:</span>
+<span class="c1">-- Otra formar sería</span>
 <span class="n">nomArray</span><span class="w"> </span><span class="o">@&gt;</span><span class="w"> </span><span class="nb">ARRAY</span><span class="p">[</span><span class="n">val</span><span class="p">]</span><span class="w"> </span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Si <code class="docutils literal notranslate"><span class="pre">val</span></code> es una cadena, se debe de poner entre comillas simples.</p></li>
+<li><p>Si <em>val</em> es una cadena, se debe de poner entre comillas simples.</p></li>
 <li><p>Las expresiones anteriores retornan valores <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> o <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>.</p></li>
 </ul>
 <br/>
@@ -900,26 +982,32 @@ document.write(`
 <h2>Otros<a class="headerlink" href="#otros" title="Link to this heading">#</a></h2>
 <p>Otros tipos de datos existentes en PostgreSQL son:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">JSON</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">UUID</span></code>.</p></li>
-<li><p>Epeciales:</p>
+<li><p><a class="reference external" href="https://www.postgresql.org/docs/current/datatype-binary.html">Binarios</a>.</p></li>
+<li><p><a class="reference external" href="https://www.postgresql.org/docs/current/datatype-enum.html">Enumerados</a>.</p></li>
+<li><p><a class="reference external" href="https://www.postgresql.org/docs/current/datatype-geometric.html">Geométricos</a>:</p>
 <ul>
-<li><p>box`</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">box</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">line</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">point</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">lseg</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">point</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">polygon</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">inet</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">macaddr</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">circle</span></code></p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://www.postgresql.org/docs/current/datatype-json.html">JSON</a>.</p></li>
+<li><p><a class="reference external" href="https://www.postgresql.org/docs/current/datatype-money.html">Monetarios</a>.</p></li>
+<li><p><a class="reference external" href="https://www.postgresql.org/docs/current/rangetypes.html">Rangos</a></p></li>
+<li><p><a class="reference external" href="https://www.postgresql.org/docs/current/datatype-uuid.html">UUID</a>.</p></li>
+<li><p><a class="reference external" href="https://www.postgresql.org/docs/current/datatype-xml.html">XML</a>.</p></li>
 </ul>
 <br/>
 </section>
+<hr class="docutils" />
 <section id="conversion">
 <h2>Conversión<a class="headerlink" href="#conversion" title="Link to this heading">#</a></h2>
 <p>Para convertir un tipo de dato a otro usar:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Converter &#39;expression&#39; a &#39;type&#39;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Convertir &#39;expression&#39; a &#39;type&#39;</span>
 <span class="n">expression</span><span class="w"> </span><span class="p">::</span><span class="w"> </span><span class="k">type</span>
 </pre></div>
 </div>
@@ -934,6 +1022,10 @@ document.write(`
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>También es posible usar la función <code class="docutils literal notranslate"><span class="pre">CAST()</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Si se convierte un tipo <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> a <code class="docutils literal notranslate"><span class="pre">DATE</span></code>, se truncará la fecha a los días, es decir, se mantendrá únicamente la información de la fecha, sin modificarla.</p>
 </div>
 </section>
 </section>
@@ -978,11 +1070,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="dql-index.html"
+       href="udf.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data Query Language (DQL)</p>
+        <p class="prev-next-title">Funciones (UDF)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1003,7 +1095,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bool">Bool</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caracter">Carácter</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cadenas">Cadenas</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concatenacion">Concatenación</a></li>
 </ul>
 </li>
@@ -1015,7 +1107,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fechas-y-tiempo">Fechas y Tiempo</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-un-valor-de-tipo-fecha">Creación de un valor de tipo fecha.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date">DATE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date">Date</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time">Time</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timestamp">Timestamp</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonas-horarias">Zonas horarias</a></li>
@@ -1025,10 +1117,10 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays">Arrays</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-columnas-de-tipo-array">Crear columnas de tipo array</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insertar-valores-a-un-array">Insertar valores a un array</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccionar-elementos-de-un-array">Seleccionar elementos de un array</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modificar-un-elementos">Modificar un elementos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verificar-que-un-elemento-este-en-un-array">Verificar que un elemento esté en un array</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insertar-valores">Insertar valores</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccionar-elementos">Seleccionar elementos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modificar-elementos">Modificar elementos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verificar-membresia">Verificar membresía</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#null">NULL</a><ul class="nav section-nav flex-column">

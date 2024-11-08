@@ -1,0 +1,1635 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Funciones &#8212; Manual de SQL</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'parts/postgresql/funciones';</script>
+    <link rel="icon" href="../../_static/nebok-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Extensiones" href="extensiones.html" />
+    <link rel="prev" title="Revocar" href="dcl/revocar.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nebok-logo.png" class="logo__image only-light" alt="Manual de SQL - Home"/>
+    <script>document.write(`<img src="../../_static/nebok-logo.png" class="logo__image only-dark" alt="Manual de SQL - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Manual de SQL
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../teoria/teoria-index.html">Conceptos y teoría</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../teoria/teoria.html">Teoría</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../teoria/sql.html">SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="postgre-index.html">PostgreSQL</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="comentarios.html">Comentarios.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operadores.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipos-de-datos.html">Tipos de Datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="udf.html">Funciones (UDF)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dql/dql-index.html">Data Query Language (DQL)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dql/seleccion.html">Seleccionar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/filtrado.html">Filtrar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/ordenar.html">Ordenar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/joins.html">Join</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/agrupar.html">Agrupar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/operaciones-conjuntos.html">Operaciones de conjuntos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/expresiones-condicionales.html">Sentencias condicionales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/window-functions.html">Window Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/subqueries.html">Subqueries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/common-table-expression.html">Common Table Expression (CTE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/full_text_search.html">Full text search</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dml/dml-index.html">Data Manipulation Language (DML)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dml/insertar.html">Insertar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dml/actualizar.html">Actualizar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dml/eliminar.html">Eliminar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="ddl/ddl-index.html">Data Definition Language (DDL)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="ddl/crear.html">Crear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ddl/modificar.html">Modificar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ddl/eliminar.html">Eliminar y Truncar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dcl/dcl-index.html">Data Control Language (DCL)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dcl/conceder.html">Otorgar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dcl/revocar.html">Revocar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Funciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensiones.html">Extensiones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psql.html">psql</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anexos.html">Anexos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookbook.html">Cookbook</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/parts/postgresql/funciones.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Funciones</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-functions">Aggregate functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cadenas">Cadenas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ascii">ASCII</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concatenar">Concatenar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expresiones-regulares">Expresiones regulares</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formato">Formato</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion">Información</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subcadenas-y-splits">Subcadenas y splits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repetir-reemplazar-y-revertir">Repetir, Reemplazar y Revertir</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trim-y-pad">TRIM y PAD</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion">Conversión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estadisticas">Estadísticas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varianzas-y-desviaciones">Varianzas y desviaciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlaciones">Correlaciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles">Percentiles</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fechas-y-tiempos">Fechas y Tiempos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fecha-y-tiempos-actuales">Fecha y tiempos actuales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operaciones">Operaciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partes-de-fechas-y-truncar">Partes de fechas y truncar</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numericas">Numéricas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscelaneas">Miscelaneas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numeros-aleatorios">Números aleatorios</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#redondeo-y-truncar">Redondeo y Truncar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#series">Series</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-null">Valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#window-functions">Window functions</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="funciones">
+<h1>Funciones<a class="headerlink" href="#funciones" title="Link to this heading">#</a></h1>
+<p>En esta sección se enlistas las principales funciones que ya forman parte de PostgreSQL.</p>
+<section id="aggregate-functions">
+<span id="funciones-aggregate"></span><h2>Aggregate functions<a class="headerlink" href="#aggregate-functions" title="Link to this heading">#</a></h2>
+<p>Son funciones que resumen una cantidad de datos en un solo número, algunas de sus características son:</p>
+<ul class="simple">
+<li><p>Sirven para hacer cálculos con los datos en el <em>database</em>.</p></li>
+<li><p>Devuelven un solo valor.</p></li>
+<li><p>Para cada columna se debe de volver a usar la función.</p></li>
+<li><p>Es muy recomendable usar <code class="docutils literal notranslate"><span class="pre">AS</span></code> para darle nombre al resultado.</p></li>
+<li><p>Estas funciones son iguales en todas las plataformas de SQL.</p></li>
+<li><p>Se pueden usar únicamente en las sentencias <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> y <code class="docutils literal notranslate"><span class="pre">HAVING</span></code>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Los valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code> son ignorados en este tipo de funciones.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Esta no es una lista completa de las <em>aggregate functions</em> disponibles. Para una lista completa y más información visitar la <a class="reference external" href="https://www.postgresql.org/docs/current/functions-aggregate.html">documentación</a> de PostgreSQL.</p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AVG(col)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Calcula el promedio de una columna.</p>
+<ul>
+<li><p><em>col</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es la expresión o columna.</p></li>
+<li><p>Es posible promediar solo valores distintos si se agrega la palabra <code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code>.
+<br/></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ARRAY_AGG(anyarray</span> <span class="pre">[ORDER</span> <span class="pre">BY</span> <span class="pre">[sort_expression</span> <span class="pre">{ASC</span> <span class="pre">|</span> <span class="pre">DESC}],</span> <span class="pre">[...])</span></code> - <code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> <br/> Recibe un conjunto de valores y retorna un <em>array</em>, en el cual cada elemento en el conjunto es asignado a un elemento del <em>array</em>. Es posible ordenar los valores antes de conformar el <em>array</em>.</p>
+<ul>
+<li><p><em>anyarray</em>: Es una expresión que retorna un valor de cualquier tipo aceptado por un <em>array</em>, por ejemplo la concatenación de dos columnas.</p></li>
+<li><p><em>sort_expression</em> - <code class="docutils literal notranslate"><span class="pre">{ASC</span> <span class="pre">|</span> <span class="pre">DESC}</span></code>: Es para indicar como ordenar los valores de <em>expression</em>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">COUNT(col)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Devuelve el número de filas en una columna/s específica de una tabla.</p>
+<ul>
+<li><p><em>col</em> - <code class="docutils literal notranslate"><span class="pre">VARIANT</span></code>: Es la expresión o columna.</p></li>
+<li><p>Casos especiales:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">COUNT(*)</span></code>: El número total de filas que tiene una tabla.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COUNT(col)</span></code>: El número de valores no <code class="docutils literal notranslate"><span class="pre">NULL</span></code> de una columna.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COUNT(DISTINCT</span> <span class="pre">col)</span></code>: El número de valores únicos que tienen una columna. Sin incluir <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SUM(col)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Calcula la suma de una columna.</p>
+<ul>
+<li><p><em>col</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es la expresión o columna.</p></li>
+<li><p>Es posible sumar solo valores distintos si se agrega la palabra <code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MAX(col)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>, <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>, <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> <br/> Calcula el valor máximo de una columna. Si son caracteres será por orden alfabético.</p>
+<ul>
+<li><p><em>col</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>, <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>, <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>: Es la expresión o columna.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MIN(col)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>, <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>, <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> <br/> Calcula el valor mínimo de una columna. Si son caracteres será por orden alfabético.</p>
+<ul>
+<li><p><em>col</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>, <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>, <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>: Es la expresión o columna.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<p><strong>Ejemplos</strong>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Uso de COUNT para contar filas</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">facilities</span><span class="p">;</span>
+
+<span class="c1">-- Uso de MAX</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">joindate</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">latest</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">members</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pgexercises.com/questions/aggregates/count.html">Uso de COUNT</a>: En este ejemplo se cuenta el número de filas en la tabla <em>cd.facilities</em>.</p></li>
+<li><p><a class="reference external" href="https://pgexercises.com/questions/basic/agg.html">Uso de MAX</a>: En este ejemplo se determina el valor máximo de la columna <em>joindate</em>.</p></li>
+</ul>
+<p><br/><br/></p>
+<hr class="docutils" />
+</section>
+<section id="cadenas">
+<span id="funciones-cadenas"></span><h2>Cadenas<a class="headerlink" href="#cadenas" title="Link to this heading">#</a></h2>
+<p>En esta sección se enlistan funciones útiles para valores y columnas de tipo texto.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Esta no es una lista completa de las funciones de cadenas disponibles. Para una lista completa y más información visitar la <a class="reference external" href="https://www.postgresql.org/docs/current/functions-string.html">documentación</a> de PostgreSQL.</p>
+</div>
+<section id="ascii">
+<h3>ASCII<a class="headerlink" href="#ascii" title="Link to this heading">#</a></h3>
+<p>Funciones relacionadas con códigos ASCII.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ASCII(text)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Retorna el código ASCII de un carácter.</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: El carácter del cual se quiere conocer el código ASCII.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CHR(integer)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Retorna el carácter asociado a un código ASCII.</p>
+<ul>
+<li><p><em>integer</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: El código ASCII.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Para consultar los códigos ASCII visitar <a class="reference external" href="https://www.ascii-code.com/">esta página</a>.</p>
+</div>
+<br/>
+</section>
+<section id="concatenar">
+<h3>Concatenar<a class="headerlink" href="#concatenar" title="Link to this heading">#</a></h3>
+<p>Funciones útiles para concatenar cadenas.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CONCAT(str1,</span> <span class="pre">str2,</span> <span class="pre">...)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Concatena cadenas, símbolos y valores. Ignora valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Para concatenar con un separador en común revisar <code class="docutils literal notranslate"><span class="pre">CONCAT_WS()</span></code>. También se pueden usar los operadores de concatenación <code class="docutils literal notranslate"><span class="pre">||</span></code>.</p>
+<ul>
+<li><p><em>str1, str2, …</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadenas a concatenar, separar cada cadena con una coma. Es posible poner valores que no sean <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> pero se convertirán a <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>. Pueden ser columnas.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CONCAT_WS(sep,</span> <span class="pre">str1,</span> <span class="pre">str2,</span> <span class="pre">...)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Concatena cadenas, símbolos y valores con un separador entre cada elemento. Ignora valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<ul>
+<li><p><em>sep</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Carácter que se utilizará para separar cada elemento.</p></li>
+<li><p><em>str1, str2, …</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadenas a concatenar, separar cada cadena con una coma. Es posible poner valores que no sean <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> pero se convertirán a <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>. Pueden ser columnas.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">STRING_AGG(str,</span> <span class="pre">sep</span> <span class="pre">[ORDER</span> <span class="pre">BY</span> <span class="pre">exp])</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Concatena una lista de caracteres y las separa con un separados específico.</p>
+<ul>
+<li><p><em>str</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Es cualquier expresión que resulte en una cadena, como por ejemplo la concatenación de dos columnas o una sola columna. Si el resultado no es una cadena, se debe convertir a una cadena explícitamente.</p></li>
+<li><p><em>sep</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: es el separador que se utilizara para concatenar cada elemento, debe ser de tipo <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> o ir entre comillas simples. En ese mismo argumento se puede especificar cómo ordenar las cadenas. También se puede hacer con: <br/> <code class="docutils literal notranslate"><span class="pre">STRING_AGG(STR,</span> <span class="pre">sep)</span> <span class="pre">WITHIN</span> <span class="pre">GROUP</span> <span class="pre">(ORDER</span> <span class="pre">BY</span> <span class="pre">...)</span></code></p></li>
+</ul>
+</li>
+</ul>
+<br/>
+</section>
+<section id="expresiones-regulares">
+<h3>Expresiones regulares<a class="headerlink" href="#expresiones-regulares" title="Link to this heading">#</a></h3>
+<p>Funciones que permiten usar expresiones regulares.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Esta no es una lista completa de las funciones compatibles con expresiones regulares. Para una lista completa y más información visitar la <a class="reference external" href="https://www.postgresql.org/docs/current/functions-string.html">documentación</a> de PostgreSQL, particulamente las funciones que inician con <em>regex</em>*_.</p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">REGEXP_COUNT(str,</span> <span class="pre">pattern,</span> <span class="pre">[start,</span> <span class="pre">flags])</span></code> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> <br/> Retorna el recuento de coincidencias de un patrón en un cadena.</p>
+<ul>
+<li><p><em>str</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena donde se hará el recuento.</p></li>
+<li><p><em>pattern</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Expresión regular (POSIX) para determinar lo que se va a buscar.</p></li>
+<li><p><em>start</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: Indica desde cuál caracter hacer la búsqueda.</p></li>
+<li><p><em>flags</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: <em>Flags</em> a aplicar a la expresión regular.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REGEXP_INSTR(str,</span> <span class="pre">pattern,</span> <span class="pre">[start,</span> <span class="pre">N,</span> <span class="pre">endpoint,</span> <span class="pre">flags,</span> <span class="pre">subexpr])</span></code> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> <br/> Retorna la posición en la cadena donde ocurre la coincidencia número <em>N</em> del patrón. Retorna 0 si no hay coincidencia.</p>
+<ul>
+<li><p><em>str</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena donde se harán los reemplazos.</p></li>
+<li><p><em>pattern</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Expresión regular (POSIX) para determinar lo que se va a reemplazar.</p></li>
+<li><p><em>start</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: Indica desde cuál caracter hacer la búsqueda.</p></li>
+<li><p><em>N</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: Número de coincidencia.</p></li>
+<li><p><em>flags</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: <em>Flags</em> a aplicar a la expresión regular.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REGEXP_LIKE(str,</span> <span class="pre">pattern,</span> <span class="pre">[flags])</span></code> - <code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code> <br/> Indica si existe una coincidencia de un patrón en una cadena.</p>
+<ul>
+<li><p><em>str</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena donde se hará la búsqueda.</p></li>
+<li><p><em>pattern</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Expresión regular (POSIX) para determinar lo que se va a buscar.</p></li>
+<li><p><em>flags</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: <em>Flags</em> a aplicar a la expresión regular.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REGEXP_MATCH(str,</span> <span class="pre">pattern,</span> <span class="pre">[flags])</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT[]</span></code> <br/> Retorna la primer coincidencia de un patrón en una cadena. Para retornar todos los <em>matches</em> revisar la función <code class="docutils literal notranslate"><span class="pre">REGEXP_MATCHES</span></code> en la <a class="reference external" href="https://www.postgresql.org/docs/current/functions-string.html">documentación</a>.</p>
+<ul>
+<li><p><em>str</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena donde se hará la búsqueda.</p></li>
+<li><p><em>pattern</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Expresión regular (POSIX) para determinar lo que se va a buscar.</p></li>
+<li><p><em>flags</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: <em>Flags</em> a aplicar a la expresión regular.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REGEXP_REPLACE(str,</span> <span class="pre">pattern,</span> <span class="pre">replacement,</span> <span class="pre">[flags])</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Reemplazar los <em>match</em> de una expresión regular por una cadena. Por default solo se reemplazará la primer coincidencia, para reemplazar todas las coincidencias usar la <em>flag</em> ‘g’.</p>
+<ul>
+<li><p><em>str</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena donde se harán los reemplazos.</p></li>
+<li><p><em>pattern</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Expresión regular (POSIX) para determinar lo que se va a reemplazar.</p></li>
+<li><p><em>replacement</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que reemplazará los <em>matches</em> de <em>pattern</em>.</p></li>
+<li><p><em>flags</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: <em>Flags</em> a aplicar a la expresión regular.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Ejemplos</strong>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Uso de REGEXP_REPLACE()</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">memid</span><span class="p">,</span><span class="w"> </span><span class="n">REGEXP_REPLACE</span><span class="p">(</span><span class="n">telephone</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;[-() ]&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">members</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">memid</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pgexercises.com/questions/string/translate.html">Uso de REGEXP_REPLACE</a>: En este ejemplo los caracteres ‘-’, ‘(’, ‘)’ y ‘ ‘, se reemplazan por ‘’. Alternativamente se pudo haber usado la expresión regular <em>‘[^0-9]’</em>.</p></li>
+</ul>
+<br/>
+</section>
+<section id="formato">
+<h3>Formato<a class="headerlink" href="#formato" title="Link to this heading">#</a></h3>
+<p>Funciones que modifican el formato de una cadena.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FORMAT(str,</span> <span class="pre">format)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Modifica el formato de una cadena de acuerdo a una cadena de formato.</p>
+<ul>
+<li><p><em>str</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se modificará. Pueden ser columnas.</p></li>
+<li><p><em>format</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena de formato que indica el formato a aplicar. Ver la <a class="reference external" href="https://www.postgresql.org/docs/current/functions-string.html#FUNCTIONS-STRING-FORMAT">documentación</a>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">INITCAP(str)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Convierte en mayúscula la primer letra de cada palabra de una cadena.</p>
+<ul>
+<li><p><em>str</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se modificará. Pueden ser columnas.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LOWER(str)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Convierte la cadena a minúsculas.</p>
+<ul>
+<li><p><em>str</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se convertirá en minúsculas. Pueden ser columnas.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">UPPER(str)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Convierte la cadena a mayúsculas.</p>
+<ul>
+<li><p><em>str</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se convertirá en mayúsculas. Pueden ser columnas.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+</section>
+<section id="informacion">
+<h3>Información<a class="headerlink" href="#informacion" title="Link to this heading">#</a></h3>
+<p>Funciones que retornan información sobre una cadena.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CHAR_LENGTH(str)</span></code> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> <br/> Devuelve la longitud de una cadena. Es igual que <code class="docutils literal notranslate"><span class="pre">LENGTH()</span></code>.</p>
+<ul>
+<li><p><em>str</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se quiere saber su longitud. Pueden ser columnas.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LENGTH(str)</span></code> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> <br/> Devuelve la longitud de una cadena. Es igual que <code class="docutils literal notranslate"><span class="pre">CHAR_LENGTH()</span></code>.</p>
+<ul>
+<li><p><em>str</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se quiere saber su longitud. Pueden ser columnas.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">POSITION(substr</span> <span class="pre">IN</span> <span class="pre">text)</span></code> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> <br/> Devuelve la posición, de izquierda a derecha, en la que está determinada subcadena en una cadena. Similar a <code class="docutils literal notranslate"><span class="pre">STRPOS()</span></code>.</p>
+<ul>
+<li><p><em>substr</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Subcadena a buscar en la cadena.</p></li>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: La cadena que contiene el carácter. También puede ser una columna.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">STRPOS(text,</span> <span class="pre">substr)</span></code> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> <br/> Devuelve la posición, de izquierda a derecha, en la que está determinada determinada en una cadena. Es similar a <code class="docutils literal notranslate"><span class="pre">POSITION()</span></code>.</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: La cadena que contiene el carácter. También puede ser una columna.</p></li>
+<li><p><em>substr</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Subcadena a buscar en la cadena.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+</section>
+<section id="subcadenas-y-splits">
+<h3>Subcadenas y splits<a class="headerlink" href="#subcadenas-y-splits" title="Link to this heading">#</a></h3>
+<p>Funciones que recuperan partes de una cadena o dividen la cadena en partes más que pequeñas.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LEFT(text,</span> <span class="pre">N)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Devuelve los <em>N</em> primeros caracteres de una cadena.</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se modificará. Pueden ser columnas.</p></li>
+<li><p><em>N</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: Número de caracteres a retornar.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RIGHT(text,</span> <span class="pre">N)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Devuelve los <em>N</em> últimos caracteres de una cadena.</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se modificará. Pueden ser columnas.</p></li>
+<li><p><em>N</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: Número de caracteres a retornar.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SPLIT_PART(text,</span> <span class="pre">delimiter,</span> <span class="pre">position)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Divide un cadena de acuerdo a un delimitador y retorna el elemento <em>N</em> (del split).</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se dividirá. Pueden ser columnas.</p></li>
+<li><p><em>delimiter</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: pattern a utilizar para separar la cadena.</p></li>
+<li><p><em>position</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: Posición a retornar. Comienza en uno. Si es mayor al número de partes, entonces retorna una cadena vacía.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SUBSTRING(text,</span> <span class="pre">start_position,</span> <span class="pre">length)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Extrae una cadena de otra. Otra sintaxis alternativa sería <code class="docutils literal notranslate"><span class="pre">SUBSTRING(string</span> <span class="pre">FROM</span> <span class="pre">start_position</span> <span class="pre">FOR</span> <span class="pre">length)</span></code>. Es similar a <code class="docutils literal notranslate"><span class="pre">SUBSRT()</span></code>.</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se dividirá. Pueden ser columnas.</p></li>
+<li><p><em>start_position</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: Posición de carácter en la cual empezar la sub cadena. Empieza en cero. No acepta número negativos.</p></li>
+<li><p><em>length</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: Indica el número de caracteres de la sub cadena. Si <code class="docutils literal notranslate"><span class="pre">start_position</span> <span class="pre">+</span> <span class="pre">length</span> <span class="pre">&gt;</span> <span class="pre">text</span></code> (en longitudes) entonces se retorna toda la cadena.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SUBSTR(text,</span> <span class="pre">start_position,</span> <span class="pre">length)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Extrae una cadena de otra. Similar a <code class="docutils literal notranslate"><span class="pre">SUBSTRING()</span></code>.</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se dividirá. Pueden ser columnas.</p></li>
+<li><p><em>start_position</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: Posición de carácter en la cual empezar la sub cadena. Empieza en cero. No acepta número negativos.</p></li>
+<li><p><em>length</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: Indica el número de caracteres de la sub cadena. Si <code class="docutils literal notranslate"><span class="pre">start_position</span> <span class="pre">+</span> <span class="pre">length</span> <span class="pre">&gt;</span> <span class="pre">text</span></code> (en longitudes) entonces se retorna toda la cadena.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<p><strong>Ejemplos</strong>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Uso de LEFT()</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">LEFT</span><span class="p">(</span><span class="n">surname</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">letter</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">members</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">letter</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">letter</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pgexercises.com/questions/string/substr.html">Uso de LEFT</a>: En este ejemplo se cálcula el número de registros en los que la columna <em>surname</em> comienza con cada letra del abecedario. Alternativamente se pudo haber usado <code class="docutils literal notranslate"><span class="pre">SUBSTR()</span></code>.</p></li>
+</ul>
+<br/>
+</section>
+<section id="repetir-reemplazar-y-revertir">
+<h3>Repetir, Reemplazar y Revertir<a class="headerlink" href="#repetir-reemplazar-y-revertir" title="Link to this heading">#</a></h3>
+<p>Funciones que permiten multiplicar la cadenan, reemplazar partes de la misma por otra cadena o modificar el orden de la cadena de manera inversa.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">REPEAT(text,</span> <span class="pre">N)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Repite una cadena/carácter un número de veces en específico.</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se repetirá. Pueden ser columnas.</p></li>
+<li><p><em>N</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: Número de ves que se repetirá <em>text</em>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">REPLACE(text,</span> <span class="pre">from,</span> <span class="pre">to)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Remplaza de la cadena, <em>from</em> por el <em>to</em>. Remplaza todos los patrones. Por ejemplo si se utiliza ‘from=a’ y  ‘to=b’, todas las “<em>a</em>” las convertirá en “<em>b</em>”.</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se modificará. Pueden ser columnas.</p></li>
+<li><p><em>from</em>, <em>to</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Los patrones a sustituir y por el cual se sustituirá respectivamente.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">REVERSE(text)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Convierte una cadena en su equivalente al revés.</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se modificará. Pueden ser columnas.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRANSLATE(text,</span> <span class="pre">from,</span> <span class="pre">to)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Remplaza un conjunto de caracteres por otro conjunto de caracteres en una cadena. Los conjuntos de caracteres se empatan por posición, en caso de que el conjunto de caracteres de <em>from</em> sea mayor a <em>to</em>, entonces los caracteres extras se eliminarán de la cadena original</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se modificará. Pueden ser columnas.</p></li>
+<li><p><em>from</em>, <em>to</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Los conjuntos de caracteres a sustituir y por el cual se sustituirá respectivamente.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<p><strong>Ejemplos</strong></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Uso de TRANSLATE</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">memid</span><span class="p">,</span><span class="w"> </span><span class="k">TRANSLATE</span><span class="p">(</span><span class="n">telephone</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;-() &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">telephone</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">members</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">memid</span><span class="p">;</span><span class="w">  </span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pgexercises.com/questions/string/translate.html">Uso de TRANSLATE</a>: En este ejemplo los caracteres ‘-’, ‘(’, ‘)’ y ‘ ‘, se reemplazan por ‘’. En realidad solo ‘-’ es efectivamente reemplazado por ‘’, pero al ser mayor el número de caracteres a reemplazar que el número de caracteres pos los cuales se reemplazaran el resto de los caracteres simplemente se eliminan de la cadena original.</p></li>
+</ul>
+<br/>
+</section>
+<section id="trim-y-pad">
+<h3>TRIM y PAD<a class="headerlink" href="#trim-y-pad" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRIM([LEADING|TRAILING|BOTH]</span> <span class="pre">[characters]</span> <span class="pre">FROM</span> <span class="pre">TEXT)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Elimina todos los caracteres que están al principio, al final o en ambos de una cadena. Por default es <em>both</em> y espacio en blanco como carácter.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">LEADING</span></code>, <code class="docutils literal notranslate"><span class="pre">TRAILING</span></code>, <code class="docutils literal notranslate"><span class="pre">BOTH</span></code>: Son para especificar en qué parte de la cadena eliminar los caracteres, si al principio, al final o en ambos respectivamente. Solo se pone uno.</p></li>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se modificará. También pueden ser columnas.</p></li>
+<li><p><em>characters</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: El carácter que se quiere eliminar de la cadena. Pueden ser más de uno. No es un pattern se eliminarán todos los caracteres aquí puestos. Es sensible a mayúsculas y minúsculas.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">BTRIM(text,</span> <span class="pre">characters)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Elimina todos los caracteres que están al principio y al final de una cadena.</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se modificará. También pueden ser columnas.</p></li>
+<li><p><em>characters</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: El carácter o los caracteres que se quiere eliminar de la cadena. Pueden ser más de uno. No es un pattern se eliminarán todos los caracteres aquí puestos. Es sensible a mayúsculas y minúsculas.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LTRIM(text,</span> <span class="pre">characters)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Elimina todos los caracteres que están al principio de una cadena.</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se modificará. También pueden ser columnas.</p></li>
+<li><p><em>characters</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: El carácter o los caracteres que se quiere eliminar de la cadena. Pueden ser más de uno. No es un pattern se eliminarán todos los caracteres aquí puestos. Es sensible a mayúsculas y minúsculas.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RTRIM(text,</span> <span class="pre">characters)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Elimina todos los caracteres que están al final de una cadena.</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se modificará. También pueden ser columnas.</p></li>
+<li><p><em>characters</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: El carácter o los caracteres que se quiere eliminar de la cadena. Pueden ser más de uno. No es un pattern se eliminarán todos los caracteres aquí puestos. Es sensible a mayúsculas y minúsculas.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LPAD(text,</span> <span class="pre">N,</span> <span class="pre">fill)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Agrega los símbolos necesarios al principio de la cadena para que ésta tenga una longitud de <em>N</em>. Por default <em>fill</em> son espacios en blanco.</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se modificará. También pueden ser columnas.</p></li>
+<li><p><em>N</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: El tamaño que se desea que tenga la cadena.</p></li>
+<li><p><em>fill</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Caracteres que se agregarán a la izquierda de la cadena para cumplir con la longitud deseada.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RPAD(text,</span> <span class="pre">N,</span> <span class="pre">fill)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Agrega los símbolos necesarios al final de la cadena para que ésta tenga una longitud de N. Por default <em>fill</em> son espacios en blanco. Si <em>N</em> es menor al tamaño de la cadena entonces se truncará la cadena.</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cadena que se modificará. También pueden ser columnas.</p></li>
+<li><p><em>N</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: El tamaño que se desea que tenga la cadena.</p></li>
+<li><p><em>fill</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Caracteres que se agregarán a la derecha de la cadena para cumplir con la longitud deseada.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<p><strong>Ejemplos</strong>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Uso de LPAD()</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">LPAD</span><span class="p">(</span><span class="n">zipcode</span><span class="w"> </span><span class="p">::</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">members</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pgexercises.com/questions/string/pad.html">Uso de LPAD</a>: En este ejemplo se añaden ‘0’s al inicio de una cadena (convertido a <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>) para que tengan una longitud determinanda.</p></li>
+</ul>
+<p><br/><br/></p>
+<hr class="docutils" />
+</section>
+</section>
+<section id="conversion">
+<span id="funciones-conversion"></span><h2>Conversión<a class="headerlink" href="#conversion" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CAST(expression</span> <span class="pre">AS</span> <span class="pre">type)</span></code> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code> <br/> Convierte un valor a otro tipo de dato.</p>
+<ul>
+<li><p><em>expression</em> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code>: Valor o columna.</p></li>
+<li><p><em>type</em> - <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">type</span></code>: Tipo de dato que se desea.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TO_CHAR(expression,</span> <span class="pre">format)</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> <br/> Convierte un <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>, <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> o valores numéricos o de doble precisión a <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> en formatos concretos.</p>
+<ul>
+<li><p><em>expression</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>, <code class="docutils literal notranslate"><span class="pre">DATETIME</span></code>: Cualquier valor de tipo <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>, <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> o valores numéricos o de doble precisión.</p></li>
+<li><p><em>format</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Indica el formato de la fecha/numérico de <em>text</em>. Revisar <a class="reference internal" href="anexos.html#anexos-literales-fecha"><span class="std std-ref">4. Literales de fecha</span></a> y <a class="reference internal" href="anexos.html#anexos-literales-numero"><span class="std std-ref">5. Literales de número</span></a>.</p></li>
+<li><p><strong>IMPORTANTE</strong>: Se debe de indicar carácter por carácter el formato en el que está expresión y lo que representa cada carácter.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TO_NUMBER(expression,</span> <span class="pre">format)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Convierte una cadena a un número.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">expression</span></code> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Cualquier valor de cadena.</p></li>
+<li><p><em>format</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Indica el formato del número en <em>expression</em>. Ejemplo: <br/> <code class="docutils literal notranslate"><span class="pre">to_number('12,454.8-',</span> <span class="pre">'99G999D9S')</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TO_DATE(text,</span> <span class="pre">format)</span></code> - <code class="docutils literal notranslate"><span class="pre">DATE</span></code> <br/> Convierte una cadena en una fecha, indicando el formato en el que está la cadena.</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Es la cadena que contiene la fecha.</p></li>
+<li><p><em>format</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Indica el formato de la fecha de <em>text</em>. Revisar <a class="reference internal" href="anexos.html#anexos-literales-fecha"><span class="std std-ref">4. Literales de fecha</span></a>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TO_TIMESTAMP(text,</span> <span class="pre">format)</span></code> - <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> <br/> Convierte una cadena en una fecha y hora, indicando el formato en el que está la cadena.</p>
+<ul>
+<li><p><em>text</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Es la cadena que contiene la fecha y tiempo.</p></li>
+<li><p><em>format</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Indica el formato de la fecha de <em>text</em>. Revisar <a class="reference internal" href="anexos.html#anexos-literales-fecha"><span class="std std-ref">4. Literales de fecha</span></a>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<p><strong>Ejemplos</strong>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Ejemplos de TO_CHAR con &quot;DATETIME&quot;</span>
+<span class="n">to_char</span><span class="p">(</span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;15h 2m 12s&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;HH24:MI:SS&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- &gt; &#39;15:02:12&#39;</span>
+
+<span class="c1">-- Ejemplos de TO_CHAR con &quot;NUMERIC&quot;    </span>
+<span class="n">to_char</span><span class="p">(</span><span class="mi">0485</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;9999&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- &gt; &#39;485&#39;</span>
+<span class="n">to_char</span><span class="p">(</span><span class="mi">0485</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;0000&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- &gt; &#39;0485&#39;</span>
+<span class="n">to_char</span><span class="p">(</span><span class="mi">125</span><span class="p">.</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;999D99&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- &gt; &#39;125.80&#39;</span>
+<span class="n">to_char</span><span class="p">(</span><span class="mi">125</span><span class="p">.</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;999D00&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- &gt; &#39;125.8&#39;</span>
+</pre></div>
+</div>
+<p><br/><br/></p>
+<hr class="docutils" />
+</section>
+<section id="estadisticas">
+<span id="funciones-estadisticas"></span><h2>Estadísticas<a class="headerlink" href="#estadisticas" title="Link to this heading">#</a></h2>
+<section id="varianzas-y-desviaciones">
+<h3>Varianzas y desviaciones<a class="headerlink" href="#varianzas-y-desviaciones" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">VAR_POP(exp)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Calcula la varianza poblacional.</p>
+<ul>
+<li><p><em>exp</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es la expresión o columna.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">VAR_SAMP(exp)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/>  Calcula la varianza muestral.</p>
+<ul>
+<li><p><em>exp</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es la expresión o columna.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">VARIANCE(exp)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Calcula la varianza muestral.</p>
+<ul>
+<li><p><em>exp</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es la expresión o columna.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">STDDEV_POP(exp)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Calcula la desviación estándar poblacional.</p>
+<ul>
+<li><p><em>exp</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es la expresión o columna.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">STDDEV_SAMP(exp)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Calcula la desviación estándar poblacional.</p>
+<ul>
+<li><p><em>exp</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es la expresión o columna.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">STDDEV(exp)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Calcula la desviación estándar muestral.</p>
+<ul>
+<li><p><em>exp</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es la expresión o columna.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+</section>
+<section id="correlaciones">
+<h3>Correlaciones<a class="headerlink" href="#correlaciones" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CORR(X,</span> <span class="pre">Y)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Calcula la correlación entre dos columnas numéricas.</p>
+<ul>
+<li><p><em>X</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Son los valores dependientes.</p></li>
+<li><p><em>Y</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Son los valores independientes.</p></li>
+<li><p>Se ignoran los <code class="docutils literal notranslate"><span class="pre">NULL</span></code> cuando ambos valores por posición son <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Si hay un <code class="docutils literal notranslate"><span class="pre">NULL</span></code> que esté en par entonces se retorna <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+</section>
+<section id="percentiles">
+<h3>Percentiles<a class="headerlink" href="#percentiles" title="Link to this heading">#</a></h3>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Con cualquiera las dos funciones se deben usar de la siguiente manera: <br/> <code class="docutils literal notranslate"><span class="pre">PERCENTILE_CONT(percentil)</span> <span class="pre">WITHIN</span> <span class="pre">GROUP(ORDER</span> <span class="pre">BY</span> <span class="pre">col_name</span> <span class="pre">ASC)</span></code></p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PERCENTILE_DISC(percentil)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Calcula el percentil de unos datos numéricos ordenados. Siempre devolverá un valor que esté en la columna.</p>
+<ul>
+<li><p><em>percentil</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es un valor entre 0 y 1.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PERCENTILE_CONT(percentil)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Calcula el percentil de unos datos numéricos ordenados. Es posible que devuelva un valor que no esté en la columna, ya que interpola valores, cuando el percentil no tiene un valor exacto.</p>
+<ul>
+<li><p><em>percentil</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es un valor entre 0 y 1.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<p><br/><br/></p>
+<hr class="docutils" />
+</section>
+</section>
+<section id="fechas-y-tiempos">
+<span id="funciones-fechas"></span><h2>Fechas y Tiempos<a class="headerlink" href="#fechas-y-tiempos" title="Link to this heading">#</a></h2>
+<section id="fecha-y-tiempos-actuales">
+<h3>Fecha y tiempos actuales<a class="headerlink" href="#fecha-y-tiempos-actuales" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NOW()</span></code> - <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> <br/> Devuelve la fecha y tiempo actual con zona horaria (<em>timestamp</em> con zona horaria). Equivale a <code class="docutils literal notranslate"><span class="pre">CURRENT_TIMESTAMP()</span></code>.</p>
+<ul>
+<li><p>No tiene argumentos.</p></li>
+<li><p>Si se modifica manualmente la zona horaria, entonces <code class="docutils literal notranslate"><span class="pre">NOW()</span></code> se ajusta a esa zona horaria.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CURRENT_DATE</span></code> - <code class="docutils literal notranslate"><span class="pre">DATE</span></code> <br/> Devuelve la fecha actual sin tiempo <em>‘YYYY-MM-DD’</em>.</p>
+<ul>
+<li><p>No tiene argumentos, ni siquiera lleva paréntesis.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CURRENT_TIME(precision)</span></code> - <code class="docutils literal notranslate"><span class="pre">TIME</span></code> <br/> Devuelve la hora actual con zona horaria <em>‘HH:MM:SS.GMT+TZ’</em>.</p>
+<ul>
+<li><p><em>precisión</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Especifica la precisión de los segundos fraccionales (número de decimales en los segundos).</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CURRENT_TIMESTAMP(precision)</span></code> - <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> <br/> Devuelve la fecha y hora actual con zona horaria <em>‘YYYY-MM-DD HH:MM:SS.GMT+TZ’</em>.</p>
+<ul>
+<li><p><em>precision</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Especifica la precisión de los segundos fraccionales (número de decimales en los segundos).</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LOCALTIME(precision)</span></code> - <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> <br/> Devuelve la fecha y hora actual sin zona horaria.</p>
+<ul>
+<li><p><em>precision</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Especifica la precisión de los segundos fraccionales (número de decimales en los segundos).</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LOCALTIMESTAMP(precision)</span></code> - <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> <br/> Devuelve la fecha y hora actual sin zona horaria.</p>
+<ul>
+<li><p><em>precision</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Especifica la precisión de los segundos fraccionales (número de decimales en los segundos).</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+</section>
+<section id="operaciones">
+<h3>Operaciones<a class="headerlink" href="#operaciones" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AGE(timestamp1,</span> <span class="pre">timestamp2</span> <span class="pre">=</span> <span class="pre">CURRENT_TIMESTAMP)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Retorna la diferencia entre dos <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>. Retorna la diferencia en años, meses y días, horas, etc.</p>
+<ul>
+<li><p><em>timestamp1, timestamp2</em> - <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>: Son las fechas, donde <code class="docutils literal notranslate"><span class="pre">timestamp2</span> <span class="pre">&gt;</span> <span class="pre">timestamp1</span></code>. Si no se especifica el segundo, se utiliza la fecha y tiempo actual.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="partes-de-fechas-y-truncar">
+<h3>Partes de fechas y truncar<a class="headerlink" href="#partes-de-fechas-y-truncar" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EXTRACT(field</span> <span class="pre">FROM</span> <span class="pre">source)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Retorna una parte específica de la fecha en formato de número.</p>
+<ul>
+<li><p><em>field</em> - <code class="docutils literal notranslate"><span class="pre">DATE</span> <span class="pre">FIELD</span></code>: La parte de la fecha, puede ser <em>DAY</em>, <em>QUARTER</em>, <em>WEEK</em>, <em>MONTH</em>, <em>YEAR</em>, <em>EPOCH</em>, etc. Revisar el anexo <a class="reference internal" href="anexos.html#anexos-field"><span class="std std-ref">3. Parámetro Field</span></a>. No es una cadena.</p></li>
+<li><p><em>source</em> - <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>: Es la fecha, ya sea una columna o un valor, cualquier dato de tipo fecha se convertirá a <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DATE_PART(field,</span> <span class="pre">source)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Retorna una parte específica de la fecha en formato de número.</p>
+<ul>
+<li><p><em>field</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: la parte de la fecha, puede ser <em>‘day’</em>, <em>‘quarter’</em>, <em>‘week’</em>, <em>‘month’</em>, <em>‘year’</em>, <em>‘EPOCH’</em>, etc. Revisar el anexo <a class="reference internal" href="anexos.html#anexos-field"><span class="std std-ref">3. Parámetro Field</span></a>.</p></li>
+<li><p><em>source</em> - <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>: Es la fecha, ya sea una columna o un valor, cualquier dato de tipo fecha se convertirá a <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DATE_TRUNC(datepart,</span> <span class="pre">source)</span></code> - <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> <br/> Truncará la fecha de acuerdo al <em>field</em> que se haya especificado. El resto de los campos los pondrá en su unidad mínima.</p>
+<ul>
+<li><p><em>datepart</em> - <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Es el nivel de precisión a truncar la fecha, puede ser: <em>millennium, century, decade, year, quarter, month, week, day, hour, minute, second, milliseconds, microseconds</em>.</p></li>
+<li><p><em>source</em> - <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>, <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code>: Es la fecha, ya sea una columna o un valor, cualquier dato de tipo fecha se convertirá a <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Ejemplos</strong>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Ejemplo de uso de DATE_PART</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">DATE_PART</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="s1">&#39;2012-08-31&#39;</span><span class="p">);</span>
+
+<span class="c1">-- Ejemplo de uso de EXTRACT</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">EXTRACT</span><span class="p">(</span><span class="k">DAY</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="s1">&#39;2012-08-31&#39;</span><span class="p">);</span>
+
+<span class="c1">-- Ejemplo de uso de DATE_TRUNC</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">DATE_TRUNC</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="w"> </span><span class="p">,</span><span class="n">my_date</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;1 month&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">DATE_TRUNC</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="w"> </span><span class="p">,</span><span class="n">my_date</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">remaining</span>
+<span class="k">FROM</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="s1">&#39;2012-02-11 01:00:00&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">my_date</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">sub</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pgexercises.com/questions/date/extract.html">Uso de DATE_PART y EXTRACT</a>: En estos ejemplos se extra el día de las fechas.</p></li>
+<li><p><a class="reference external" href="https://pgexercises.com/questions/date/daysremaining.html">Uso de DATE_TRUNC</a>: En este ejemplo se utiliza la función para determinar el número de días restantes en el mes de una fecha dada. Para ello se utiliza la función para determinar el primer día del siguiente mes y para truncar al día de la fecha, excluyendo el tiempo.</p></li>
+</ul>
+<p><br/><br/></p>
+<hr class="docutils" />
+</section>
+</section>
+<section id="numericas">
+<span id="funciones-numericas"></span><h2>Numéricas<a class="headerlink" href="#numericas" title="Link to this heading">#</a></h2>
+<section id="miscelaneas">
+<h3>Miscelaneas<a class="headerlink" href="#miscelaneas" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ABS(exp)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Calcula es valor absoluto de una columna.</p>
+<ul>
+<li><p><em>exp</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es la expresión o columna.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GREATEST(col1,</span> <span class="pre">...)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Calcula el valor más grande de un conjunto de columnas para cada fila. Es decir aplica el cálculo sobre las filas.</p>
+<ul>
+<li><p><em>col1, …</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Son los nombres de las columnas.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LEAST(col1,</span> <span class="pre">...)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Calcula el valor más pequeño de un conjunto de columnas para cada fila. Es decir aplica el cálculo sobre las filas.</p>
+<ul>
+<li><p><em>col1, …</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Son los nombres de las columnas.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">POWER(m,</span> <span class="pre">n)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Eleva un número <em>m</em> a una potencia <em>n</em>.</p>
+<ul>
+<li><p><em>m</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es la base.</p></li>
+<li><p><em>n</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es el exponente.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+</section>
+<section id="numeros-aleatorios">
+<h3>Números aleatorios<a class="headerlink" href="#numeros-aleatorios" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RANDOM()</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Retorna un número pseudo aleatorio entre cero (inclusivo) y uno (exclusivo).</p>
+<ul>
+<li><p>No tiene argumentos.</p></li>
+<li><p><strong>Tip</strong>: Para generar un número decimal entre un rango <em>[A, B)</em> usar: <br/> <code class="docutils literal notranslate"><span class="pre">RANDOM()*(B</span> <span class="pre">-</span> <span class="pre">A)</span> <span class="pre">+</span> <span class="pre">A</span></code>.</p></li>
+<li><p><strong>Tip</strong>: Para generar un número entero entre un rango <em>[A, B)</em> usar: <br/> <code class="docutils literal notranslate"><span class="pre">FLOOR(RANDOM()*(B</span> <span class="pre">-</span> <span class="pre">A</span> <span class="pre">+</span> <span class="pre">1))</span> <span class="pre">+</span> <span class="pre">A</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SETSEED(seed)</span></code> - <code class="docutils literal notranslate"><span class="pre">NULL</span></code> <br/> Establece la semilla para el generador de número aleatorios. Permite reproducibilidad.</p>
+<ul>
+<li><p><em>seed</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es un valor entre -1 a 1.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+</section>
+<section id="redondeo-y-truncar">
+<h3>Redondeo y Truncar<a class="headerlink" href="#redondeo-y-truncar" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ROUND(source,</span> <span class="pre">n)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Redondea expresiones numéricas.</p>
+<ul>
+<li><p><em>source</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es el número o la columna a redondear.</p></li>
+<li><p><em>n</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es para indicar cuántos decimales usar. Si se pone números negativos entonces se redondearán las unidades (-1), decenas (-2), centenas (-3), etc.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CEIL(source)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Redondea un número al siguiente entero.</p>
+<ul>
+<li><p><em>source</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es el número o la columna a redondear.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FLOOR(source)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Redondea un número al entero anterior.</p>
+<ul>
+<li><p><em>source</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es el número o la columna a redondear.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUNC(source,</span> <span class="pre">precision)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Redondea un número truncado a un entero o a un número específico de decimales.</p>
+<ul>
+<li><p><em>source</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Es el número o la columna a redondear.</p></li>
+<li><p><em>precision</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Entero que indica el número de decimales. Si se ponen cero o números negativos Se redondea a la unidad por ejemplo 0 a unidades, -1 a decenas, -2 a centenas, etc.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+</section>
+<section id="series">
+<h3>Series<a class="headerlink" href="#series" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GENERATE_SERIES(start,</span> <span class="pre">end,</span> <span class="pre">step)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>, <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> <br/> Genera una secuencia de números con un paso determinado.</p>
+<ul>
+<li><p><em>start</em>, <em>end</em>, <em>step</em> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code>: Indica el inicio, fin y el paso de la serie. Es posible generar fechas para ello <em>start</em> y <em>end</em> deben ser <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> conteniendo una fecha que respete ISO 8601 y <em>step</em> debe ser <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<p><strong>Ejemplos</strong></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Generar una series de fechas 1</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">GENERATE_SERIES</span><span class="p">(</span><span class="s1">&#39;2012-10-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2012-10-31&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;P1D&#39;</span><span class="p">);</span>
+
+<span class="c1">-- Generar una series de fechas 2</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">EXTRACT</span><span class="p">(</span><span class="k">month</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cal</span><span class="p">.</span><span class="k">month</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">month</span><span class="p">,</span>
+<span class="w">       </span><span class="p">(</span><span class="n">cal</span><span class="p">.</span><span class="k">month</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;1 month&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">cal</span><span class="p">.</span><span class="k">month</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">length</span>
+<span class="k">FROM</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="n">GENERATE_SERIES</span><span class="p">(</span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="s1">&#39;2012-01-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="s1">&#39;2012-12-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;1 month&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">month</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">cal</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pgexercises.com/questions/date/series.html">Generar series de fechas 1</a>: En este ejemplo en lugar de usar <em>‘P1D’</em> se pudo haber usado <em>‘1 day’</em>.</p></li>
+<li><p><a class="reference external" href="https://pgexercises.com/questions/date/daysinmonth.html">Generar series de fechas 2</a>: En este ejemplo, se genera una serie de fechas para el primer día de cada mes durante 2012. Notar que el uso de <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> es opcional.</p></li>
+</ul>
+<p><br/><br/></p>
+<hr class="docutils" />
+</section>
+</section>
+<section id="valores-null">
+<span id="funciones-null"></span><h2>Valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code><a class="headerlink" href="#valores-null" title="Link to this heading">#</a></h2>
+<p>Funciones útiles para trabajalos con valores con valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">COALESCE(arg1,</span> <span class="pre">arg2,</span> <span class="pre">...)</span></code> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code> <br/> Devuelve el primer valor no <code class="docutils literal notranslate"><span class="pre">NULL</span></code> de las columnas seleccionadas de izquierda a derecha, en caso de que todos sean <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, entonces devolverá un <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Opera fila por fila.</p>
+<ul>
+<li><p><em>arg1, arg2, …</em> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code>: Son los argumentos, normalmente serán nombres de columnas, pero puede ser valores directamente.</p></li>
+<li><p><strong>Tip</strong>: Una aplicación útil sería para convertir valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code> en alguna otra expresión usando: <br/> <code class="docutils literal notranslate"><span class="pre">COALESCE(arg,</span> <span class="pre">exp);</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NULLIF(arg1,</span> <span class="pre">arg2)</span></code> - <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, <code class="docutils literal notranslate"><span class="pre">VALUE</span></code> <br/> Retorna <code class="docutils literal notranslate"><span class="pre">NULL</span></code> si ambos elementos son iguales, sino retorna el primer elemento <em>arg1</em>.</p>
+<ul>
+<li><p><em>arg1, arg2</em> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code>: Son los argumentos, normalmente serán nombres de columnas, pero puede ser valores directamente.</p></li>
+</ul>
+</li>
+</ul>
+<p><br/><br/></p>
+<hr class="docutils" />
+</section>
+<section id="window-functions">
+<span id="funciones-sliding"></span><h2>Window functions<a class="headerlink" href="#window-functions" title="Link to this heading">#</a></h2>
+<p>Realizan cálculos de acuerdo a una ventana relativa a la fila actual. Puede ser particionada en una o más columnas. Útil para cálculos acumulados, promedios móviles, etc. Sintaxis:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Plantilla de uso básico de sliding windows</span>
+<span class="n">agg_function</span><span class="w"> </span><span class="n">OVER</span><span class="p">(...</span><span class="w"> </span><span class="k">ROWS</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="k">start</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">end</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Es posible usar <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> y <code class="docutils literal notranslate"><span class="pre">PARTITION</span> <span class="pre">BY</span></code> dentro de <code class="docutils literal notranslate"><span class="pre">OVER()</span></code>.</p></li>
+<li><p><em>start</em> y <em>end</em> pueden ser:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">PRECEDING</span></code> y <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">FOLLOWING</span></code>: Se usa para especificar el número de filas antes o después de la fila actual para incluir en los cálculos. Se debe de poner el número de filas antes de la sentencia.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UNBOUNDED</span> <span class="pre">PRECEDING</span></code> y <code class="docutils literal notranslate"><span class="pre">UNBOUNDED</span> <span class="pre">FOLLOWING</span></code>: Se usa para especificar que se quiere usar cada fila desde el principio o el final en el data set para incluir en los cálculos.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CURRENT</span> <span class="pre">ROW</span></code>: Se usa para especificar que se quiere parar el cálculo en la fila actual.</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CUME_DIST()</span> <span class="pre">OVER([PARTITION</span> <span class="pre">BY</span> <span class="pre">EXPR]</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">EXPR)</span></code> - <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code> <br/> Retorna la distribución acumulada de un valor, es decir el % de valores superiores o inferiores de un <em>dataset</em>. En otras palabras retorna la posición relativa de un valor con respecto a otros valores ordenados. Es necesario utilizar <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> dentro de <code class="docutils literal notranslate"><span class="pre">OVER()</span></code>.</p>
+<ul>
+<li><p>No tiene argumentos, para indicar la columna con los valores utilizar <code class="docutils literal notranslate"><span class="pre">OVER()</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DENSE_RANK()</span> <span class="pre">OVER([PARTITION</span> <span class="pre">BY</span> <span class="pre">EXPR]</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">EXPR)</span></code> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> <br/> Asigna un ranking a cada valor en relación con los demás, si más de un fila tienen un mismo valor se les asignará el mismo ranking. A diferencia de <code class="docutils literal notranslate"><span class="pre">RANK()</span></code>, <code class="docutils literal notranslate"><span class="pre">DENSE_RANK()</span></code> siempre retorna rankings consecutivos, es decir si un valor se repite, no se saltará el ranking. Es necesario utilizar <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> dentro de <code class="docutils literal notranslate"><span class="pre">OVER()</span></code>.</p>
+<ul>
+<li><p>No tiene argumentos, para indicar la columna con los valores utilizar <code class="docutils literal notranslate"><span class="pre">OVER()</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FIRST_VALUE(col)</span> <span class="pre">OVER([PARTITION</span> <span class="pre">BY</span> <span class="pre">EXPR]</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">EXPR)</span></code> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code> <br/> Devuelve el primer valor de una columna o partición ordenada.</p>
+<ul>
+<li><p><em>col</em> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code>: Es el nombre de un columna, una expresión o un <em>subquery</em> evaluado contra la primer fila de una partición ordenada de un <em>dataset</em>. Debe retorna un único valor.</p></li>
+<li><p>Para indicar la columna con los valores utilizar <code class="docutils literal notranslate"><span class="pre">OVER()</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LAST_VALUE(col)</span> <span class="pre">OVER([PARTITION</span> <span class="pre">BY</span> <span class="pre">EXPR]</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">EXPR)</span></code> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code> <br/> Devuelve el último valor de una columna o partición ordenada. Tener en cuenta que por default una tabla termina en el “valor actual”, por lo tanto se debe de especificar el rango real de la tabla si se quiere encontrar el último valor de toda la tabla.</p>
+<ul>
+<li><p><em>col</em> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code>: Es el nombre de un columna, una expresión o un <em>subquery</em> evaluado contra la primer fila de una partición ordenada de un <em>dataset</em>. Debe retorna un único valor.</p></li>
+<li><p>Para indicar la columna con los valores utilizar <code class="docutils literal notranslate"><span class="pre">OVER()</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LAG(col,</span> <span class="pre">[offset],</span> <span class="pre">[default])</span> <span class="pre">OVER([PARTITION</span> <span class="pre">BY</span> <span class="pre">EXPR]</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">EXPR)</span></code> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code> <br/> Regresa el valor de la columna, que está <em>N</em> filas antes de la fila actual. En otras palabras, se utiliza para acceder a filas anteriores a la actual.</p>
+<ul>
+<li><p><em>col</em> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code>: Es el nombre de un columna, una expresión o un <em>subquery</em> evaluado contra la fila <em>N</em> posiciones atrás de la actual. Debe retorna un único valor.</p></li>
+<li><p><em>offset</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: Es un entero positivo que indica cuantas filas antes se quiere acceder. Su valor por default es uno.</p></li>
+<li><p><em>default</em> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code>: Es para indicar el valor que se debe de retornar en caso de que <em>offset</em> sea mayor al número de filas anteriores. Su valor por default es <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p></li>
+<li><p>Para indicar la columna con los valores utilizar <code class="docutils literal notranslate"><span class="pre">OVER()</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LEAD(col,</span> <span class="pre">[offset],</span> <span class="pre">[default])</span> <span class="pre">OVER([PARTITION</span> <span class="pre">BY</span> <span class="pre">EXPR]</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">EXPR)</span></code> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code> <br/> Regresa el valor de la columna, que está <em>N</em> filas después de la fila actual. En otras palabras, se utiliza para acceder a filas posteriores a la actual.</p>
+<ul>
+<li><p><em>col</em> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code>: es el nombre de un columna, una expresión o un <em>subquery</em> evaluado contra la fila <em>N</em> después de la actual. Debe retorna un único valor.</p></li>
+<li><p><em>offset</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: es un entero positivo que indica cuantas filas después se quiere acceder. Su valor por default es uno.</p></li>
+<li><p><em>default</em> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code>: es para indicar el valor que se debe de retornar en caso de que <em>offset</em> sea mayor al número de filas posteriores. Su valor por default es <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p></li>
+<li><p>Para indicar la columna con los valores utilizar <code class="docutils literal notranslate"><span class="pre">OVER()</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NTILE(buckets)</span> <span class="pre">OVER([PARTITION</span> <span class="pre">BY</span> <span class="pre">EXPR]</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">EXPR)</span></code> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> <br/> Divide el data set ordenado en <em>N</em> partes aproximadamente iguales, a cada una de esas partes se les llama <em>bucket</em>, en cada fila se indicará a cuál <em>bucket</em> pertenece.</p>
+<ul>
+<li><p><em>buckets</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: represeta el número de partes iguales en las que se quiere dividir el <em>dataset</em>.</p></li>
+<li><p>Para indicar la columna con los valores utilizar <code class="docutils literal notranslate"><span class="pre">OVER()</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NTH_VALUE(col,</span> <span class="pre">offset)</span> <span class="pre">OVER([PARTITION</span> <span class="pre">BY</span> <span class="pre">EXPR]</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">EXPR)</span></code> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code> <br/> Retorna el valor de la <em>n-ésima</em> fila de un <em>dataset</em> ordenado.</p>
+<ul>
+<li><p><em>col</em> - <code class="docutils literal notranslate"><span class="pre">VALUE</span></code>: es el nombre de un columna, una expresión o un <em>subquery</em>.</p></li>
+<li><p><em>offset</em> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>: Es un entero positivo, el número de fila relativa a la primera en la ventana en la que la expresión en evaluada.</p></li>
+<li><p>Para indicar la columna con los valores utilizar <code class="docutils literal notranslate"><span class="pre">OVER()</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PERCENT_RANK()</span> <span class="pre">OVER([PARTITION</span> <span class="pre">BY</span> <span class="pre">EXPR]</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">EXPR)</span></code> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> <br/> Similar a <code class="docutils literal notranslate"><span class="pre">CUME_DIST()</span></code>, evalúa La posición relativa de un valor dentro del conjunto de valores de un <em>dataset</em> ordenado y asigna su percentil a cada valor.</p>
+<ul>
+<li><p>No tiene argumentos, para indicar la columna con los valores utilizar <code class="docutils literal notranslate"><span class="pre">OVER()</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RANK()</span> <span class="pre">OVER([PARTITION</span> <span class="pre">BY</span> <span class="pre">EXPR]</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">EXPR)</span></code> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> <br/> Rankea cada fila ordenada de una <em>dataset</em>, por default lo hace de manera ascendente. Si dos o más filas tienen el mismo valor, se les dará el mismo ranking, pero se saltará el número de valores repetidos en el ranking, es decir, habrá un ranking no secuencial.</p>
+<ul>
+<li><p>No tiene argumentos, para indicar la columna con los valores utilizar <code class="docutils literal notranslate"><span class="pre">OVER()</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ROW_NUMBER()</span> <span class="pre">OVER([PARTITION</span> <span class="pre">BY</span> <span class="pre">EXPR]</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">EXPR)</span></code> - <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> <br/> Sirve para enumerar las filas de un data set. Siempre va enumerar valores distintos, es decir, valores secuenciales.</p>
+<ul>
+<li><p>No tiene argumentos, para indicar la columna con los valores utilizar <code class="docutils literal notranslate"><span class="pre">OVER()</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<p><strong>Ejemplos</strong></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Uso de ROW_NUMBER para enumerar filas</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">ROW_NUMBER</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">joindate</span><span class="p">),</span><span class="w"> </span><span class="n">firstname</span><span class="p">,</span><span class="w"> </span><span class="n">surname</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">members</span><span class="p">;</span>
+
+<span class="c1">-- USO de RANK()</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">firstname</span><span class="p">,</span><span class="w"> </span><span class="n">surname</span><span class="p">,</span><span class="w"> </span><span class="n">hours</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">hours</span><span class="p">,</span><span class="w"> </span><span class="n">RANK</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">hours</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">rank</span>
+<span class="k">FROM</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">firstname</span><span class="p">,</span><span class="w"> </span><span class="n">surname</span><span class="p">,</span><span class="w"> </span><span class="n">ROUND</span><span class="p">(</span><span class="k">SUM</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">hours</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">bookings</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">b</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">members</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">m</span>
+<span class="w">  </span><span class="k">USING</span><span class="p">(</span><span class="n">memid</span><span class="p">)</span>
+<span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">firstname</span><span class="p">,</span><span class="w"> </span><span class="n">surname</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">data</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">rank</span><span class="p">,</span><span class="w"> </span><span class="n">surname</span><span class="p">,</span><span class="w"> </span><span class="n">firstname</span><span class="p">;</span>
+
+<span class="c1">-- USO de NTILE()</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;high&#39;</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;average&#39;</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">&#39;low&#39;</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">revenue</span>
+<span class="k">FROM</span><span class="p">(</span>
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">NTILE</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">revenue</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">bucket</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span>
+<span class="w">	</span><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">memid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">guestcost</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">slots</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="n">membercost</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">slots</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">revenue</span>
+<span class="w">	</span><span class="k">FROM</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">bookings</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">b</span>
+<span class="w">	</span><span class="k">JOIN</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">facilities</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">f</span>
+<span class="w">	</span><span class="k">USING</span><span class="p">(</span><span class="n">facid</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">subsub</span>
+<span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">name</span>
+<span class="w">  </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">bucket</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">sub</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">bucket</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+
+<span class="c1">-- USO de LEAD()</span>
+<span class="k">SELECT</span><span class="w"> </span>
+<span class="w">    </span><span class="n">DATE_PART</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">start_month</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">month</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="p">(</span><span class="n">LEAD</span><span class="p">(</span><span class="n">start_month</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2013-01-01&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_month</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">length</span>
+<span class="k">FROM</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">GENERATE_SERIES</span><span class="p">(</span><span class="s1">&#39;2012-01-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2012-12-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;1 month&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">start_month</span>
+<span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">sub</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pgexercises.com/questions/aggregates/nummembers.html">Uso de ROW_NUMBER</a>: En este ejemplo se enlistan los miembros por la fecha en la que se unieron.</p></li>
+<li><p><a class="reference external" href="https://pgexercises.com/questions/aggregates/rankmembers.html">Uso de RANK</a>: En este ejemplo se rankea a los miembros por el número de horas reservadas.</p></li>
+<li><p><a class="reference external" href="https://pgexercises.com/questions/aggregates/classify.html">Uso de NTILE</a>: En este ejemplo se clasifica los <em>facilities</em> por el ingreso en partes iguales.</p></li>
+<li><p><a class="reference external" href="https://pgexercises.com/questions/date/daysinmonth.html">Uso de LEAD</a>: En este ejemplo, primero se crea un subquery para determinar el primer día de cada mes durante 2012, posteriormente se utiliza una <em>window function</em> para calcular la diferencia entre el mes siguiente y el mes actual. En la función <code class="docutils literal notranslate"><span class="pre">LEAD()</span></code> se usa el parámetros <code class="docutils literal notranslate"><span class="pre">default='2013-01-01'</span></code> para que diciembre se pueda calcular correctamente.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./parts/postgresql"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="dcl/revocar.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Revocar</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="extensiones.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Extensiones</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-functions">Aggregate functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cadenas">Cadenas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ascii">ASCII</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concatenar">Concatenar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expresiones-regulares">Expresiones regulares</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formato">Formato</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion">Información</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subcadenas-y-splits">Subcadenas y splits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repetir-reemplazar-y-revertir">Repetir, Reemplazar y Revertir</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trim-y-pad">TRIM y PAD</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion">Conversión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estadisticas">Estadísticas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varianzas-y-desviaciones">Varianzas y desviaciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlaciones">Correlaciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles">Percentiles</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fechas-y-tiempos">Fechas y Tiempos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fecha-y-tiempos-actuales">Fecha y tiempos actuales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operaciones">Operaciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partes-de-fechas-y-truncar">Partes de fechas y truncar</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numericas">Numéricas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscelaneas">Miscelaneas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numeros-aleatorios">Números aleatorios</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#redondeo-y-truncar">Redondeo y Truncar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#series">Series</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-null">Valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#window-functions">Window functions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nebok
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

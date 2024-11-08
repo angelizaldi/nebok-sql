@@ -1,0 +1,11 @@
+EJEMPLOS:
+
+SUBQUERY en WHERE:
+SELECT firstname, surname, joindate
+FROM cd.members
+WHERE joindate = (SELECT MAX(joindate) FROM cd.members);
+
+[Subquery en WHERE](https://pgexercises.com/questions/basic/agg2.html).
+
+VIEWS:
+Revisar las soluciones: https://pgexercises.com/questions/aggregates/rollingavg.html

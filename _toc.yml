@@ -6,16 +6,45 @@ root: intro
 parts:
   - caption: SQL
     chapters:
-    - file: parts/teoria/queries
+    - file: parts/teoria/teoria-index
+      sections:
+      - file: parts/teoria/teoria
+      - file: parts/teoria/sql
     - file: parts/postgresql/postgre-index
       sections:
       - file: parts/postgresql/comentarios
       - file: parts/postgresql/operadores
       - file: parts/postgresql/tipos-de-datos
-      - file: parts/postgresql/dql-index
+      - file: parts/postgresql/udf
+      - file: parts/postgresql/dql/dql-index
         sections:
-        - file: parts/postgresql/sentencias-seleccion
-        - file: parts/postgresql/sentencias-ordenar
-        - file: parts/postgresql/sentencias-filtrado
-        - file: parts/postgresql/sentencias-condicionales
-        - file: parts/postgresql/sentencias-conjuntos
+        - file: parts/postgresql/dql/seleccion
+        - file: parts/postgresql/dql/filtrado
+        - file: parts/postgresql/dql/ordenar
+        - file: parts/postgresql/dql/joins
+        - file: parts/postgresql/dql/agrupar
+        - file: parts/postgresql/dql/operaciones-conjuntos
+        - file: parts/postgresql/dql/expresiones-condicionales
+        - file: parts/postgresql/dql/window-functions
+        - file: parts/postgresql/dql/subqueries
+        - file: parts/postgresql/dql/common-table-expression
+        - file: parts/postgresql/dql/full_text_search
+      - file: parts/postgresql/dml/dml-index
+        sections:
+        - file: parts/postgresql/dml/insertar
+        - file: parts/postgresql/dml/actualizar
+        - file: parts/postgresql/dml/eliminar
+      - file: parts/postgresql/ddl/ddl-index
+        sections:
+        - file: parts/postgresql/ddl/crear
+        - file: parts/postgresql/ddl/modificar
+        - file: parts/postgresql/ddl/eliminar
+      - file: parts/postgresql/dcl/dcl-index
+        sections:
+        - file: parts/postgresql/dcl/conceder
+        - file: parts/postgresql/dcl/revocar
+      - file: parts/postgresql/funciones
+      - file: parts/postgresql/extensiones
+      - file: parts/postgresql/psql
+      - file: parts/postgresql/anexos
+      - file: parts/postgresql/cookbook
