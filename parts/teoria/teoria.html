@@ -1,0 +1,916 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Teoría &#8212; Manual de SQL</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'parts/teoria/teoria';</script>
+    <link rel="icon" href="../../_static/nebok-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="SQL" href="sql.html" />
+    <link rel="prev" title="Conceptos y teoría" href="teoria-index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nebok-logo.png" class="logo__image only-light" alt="Manual de SQL - Home"/>
+    <script>document.write(`<img src="../../_static/nebok-logo.png" class="logo__image only-dark" alt="Manual de SQL - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Manual de SQL
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="teoria-index.html">Conceptos y teoría</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Teoría</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sql.html">SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../postgresql/postgre-index.html">PostgreSQL</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/comentarios.html">Comentarios.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/operadores.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/tipos-de-datos.html">Tipos de Datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/udf.html">Funciones (UDF)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../postgresql/dql/dql-index.html">Data Query Language (DQL)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/seleccion.html">Seleccionar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/filtrado.html">Filtrar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/ordenar.html">Ordenar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/joins.html">Join</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/agrupar.html">Agrupar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/operaciones-conjuntos.html">Operaciones de conjuntos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/expresiones-condicionales.html">Sentencias condicionales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/window-functions.html">Window Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/subqueries.html">Subqueries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/common-table-expression.html">Common Table Expression (CTE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/full_text_search.html">Full text search</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../postgresql/dml/dml-index.html">Data Manipulation Language (DML)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dml/insertar.html">Insertar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dml/actualizar.html">Actualizar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dml/eliminar.html">Eliminar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../postgresql/ddl/ddl-index.html">Data Definition Language (DDL)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/ddl/crear.html">Crear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/ddl/modificar.html">Modificar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/ddl/eliminar.html">Eliminar y Truncar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../postgresql/dcl/dcl-index.html">Data Control Language (DCL)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dcl/conceder.html">Otorgar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dcl/revocar.html">Revocar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/funciones.html">Funciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/extensiones.html">Extensiones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/psql.html">psql</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/anexos.html">Anexos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/cookbook.html">Cookbook</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/parts/teoria/teoria.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Teoría</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#procesamiento-de-datos">Procesamiento de datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estructuras-del-almacenamiento-de-datos">Estructuras del almacenamiento de datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formas-de-almacenar-datos">Formas de almacenar datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bases-de-datos">Bases de datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-warehouses">Data Warehouses</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-marts">Data marts</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cubes-olap-cubes">Data Cubes (OLAP Cubes)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-lakes">Data Lakes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bases-de-datos-nosql">Bases de datos NoSQL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flujos-de-datos">Flujos de datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diseno-de-bases-de-datos">Diseño de bases de datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelado-de-datos">Modelado de datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-modeling">Relational modeling</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensional-modeling">Dimensional modeling</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-schemas">Logical Schemas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization">Normalization</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-y-desventajas">Ventajas y desventajas</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entity-relationship-diagram-erd">Entity Relationship Diagram (ERD)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="teoria">
+<h1>Teoría<a class="headerlink" href="#teoria" title="Link to this heading">#</a></h1>
+<p>En esta sección se revisan algunos conceptos básicos relacionados con los datos y bases de datos.</p>
+<section id="procesamiento-de-datos">
+<h2>Procesamiento de datos<a class="headerlink" href="#procesamiento-de-datos" title="Link to this heading">#</a></h2>
+<p>Existen dos aproximaciones de procesamiento de datos que definen el flujo, la estructura y la forma de almacenamiento de los datos:</p>
+<ul class="simple">
+<li><p><strong>Online Transaction Processing (OLTP)</strong>: Las principales características de esta aproximación son las siguientes:</p>
+<ul>
+<li><p>Orientado a transacciones.</p></li>
+<li><p>Da soporte a transacciones diarias.</p></li>
+<li><p>Orientado a aplicaciones.</p></li>
+<li><p>Se actualiza frecuentemente.</p></li>
+<li><p>Utiliza datos recientes, del día a día y datos operacionales.</p></li>
+<li><p>Puede pesar algunos gigabytes.</p></li>
+<li><p>Generalmente son bases de datos altamente normalizadas.</p></li>
+<li><p>Puede tener miles de usuarios, entre empleados e incluso los clientes.</p></li>
+<li><p>Suelen almacenarse en una <em>‘Operational database’</em>.</p></li>
+<li><p>Los <em>queries</em> suelen ser simples.</p></li>
+<li><p>Ejemplos de <em>queries</em>:</p>
+<ul>
+<li><p>Buscar el precio de un libro.</p></li>
+<li><p>Actualizar la última transacción de un cliente.</p></li>
+<li><p>Hacer un seguimiento de las horas de los empleados.
+<br/></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Online Analytical Processing (OLAP)</strong>: Las principales características de esta aproximación son las siguientes:</p>
+<ul>
+<li><p>Orientado a análisis.</p></li>
+<li><p>Usado para analizar datos y hacer reportes para la toma de decisiones.</p></li>
+<li><p>Orientado a una entidad para ser analizada.</p></li>
+<li><p>Utiliza datos históricos y consolidados.</p></li>
+<li><p>Puede pesar terabytes.</p></li>
+<li><p>Utiliza <em>queries</em> complejos y <em>aggregates</em>.</p></li>
+<li><p>Actualizaciones limitadas.</p></li>
+<li><p>Utilizada por menos usuarios, generalmente solo analistas y científicos de datos de las organizaciones/compañías.</p></li>
+<li><p>Generalmente son bases de datos no normalizadas.</p></li>
+<li><p>Suelen almacenarse en un <a class="reference internal" href="#teoria-almacenamiento-data-warehouse"><span class="std std-ref">Data Warehouses</span></a>.</p></li>
+<li><p>Ejemplos de <em>queries</em>:</p>
+<ul>
+<li><p>Calcular los libros con el mejor margen de beneficio.</p></li>
+<li><p>Encontrar al cliente más leal.</p></li>
+<li><p>Elegir al empleado del mes.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Ambos procesos pueden trabajar conjuntamente, de hecho, <em>OLAP</em> no podría existir si no fuera por <em>OLTP</em>.</p>
+<a class="reference internal image-reference" href="../../_images/theory-olap-oltp.png" id="theory-olap-oltp"><img alt="../../_images/theory-olap-oltp.png" class="align-center" id="theory-olap-oltp" src="../../_images/theory-olap-oltp.png" style="width: 500px;" /></a>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="estructuras-del-almacenamiento-de-datos">
+<h2>Estructuras del almacenamiento de datos<a class="headerlink" href="#estructuras-del-almacenamiento-de-datos" title="Link to this heading">#</a></h2>
+<p>Los datos pueden estar estructurados de tres maneras:</p>
+<ol class="arabic simple">
+<li><p><strong>Datos estructurados</strong>: Siguen un esquema, tienen tipos de datos definidos y relaciones. Ejemplos: SQL, tablas en una base de datos relaciona. OLTP y OLAP suelen ser de este tipo.</p></li>
+<li><p><strong>Dato semi estructurados</strong>: No siguen un esquema grande. Tiene una estructura auto descriptiva. Ejemplos: CSV, NoSQL, XML, JSON.</p></li>
+<li><p><strong>Datos no estructurados</strong>: No siguen un esquema, conforman la mayor cantidad de datos del mundo. Ejemplos: Imágenes, audio, video, etc.</p></li>
+</ol>
+<p>Entre más estructurados estén los datos, más fácil es analizarlos, pero son menos flexibles y escalables.</p>
+<a class="reference internal image-reference" href="../../_images/theory-estructuras.png" id="theory-estructuras"><img alt="../../_images/theory-estructuras.png" class="align-center" id="theory-estructuras" src="../../_images/theory-estructuras.png" style="width: 600px;" /></a>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="formas-de-almacenar-datos">
+<h2>Formas de almacenar datos<a class="headerlink" href="#formas-de-almacenar-datos" title="Link to this heading">#</a></h2>
+<section id="bases-de-datos">
+<h3>Bases de datos<a class="headerlink" href="#bases-de-datos" title="Link to this heading">#</a></h3>
+<p>Son colecciones estructuradas de datos diseñadas para almacenar, recuperar y administrar información. Son particularmente útiles para almacenar datos estructurados en tiempo real (<em>OLTP</em>) aunque también se pueden utilizar para <em>OLAP</em>. Suelen tener esquemas <a class="reference internal" href="#teoria-esquemas-logicos"><span class="std std-ref">snowflake</span></a>.</p>
+<p>Las bases de datos se almacenan en <em>servers</em>, los cuales pueden alojar múltiples bases de datos y éstas, a su vez, almacenan tablas, las cuales almacenan información de una manera organizada. Los <em>servers</em> pueden estar ubicados localmente en la computadora o en la nube, en servicios como AWS, Azure, etc.</p>
+<br/>
+</section>
+<section id="data-warehouses">
+<span id="teoria-almacenamiento-data-warehouse"></span><h3>Data Warehouses<a class="headerlink" href="#data-warehouses" title="Link to this heading">#</a></h3>
+<p>Son repositorios grandes y centralizados para almacenar datos históricos de múltiples fuentes (<em>OLAP</em>). Están optimizados para consultas complejas y análisis. Usualmente se utilizan para <em>business intelligence</em> y reporteo. Suelen tener un esquema de <a class="reference internal" href="#teoria-esquemas-logicos"><span class="std std-ref">estrella</span></a>.</p>
+<p>Algunos proveedores de soluciones de <em>Data Warehouses</em> son:</p>
+<a class="reference internal image-reference" href="../../_images/theory-datawarehouses.png" id="theory-datawarehouses"><img alt="../../_images/theory-datawarehouses.png" class="align-center" id="theory-datawarehouses" src="../../_images/theory-datawarehouses.png" style="width: 400px;" /></a>
+<br/>
+<section id="data-marts">
+<h4>Data marts<a class="headerlink" href="#data-marts" title="Link to this heading">#</a></h4>
+<p>Son un subconjuto de los <em>data warehouses</em>, dedicados a un tema en específico, diseñados para satisfacer una necesidad analítica específica de un departamento o grupo en una organización.</p>
+<a class="reference internal image-reference" href="../../_images/theory-datamart.png" id="theory-datamart"><img alt="../../_images/theory-datamart.png" class="align-center" id="theory-datamart" src="../../_images/theory-datamart.png" style="width: 400px;" /></a>
+<br/>
+</section>
+<section id="data-cubes-olap-cubes">
+<h4>Data Cubes (OLAP Cubes)<a class="headerlink" href="#data-cubes-olap-cubes" title="Link to this heading">#</a></h4>
+<p>Son bases de datos multidimensionales que están optimizados para procesamiento analítico. Son utilizados en sistemas <em>OLAP</em> para <em>fast querying</em>.</p>
+<p><img alt="" src="https://www.holistics.io/blog/content/images/2020/01/olap-3d-cube.png" /></p>
+<br/>
+</section>
+</section>
+<section id="data-lakes">
+<h3>Data Lakes<a class="headerlink" href="#data-lakes" title="Link to this heading">#</a></h3>
+<p>Son útiles para almacenar cantidades vastas de datos crudos y no procesados que pueden llegar a pesar hasta los <em>petabytes</em>. Pueden almacenar tanto datos estructurados como no estructurados y se puede usar para analizar (<em>big data</em>). Permiten flexibilidad y escalabilidad a un bajo costo. Es necesario que los datos estén bien categorizados o en caso contrario de convertiría en un <em>data swamp</em>.</p>
+<p>Algunos proveedores de data lakes son:</p>
+<a class="reference internal image-reference" href="../../_images/theory-data-lakes.png" id="theory-data-lakes"><img alt="../../_images/theory-data-lakes.png" class="align-center" id="theory-data-lakes" src="../../_images/theory-data-lakes.png" style="width: 350px;" /></a>
+<br/>
+</section>
+<section id="bases-de-datos-nosql">
+<h3>Bases de datos NoSQL<a class="headerlink" href="#bases-de-datos-nosql" title="Link to this heading">#</a></h3>
+<p>Algunas de las características de las bases de datos NoSQL son las siguientes:</p>
+<ul class="simple">
+<li><p>Es una base de datos menos estructurada.</p></li>
+<li><p>Está más enfocada a archivos y documentos, en lugar de tablas.</p></li>
+<li><p>Es particularmente útil cuando los datos crecen rápidamente, no hay esquemas definidos y existe una gran cantidad de datos.</p></li>
+</ul>
+<p>Existen varios tipos de bases de datos NoSQL:</p>
+<ul class="simple">
+<li><p><strong>Key-value store</strong>: Son una combinación de llaves (identificadore únicos) y valores (cualquier cosa). Un ejemplo sería para administrar los carritos de compra de un servicio de venta en línea. Un ejemplo de este tipo es <em>redis</em>.</p></li>
+<li><p><strong>Document store</strong>: Similar a un llave-valor, en la que los valores suelen ser documentos. Un ejemplo sería para administrar contenido. Un ejemplo de este tipo es <em>mongoDB</em>.</p></li>
+<li><p><strong>Columnar database</strong>: Almacena los datos en columnas. Es escalable. Un ejemplo sería para análisis de big data donde la velocidad es importante. Un ejemplo de este tipo es <em>cassandra</em>.</p></li>
+<li><p><strong>Graph database</strong>: Los datos están interconectados y la mejor manera de representarlos es mediante un gráfica. Un ejemplo sería para redes sociales o recomendaciones. Un ejemplo de este tipo es <em>neo4j</em>.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/theory-no-sql.png" id="theory-no-sql"><img alt="../../_images/theory-no-sql.png" class="align-center" id="theory-no-sql" src="../../_images/theory-no-sql.png" style="width: 600px;" /></a>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="flujos-de-datos">
+<h2>Flujos de datos<a class="headerlink" href="#flujos-de-datos" title="Link to this heading">#</a></h2>
+<p>Informan la manera de cómo los datos son obtenidos y de qué manera. Construyen <em>data pipelines</em>. Algunas aproximaciones al flujo de datos son:</p>
+<ul class="simple">
+<li><p><strong>ETL</strong>: Más tradicional para <em>warehousing</em> y análisis a pequeña escala. Los datos son transformados antes de ser almacenados.</p></li>
+<li><p><strong>ELT</strong>: Los datos están almacenados en su forma nativa en alguna solución de almacenamiento, como un <em>data lake</em>. Solo algunas partes de los datos son transformados para propósitos específicos.</p></li>
+</ul>
+<p><img alt="" src="https://blog.bismart.com/hs-fs/hubfs/ETL%20vs%20ELT%20proceso%20y%20arquitectura.jpg?width=799&amp;height=449&amp;name=ETL%20vs%20ELT%20proceso%20y%20arquitectura.jpg" /></p>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="diseno-de-bases-de-datos">
+<h2>Diseño de bases de datos<a class="headerlink" href="#diseno-de-bases-de-datos" title="Link to this heading">#</a></h2>
+<p>Sirve para determinar cómo deben almacenarse los datos de manera lógica. Se utilizan dos conceptos importantes:</p>
+<ul class="simple">
+<li><p><strong>Modelos de bases de datos</strong>: Son especificaciones de alto nivel para la estructura de la base de datos. El modelo más popular es el modelo relacional, que se utiliza para crear bases de datos relacionales. Define filas como registros y columnas como atributos y tiene reglas como que cada fila debe de tener una llave única. Otro modelo importante es el modelo dimensional.</p></li>
+<li><p><strong><em>Schemas</em></strong>: Es una implementación del modelo. Aquí se definen las estructuras de manera más granular, como las tablas, campos, relaciones, índices, <em>views</em>, etc. Los esquemas deben de ser respetados al insertar datos estructurados en una base de datos relacional.</p></li>
+</ul>
+<br/>
+<section id="modelado-de-datos">
+<h3>Modelado de datos<a class="headerlink" href="#modelado-de-datos" title="Link to this heading">#</a></h3>
+<p>Es el primer paso en el diseño de bases de datos. Es la fase de diseño abstracto, en el que se define el modelo de datos en el que los datos serán almacenados. Tiene tres niveles:</p>
+<ol class="arabic simple">
+<li><p><strong>Modelo conceptual de datos</strong>: Describe las entidades, las relaciones y los atributos. Utiliza herramientas como diagramas de estructura de datos, diagramas entidad-relación (<a class="reference internal" href="#teoria-dbdesing-erd"><span class="std std-ref">Entity Relationship Diagram (ERD)</span></a>) y diagramas <em>UML</em>.</p></li>
+<li><p><strong>Modelo lógico de datos</strong>: Se definen las tablas, columnas y relaciones. Utiliza herramientas como modelos de bases de datos y esquemas, como podrían ser el modelo relacional y el esquema de estrella o copo de nieve.</p></li>
+<li><p><strong>Modelo físico de datos</strong>: Describe cómo será el almacenamiento a nivel físico (hardware). Usa herramientas como particiones, CPUs, índices, respaldos de sistemas, etc.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/theory-data-models.png" id="theory-data-models"><img alt="../../_images/theory-data-models.png" class="align-center" id="theory-data-models" src="../../_images/theory-data-models.png" style="width: 700px;" /></a>
+<p>En la imagen se pueden observar el <em>ERD</em> de la misma base de datos, pero con dos modelos de datos diferentes.</p>
+<br/>
+<section id="relational-modeling">
+<h4>Relational modeling<a class="headerlink" href="#relational-modeling" title="Link to this heading">#</a></h4>
+<p>Es una forma de modelar datos en forma de tablas y relaciones entre las mismas. Una relación es un conjunto de tuplas y en cada tupla se comparte un conjunto de atributos o columnas. Algunas características del modelo relacional:</p>
+<ul class="simple">
+<li><p>Cada tabla es una entidad.</p></li>
+<li><p>Cada registro en una tabla es una sola observación de la entidad.</p></li>
+<li><p>Las tablas se integran por relacionexs entre sí.</p></li>
+<li><p>Las tablas están <a class="reference internal" href="#teoria-dbdesing-normalization"><span class="std std-ref">normalizadas</span></a>.</p></li>
+</ul>
+<p><img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7dPk39PP_AhCEWOKuY3-kSOKuwYYR5GCMw&amp;s" /></p>
+<br/>
+</section>
+<section id="dimensional-modeling">
+<h4>Dimensional modeling<a class="headerlink" href="#dimensional-modeling" title="Link to this heading">#</a></h4>
+<p>Es una adaptación del modelo relacional para diseño de <em>data warehouses</em>. Está optimizado para <em>OLAP</em>. Están basados en el <a class="reference internal" href="#teoria-esquemas-logicos"><span class="std std-ref">star schema</span></a>. Está conformado por dos conceptos:</p>
+<ul class="simple">
+<li><p><strong>Fact table</strong>: Contiene métricas relacionadas al proceso de negocio. Suelen ser tablas largas, pero estrechas. Se actualizan constantemente. Están conformadas por dos tipos de columnas, <em>facts</em> y <em>keys</em>. Cada <em>fact table</em> tiene asociadas múltiples <em>dimension tables</em>.</p>
+<ul>
+<li><p><strong>fact</strong>: Contienen métricas o medidas del negocio, es decir, los datos que serán analizados, como pueden ser ventas, número de empleados, número de visitas de la página web, etc. Normalmente son fechas o números con los que se puede hacer algún tipo de <em>aggregate</em>.</p></li>
+<li><p><strong>keys</strong>: Son columnas que contienen los <em>ids</em> que se usan para relacionar con las <em>dimension tables</em>.</p></li>
+</ul>
+</li>
+<li><p><strong>Dimension table</strong>: Proveen de contexto a los procesos de negocios. Informan con respecto a las métricas de las <em>fact tables</em>, quién las hizo, cómo las hicieron, cuándo las hicieron, etc. Normalmente son sustantivos. Suelen ser tablas estáticas que no se modifican continuamente. Suelen ser tablas pequeñas pero angostas.</p></li>
+</ul>
+<p><img alt="" src="https://www.researchgate.net/profile/Sergio-Lujan-Mora/publication/314332952/figure/fig10/AS:364930730610689&#64;1464017674741/Sales-Dimensional-Model.png" /></p>
+<br/>
+<hr class="docutils" />
+</section>
+</section>
+<section id="logical-schemas">
+<span id="teoria-esquemas-logicos"></span><h3>Logical Schemas<a class="headerlink" href="#logical-schemas" title="Link to this heading">#</a></h3>
+<p>Representan la estructura abstracta de dominio de información. Existen dos tipos principales de esquemas lógicos:</p>
+<ul class="simple">
+<li><p><strong>Star schema</strong>: Una <em>fact table</em> tiene relación con múltiples <em>dimension table</em>, pero éstas no tienen relación con otras <em>dimension table</em>. Los datos jerarquizados están todos contenidos en la misma tabla (dimensión). Este el esquema por default en <em>dimensional modeling</em> al ser más sencillo.</p></li>
+<li><p><strong>Snowflake schema</strong>: Es una extensión del <em>star schema</em>, de manera que permite que las <em>dimension tables</em> se relacionen con otras <em>dimension tables</em>. Los niveles de los datos jerarquizados se colocan en una tabla nueva.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/theory-logical-schemas.png" id="theory-logical-schemas"><img alt="../../_images/theory-logical-schemas.png" class="align-center" id="theory-logical-schemas" src="../../_images/theory-logical-schemas.png" style="width: 550px;" /></a>
+<br/>
+<hr class="docutils" />
+</section>
+<section id="normalization">
+<span id="teoria-dbdesing-normalization"></span><h3>Normalization<a class="headerlink" href="#normalization" title="Link to this heading">#</a></h3>
+<p>La normalización es el proceso de eliminar información redundante en las tablas y promover la integridad de los datos en las tablas. También permite organizar la información. Es un proceso de múltiples pasos que establece los datos de forma tabular y elimina información repetida de tablas relacionadas. Divide las tablas en tablas más pequeñas y conecta estas tablas mediante relaciones. Existen distintos tipos de normalización:</p>
+<ul class="simple">
+<li><p><strong>1NF</strong>:</p>
+<ul>
+<li><p>Cada registro debe ser único (no filas repetidas), no debe de haber dos o más registros iguales en una misma columna.</p></li>
+<li><p>Cada campo en un registro debe de contener un solo valor.</p></li>
+<li><p>Por ejemplo, en la siguiente tabla la columna <em>‘Product’</em> tiene productos separados por coma, eso viola la 1NF.</p></li>
+</ul>
+</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Customer_id (PK)</p></th>
+<th class="head"><p>Customer_email</p></th>
+<th class="head"><p>Product.</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>235</p></td>
+<td><p><a class="reference external" href="mailto:jhon&#46;k&#37;&#52;&#48;mail&#46;com">jhon<span>&#46;</span>k<span>&#64;</span>mail<span>&#46;</span>com</a></p></td>
+<td><p>cheese, milk</p></td>
+</tr>
+<tr class="row-odd"><td><p>455</p></td>
+<td><p><a class="reference external" href="mailto:ken&#46;l&#37;&#52;&#48;mail&#46;com">ken<span>&#46;</span>l<span>&#64;</span>mail<span>&#46;</span>com</a></p></td>
+<td><p>shampoo</p></td>
+</tr>
+<tr class="row-even"><td><p>767</p></td>
+<td><p><a class="reference external" href="mailto:troy&#46;o&#37;&#52;&#48;mail&#46;com">troy<span>&#46;</span>o<span>&#64;</span>mail<span>&#46;</span>com</a></p></td>
+<td><p>banana</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+<ul class="simple">
+<li><p><strong>2NF</strong>:</p>
+<ul>
+<li><p>Satisface 1NF.</p></li>
+<li><p>Si la <em>PK</em> es una sola columna, satisface automáticamente 2NF.</p></li>
+<li><p>Si existe una <em>PK</em> compuesta, todas las columnas que no son <em>PK</em>, deben de depender de todas las <em>PK</em>, esto es, si hay columnas que solo dependen de una o algunas de las columnas que son <em>PK</em> y no todas, entonces se deben de poner en otra tabla (tanto las columnas <em>PK</em> como los valores dependientes de éstas).</p></li>
+<li><p>Por ejemplo, en la siguiente tabla hay dos columnas <em>PK</em>, pero <em>‘Supplier_id’</em> y <em>‘Supplier_name’</em> no depende de <em>‘Customer_id (PK)’</em>, solo dependen de <em>‘Product_id (PK)’</em> (el proveedor no depende del cliente, si no del producto que se vende), por lo tanto viola 2NF.</p></li>
+</ul>
+</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Customer_id (PK)</p></th>
+<th class="head"><p>Product_id (PK)</p></th>
+<th class="head"><p>Supplier_id</p></th>
+<th class="head"><p>Supplier_name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>235</p></td>
+<td><p>2001</p></td>
+<td><p>560</p></td>
+<td><p>Dairy Co.</p></td>
+</tr>
+<tr class="row-odd"><td><p>455</p></td>
+<td><p>2345</p></td>
+<td><p>658</p></td>
+<td><p>B&amp;H</p></td>
+</tr>
+<tr class="row-even"><td><p>767</p></td>
+<td><p>6584</p></td>
+<td><p>999</p></td>
+<td><p>Fresh Inc.</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+<ul class="simple">
+<li><p><strong>3NF</strong>:</p>
+<ul>
+<li><p>Satisface 2NF.</p></li>
+<li><p>Las columnas que no son <em>PK</em> no pueden depender de otras columnas que no son <em>PK</em>.</p></li>
+<li><p>Por ejemplo, en la siguiente tabla la columna <em>‘Supplier_name’</em> depende del <em>‘Supplier_id’</em>, pero ésta última no es una <em>PK</em>, por lo tanto viola 3NF.</p></li>
+</ul>
+</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Customer_id (PK)</p></th>
+<th class="head"><p>Supplier_id</p></th>
+<th class="head"><p>Supplier_name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>235</p></td>
+<td><p>560</p></td>
+<td><p>Dairy Co.</p></td>
+</tr>
+<tr class="row-odd"><td><p>455</p></td>
+<td><p>658</p></td>
+<td><p>B&amp;H</p></td>
+</tr>
+<tr class="row-even"><td><p>767</p></td>
+<td><p>999</p></td>
+<td><p>Fresh Inc.</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+<p>Existen más formas de normalización. A continuación se presentan algunas ordenadas de menos a más normalizadas</p>
+<ul class="simple">
+<li><p><em>Elementary key normal form</em> (EKNF).</p></li>
+<li><p><em>Boyce-Codd normal form</em> (BCNF).</p></li>
+<li><p><em>Fourth normal form</em> (4NF).</p></li>
+<li><p><em>Essential tuple normal form</em> (ETNF).</p></li>
+<li><p><em>Fifth normal form</em> (5NF).</p></li>
+<li><p><em>Domain-key normal form</em> (DKNF).</p></li>
+<li><p>Sixth normal form (6NF).</p></li>
+</ul>
+<section id="ventajas-y-desventajas">
+<h4>Ventajas y desventajas<a class="headerlink" href="#ventajas-y-desventajas" title="Link to this heading">#</a></h4>
+<p><strong>Desventajas</strong>:</p>
+<ul class="simple">
+<li><p>La normalización de tablas provoca que los <em>joins</em> de las tablas se vuelva más complicado y por lo tanto requieran más CPU.</p></li>
+<li><p>La falta de normalización puede provocar tres tipos de anomalías:</p>
+<ul>
+<li><p><em>Update anomaly</em>: Es un inconsistencia de datos provocada por la redundancia de datos, se tendrían que actualizar muchos datos.</p></li>
+<li><p><em>Insert anomaly</em>: Es la incapacidad de insertar nuevos registros debido a que puede faltar información de algunas columnas (sobre todo cuando las columnas no aceptan valores <em>Null</em>).</p></li>
+<li><p><em>Deletion anomaly</em>: Ocurre al eliminar de manera no intencional registros al tratar de eliminar ciertos datos.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Ventajas</strong>:</p>
+<ul class="simple">
+<li><p>Ahorran memoria al evitar la redundancia de datos.</p></li>
+<li><p>Fuerza la consistencia de los datos.</p></li>
+<li><p>Es más fácil y seguro actualizar, remover o agregar datos.</p></li>
+<li><p>Es más fácil de agregar registros nuevos.</p></li>
+</ul>
+<br/>
+<hr class="docutils" />
+</section>
+</section>
+<section id="entity-relationship-diagram-erd">
+<span id="teoria-dbdesing-erd"></span><h3>Entity Relationship Diagram (ERD)<a class="headerlink" href="#entity-relationship-diagram-erd" title="Link to this heading">#</a></h3>
+<p>Es un diagrama que permite visualizar cómo las entidades de una base de datos se relacionan entre sí. Se utilizan para modelar y diseñar bases de datos. Están conformados por entidades, que normalmente serán las tablas, estas entidades mostrarán las columnas que conforman cada tabla y en algunos diagramas ER también mostrará el tipo de dato de las columnas. Es posible que también muestre los <em>PK</em> y <em>FK</em>.</p>
+<p><img alt="" src="https://www.rockdata.net/img/tutorial/dvd-rental-sample-database-diagram.png" /></p>
+<p>Las relaciones entre columnas tienen una cardinalidad que especifica el tipo de relación entre las entidades, las tres más importantes son <em>one-to-one</em>, <em>one-to-many</em> y <em>many-to-many</em>. En el diagrama la cardinalidad se representa con los siguientes tipos de líneas:</p>
+<p><img alt="" src="https://help.lucid.co/hc/article_attachments/16471580520852" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Las relaciones se leen en ambos sentidos, no únicamente en un sentido.</p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./parts/teoria"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="teoria-index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Conceptos y teoría</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sql.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">SQL</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#procesamiento-de-datos">Procesamiento de datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estructuras-del-almacenamiento-de-datos">Estructuras del almacenamiento de datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formas-de-almacenar-datos">Formas de almacenar datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bases-de-datos">Bases de datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-warehouses">Data Warehouses</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-marts">Data marts</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cubes-olap-cubes">Data Cubes (OLAP Cubes)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-lakes">Data Lakes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bases-de-datos-nosql">Bases de datos NoSQL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flujos-de-datos">Flujos de datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diseno-de-bases-de-datos">Diseño de bases de datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelado-de-datos">Modelado de datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-modeling">Relational modeling</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensional-modeling">Dimensional modeling</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-schemas">Logical Schemas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization">Normalization</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-y-desventajas">Ventajas y desventajas</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entity-relationship-diagram-erd">Entity Relationship Diagram (ERD)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nebok
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

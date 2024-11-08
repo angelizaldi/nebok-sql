@@ -1,0 +1,1072 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Anexos &#8212; Manual de SQL</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'parts/postgresql/anexos';</script>
+    <link rel="icon" href="../../_static/nebok-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Cookbook" href="cookbook.html" />
+    <link rel="prev" title="psql" href="psql.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nebok-logo.png" class="logo__image only-light" alt="Manual de SQL - Home"/>
+    <script>document.write(`<img src="../../_static/nebok-logo.png" class="logo__image only-dark" alt="Manual de SQL - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Manual de SQL
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../teoria/teoria-index.html">Conceptos y teoría</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../teoria/teoria.html">Teoría</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../teoria/sql.html">SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="postgre-index.html">PostgreSQL</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="comentarios.html">Comentarios.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operadores.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipos-de-datos.html">Tipos de Datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="udf.html">Funciones (UDF)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dql/dql-index.html">Data Query Language (DQL)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dql/seleccion.html">Seleccionar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/filtrado.html">Filtrar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/ordenar.html">Ordenar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/joins.html">Join</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/agrupar.html">Agrupar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/operaciones-conjuntos.html">Operaciones de conjuntos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/expresiones-condicionales.html">Sentencias condicionales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/window-functions.html">Window Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/subqueries.html">Subqueries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/common-table-expression.html">Common Table Expression (CTE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dql/full_text_search.html">Full text search</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dml/dml-index.html">Data Manipulation Language (DML)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dml/insertar.html">Insertar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dml/actualizar.html">Actualizar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dml/eliminar.html">Eliminar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="ddl/ddl-index.html">Data Definition Language (DDL)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="ddl/crear.html">Crear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ddl/modificar.html">Modificar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ddl/eliminar.html">Eliminar y Truncar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dcl/dcl-index.html">Data Control Language (DCL)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dcl/conceder.html">Otorgar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dcl/revocar.html">Revocar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="funciones.html">Funciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensiones.html">Extensiones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psql.html">psql</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Anexos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookbook.html">Cookbook</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/parts/postgresql/anexos.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Anexos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wildcards">1. WildCards</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-expressions">2. Regular Expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametro-field">3. Parámetro <em>Field</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#literales-de-fecha">4. Literales de fecha</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#patrones">Patrones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prefijos-y-sufijos">Prefijos y sufijos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#literales-de-numero">5. Literales de número</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Patrones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Prefijos y sufijos</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="anexos">
+<h1>Anexos<a class="headerlink" href="#anexos" title="Link to this heading">#</a></h1>
+<section id="wildcards">
+<h2>1. WildCards<a class="headerlink" href="#wildcards" title="Link to this heading">#</a></h2>
+<p>Al momentos de usar <code class="docutils literal notranslate"><span class="pre">LIKE</span></code> o <code class="docutils literal notranslate"><span class="pre">ILIKE</span></code> se pueden usar los siguientes <em>wildcards</em> para afinar el filtrado.</p>
+<table class="table" id="anexos-wildcards">
+<caption><span class="caption-number">Table 6 </span><span class="caption-text">Wildcards</span><a class="headerlink" href="#anexos-wildcards" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Símbolo</p></th>
+<th class="head"><p>Descripción</p></th>
+<th class="head"><p>Ejemplo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
+<td><p>Cero o más caracteres.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a%</span></code>: Cualquier cadena que empiece con <em>‘a’</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">_</span></code></p></td>
+<td><p>Un caracter.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">h_t</span></code>: Cualquier cadena de tres caracteres que empiece con <em>‘h’</em> y termine con <em>‘t’</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+<td><p>Cualquier carácter dentro de los corchetes.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">h[oa]t</span></code>: Cualquier cadena que empiece con <em>‘h’</em>, le sigue una <em>‘o’</em> o una <em>‘a’</em> y termine con <em>‘t’</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">^</span></code></p></td>
+<td><p>Cualquier carácter que no esté dentro de los corchetes.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">h^[oa]t</span></code>: Cualquier cadena que empiece con <em>‘h’</em>, no le sigue una <em>‘o’</em> o una <em>‘a’</em> y termine con <em>‘t’</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p>Un rango de caracteres. Los rangos se pueden definir como: <code class="docutils literal notranslate"><span class="pre">[0-9]</span></code>, <code class="docutils literal notranslate"><span class="pre">[a-Z]</span></code>, <code class="docutils literal notranslate"><span class="pre">[a-z]</span></code>, <code class="docutils literal notranslate"><span class="pre">[A-Z]</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">c[a-e]</span></code>: Cualquier cadena que empiece con <em>‘c’</em> y le sigua una <em>‘a’</em>, <em>‘b’</em>, <em>‘c’</em>, <em>‘d’</em> o una <em>‘e’</em>.</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+</section>
+<section id="regular-expressions">
+<h2>2. Regular Expressions<a class="headerlink" href="#regular-expressions" title="Link to this heading">#</a></h2>
+<p>A continuación se enlistan los caracteres especiales para usarlos con expresiones regulares (ver <a class="reference internal" href="dql/filtrado.html#dql-filtrado-posix"><span class="std std-ref">POSIX Regular Expressions</span></a>).</p>
+<table class="table" id="table-caracteres-especiales">
+<caption><span class="caption-text">Caracteres Especiales</span><a class="headerlink" href="#table-caracteres-especiales" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Carácter</p></th>
+<th class="head"><p>Descripción</p></th>
+<th class="head"><p>Ejemplo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">~</span></code></p></td>
+<td><p>Indica una búsqueda sensible a minúsculas y mayúsculas.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">~</span> <span class="pre">'Apple'</span></code>: La palabra ‘Apple’, con la primer letra en mayúsculas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">~*</span></code></p></td>
+<td><p>Indica una búsqueda no sensible a minúsculas y mayúsculas.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">~*</span> <span class="pre">'apple'</span></code>: La palabra ‘apple’, independientemente de la combinación de mayúsculas y minúsculas de las letras.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+<td><p>Un conjunto de caracteres. Se busca cualquier caracter contenido en el conjunto. Para representar rangos de letras y números usar a-z, A-Z y 0-9.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[a-m]</span></code>: De la “a” a la “m”. <br>
+<code class="docutils literal notranslate"><span class="pre">[#$&amp;]</span></code>: Cualquier carácter “#”, “$” o “&amp;”.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">^</span></code></p></td>
+<td><p>La cadena empiece con.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">^he</span></code>: La cadena mpiece con “he”.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$</span></code></p></td>
+<td><p>La cadena termine con.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">llo$</span></code>: La cadena ermine con “llo”.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td><p>Cero o más ocurrencias del caracter a la izquierda.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">aix*</span></code>: El patrón “ai” seguido por cero o más “x”.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p>Una o más ocurrencias del caracter a la izquierda.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">aix+</span></code>: El patrón “ai” seguido por una o más “x”.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">?</span></code></p></td>
+<td><p>Cero o una ocurrencia del caracter a la izquierda.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">aix?</span></code>: El patrón “ai” seguido por cero o una “x”.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{}</span></code></p></td>
+<td><p>Número específico de ocurrencias del caracter a la izquierda.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">al{N}</span></code>: Buscar el patrón “a” seguido por <em>N</em> “l”. <br>
+<code class="docutils literal notranslate"><span class="pre">al{N,M}</span></code>: Buscar el patrón “a” seguido por mínimo <em>N</em> “l” y máximo <em>M</em> “l”. Si se omite <em>M</em> sería infinto y si se omite <em>N</em> sería cero.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">|</span></code></p></td>
+<td><p>O</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">falls|stays</span></code>: Buscar cualquiera de esos dos patrones.</p></td>
+</tr>
+</tbody>
+</table>
+<br/>
+</section>
+<section id="parametro-field">
+<span id="anexos-field"></span><h2>3. Parámetro <em>Field</em><a class="headerlink" href="#parametro-field" title="Link to this heading">#</a></h2>
+<p>El argumento <em>field</em> de funciones como <code class="docutils literal notranslate"><span class="pre">EXTRACT()</span></code> o <code class="docutils literal notranslate"><span class="pre">DATE_PART()</span></code> y su significado/uso depende del tipo de dato de <em>source</em> (<code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> o <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code>, ver tabla).</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field Value</p></th>
+<th class="head"><p>TIMESTAMP</p></th>
+<th class="head"><p>INTERVAL</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CENTURY</span></code></p></td>
+<td><p>El siglo</p></td>
+<td><p>Número de siglos.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DAY</span></code></p></td>
+<td><p>Día del mes (1-31)</p></td>
+<td><p>Número de días.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DECADE</span></code></p></td>
+<td><p>La decada</p></td>
+<td><p>La decada</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DOW</span></code></p></td>
+<td><p>Día de la semana: Domingo (0) a Sábado (6)</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DOY</span></code></p></td>
+<td><p>Día del año, desde 1 a 366</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EPOCH</span></code></p></td>
+<td><p>Número de segundos desde 1970-01-01 00:00:00 UTC</p></td>
+<td><p>Número total de segundos en el intervalo.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">HOUR</span></code></p></td>
+<td><p>La hora (0-23)</p></td>
+<td><p>Número de horas</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ISODOW</span></code></p></td>
+<td><p>Día de la semana basado en ISO 8601 Lunes (1) a Domingo (7)</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ISOYEAR</span></code></p></td>
+<td><p>ISO 8601 week number of year</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MICROSECONDS</span></code></p></td>
+<td><p>Segundos, incluyendo decimales, multiplicado por 1000000</p></td>
+<td><p>Segundos, incluyendo decimales, multiplicado por 1000000</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MILLENNIUM</span></code></p></td>
+<td><p>El milenio</p></td>
+<td><p>Número de milenios</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MILLISECONDS</span></code></p></td>
+<td><p>Segundos, incluyendo decimales, multiplicado por 1000</p></td>
+<td><p>Segundos, incluyendo decimales, multiplicado por 1000</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MINUTE</span></code></p></td>
+<td><p>Minutos (0-59)</p></td>
+<td><p>Número de minutos</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MONTH</span></code></p></td>
+<td><p>Mes, 1-12</p></td>
+<td><p>Número de meses</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">QUARTER</span></code></p></td>
+<td><p>Trimestres</p></td>
+<td><p>Número de trimestres</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SECOND</span></code></p></td>
+<td><p>Segundos</p></td>
+<td><p>Número de segundos.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TIMEZONE</span></code></p></td>
+<td><p>El desfase en segundos entre la zona horaria y UTC.</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TIMEZONE_HOUR</span></code></p></td>
+<td><p>The hour component of the time zone offset</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TIMEZONE_MINUTE</span></code></p></td>
+<td><p>The minute component of the time zone offset</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">WEEK</span></code></p></td>
+<td><p>Número de la semana en el año, de acuero a ISO 8601</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">YEAR</span></code></p></td>
+<td><p>Año</p></td>
+<td><p>Año</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="literales-de-fecha">
+<span id="anexos-literales-fecha"></span><h2>4. Literales de fecha<a class="headerlink" href="#literales-de-fecha" title="Link to this heading">#</a></h2>
+<section id="patrones">
+<h3>Patrones<a class="headerlink" href="#patrones" title="Link to this heading">#</a></h3>
+<p>Estos patrones se utilizan en funciones como <code class="docutils literal notranslate"><span class="pre">TO_CHAR()</span></code>, <code class="docutils literal notranslate"><span class="pre">TO_DATE()</span></code> y <code class="docutils literal notranslate"><span class="pre">TO_TIMESTAMP()</span></code> para darle un formato específico a una fecha y tiempo, o indicar el formato de una cadena que representa una fecha y tiempo.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Patrón</strong></p></th>
+<th class="head"><p><strong>Descripción</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">HH</span></code></p></td>
+<td><p>Hora del día (01–12).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">HH12</span></code></p></td>
+<td><p>Hora del día (01–12).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">HH24</span></code></p></td>
+<td><p>Hora del día (00–23).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MI</span></code></p></td>
+<td><p>Minuto (00–59).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SS</span></code></p></td>
+<td><p>Segundo (00–59).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MS</span></code></p></td>
+<td><p>Milisegundo (000–999).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">US</span></code></p></td>
+<td><p>Microsegundo (000000–999999).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FF1</span></code></p></td>
+<td><p>Décima de segundo (0–9).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FF2</span></code></p></td>
+<td><p>Centésima de segundo (00–99).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FF3</span></code></p></td>
+<td><p>Milisegundo (000–999).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FF4</span></code></p></td>
+<td><p>Décima de milisegundo (0000–9999).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FF5</span></code></p></td>
+<td><p>Centésima de milisegundo (00000–99999).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FF6</span></code></p></td>
+<td><p>Microsegundo (000000–999999).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SSSS,</span> <span class="pre">SSSSS</span></code></p></td>
+<td><p>Segundos después de la medianoche (0–86399).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">AM,</span> <span class="pre">am,</span> <span class="pre">PM,</span> <span class="pre">pm</span></code></p></td>
+<td><p>Indicador de meridiano (sin puntos).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">A.M.,</span> <span class="pre">a.m.,</span> <span class="pre">P.M.,</span> <span class="pre">p.m.</span></code></p></td>
+<td><p>Indicador de meridiano (con puntos).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Y,YYY</span></code></p></td>
+<td><p>Año (4 o más dígitos) con coma.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">YYYY</span></code></p></td>
+<td><p>Año (4 dígitos).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">YYY</span></code></p></td>
+<td><p>Últimos 3 dígitos del año.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">YY</span></code></p></td>
+<td><p>Últimos 2 dígitos del año.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Y</span></code></p></td>
+<td><p>Último dígito del año.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">IYYY</span></code></p></td>
+<td><p>Año en numeración de semanas ISO 8601 (4 o más dígitos).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IYY</span></code></p></td>
+<td><p>Últimos 3 dígitos del año en numeración ISO 8601.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">IY</span></code></p></td>
+<td><p>Últimos 2 dígitos del año en numeración ISO 8601.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">I</span></code></p></td>
+<td><p>Último dígito del año en numeración ISO 8601.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">BC,</span> <span class="pre">bc,</span> <span class="pre">AD,</span> <span class="pre">ad</span></code></p></td>
+<td><p>Indicador de era (sin puntos).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">B.C.,</span> <span class="pre">b.c.,</span> <span class="pre">A.D.,</span> <span class="pre">a.d.</span></code></p></td>
+<td><p>Indicador de era (con puntos).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MONTH</span></code></p></td>
+<td><p>Nombre completo del mes en mayúsculas (rellenado con espacios a 9 caracteres).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Month</span></code></p></td>
+<td><p>Nombre completo del mes capitalizado (rellenado con espacios a 9 caracteres).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">month</span></code></p></td>
+<td><p>Nombre completo del mes en minúsculas (rellenado con espacios a 9 caracteres).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MON</span></code></p></td>
+<td><p>Nombre abreviado del mes en mayúsculas (3 caracteres en inglés, la longitud varía según la localización).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Mon</span></code></p></td>
+<td><p>Nombre abreviado del mes capitalizado (3 caracteres en inglés, la longitud varía según la localización).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mon</span></code></p></td>
+<td><p>Nombre abreviado del mes en minúsculas (3 caracteres en inglés, la longitud varía según la localización).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MM</span></code></p></td>
+<td><p>Número del mes (01–12).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DAY</span></code></p></td>
+<td><p>Nombre completo del día en mayúsculas (rellenado con espacios a 9 caracteres).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Day</span></code></p></td>
+<td><p>Nombre completo del día capitalizado (rellenado con espacios a 9 caracteres).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">day</span></code></p></td>
+<td><p>Nombre completo del día en minúsculas (rellenado con espacios a 9 caracteres).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DY</span></code></p></td>
+<td><p>Nombre abreviado del día en mayúsculas (3 caracteres en inglés, la longitud varía según la localización).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Dy</span></code></p></td>
+<td><p>Nombre abreviado del día capitalizado (3 caracteres en inglés, la longitud varía según la localización).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dy</span></code></p></td>
+<td><p>Nombre abreviado del día en minúsculas (3 caracteres en inglés, la longitud varía según la localización).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DDD</span></code></p></td>
+<td><p>Día del año (001–366).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">IDDD</span></code></p></td>
+<td><p>Día del año en numeración ISO 8601 (001–371; el día 1 del año es el lunes de la primera semana ISO).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DD</span></code></p></td>
+<td><p>Día del mes (01–31).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">D</span></code></p></td>
+<td><p>Día de la semana, de domingo (1) a sábado (7).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ID</span></code></p></td>
+<td><p>Día de la semana en numeración ISO 8601, de lunes (1) a domingo (7).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">W</span></code></p></td>
+<td><p>Semana del mes (1–5) (la primera semana comienza el primer día del mes).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WW</span></code></p></td>
+<td><p>Número de semana del año (1–53) (la primera semana comienza el primer día del año).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">IW</span></code></p></td>
+<td><p>Número de semana del año en numeración ISO 8601 (01–53; la primera semana incluye el primer jueves del año).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CC</span></code></p></td>
+<td><p>Siglo (2 dígitos) (el siglo XXI comienza el 01-01-2001).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">J</span></code></p></td>
+<td><p>Fecha juliana (días enteros desde el 24 de noviembre de 4714 a.C. a medianoche local).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Q</span></code></p></td>
+<td><p>Trimestre.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RM</span></code></p></td>
+<td><p>Mes en números romanos en mayúsculas (I–XII; I = enero).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rm</span></code></p></td>
+<td><p>Mes en números romanos en minúsculas (i–xii; i = enero).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TZ</span></code></p></td>
+<td><p>Abreviatura de la zona horaria en mayúsculas.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tz</span></code></p></td>
+<td><p>Abreviatura de la zona horaria en minúsculas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TZH</span></code></p></td>
+<td><p>Horas de la zona horaria.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TZM</span></code></p></td>
+<td><p>Minutos de la zona horaria.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OF</span></code></p></td>
+<td><p>Desplazamiento de la zona horaria desde UTC (HH o HH:MM).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="prefijos-y-sufijos">
+<h3>Prefijos y sufijos<a class="headerlink" href="#prefijos-y-sufijos" title="Link to this heading">#</a></h3>
+<p>Estos modificadores se utilizan junto con los patrones de fechas y tiempo para añadir información extra.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Modificador</strong></p></th>
+<th class="head"><p><strong>Descripción</strong></p></th>
+<th class="head"><p><strong>Ejemplo</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Prefijo <strong>FM</strong></p></td>
+<td><p>Modo de relleno (suprime ceros a la izquierda y espacios en blanco de relleno).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FMMonth</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Sufijo <strong>TH</strong></p></td>
+<td><p>Sufijo de número ordinal en mayúsculas.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DDTH</span></code>, por ejemplo, <code class="docutils literal notranslate"><span class="pre">12TH</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Sufijo <strong>th</strong></p></td>
+<td><p>Sufijo de número ordinal en minúsculas.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DDth</span></code>, por ejemplo, <code class="docutils literal notranslate"><span class="pre">12th</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Prefijo <strong>FX</strong></p></td>
+<td><p>Opción global de formato fijo (ver notas de uso).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FX</span> <span class="pre">Month</span> <span class="pre">DD</span> <span class="pre">Day</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Prefijo <strong>TM</strong></p></td>
+<td><p>Modo de traducción (utiliza nombres de días y meses localizados según <code class="docutils literal notranslate"><span class="pre">lc_time</span></code>).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TMMonth</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Sufijo <strong>SP</strong></p></td>
+<td><p>Modo de escritura (no implementado).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DDSP</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="literales-de-numero">
+<span id="anexos-literales-numero"></span><h2>5. Literales de número<a class="headerlink" href="#literales-de-numero" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Patrones<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Estos patrones se utilizan en la función <code class="docutils literal notranslate"><span class="pre">TO_CHAR()</span></code> para indicar el formato de una cadena que representa un número.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Patrón</strong></p></th>
+<th class="head"><p><strong>Descripción</strong></p></th>
+<th class="head"><p><strong>Ejemplo</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">9</span></code></p></td>
+<td><p>Posición del dígito (puede omitirse si es insignificante).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_char(485,</span> <span class="pre">'999')</span></code> -&gt; ‘485’</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Posición del dígito (no se omite, incluso si es insignificante).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_char(0.1,</span> <span class="pre">'0.9')</span></code> -&gt; ‘0.1’</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.</span></code> (punto)</p></td>
+<td><p>Punto decimal.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_char(-0.1,</span> <span class="pre">'99.99')</span></code> -&gt; ‘-.10’</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">,</span></code> (coma)</p></td>
+<td><p>Separador de miles.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_char(1485,</span> <span class="pre">'9,999')</span></code> -&gt; ‘1,485’</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PR</span></code></p></td>
+<td><p>Valor negativo entre corchetes angulares.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_char(-485,</span> <span class="pre">'999PR')</span></code> -&gt; ‘&lt;485&gt;’</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
+<td><p>Signo anclado al número (usa configuración regional).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_char(-485,</span> <span class="pre">'999S')</span></code> -&gt; ‘485-’</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">L</span></code></p></td>
+<td><p>Símbolo de moneda (usa configuración regional).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_char(485,</span> <span class="pre">'L999')</span></code> -&gt; ‘DM 485’</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">D</span></code></p></td>
+<td><p>Punto decimal (usa configuración regional).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_char(148.5,</span> <span class="pre">'999D999')</span></code> -&gt; ‘148,500’</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G</span></code></p></td>
+<td><p>Separador de grupo (usa configuración regional).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_char(1485,</span> <span class="pre">'9G999')</span></code> -&gt; ‘1 485’</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MI</span></code></p></td>
+<td><p>Signo negativo en la posición especificada (si el número es &lt; 0).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_char(-485,</span> <span class="pre">'999MI')</span></code> -&gt; ‘485-’</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PL</span></code></p></td>
+<td><p>Signo positivo en la posición especificada (si el número es &gt; 0).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_char(485,</span> <span class="pre">'PL999')</span></code> -&gt; ‘+485’</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SG</span></code></p></td>
+<td><p>Signo de más/menos en la posición especificada.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_char(-485,</span> <span class="pre">'SG999')</span></code> -&gt; ‘-485’</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RN</span></code></p></td>
+<td><p>Número romano (entrada entre 1 y 3999).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_char(485,</span> <span class="pre">'FMRN')</span></code> -&gt; ‘CDLXXXV’</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TH</span></code> o <code class="docutils literal notranslate"><span class="pre">th</span></code></p></td>
+<td><p>Sufijo de número ordinal.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_char(482,</span> <span class="pre">'999th')</span></code> -&gt; ‘ 482nd’</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">V</span></code></p></td>
+<td><p>Desplaza el número especificado de dígitos (ver notas).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_char(12.45,</span> <span class="pre">'99V9')</span></code> -&gt; ‘ 125’</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EEEE</span></code></p></td>
+<td><p>Exponente para notación científica.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_char(0.0004859,</span> <span class="pre">'9.99EEEE')</span></code> -&gt; ‘ 4.86e-04’</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h3>Prefijos y sufijos<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Estos modificadores se utilizan junto con los patrones de número para añadir información extra.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Modificador</strong></p></th>
+<th class="head"><p><strong>Descripción</strong></p></th>
+<th class="head"><p><strong>Ejemplo</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Prefijo FM</strong></p></td>
+<td><p>Modo de relleno (suprime ceros a la derecha y espacios de relleno).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FM99.99</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Sufijo TH</strong></p></td>
+<td><p>Sufijo de número ordinal en mayúsculas.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">999TH</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Sufijo th</strong></p></td>
+<td><p>Sufijo de número ordinal en minúsculas.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">999th</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./parts/postgresql"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="psql.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">psql</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="cookbook.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Cookbook</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wildcards">1. WildCards</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-expressions">2. Regular Expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametro-field">3. Parámetro <em>Field</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#literales-de-fecha">4. Literales de fecha</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#patrones">Patrones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prefijos-y-sufijos">Prefijos y sufijos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#literales-de-numero">5. Literales de número</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Patrones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Prefijos y sufijos</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nebok
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

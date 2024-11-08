@@ -1,0 +1,709 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Agrupar &#8212; Manual de SQL</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'parts/postgresql/dql/agrupar';</script>
+    <link rel="icon" href="../../../_static/nebok-favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Operaciones de conjuntos" href="operaciones-conjuntos.html" />
+    <link rel="prev" title="Join" href="joins.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/nebok-logo.png" class="logo__image only-light" alt="Manual de SQL - Home"/>
+    <script>document.write(`<img src="../../../_static/nebok-logo.png" class="logo__image only-dark" alt="Manual de SQL - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Manual de SQL
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../teoria/teoria-index.html">Conceptos y teoría</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../teoria/teoria.html">Teoría</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../teoria/sql.html">SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../postgre-index.html">PostgreSQL</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../comentarios.html">Comentarios.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operadores.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tipos-de-datos.html">Tipos de Datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../udf.html">Funciones (UDF)</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="dql-index.html">Data Query Language (DQL)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="seleccion.html">Seleccionar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filtrado.html">Filtrar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ordenar.html">Ordenar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="joins.html">Join</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Agrupar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="operaciones-conjuntos.html">Operaciones de conjuntos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="expresiones-condicionales.html">Sentencias condicionales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="window-functions.html">Window Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subqueries.html">Subqueries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common-table-expression.html">Common Table Expression (CTE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="full_text_search.html">Full text search</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dml/dml-index.html">Data Manipulation Language (DML)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dml/insertar.html">Insertar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dml/actualizar.html">Actualizar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dml/eliminar.html">Eliminar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../ddl/ddl-index.html">Data Definition Language (DDL)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ddl/crear.html">Crear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ddl/modificar.html">Modificar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ddl/eliminar.html">Eliminar y Truncar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dcl/dcl-index.html">Data Control Language (DCL)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dcl/conceder.html">Otorgar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dcl/revocar.html">Revocar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../funciones.html">Funciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensiones.html">Extensiones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../psql.html">psql</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../anexos.html">Anexos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html">Cookbook</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/parts/postgresql/dql/agrupar.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Agrupar</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-by">GROUP BY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#having">HAVING</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-sets">GROUPING SETS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cube">CUBE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rollup">ROLLUP</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="agrupar">
+<h1>Agrupar<a class="headerlink" href="#agrupar" title="Link to this heading">#</a></h1>
+<p>En esta sección se presentan las principales clausulas relacionadas con agrupar datos y realizar cálculos agregados con esos datos agrupados.</p>
+<section id="group-by">
+<h2>GROUP BY<a class="headerlink" href="#group-by" title="Link to this heading">#</a></h2>
+<p>Agrupa los resultados de acuerdo a los valores únicos de una o más columnas. Normalmente se usa con <a class="reference internal" href="../funciones.html#funciones-aggregate"><span class="std std-ref">Aggregate functions</span></a>, aunque no necesariamente. Las columnas que se utilicen en <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> deben de ser seleccionadas en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> y no son a las que se les hará un <em>aggregate</em>. Esta sentencia va después de <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Plantilla básica del uso de GROUP BY</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">col1</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">col2</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="p">[,</span><span class="n">aggregate_function</span><span class="p">(</span><span class="n">coli</span><span class="p">),</span><span class="w"> </span><span class="p">...]</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span>
+<span class="p">[</span><span class="k">WHERE</span><span class="w"> </span><span class="p">...]</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">col1</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">col2</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>col1, col2, …</em> son columnas. No pueden ser las que se usarán con las <em>aggregate functions</em>. En caso de que haya <em>aggregate functions</em>, todas las columnas que no se usarán con <em>aggregates functions</em> deben de ir en <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> (a veces no es necesario, cuando las relaciones entre las columnas son uno a uno).</p></li>
+<li><p><em>aggregate_function(col)</em> es el nombre de una <a class="reference internal" href="../funciones.html#funciones-aggregate"><span class="std std-ref">Aggregate functions</span></a>.</p></li>
+<li><p>En PostgreSQL se puede usar los alias de las columnas en <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>.</p></li>
+<li><p>En lugar de usar los nombres de las columnas se puede usar números (1, 2, …), que hacen referencia a los campos en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> por el orden en los que fueron declarados.</p></li>
+</ul>
+<br/>
+<p><strong>Ejemplos</strong>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- GROUP BY simple</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">facid</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">bookings</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">facid</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">facid</span><span class="p">;</span>
+
+<span class="c1">-- GROUP BY múltiple y uso de alias</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">facid</span><span class="p">,</span><span class="w"> </span><span class="k">EXTRACT</span><span class="p">(</span><span class="k">month</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">starttime</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">month</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;Total Slots&quot;</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">bookings</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">EXTRACT</span><span class="p">(</span><span class="k">year</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">starttime</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2012</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">facid</span><span class="p">,</span><span class="w"> </span><span class="k">month</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">facid</span><span class="p">,</span><span class="w"> </span><span class="k">month</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pgexercises.com/questions/aggregates/fachours.html">GROUP BY simple</a>: En este se enlista el total de <em>slots</em> por <em>facid</em>.</p></li>
+<li><p><a class="reference external" href="https://pgexercises.com/questions/aggregates/fachoursbymonth2.html">GROUP BY múltiple</a>: En este ejemplo se enlista el total de <em>slots</em> por <em>facid</em> y por mes. Notar que en PostgreSQL se pueden usar los <em>alias</em> de columnas en <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>.</p></li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="having">
+<h2>HAVING<a class="headerlink" href="#having" title="Link to this heading">#</a></h2>
+<p>Es un sustituto de <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>, se usa cuando se usan <em>aggregate functions</em> y <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>, va después de <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>. Se utiliza el <em>aggregate function</em> como tal, no se puede poner el alias que se le dio al <em>aggregate</em>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Plantilla básica del uso de HAVING</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">col1</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">col2</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="p">[,</span><span class="n">aggregate_function</span><span class="p">(</span><span class="n">coli</span><span class="p">),</span><span class="w"> </span><span class="p">...]</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span>
+<span class="p">[</span><span class="k">WHERE</span><span class="w"> </span><span class="p">...]</span>
+<span class="n">GROUPY</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">col1</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">col2</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span>
+<span class="k">HAVING</span><span class="w"> </span><span class="n">aggregate_function</span><span class="p">(</span><span class="n">coli</span><span class="p">)</span><span class="w"> </span><span class="n">condición</span><span class="p">[,</span><span class="w"> </span><span class="p">...]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>aggregate_function(col)</em> es el nombre de la <em>agregate function</em> que se utilizó en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> y la columna que se utilizó en la misma. No se pueden usar alias.</p></li>
+<li><p><em>condición</em> es cualquier comparación que utilice <a class="reference internal" href="../operadores.html#operadores-comparacion"><span class="std std-ref">Operadores de Comparación</span></a> o cualquier otra expresión que retorne valores <code class="docutils literal notranslate"><span class="pre">BOOL</span></code>.</p></li>
+</ul>
+<br/>
+<p><strong>Ejemplos</strong>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Uso de HAVING</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">facid</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;Total Slots&quot;</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">bookings</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">facid</span>
+<span class="k">HAVING</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1000</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">facid</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pgexercises.com/questions/aggregates/fachours1a.html">HAVING</a>: En este ejemplo se enlistan los <em>facilities</em> que tienen más de 1000 <em>slots</em> en total.</p></li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="grouping-sets">
+<h2>GROUPING SETS<a class="headerlink" href="#grouping-sets" title="Link to this heading">#</a></h2>
+<p>Un <em>grouping set</em> es un conjunto de columnas por las cuales se agrupa un <em>dataset</em>. Se calcula una <em>aggregate function</em> con base a los valores únicos de ese <em>grouping set</em>, para ello se utiliza <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GROUPING</span> <span class="pre">SETS</span></code> permite definir múltiples <em>grouping sets</em> en un mismo <em>query</em>. Lo que permite mostrar la <em>aggregate function</em> para distintos <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> de manera más sencilla.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Plantilla de uso de GROUPING SETS</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">col1</span><span class="p">,</span><span class="w"> </span><span class="n">col2</span><span class="p">,</span><span class="w"> </span><span class="n">aggregate_function</span><span class="p">(</span><span class="n">coli</span><span class="p">)[,</span><span class="w"> </span><span class="p">...]</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">GROUPING</span><span class="w"> </span><span class="k">SETS</span><span class="p">((</span><span class="n">col1</span><span class="p">,</span><span class="w"> </span><span class="n">col2</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">col1</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">col2</span><span class="p">),</span><span class="w"> </span><span class="p">())</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>En esta plantilla se usan dos columnas para calcular los <em>grouping sets</em>, pero pueden ser más.</p></li>
+<li><p><em>col1, col2</em> tuvieron que haber sido seleccionadas en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(col1,</span> <span class="pre">col2)</span></code>: Indica que se calculen los agregados de las combinaciones de valores únicos de <em>col1</em> y <em>col2</em>. Equivaldría a: <br> <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span> <span class="pre">col1,</span> <span class="pre">col2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(col1)</span></code>: Indica que se calculen los agregados para los valores únicos de <em>col1</em>, la misma lógica se aplica para <code class="docutils literal notranslate"><span class="pre">(col2)</span></code>. Equivaldría a: <br> <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span> <span class="pre">col1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">()</span></code>: Indica que se calcule el agregado de todos los valores. Equivaldría a no poner un <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>.</p></li>
+<li><p>No necesariamente se tiene que incluir los cuatro <em>grouping sets</em>, es solo un ejemplo de cómo se deben de poner, pero se puede poner desde uno, hasta los cuatro.</p></li>
+</ul>
+<p>Para conceptualizar cómo funcionan los <em>grouping sets</em> considerar que se tiene la siguiente tabla:</p>
+<a class="reference internal image-reference" href="../../../_images/grouping-sets-long.png" id="grouping-sets-long"><img alt="../../../_images/grouping-sets-long.png" class="align-center" id="grouping-sets-long" src="../../../_images/grouping-sets-long.png" style="width: 125px;" /></a>
+<p>Si se calcula un <em>pivot tabla</em> de la tabla anterior, con el <em>aggregate</em> <code class="docutils literal notranslate"><span class="pre">COUNT()</span></code>, donde además se cálcula los totales de filas, columnas y el gran total obtendríamos una tabla similar a la tabla izquierda en la siguiente imagen:</p>
+<a class="reference internal image-reference" href="../../../_images/grouping-sets.png" id="id1"><img alt="../../../_images/grouping-sets.png" class="align-center" id="id1" src="../../../_images/grouping-sets.png" style="width: 500px;" /></a>
+<p>La tabla de la derecha sería su equivalente en <em>SQL</em> y que es resultado de aplicar <em>grouping sets</em>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(col1,</span> <span class="pre">col2)</span></code>: Los agregados de las combinaciones de valores únicos de <em>col1</em> y <em>col2</em>. Color azul claro <span style="color: #aad4d9">■</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(col1)</span></code> y <code class="docutils literal notranslate"><span class="pre">(col2)</span></code>: Los agregados para los valores únicos de <em>col1</em> y <em>col2</em> respectivamente. Áreas azúl oscuro <span style="color: #30adb9">■</span> para <em>col1</em> y café claro <span style="color: #cf9975">■</span> para <em>col2</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">()</span></code>: Los agregados de todo. Equivaldría a no poner un <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>. Área café oscuro <span style="color: #ba6a30">■</span>.</p></li>
+</ul>
+<br/>
+<p><strong>Ejemplos</strong>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- GROUPING SETS</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">facid</span><span class="p">,</span><span class="w"> </span><span class="k">EXTRACT</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">starttime</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">month</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">bookings</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">EXTRACT</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">starttime</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2012</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">GROUPING</span><span class="w"> </span><span class="k">SETS</span><span class="p">((</span><span class="n">facid</span><span class="p">,</span><span class="w"> </span><span class="k">month</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">facid</span><span class="p">),</span><span class="w"> </span><span class="p">())</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">facid</span><span class="p">,</span><span class="w"> </span><span class="k">month</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pgexercises.com/questions/aggregates/fachoursbymonth3.html">GROUPING SETS</a>: En este ejemplo se enlistan el total de <em>slots</em> por <em>facid</em> y mes. Notar que el mismo resultado se podría obtener con un <code class="docutils literal notranslate"><span class="pre">ROLLUP(facid,</span> <span class="pre">month)</span></code></p></li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="cube">
+<h2>CUBE<a class="headerlink" href="#cube" title="Link to this heading">#</a></h2>
+<p>Es una subclase de <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>, permite generar múltiples <em>groupings sets</em> por default. Calcula los agregados de todas las combinaciones de valores únicos de las columnas que se pasen a la función.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Plantilla de uso de CUBE</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">col1</span><span class="p">,</span><span class="w"> </span><span class="n">col2</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">aggregate_function</span><span class="p">(</span><span class="n">coli</span><span class="p">)[,</span><span class="w"> </span><span class="p">...]</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">CUBE</span><span class="p">(</span><span class="n">col1</span><span class="p">,</span><span class="w"> </span><span class="n">col2</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">col1,</span> <span class="pre">col2,</span> <span class="pre">...</span></code> tuvieron que haber sido seleccionadas en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>. No pueden ser las columnas a las que se les calculó un <em>aggregate function</em>.</p></li>
+<li><p>Por ejemplo, <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span> <span class="pre">CUBE(col1,</span> <span class="pre">col2,</span> <span class="pre">col3)</span></code> equivaldría a: <br> <code class="docutils literal notranslate"><span class="pre">GROUPING</span> <span class="pre">SETS</span> <span class="pre">((c1,</span> <span class="pre">c2,</span> <span class="pre">c3),</span> <span class="pre">(c1,</span> <span class="pre">c2),</span> <span class="pre">(c1,</span> <span class="pre">c3),</span> <span class="pre">(c2,</span> <span class="pre">c3),</span> <span class="pre">(c1),</span> <span class="pre">(c2),</span> <span class="pre">(c3),</span> <span class="pre">())</span></code></p></li>
+</ul>
+<p>Se puede hacer <code class="docutils literal notranslate"><span class="pre">CUBE</span></code> parciales, por ejemplo:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Plantilla de uso de CUBE parcial</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">col1</span><span class="p">,</span><span class="w"> </span><span class="n">col2</span><span class="p">,</span><span class="w"> </span><span class="n">aggregate_function</span><span class="p">(</span><span class="n">coli</span><span class="p">)[,</span><span class="w"> </span><span class="p">...]</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">col1</span><span class="p">,</span><span class="w"> </span><span class="k">CUBE</span><span class="p">(</span><span class="n">col2</span><span class="p">,</span><span class="w"> </span><span class="n">col3</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>En este ejemplo no se calcularían los totales para <em>col2</em> ni <em>col3</em>, ni los grandes totales. Equivaldría a: <br> <code class="docutils literal notranslate"><span class="pre">GROUPING</span> <span class="pre">SETS</span> <span class="pre">((c1,</span> <span class="pre">c2,</span> <span class="pre">c3),</span> <span class="pre">(c1,</span> <span class="pre">c2),</span> <span class="pre">(c1,</span> <span class="pre">c3),</span> <span class="pre">(c1))</span></code></p></li>
+<li><p>Se puede pensar en esto como si primero se hace las combinaciones de <code class="docutils literal notranslate"><span class="pre">CUBE(col2,</span> <span class="pre">col3)</span></code> y después a cada resultado se le <em>concatena</em> el <em>c1</em> al principio.</p></li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="rollup">
+<h2>ROLLUP<a class="headerlink" href="#rollup" title="Link to this heading">#</a></h2>
+<p>Es una subclase de <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>, permite generar múltiples <em>groupings sets</em>. <code class="docutils literal notranslate"><span class="pre">ROLLUP</span></code> asume jerarquía entre las columnas, lo que permite que se puedan calcular subtotales y totales de manera sencilla. Utilizar solo cuando los datos están jerarquizados.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Plantilla de uso de ROLLUP</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">col1</span><span class="p">,</span><span class="w"> </span><span class="n">col2</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">aggregate_function</span><span class="p">(</span><span class="n">coli</span><span class="p">)[,</span><span class="w"> </span><span class="p">...]</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">ROLLUP</span><span class="p">(</span><span class="n">col1</span><span class="p">,</span><span class="w"> </span><span class="n">col2</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">col1,</span> <span class="pre">col2,</span> <span class="pre">...</span></code> tuvieron que haber sido seleccionadas en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>. No pueden ser las columnas a las que se les calculó un <em>aggregate function</em>.</p></li>
+<li><p>Por ejemplo, <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span> <span class="pre">ROLLUP(col1,</span> <span class="pre">col2,</span> <span class="pre">col3)</span></code> asumiría que <em>col1 &gt; col2 &gt; col3</em> (jerárquicamente), entonces equivaldría a: <br> <code class="docutils literal notranslate"><span class="pre">GROUPING</span> <span class="pre">SETS</span> <span class="pre">((c1,</span> <span class="pre">c2,</span> <span class="pre">c3),</span> <span class="pre">(c1,</span> <span class="pre">c2),</span> <span class="pre">(c1),</span> <span class="pre">())</span></code></p></li>
+</ul>
+<p>Se puede hacer <code class="docutils literal notranslate"><span class="pre">ROLLUP</span></code> parciales, por ejemplo:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- ROLLUP parcial</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">col1</span><span class="p">,</span><span class="w"> </span><span class="n">col2</span><span class="p">,</span><span class="w"> </span><span class="n">col3</span><span class="p">,</span><span class="w"> </span><span class="n">aggregate_function</span><span class="p">(</span><span class="n">coli</span><span class="p">)[,</span><span class="w"> </span><span class="p">...]</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">col1</span><span class="p">,</span><span class="w"> </span><span class="k">ROLLUP</span><span class="p">(</span><span class="n">col2</span><span class="p">,</span><span class="w"> </span><span class="n">col3</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>En este ejemplo no se calcularían los subtotales para <em>c2</em> ni los grandes totales. Equivaldría a: <br> <code class="docutils literal notranslate"><span class="pre">GROUPING</span> <span class="pre">SETS</span> <span class="pre">((c1,</span> <span class="pre">c2,</span> <span class="pre">c3),</span> <span class="pre">(c1,</span> <span class="pre">c2),</span> <span class="pre">(c1))</span></code></p></li>
+<li><p>Se puede pensar en esto como que primero se hace las combinaciones de <code class="docutils literal notranslate"><span class="pre">ROLLUP(col2,</span> <span class="pre">col3)</span></code> y después a cada resultado se le <em>concatena</em> el <em>c1</em> al principio.</p></li>
+</ul>
+<br/>
+<p><strong>Ejemplos</strong>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- ROLLUP</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">facid</span><span class="p">,</span><span class="w"> </span><span class="k">EXTRACT</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">starttime</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">month</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">slots</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">bookings</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">EXTRACT</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">starttime</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2012</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">ROLLUP</span><span class="p">(</span><span class="n">facid</span><span class="p">,</span><span class="w"> </span><span class="k">month</span><span class="p">)</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">facid</span><span class="p">,</span><span class="w"> </span><span class="k">month</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pgexercises.com/questions/aggregates/fachoursbymonth3.html">ROLLUP</a>: En este ejemplo se enlistan el total de <em>slots</em> por <em>facid</em> y mes. Notar que el mismo resultado se podría obtener con un <code class="docutils literal notranslate"><span class="pre">GROUPING</span> <span class="pre">SETS((facid,</span> <span class="pre">month),</span> <span class="pre">(facid),</span> <span class="pre">())</span></code></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./parts/postgresql/dql"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="joins.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Join</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="operaciones-conjuntos.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Operaciones de conjuntos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-by">GROUP BY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#having">HAVING</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-sets">GROUPING SETS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cube">CUBE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rollup">ROLLUP</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nebok
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

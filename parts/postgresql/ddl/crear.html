@@ -1,0 +1,1151 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Crear &#8212; Manual de SQL</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'parts/postgresql/ddl/crear';</script>
+    <link rel="icon" href="../../../_static/nebok-favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Modificar" href="modificar.html" />
+    <link rel="prev" title="Data Definition Language (DDL)" href="ddl-index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/nebok-logo.png" class="logo__image only-light" alt="Manual de SQL - Home"/>
+    <script>document.write(`<img src="../../../_static/nebok-logo.png" class="logo__image only-dark" alt="Manual de SQL - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Manual de SQL
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../teoria/teoria-index.html">Conceptos y teoría</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../teoria/teoria.html">Teoría</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../teoria/sql.html">SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../postgre-index.html">PostgreSQL</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../comentarios.html">Comentarios.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operadores.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tipos-de-datos.html">Tipos de Datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../udf.html">Funciones (UDF)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dql/dql-index.html">Data Query Language (DQL)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dql/seleccion.html">Seleccionar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/filtrado.html">Filtrar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/ordenar.html">Ordenar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/joins.html">Join</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/agrupar.html">Agrupar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/operaciones-conjuntos.html">Operaciones de conjuntos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/expresiones-condicionales.html">Sentencias condicionales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/window-functions.html">Window Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/subqueries.html">Subqueries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/common-table-expression.html">Common Table Expression (CTE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dql/full_text_search.html">Full text search</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dml/dml-index.html">Data Manipulation Language (DML)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dml/insertar.html">Insertar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dml/actualizar.html">Actualizar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dml/eliminar.html">Eliminar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="ddl-index.html">Data Definition Language (DDL)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Crear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modificar.html">Modificar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eliminar.html">Eliminar y Truncar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dcl/dcl-index.html">Data Control Language (DCL)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dcl/conceder.html">Otorgar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dcl/revocar.html">Revocar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../funciones.html">Funciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensiones.html">Extensiones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../psql.html">psql</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../anexos.html">Anexos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html">Cookbook</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/parts/postgresql/ddl/crear.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Crear</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-database">CREATE DATABASE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-group">CREATE GROUP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-index">CREATE INDEX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-role">CREATE ROLE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-una-contrasena">Con una contraseña:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-schema">CREATE SCHEMA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-table">CREATE TABLE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-primary-key">Con <em>PRIMARY KEY</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-foreing-key">Con <em>FOREING KEY</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-not-null">Con <em>NOT-NULL</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-unique">Con <em>UNIQUE</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-check">Con <em>CHECK</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-partition-by-range">Con PARTITION BY RANGE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-partition-by-list">Con PARTITION BY LIST</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-valor-por-default">Con valor por default</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-serial">Con Serial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-identity-column">Con <em>identity column</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-restriccion">Con restricción</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-un-schema-especifico">En un <em>schema</em> específico</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-table-as">CREATE TABLE AS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-user">CREATE USER</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-view-as">CREATE VIEW AS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-materialized-view-as">CREATE MATERIALIZED VIEW AS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-into-table">SELECT INTO TABLE</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="crear">
+<h1>Crear<a class="headerlink" href="#crear" title="Link to this heading">#</a></h1>
+<p>En esta sección se revisan las principales sentencias relacionadas con crear nuevos objetos en la base de datos.</p>
+<section id="create-database">
+<h2>CREATE DATABASE<a class="headerlink" href="#create-database" title="Link to this heading">#</a></h2>
+<p>Se utiliza para crear una base de datos vacía.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>En esta sección no se cubren todos los detalles del comando <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">DATABASE</span></code>, para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createdatabase.html">documentación</a> de PostgreSQL.</p>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Crear una base de datos</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">DB_name</span>
+<span class="k">WITH</span>
+<span class="w">   </span><span class="p">[</span><span class="k">OWNER</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">user_name</span><span class="p">]</span>
+<span class="w">   </span><span class="p">[</span><span class="k">TEMPLATE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">template</span><span class="p">]</span>
+<span class="w">   </span><span class="p">[</span><span class="k">ENCODING</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">encoding</span><span class="p">]</span>
+<span class="w">   </span><span class="p">[</span><span class="n">LC_COLLATE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">collate</span><span class="p">]</span>
+<span class="w">   </span><span class="p">[</span><span class="n">LC_CTYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctype</span><span class="p">]</span>
+<span class="w">   </span><span class="p">[</span><span class="n">TABLESPACE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tablespace_name</span><span class="p">]</span>
+<span class="w">   </span><span class="p">[</span><span class="n">ALLOW_CONNECTIONS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">false</span><span class="p">]</span>
+<span class="w">   </span><span class="p">[</span><span class="k">CONNECTION</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max_concurrent_connection</span><span class="p">]</span>
+<span class="w">   </span><span class="p">[</span><span class="n">IS_TEMPLATE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">false</span><span class="w"> </span><span class="p">];</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>DB_name</em> es el nombre que tendrá el <em>database</em>. Debe de empezar con un carácter o <code class="docutils literal notranslate"><span class="pre">_</span></code> (guión bajo) y no debe ser mayor a 30 caracteres.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OWNER</span></code>: Indica el rol que será dueño de la DB.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEMPLATE</span></code>: Específica alguna plantilla a usar para crear la DB.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENCODING</span></code>: Determina la codificación de caracteres.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IS_TEMPLATE</span></code>: Si es <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, entonces cualquier usuario con el privilegio <code class="docutils literal notranslate"><span class="pre">CREATEDB</span></code> podrá clonar esta <em>DB</em>, si el <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>, entonces solo un <em>superuser</em> o el dueño podrán clonarla.</p></li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="create-group">
+<h2>CREATE GROUP<a class="headerlink" href="#create-group" title="Link to this heading">#</a></h2>
+<p>Se utiliza para crear un rol de grupo. Se recomienda usar <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">ROLE</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>En esta sección no se cubren todos los detalles del comando <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">GROUP</span></code>, para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/current/sql-creategroup.html">documentación</a> de PostgreSQL.</p>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Crear un grupo</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">[[</span><span class="k">WITH</span><span class="p">]</span><span class="w"> </span><span class="k">option</span><span class="w"> </span><span class="p">[...]]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>name</em> es el nombre que tendrá el rol.</p></li>
+<li><p><em>privilege</em>: El privilegio que tendrá el rol desde un principio. Si son más de uno, se tiene que usar <code class="docutils literal notranslate"><span class="pre">WITH</span></code> y separar los privilegios con espacios en blanco:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUPERUSER</span></code> | <code class="docutils literal notranslate"><span class="pre">NOSUPERUSER</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATEDB</span> </code> | <code class="docutils literal notranslate"><span class="pre">NOCREATEDB</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATEROLE</span></code> | <code class="docutils literal notranslate"><span class="pre">NOCREATEROLE</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INHERIT</span></code> | <code class="docutils literal notranslate"><span class="pre">NOINHERIT</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOGIN</span></code> | <code class="docutils literal notranslate"><span class="pre">NOLOGIN</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REPLICATION</span></code> | <code class="docutils literal notranslate"><span class="pre">NOREPLICATION</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BYPASSRLS</span></code> | <code class="docutils literal notranslate"><span class="pre">NOBYPASSRLS</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONNECTION</span> <span class="pre">LIMIT</span></code> <em>connlimit</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[ENCRYPTED]</span> <span class="pre">PASSWORD</span></code> <em>‘password’</em> | <code class="docutils literal notranslate"><span class="pre">PASSWORD</span> <span class="pre">NULL</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VALID</span> <span class="pre">UNTIL</span></code> <em>‘timestamp’</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IN</span> <span class="pre">ROLE</span></code> <em>role_name [, …]</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IN</span> <span class="pre">GROUP</span></code> <em>role_name [, …]</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ROLE</span></code> <em>role_name [, …]</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADMIN</span></code> <em>role_name [, …]</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">USER</span></code> <em>role_name [, …]</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SYSID</span></code> <em>uid</em>.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="create-index">
+<h2>CREATE INDEX<a class="headerlink" href="#create-index" title="Link to this heading">#</a></h2>
+<p>Se utiliza para crear un nuevo índice</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>En esta sección no se cubren todos los detalles del comando <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">INDEX</span></code>, para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createindex.html">documentación</a> de PostgreSQL.</p>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Crear un índice nuevo</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="p">[</span><span class="k">UNIQUE</span><span class="p">]</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">index_name</span>
+<span class="k">ON</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="p">(</span><span class="n">col_name</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="k">DESC</span><span class="p">]);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>index_name</em> es el nombre que tendrá el índice.</p></li>
+<li><p><em>table_name</em> es el nombre de la tabla donde estará ubicado el índice.</p></li>
+<li><p><em>col_name</em> es la columna que se indexará. Puede ser más de una columna (<em>composite index</em>), separadas por coma, además se puede especificar si de manera ascendente o descendente.</p></li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="create-role">
+<h2>CREATE ROLE<a class="headerlink" href="#create-role" title="Link to this heading">#</a></h2>
+<p>Se utiliza para crear un rol. Es útil para crear roles de grupos (por default, <code class="docutils literal notranslate"><span class="pre">NOLOGIN</span></code>) y roles de usuario (usar <code class="docutils literal notranslate"><span class="pre">LOGIN</span></code>). Es más vesátil y flexible que <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">USER</span></code> o <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">GROUP</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>En esta sección no se cubren todos los detalles del comando <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">ROLE</span></code>, para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createrole.html">documentación</a> de PostgreSQL.</p>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Crear rol nuevo</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">[[</span><span class="k">WITH</span><span class="p">]</span><span class="w"> </span><span class="k">option</span><span class="w"> </span><span class="p">[...]];</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>name</em> es el nombre que tendrá el rol.</p></li>
+<li><p><em>privilege</em>: El privilegio que tendrá el rol desde un principio. Si son más de uno, se tiene que usar <code class="docutils literal notranslate"><span class="pre">WITH</span></code> y separar los privilegios con espacios en blanco:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUPERUSER</span></code> | <code class="docutils literal notranslate"><span class="pre">NOSUPERUSER</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATEDB</span> </code> | <code class="docutils literal notranslate"><span class="pre">NOCREATEDB</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATEROLE</span></code> | <code class="docutils literal notranslate"><span class="pre">NOCREATEROLE</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INHERIT</span></code> | <code class="docutils literal notranslate"><span class="pre">NOINHERIT</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOGIN</span></code> | <code class="docutils literal notranslate"><span class="pre">NOLOGIN</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REPLICATION</span></code> | <code class="docutils literal notranslate"><span class="pre">NOREPLICATION</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BYPASSRLS</span></code> | <code class="docutils literal notranslate"><span class="pre">NOBYPASSRLS</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONNECTION</span> <span class="pre">LIMIT</span></code> <em>connlimit</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[ENCRYPTED]</span> <span class="pre">PASSWORD</span></code> <em>‘password’</em> | <code class="docutils literal notranslate"><span class="pre">PASSWORD</span> <span class="pre">NULL</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VALID</span> <span class="pre">UNTIL</span></code> <em>‘timestamp’</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IN</span> <span class="pre">ROLE</span></code> <em>role_name [, …]</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IN</span> <span class="pre">GROUP</span></code> <em>role_name [, …]</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ROLE</span></code> <em>role_name [, …]</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADMIN</span></code> <em>role_name [, …]</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">USER</span></code> <em>role_name [, …]</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SYSID</span></code> <em>uid</em>.</p></li>
+</ul>
+</li>
+<li><p><strong>Importante</strong>: También se puede usar <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">USER</span></code> o <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">GROUP</span></code> (no recomendado), la diferencia es que cuando se usa <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">USER</span></code> se utiliza por default el privilegio <code class="docutils literal notranslate"><span class="pre">LOGIN</span></code>, mientras que cuando se usa <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">ROLE</span></code> se utiliza por default el privilegio <code class="docutils literal notranslate"><span class="pre">NOLOGIN</span></code> el cual es útil para definir un rol de grupo.</p></li>
+</ul>
+<br/>
+<section id="con-una-contrasena">
+<h3>Con una contraseña:<a class="headerlink" href="#con-una-contrasena" title="Link to this heading">#</a></h3>
+<p>Para crear un rol con una contraseña y una fecha de caducidad usar:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span>
+<span class="k">WITH</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="s1">&#39;password&#39;</span>
+<span class="k">VALID</span><span class="w"> </span><span class="k">UNTIL</span><span class="w"> </span><span class="s1">&#39;yyyy-mm-dd&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>name</em> es el nombre que tendrá el rol.</p></li>
+<li><p><em>‘password’</em> es la contraseña</p></li>
+<li><p><em>‘yyyy-mm-dd’</em> es una fecha en ISO 8601.</p></li>
+</ul>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="create-schema">
+<h2>CREATE SCHEMA<a class="headerlink" href="#create-schema" title="Link to this heading">#</a></h2>
+<p>Se utiliza para crear un <em>schema</em> nuevo.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>En esta sección no se cubren todos los detalles del comando <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">SCHEMA</span></code>, para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createschema.html">documentación</a> de PostgreSQL.</p>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Crear un esquema nuevo</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="k">schema_name</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="k">AUTHORIZATION</span><span class="w"> </span><span class="n">role_specification</span><span class="w"> </span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>schema_name</em> será el nombre del <em>schema</em>, no puede empezar por ‘_pg’, debe de tener máximo 32 caracteres y debe de empezar por una letra o guión bajo (<code class="docutils literal notranslate"><span class="pre">_</span></code>).</p></li>
+<li><p><em>role_specification</em> indica el usuario dueño del <em>schema</em>, las opciones son:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">CURRENT_ROLE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CURRENT_USER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SESSION_USER</span></code></p></li>
+</ul>
+</li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="create-table">
+<h2>CREATE TABLE<a class="headerlink" href="#create-table" title="Link to this heading">#</a></h2>
+<p>Se utiliza para crear una nueva tabla en una <em>database</em>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>En esta sección no se cubren todos los detalles del comando <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code>, para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createtable.html">documentación</a> de PostgreSQL.</p>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Plantilla para crear una tabla</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="p">[</span><span class="n">TEMP</span><span class="p">]</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">EXIST</span><span class="p">]</span><span class="w"> </span><span class="k">table_name</span><span class="p">(</span>
+<span class="n">col1</span><span class="w"> </span><span class="n">type1</span><span class="w"> </span><span class="p">[</span><span class="n">rest1</span><span class="p">],</span>
+<span class="n">col2</span><span class="w"> </span><span class="n">type2</span><span class="w"> </span><span class="p">[</span><span class="n">rest2</span><span class="p">],</span>
+<span class="p">...</span><span class="w"> </span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> será el nombre de la tabla. Si se pone <code class="docutils literal notranslate"><span class="pre">IF</span> <span class="pre">NOT</span> <span class="pre">EXIST</span></code> entonces si una tabla con ese nombre ya existe, se arrojará una notificación y se omitirá la creación de la tabla.</p></li>
+<li><p>Se puede especificar que sea una tabla temporal con <code class="docutils literal notranslate"><span class="pre">TEMP</span></code> o <code class="docutils literal notranslate"><span class="pre">TEMPORARY</span></code>.</p></li>
+<li><p><em>col1, col2, …</em> serán los nombres de cada columna en la tabla.</p></li>
+<li><p><em>type1, type2, …</em> serán los tipos de datos que contendrá cada <em>coli</em>.</p></li>
+<li><p><em>rest1, rest2, …</em> son cualquier tipo de <a class="reference internal" href="../../teoria/sql.html#teoria-sql-restricciones"><span class="std std-ref">Restricciones de columnas</span></a> opcional que afecta a la columna <em>coli</em>.</p>
+<ul>
+<li><p>Cada columna puede tener más de una restricción, para ello simplemente poner las restricciones separadas por espacios en blanco.</p></li>
+</ul>
+</li>
+<li><p>Al final se ponen las restricciones que afectan toda la tabla, incluye restricciones de <em>primary keys</em>, <em>foreing keys</em> y <em>check</em>. Son como las restricciones de columnas, pero afectan a dos o más columnas, aunque pueden estar definidas solo para una. Para ejemplos de cómo definir estas restricciones revisar las proximas secciones.</p></li>
+</ul>
+<br/>
+<section id="con-primary-key">
+<h3>Con <em>PRIMARY KEY</em><a class="headerlink" href="#con-primary-key" title="Link to this heading">#</a></h3>
+<p>Al crear una tabla, para declarar una columna <em>primary key</em> usar las palabras reservadas <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Definir columna como PK</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span><span class="p">(</span>
+<span class="n">col</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span>
+<span class="p">...);</span>
+
+<span class="c1">-- Alternativa</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table</span><span class="p">(</span>
+<span class="n">col</span><span class="w"> </span><span class="k">type</span>
+<span class="p">...</span><span class="w">  </span>
+<span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">col</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>col</em> son los nombre de las columnas que serán las <em>primary keys</em>.</p></li>
+<li><p><em>type</em> son los tipos de datos de las columnas.</p></li>
+<li><p>Utilizar <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY(...)</span></code> es conveniente cuando la <em>PK</em> será la combinación de dos o más columnas, simplemente separar por coma cada columna.</p></li>
+<li><p>El nombre por default de la restricción será <em>table_name_pkey</em>, donde <em>table_name</em> es el nombre de la tabla. Si se desea que la restricción tenga un nombre personalizado revisar <a class="reference internal" href="#ddl-crear-create-con-restriccion"><span class="std std-ref">Con restricción</span></a>.</p></li>
+</ul>
+<br/>
+</section>
+<section id="con-foreing-key">
+<span id="ddl-crear-create-con-foreing-key"></span><h3>Con <em>FOREING KEY</em><a class="headerlink" href="#con-foreing-key" title="Link to this heading">#</a></h3>
+<p>A la hora de crear una tabla se puede declarar una columna como <em>foreing key</em>, de la siguiente manera (como restricción de columna):</p>
+<div class="highlight-SQL notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Definir columnas como FK</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span><span class="p">(</span>
+<span class="n">col</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">another_table</span><span class="w"> </span><span class="p">(</span><span class="n">colPk</span><span class="p">));</span>
+
+<span class="c1">-- Alternativa</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span><span class="p">(</span>
+<span class="n">col</span><span class="w"> </span><span class="k">type</span><span class="w"> </span>
+<span class="p">...</span>
+<span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">rest_name</span>
+<span class="n">FOREING</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">col</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">another_table</span><span class="w"> </span><span class="p">(</span><span class="n">colPk</span><span class="p">))</span>
+<span class="p">[</span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="n">delete_action</span><span class="p">]</span>
+<span class="p">[</span><span class="k">ON</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">update_action</span><span class="p">];</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla hija (donde están las <em>FK</em>)</p></li>
+<li><p><em>col</em> es el nombre de la columna en la tabla hija.</p></li>
+<li><p><em>type</em> es el tipo de dato de la columna.</p></li>
+<li><p><em>another_table</em> es el nombre de la tabla padre (donde está la <em>PK</em>).</p></li>
+<li><p><em>colPk</em> es la columna <em>primary key</em> de <em>another_table</em>.</p></li>
+<li><p><em>rest_name</em> es el nombre que tendrá la restricción.</p></li>
+<li><p>Es posible además especificar que acción realizar cuando la <em>PK</em> se modifica o elimina (se viola la <em>referential integrity</em>), indicando que acción realizar en la <em>FK</em>. Las acciones posibles son:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">NULL</span></code>: Establece <code class="docutils literal notranslate"><span class="pre">NULL</span></code> las observaciones afectadas en la tabla hija.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">DEFAULT</span></code>: Establece el valor por default de las observaciones afectadas en la tabla hija.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RESTRICT</span></code>: Similar a <code class="docutils literal notranslate"><span class="pre">NO</span> <span class="pre">ACTION</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NO</span> <span class="pre">ACTION</span></code>: Se arroja una violación de restricción.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CASCADE</span></code>: Elimina las observaciones afectadas en la tabla hija.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+</section>
+<section id="con-not-null">
+<h3>Con <em>NOT-NULL</em><a class="headerlink" href="#con-not-null" title="Link to this heading">#</a></h3>
+<p>Al momento de crear una tabla se puede indicar cuáles columnas no podrán contener valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, esto es útil cuando una columna es indispensable que sea <code class="docutils literal notranslate"><span class="pre">NOT-NULL</span></code>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Definir una columna como NOT NULL</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span><span class="p">(</span>
+<span class="n">col</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="p">...);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla</p></li>
+<li><p><em>type</em> es el tipo de dato de la columna.</p></li>
+<li><p><em>col</em> es el nombre de la columna.</p></li>
+</ul>
+<br/>
+</section>
+<section id="con-unique">
+<h3>Con <em>UNIQUE</em><a class="headerlink" href="#con-unique" title="Link to this heading">#</a></h3>
+<p>Al momento de crear una tabla, se puede indicar que una columna no debe de tener valores repetidos:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Definir una columna como que no puede tener valores repetidos</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span><span class="p">(</span>
+<span class="n">col</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span>
+<span class="p">...);</span>
+
+<span class="c1">-- Alternativa</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span><span class="p">(</span>
+<span class="n">col</span><span class="w"> </span><span class="k">type</span><span class="p">,</span>
+<span class="p">...</span>
+<span class="k">UNIQUE</span><span class="p">(</span><span class="n">col</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>type</em> es el tipo de dato de la columna.</p></li>
+<li><p><em>col</em> es el nombre de la columna.</p></li>
+<li><p>El nombre por default de la restricción será <em>table_name_col_name_key</em>. Para nombres personalizados revisar <a class="reference internal" href="#ddl-crear-create-con-restriccion"><span class="std std-ref">Con restricción</span></a>.</p></li>
+<li><p>Se puede crear una restricción de unicidad de múltiples columnas, simplemente separando con comas el nombre de las columnas.</p></li>
+</ul>
+<br/>
+</section>
+<section id="con-check">
+<h3>Con <em>CHECK</em><a class="headerlink" href="#con-check" title="Link to this heading">#</a></h3>
+<p>Al momento de crear una tabla, se puede indicar que los valores de una columna cumplan determinada condición utilizando <code class="docutils literal notranslate"><span class="pre">CHECK</span></code>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Definir condicionales en una columna</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span><span class="p">(</span>
+<span class="n">col</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="k">CHECK</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+<span class="p">...);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> es el nombre de la tabla.</p></li>
+<li><p><em>col</em> es el nombre de la columna.</p></li>
+<li><p><em>condition</em> normalmente es una comparación que involucra a esa misma columna, utilizando los <a class="reference internal" href="../operadores.html#operadores-comparacion"><span class="std std-ref">Operadores de Comparación</span></a>, por ejemplo: <code class="docutils literal notranslate"><span class="pre">col</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.</p></li>
+<li><p>El nombre por default de la restricción será <em>table_name_col_key</em>. Para nombres personalizados revisar <a class="reference internal" href="#ddl-crear-create-con-restriccion"><span class="std std-ref">Con restricción</span></a>.</p></li>
+</ul>
+<br/>
+</section>
+<section id="con-partition-by-range">
+<span id="ddl-create-partition-by-range"></span><h3>Con PARTITION BY RANGE<a class="headerlink" href="#con-partition-by-range" title="Link to this heading">#</a></h3>
+<p>Se utiliza para crear particiones horizontales en tablas nuevas con base a rangos de una columna. Para particiones con base a columnas categóricas revisar <a class="reference internal" href="#ddl-create-partition-by-list"><span class="std std-ref">Con PARTITION BY LIST</span></a>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Especificar la columna con la que se hará la partición</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span><span class="p">(</span>
+<span class="w"> </span><span class="p">...</span>
+<span class="w"> </span><span class="n">col_name</span><span class="w"> </span><span class="k">TYPE</span><span class="w"> </span><span class="k">CONSTRAINTS</span>
+<span class="w"> </span><span class="p">...</span>
+<span class="p">)</span>
+<span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">RANGE</span><span class="p">(</span><span class="n">col_name</span><span class="p">)</span>
+
+<span class="c1">-- Posteriormente se tiene que crear las particiones (cada tabla) indicando los rangos con base a los valores de la columna col_name</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">partition_name_1</span><span class="w"> </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">FOR</span><span class="w"> </span><span class="n">VALUE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span><span class="n">value_i</span><span class="p">)</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="p">(</span><span class="n">value_j</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">partition_name_2</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">FOR</span><span class="w"> </span><span class="n">VALUE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span><span class="n">value_j</span><span class="p">)</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="p">(</span><span class="n">value_k</span><span class="p">);</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>col_name</em> es el nombre de la columna con la que se basará la partición.</p></li>
+<li><p><em>partition_name_i</em> serán los nombres de las particiones.</p></li>
+<li><p><em>table_name</em> es la tabla sobre la cual se está haciendo la partición.</p></li>
+<li><p><em>value</em> son valores de <em>col_name</em>, con ellos se definen los rangos para hacer las particiones. Tiene que ser un tipo de dato que permita crear rangos únicos, por ejemplo de tipo fecha, numéricos, etc.</p></li>
+</ul>
+<br/>
+</section>
+<section id="con-partition-by-list">
+<span id="ddl-create-partition-by-list"></span><h3>Con PARTITION BY LIST<a class="headerlink" href="#con-partition-by-list" title="Link to this heading">#</a></h3>
+<p>Se utiliza para crear particiones horizontales en tablas nuevas con base a valores categóricos de una columna. Para particiones con base a rangos de valores ver <a class="reference internal" href="#ddl-create-partition-by-range"><span class="std std-ref">Con PARTITION BY RANGE</span></a>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Especificar la columna con la que se hará la partición</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span><span class="p">(</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="n">col_name</span><span class="w"> </span><span class="k">TYPE</span><span class="w"> </span><span class="k">CONSTRAINTS</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">)</span>
+<span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">LIST</span><span class="p">(</span><span class="n">col_name</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="c1">-- Posteriormente se tiene que crear las particiones (cada tabla) con base a los valores de la columna col_name</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">partition_name_1</span><span class="w"> </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">FOR</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="n">value_i</span><span class="p">);</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">partition_name_2</span><span class="w"> </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">FOR</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="n">value_j</span><span class="p">);</span>
+
+<span class="p">...</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>col_name</em> es el nombre de la columna con la que se basará la partición.</p></li>
+<li><p><em>partition_name_i</em> serán los nombres de las particiones.</p></li>
+<li><p><em>table_name</em> es la tabla sobre la cual se está haciendo la partición.</p></li>
+<li><p><em>value</em> son valores de <em>col</em>, debe de ser una columna con valores categóricos.</p></li>
+</ul>
+<br/>
+</section>
+<section id="con-valor-por-default">
+<h3>Con valor por default<a class="headerlink" href="#con-valor-por-default" title="Link to this heading">#</a></h3>
+<p>Al momento de crear una tabla, se puede indicar el valor por default de una columna utilizando <code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Definit valor por default de una columna</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table</span><span class="p">(</span>
+<span class="n">col</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
+<span class="p">...);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table</em> es el nombre de la tabla</p></li>
+<li><p><em>col</em> es el nombre de la columna.</p></li>
+<li><p><em>type</em> es el tipo de dato de la columna.</p></li>
+<li><p><em>val</em> es el valor por default que tendrá la columna y que debe de ser del mismo tipo que <em>type</em>.</p></li>
+</ul>
+<br/>
+</section>
+<section id="con-serial">
+<h3>Con Serial<a class="headerlink" href="#con-serial" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> es un tipo de dato especial que genera una secuencia de número enteros automáticamente conforme se van agregando valores a una tabla, por lo que se puede omitir las columnas de tipo <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> a la hora de insertar valores. La forma de crear columnas de este tipo de datos es con <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table</span><span class="p">(</span>
+<span class="n">col</span><span class="w"> </span><span class="nb">SERIAL</span><span class="p">,</span>
+<span class="p">...);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> es el <em>type</em>, no es una restricción.</p></li>
+<li><p>Por default a <em>col</em> se le agregará un restricción <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">NULL</span></code>.</p></li>
+<li><p>Existen alternativas, dependiendo de las necesidades de la serie: <code class="docutils literal notranslate"><span class="pre">SMALLSERIAL</span></code>, <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> y <code class="docutils literal notranslate"><span class="pre">BIGSERIAL</span></code>. Ver <a class="reference internal" href="../tipos-de-datos.html#tipos-numericos-enteros"><span class="std std-ref">Enteros</span></a> y <a class="reference internal" href="../../teoria/sql.html#theory-sql-tablas-serial"><span class="std std-ref">SERIAL</span></a>.</p></li>
+<li><p>Es común que a los tipos de datos <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> se les agregué la restricción <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code>, aunque no es obligatorio.</p></li>
+</ul>
+<br/>
+</section>
+<section id="con-identity-column">
+<h3>Con <em>identity column</em><a class="headerlink" href="#con-identity-column" title="Link to this heading">#</a></h3>
+<p>Una columna identidad es una columna numérica que genera números enteros automáticamente cada vez que se insertan valores nuevos a una tabla. Es una alternativa más flexible a <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code>. Para más información ver <a class="reference internal" href="../../teoria/sql.html#teoria-sql-tablas-identity-column"><span class="std std-ref">IDENTITY COLUMN</span></a>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Definir una columna como identity column</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table</span><span class="p">(</span>
+<span class="n">col</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="k">GENERATED</span><span class="w"> </span><span class="err">{</span><span class="n">ALWAYS</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">DEFAULT</span><span class="err">}</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">IDENTITY</span><span class="p">[(</span><span class="n">sequence_option</span><span class="p">)],</span>
+<span class="p">...);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>type</em> puede ser <code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INT</span></code> o <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>.</p></li>
+<li><p>Se puede especificar cómo se debe de comportar la columna al ejecutar otras sentencias como <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> o <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALWAYS</span></code>: Si se intenta insertar (<code class="docutils literal notranslate"><span class="pre">INSERT</span></code>) o actualizar (<code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>) valores en una columna se generará un error (aunque sí es posible hacerlo, revisar <a class="reference internal" href="../../teoria/sql.html#teoria-sql-tablas-identity-column"><span class="std std-ref">IDENTITY COLUMN</span></a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BY</span> <span class="pre">DEFAULT</span></code>: Se puede insertar (<code class="docutils literal notranslate"><span class="pre">INSERT</span></code>) o actualizar (<code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>) otro valor manualmente.</p></li>
+</ul>
+</li>
+<li><p><em>sequence_option</em> son opciones del objeto <code class="docutils literal notranslate"><span class="pre">SEQUENCE</span></code> para alterar el comportamiento de la secuencia, ver <a class="reference internal" href="../../teoria/sql.html#teoria-sql-tablas-identity-column"><span class="std std-ref">IDENTITY COLUMN</span></a>.</p></li>
+</ul>
+<br/>
+</section>
+<section id="con-restriccion">
+<span id="ddl-crear-create-con-restriccion"></span><h3>Con restricción<a class="headerlink" href="#con-restriccion" title="Link to this heading">#</a></h3>
+<p>Para definir una restricción en una columna al momento de crear una tabla:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Definir restricción en una columna</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table</span><span class="p">(</span>
+<span class="n">col</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">name_rest</span><span class="w"> </span><span class="n">REST</span><span class="p">(</span><span class="n">col</span><span class="p">)</span><span class="w"> </span>
+<span class="p">...);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>REST</em> es el nombre de algún tipo de restricción como <code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code>, <code class="docutils literal notranslate"><span class="pre">CHECK</span></code>, <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code>, etc.</p></li>
+<li><p><em>col</em> es el nombre de la columna que tendrá la restricción. Pueden ser más de una columna separada por comas.</p></li>
+<li><p><em>name_rest</em> es el nombre que tendrá la restricción, debe de empezar con una letra o guion bajo (_) y tener máximo 31 caracteres.</p></li>
+<li><p>Si la restricción es <code class="docutils literal notranslate"><span class="pre">FOREIGN</span> <span class="pre">KEY</span></code> le debe de seguir <code class="docutils literal notranslate"><span class="pre">REFERENCES</span> <span class="pre">another_table(colPk)</span></code> (ver <a class="reference internal" href="#ddl-crear-create-con-foreing-key"><span class="std std-ref">Con FOREING KEY</span></a>).</p></li>
+</ul>
+<br/>
+</section>
+<section id="en-un-schema-especifico">
+<h3>En un <em>schema</em> específico<a class="headerlink" href="#en-un-schema-especifico" title="Link to this heading">#</a></h3>
+<p>Para indicar un <em>schema</em> específico al momento de crear la tabla, en el nombre se debe de agregar el nombre del <em>schema</em>, seguido de un punto (<code class="docutils literal notranslate"><span class="pre">.</span></code>), seguido del nombre de la tabla:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Crear tabla en un schema específico</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">schema_schema</span><span class="p">.</span><span class="k">table_name</span><span class="p">(</span><span class="w"> </span>
+<span class="n">col</span><span class="w"> </span><span class="k">type</span><span class="p">,</span>
+<span class="p">...);</span><span class="w"> </span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>name_schema</em> es el nombre del <em>schema</em> donde estará la tabla.</p></li>
+<li><p><em>name_tabla</em> es el nombre que tendrá la tabla.</p></li>
+</ul>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="create-table-as">
+<h2>CREATE TABLE AS<a class="headerlink" href="#create-table-as" title="Link to this heading">#</a></h2>
+<p>Crea una tabla nueva con base a los resultados de un <em>query</em>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>En esta sección no se cubren todos los detalles del comando <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">AS</span></code>, para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createtableas.html">documentación</a> de PostgreSQL.</p>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Crear tabla desde un query</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="p">[</span><span class="n">TEMP</span><span class="p">]</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">EXIST</span><span class="p">]</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="p">[(</span><span class="n">col1</span><span class="p">,</span><span class="w"> </span><span class="n">col2</span><span class="p">,</span><span class="w"> </span><span class="p">...)]</span>
+<span class="k">AS</span><span class="w"> </span><span class="c1">-- query definition</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>table_name</em> será el nombre de la tabla.</p></li>
+<li><p><em>query</em> es un <em>query</em> que debe de arrojar una tabla.</p></li>
+<li><p>Se puede especificar que sea una tabla temporal con <code class="docutils literal notranslate"><span class="pre">TEMP</span></code> o <code class="docutils literal notranslate"><span class="pre">TEMPORARY</span></code>.</p></li>
+<li><p>Las columnas de la tabla nueva tendrán el mismo nombre que las del <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>, si se quieren poner otro nombre, poner una lista con los nombres, separadas por coma, entre paréntesis, después del nombre de la nueva tabla (<em>col1, col2, …</em>).</p></li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="create-user">
+<h2>CREATE USER<a class="headerlink" href="#create-user" title="Link to this heading">#</a></h2>
+<p>Se utiliza para crear un rol de usuario .</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>En esta sección no se cubren todos los detalles del comando <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">USER</span></code>, para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createuser.html">documentación</a> de PostgreSQL.</p>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Crear rol nuevo</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">[[</span><span class="k">WITH</span><span class="p">]</span><span class="w"> </span><span class="k">option</span><span class="w"> </span><span class="p">[...]];</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>name</em> es el nombre que tendrá el rol.</p></li>
+<li><p><em>privilege</em>: El privilegio que tendrá el rol desde un principio. Si son más de uno, se tiene que usar <code class="docutils literal notranslate"><span class="pre">WITH</span></code> y separar los privilegios con espacios en blanco:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUPERUSER</span></code> | <code class="docutils literal notranslate"><span class="pre">NOSUPERUSER</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATEDB</span> </code> | <code class="docutils literal notranslate"><span class="pre">NOCREATEDB</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATEROLE</span></code> | <code class="docutils literal notranslate"><span class="pre">NOCREATEROLE</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INHERIT</span></code> | <code class="docutils literal notranslate"><span class="pre">NOINHERIT</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOGIN</span></code> | <code class="docutils literal notranslate"><span class="pre">NOLOGIN</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REPLICATION</span></code> | <code class="docutils literal notranslate"><span class="pre">NOREPLICATION</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BYPASSRLS</span></code> | <code class="docutils literal notranslate"><span class="pre">NOBYPASSRLS</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONNECTION</span> <span class="pre">LIMIT</span></code> <em>connlimit</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[ENCRYPTED]</span> <span class="pre">PASSWORD</span></code> <em>‘password’</em> | <code class="docutils literal notranslate"><span class="pre">PASSWORD</span> <span class="pre">NULL</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VALID</span> <span class="pre">UNTIL</span></code> <em>‘timestamp’</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IN</span> <span class="pre">ROLE</span></code> <em>role_name [, …]</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IN</span> <span class="pre">GROUP</span></code> <em>role_name [, …]</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ROLE</span></code> <em>role_name [, …]</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADMIN</span></code> <em>role_name [, …]</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">USER</span></code> <em>role_name [, …]</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SYSID</span></code> <em>uid</em>.</p></li>
+</ul>
+</li>
+<li><p><strong>Importante</strong>: De esta manera se puede crear tanto un rol de usuario como un rol de grupo, es lo mismo, aunque a los roles de usuarios se tiene que definirle atributos mientras que en un rol de grupo no.</p></li>
+<li><p><strong>Importante</strong>: También se puede usar <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">USER</span></code>, que básicamente es un alias de <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">ROLE</span></code>, la única diferencia es que cuando se usa <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">USER</span></code> se utiliza por default el privilegio <code class="docutils literal notranslate"><span class="pre">LOGIN</span></code>, mientras que cuando se usa <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">ROLE</span></code> se utiliza por default el privilegio <code class="docutils literal notranslate"><span class="pre">NOLOGIN</span></code>.</p></li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="create-view-as">
+<h2>CREATE VIEW AS<a class="headerlink" href="#create-view-as" title="Link to this heading">#</a></h2>
+<p>Se utiliza para crear una nueva <em>view</em> en una <em>database</em>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>En esta sección no se cubren todos los detalles del comando <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">VIEW</span> <span class="pre">AS</span></code>, para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createview.html">documentación</a> de PostgreSQL.</p>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Crear una view</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="p">[</span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="p">]</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">view_name</span><span class="w"> </span><span class="k">AS</span>
+<span class="c1">-- query definition</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>query</em> es un <em>query</em> que debe de arrojar una tabla.</p></li>
+<li><p>Si se va a reemplazar una <em>view</em> existente entonces el nuevo <em>query</em> debe de producir el mismo número de columnas con los mismos nombres, los mismos tipos de datos y en el mismo orden. Es posible agregar columnas nuevas al final.</p></li>
+<li><p>Una vez creada la tabla virtual se podrá hacer referencia a ella como a cualquier otra tabla.</p></li>
+<li><p>Para añadir valores se puede usar <a class="reference internal" href="../dml/actualizar.html#dml-actualizar-update"><span class="std std-ref">UPDATE</span></a> como con cualquier otra tabla.</p></li>
+</ul>
+<br/>
+<hr class="docutils" />
+<section id="create-materialized-view-as">
+<h3>CREATE MATERIALIZED VIEW AS<a class="headerlink" href="#create-materialized-view-as" title="Link to this heading">#</a></h3>
+<p>Para “materializar” una <em>view</em> y almacenarla localmente se puede utilizar la sentencia <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">MATERIALIZED</span> <span class="pre">VIEW</span> <span class="pre">...</span> <span class="pre">AS</span> <span class="pre">...</span></code></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Crear una view materializada</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="n">MATERIALIZED</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">view_name</span><span class="w"> </span><span class="k">AS</span>
+<span class="c1">-- query definition</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>query</em> es un <em>query</em> que debe de arrojar una tabla.</p></li>
+<li><p>Una vez creada la tabla virtual se podrá hacer referencia a ella como a cualquier otra tabla.</p></li>
+<li><p>Para añadir valores se puede usar <a class="reference internal" href="../dml/actualizar.html#dml-actualizar-update"><span class="std std-ref">UPDATE</span></a> como con cualquier otra tabla.</p></li>
+</ul>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="select-into-table">
+<h2>SELECT INTO TABLE<a class="headerlink" href="#select-into-table" title="Link to this heading">#</a></h2>
+<p>Crea una tabla nueva con base a los resultados de un <em>query</em>. Para ello simplemente se utiliza un <em>query</em> normal, pero se pone <code class="docutils literal notranslate"><span class="pre">INTO</span></code> junto con el nombre de la nueva tabla, después de <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> y antes de <code class="docutils literal notranslate"><span class="pre">FROM</span></code>. Las columnas de la nueva tabla tendrán los mismos nombres que los de las columnas de <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>. Es preferible utilizar <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">AS</span></code> en lugar de <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">INTO</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>En esta sección no se cubren todos los detalles del comando <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">INTO</span> <span class="pre">AS</span></code>, para más información consultar la <a class="reference external" href="https://www.postgresql.org/docs/current/sql-selectinto.html">documentación</a> de PostgreSQL.</p>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Crear tabla desde un query</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">INTO</span><span class="w"> </span><span class="p">[</span><span class="n">TEMP</span><span class="p">]</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">new_table_name</span><span class="w"> </span><span class="p">[</span><span class="k">IN</span><span class="w"> </span><span class="k">database</span><span class="p">]</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>new_table_name</em> será el nombre de la tabla nueva.</p></li>
+<li><p><em>table_name</em> es la tabla de donde se obtendrán los datos.</p></li>
+<li><p>Es posible especificar en cuál <em>database</em> insertar la tabla con el operador <code class="docutils literal notranslate"><span class="pre">IN</span></code>.</p></li>
+<li><p>Se puede especificar que sea una tabla temporal con <code class="docutils literal notranslate"><span class="pre">TEMP</span></code> o <code class="docutils literal notranslate"><span class="pre">TEMPORARY</span></code>.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./parts/postgresql/ddl"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ddl-index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Definition Language (DDL)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="modificar.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Modificar</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-database">CREATE DATABASE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-group">CREATE GROUP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-index">CREATE INDEX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-role">CREATE ROLE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-una-contrasena">Con una contraseña:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-schema">CREATE SCHEMA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-table">CREATE TABLE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-primary-key">Con <em>PRIMARY KEY</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-foreing-key">Con <em>FOREING KEY</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-not-null">Con <em>NOT-NULL</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-unique">Con <em>UNIQUE</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-check">Con <em>CHECK</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-partition-by-range">Con PARTITION BY RANGE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-partition-by-list">Con PARTITION BY LIST</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-valor-por-default">Con valor por default</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-serial">Con Serial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-identity-column">Con <em>identity column</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#con-restriccion">Con restricción</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-un-schema-especifico">En un <em>schema</em> específico</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-table-as">CREATE TABLE AS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-user">CREATE USER</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-view-as">CREATE VIEW AS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-materialized-view-as">CREATE MATERIALIZED VIEW AS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-into-table">SELECT INTO TABLE</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nebok
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

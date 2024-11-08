@@ -1,0 +1,1021 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SQL &#8212; Manual de SQL</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'parts/teoria/sql';</script>
+    <link rel="icon" href="../../_static/nebok-favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="PostgreSQL" href="../postgresql/postgre-index.html" />
+    <link rel="prev" title="Teoría" href="teoria.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nebok-logo.png" class="logo__image only-light" alt="Manual de SQL - Home"/>
+    <script>document.write(`<img src="../../_static/nebok-logo.png" class="logo__image only-dark" alt="Manual de SQL - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Manual de SQL
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="teoria-index.html">Conceptos y teoría</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="teoria.html">Teoría</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../postgresql/postgre-index.html">PostgreSQL</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/comentarios.html">Comentarios.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/operadores.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/tipos-de-datos.html">Tipos de Datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/udf.html">Funciones (UDF)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../postgresql/dql/dql-index.html">Data Query Language (DQL)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/seleccion.html">Seleccionar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/filtrado.html">Filtrar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/ordenar.html">Ordenar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/joins.html">Join</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/agrupar.html">Agrupar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/operaciones-conjuntos.html">Operaciones de conjuntos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/expresiones-condicionales.html">Sentencias condicionales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/window-functions.html">Window Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/subqueries.html">Subqueries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/common-table-expression.html">Common Table Expression (CTE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dql/full_text_search.html">Full text search</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../postgresql/dml/dml-index.html">Data Manipulation Language (DML)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dml/insertar.html">Insertar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dml/actualizar.html">Actualizar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dml/eliminar.html">Eliminar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../postgresql/ddl/ddl-index.html">Data Definition Language (DDL)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/ddl/crear.html">Crear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/ddl/modificar.html">Modificar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/ddl/eliminar.html">Eliminar y Truncar</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../postgresql/dcl/dcl-index.html">Data Control Language (DCL)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dcl/conceder.html">Otorgar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../postgresql/dcl/revocar.html">Revocar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/funciones.html">Funciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/extensiones.html">Extensiones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/psql.html">psql</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/anexos.html">Anexos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postgresql/cookbook.html">Cookbook</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/parts/teoria/sql.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>SQL</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rdbms">RDBMS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schemas">Schemas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tablas">Tablas</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#keys">Keys</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#restricciones-de-integridad">Restricciones de integridad</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#integridad-del-dominio">Integridad del dominio</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#integridad-de-la-entidad">Integridad de la entidad</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#integridad-referencial">Integridad referencial</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#restricciones-de-columnas">Restricciones de columnas</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#not-null">NOT-NULL</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#unique">UNIQUE</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#primary-key">PRIMARY KEY</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#foreing-key">FOREING KEY</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#check">CHECK</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-opciones-de-columnas">Otras Opciones de Columnas</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#default">DEFAULT</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#create-index">CREATE INDEX</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#serial">SERIAL</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#teoria-sql-tablas-identity-column">IDENTITY COLUMN</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tablas-temporales">Tablas temporales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#views">Views</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#materialized-views">Materialized views</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stored-procedures">Stored procedures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-roles">Database roles</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#grupos">Grupos</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particiones">Particiones</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verticalmente">Verticalmente</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#horizontalmente">Horizontalmente</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indices">Índices</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comandos-de-sql">Comandos de SQL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#queries">Queries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-al-escribir-queries">Orden al escribir queries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-de-ejecucion-de-un-query">Orden de ejecución de un query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mejores-practicas-al-escribir-queries">Mejores prácticas al escribir queries</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sql">
+<h1>SQL<a class="headerlink" href="#sql" title="Link to this heading">#</a></h1>
+<p>En esta sección se explican brevemente algunos conceptos técnicos relacionados con las bases de datos relacionales y SQL.</p>
+<section id="rdbms">
+<h2>RDBMS<a class="headerlink" href="#rdbms" title="Link to this heading">#</a></h2>
+<p>Un sistema de administración de bases relacionales o <em>RDBMS</em> por sus siglas en inglés es un tipo de sistema de administración de bases de datos SQL que organizan los datos en tablas con filas y columnas, que usan un <em>esquema</em> predefinido. Se asegura que los datos se almacenen, se recuperen y se administren en una estructura relacional, donde las relaciones entre las tablas se definen usando llaves (primarias y foráneas).</p>
+<p><strong>Características</strong>:</p>
+<ul class="simple">
+<li><p>Está basado en un modelo de datos relacional.</p></li>
+<li><p>Utilizan el lenguaje SQL.</p></li>
+<li><p>Es la mejor opción cuando los datos están estructurados y cambian constantemente. Los datos deben de ser consistentes.</p></li>
+<li><p>Algunos sistemas SQL son:</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/theory-rdbms.png" id="theory-rdbms"><img alt="../../_images/theory-rdbms.png" class="align-center" id="theory-rdbms" src="../../_images/theory-rdbms.png" style="width: 400px;" /></a>
+<br/>
+<p>A continuación se profundizará en algunos de los principales objetos de una <em>RDBSM</em>.</p>
+<br/>
+<hr class="docutils" />
+<section id="schemas">
+<h3>Schemas<a class="headerlink" href="#schemas" title="Link to this heading">#</a></h3>
+<p>Es un <em>namespace</em> (contenedor lógico o estructura) que contiene, organiza y agrupa objetos de bases de datos con nombre, tales como tablas, <em>views</em>, <em>indexes</em>, <em>data types</em>, <em>functions</em>, <em>stored procedures</em> y <em>operators</em>.</p>
+<a class="reference internal image-reference" href="../../_images/theory-schema.png" id="theory-schema"><img alt="../../_images/theory-schema.png" class="align-center" id="theory-schema" src="../../_images/theory-schema.png" style="width: 400px;" /></a>
+<br/>
+<p>Se utilizan para proveer a varios usuarios la misma base de datos, también se utiliza para dividir en segmentos la base de datos.</p>
+<p>Una base de datos puede contener uno o múltiples <em>schemas</em> y cada <em>schema</em> pertenece a una única base de datos. Dos <em>schemas</em> pueden tener diferentes objetos que comparten el mismo nombre.</p>
+<a class="reference internal image-reference" href="../../_images/theory-schemas.png" id="theory-schemas"><img alt="../../_images/theory-schemas.png" class="align-center" id="theory-schemas" src="../../_images/theory-schemas.png" style="width: 400px;" /></a>
+<br/>
+<p>Los <em>schemas</em> son útiles para organizar los objetos de la base de datos en grupos lógicos para hacerlos más fácil de administrar.</p>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="tablas">
+<h3>Tablas<a class="headerlink" href="#tablas" title="Link to this heading">#</a></h3>
+<p>Una tabla es una estructura que almacena información de manera organizada dentro de una base de datos. Las tablas representan una sola entidad y están constituidas por filas o registros que representan una sola observación de la entidad y columnas o campos que representan un solo atributo. Las tablas deben tener una columna o combinación de columnas que permitan identificar de manera única cada fila, dependiendo del tipo de normalización que tengan el conjunto de tablas. Además cada columna debe de tener un tipo de dato definido y opcionalmente pueden tener restricciones.</p>
+<a class="reference internal image-reference" href="../../_images/theory-tabla.png" id="theory-tabla"><img alt="../../_images/theory-tabla.png" class="align-center" id="theory-tabla" src="../../_images/theory-tabla.png" style="width: 300px;" /></a>
+<p>Aparte de las tablas existen otras estructuras similares que pueden cumplir un papel similar, tales como las <em>views</em>, tablas temporables y <em>materialized views</em>, las cuales se explican a detalle cada una más adelante. Considerar las siguientes recomendaciones de cúando usar cada tipo de tabla.</p>
+<ul class="simple">
+<li><p><strong>Tabla</strong>: Almacenamiento base  (ocupan memoria física).</p></li>
+<li><p><strong>Tabla temporal</strong>: Cuando se hacen <em>queries</em> con tablas grandes.</p></li>
+<li><p><strong><em>View</em></strong>: Lógica complicada o cálculo de campos.</p></li>
+<li><p><strong><em>Materialized view</em></strong>: Lógica complicada que merma el desempeño.</p></li>
+</ul>
+<br/>
+<hr class="docutils" />
+<section id="keys">
+<h4>Keys<a class="headerlink" href="#keys" title="Link to this heading">#</a></h4>
+<p>Las <em>keys</em> idenfican de manera única cada registro en una tabla, a continuación se resumen los principales tipos de <em>keys</em>.</p>
+<ul class="simple">
+<li><p><strong>Key</strong>: Es un atributo o combinación de atributos que identifica a un registro de manera única.</p></li>
+<li><p><strong>Superkey</strong>: Es todo el conjunto de combinaciones de atributos que identifican de manera única a cada fila. Una tabla puede tener más de un atributo o combinaciones de atributos que identifican de manera única a cada fila. Para que una combinación de atributos sea considerada un <em>super key</em>, el conteo de los valores únicos de sus combinaciones debe de ser igual al número total de observaciones en la tabla.</p></li>
+<li><p><strong>Candidate key</strong>: Son los elementos del conjunto de <em>superkeys</em> que no tienen atributos redundantes, es decir, son las <em>superkeys</em> con el menor número posible de atributos y en caso de que sea una combinación de atributos, los atributos por sí solos no puedan identificar de manera única a cada fila, sino que solo la combinación tenga esa propiedad. También puede ser un solo atributo siempre y cuando pueda identificar de manera única a cada fila.</p></li>
+<li><p><strong>Primary key (PK)</strong>: Es una columna o combinación de columnas que identifica de manera única a cada fila de una tabla, esta <em>key</em> será la que se fungirá como <em>foreing key</em> en otras tablas y permitirá hacer relaciones entre ellas. Tuvo que haber sido seleccionada de los <em>candidate keys</em>. Solo puede y debe haber una <em>primary key</em> por tabla. No puede tener valores perdidos.</p>
+<ul>
+<li><p><em>Surrogate key</em>: Es una llave sustituta artificial, sería como agregar una columna <em>serial</em> para identificar a cada fila, también podría ser la combinación de dos o más columnas en una sola columna.</p></li>
+</ul>
+</li>
+<li><p><strong>Foreing key (FK)</strong>: Hacen referencia a una fila en otra tabla o la misma tabla. Son columnas en tablas cuyos valores se encuentran en otra tabla como <em>primary key</em>, sus dominios deben de ser los mismos, cada valor en <em>FK</em> debe existir en <em>PK</em> o debe ser <em>Null</em>. Una tabla puede tener varias columnas <em>FK</em>. No son consideradas como tal <em>keys</em>.</p></li>
+</ul>
+<br/>
+<hr class="docutils" />
+</section>
+<section id="restricciones-de-integridad">
+<span id="sql-teoria-restricciones-integridad"></span><h4>Restricciones de integridad<a class="headerlink" href="#restricciones-de-integridad" title="Link to this heading">#</a></h4>
+<p>Las restricciones de integridad son reglas de una base de datos que aseguran que haya consistencias, validez y exactitud en los datos almacenados en la base de datos. Estas restricciones establecen condiciones que deben de ser válidas para los datos en la base de datos. Las restricciones son necesarias porque:</p>
+<ul class="simple">
+<li><p>Ayudan a mantener consistencia en las tablas y por lo tanto calidad a los datos.</p></li>
+<li><p>Dan estructura a los datos.</p></li>
+<li><p>Evitan la entrada de datos incorrectos o inconsistentes.</p></li>
+</ul>
+<p>A continuación se revisan las principales restricciones de integridad.</p>
+<section id="integridad-del-dominio">
+<h5>Integridad del dominio<a class="headerlink" href="#integridad-del-dominio" title="Link to this heading">#</a></h5>
+<p>También denominada <em>restricciones de atributos</em>, son restricciones con respecto al tipo de dato de cada columna y se aseguran que los datos ingresados a una columna satisfagan el tipo de dato, formato o rango de la misma. Establecen el tipo de operaciones y funciones que se pueden realizar con ellas y optimizan el almacenamiento.</p>
+</section>
+<section id="integridad-de-la-entidad">
+<h5>Integridad de la entidad<a class="headerlink" href="#integridad-de-la-entidad" title="Link to this heading">#</a></h5>
+<p>También denominada <em>restricciones de llaves</em>, son restricciones que se aseguran que cada registro de una tabla se pueda identificar de manera única, comúnmente forzando una llave primaria.</p>
+</section>
+<section id="integridad-referencial">
+<h5>Integridad referencial<a class="headerlink" href="#integridad-referencial" title="Link to this heading">#</a></h5>
+<p>Se asegura que haya consistencia entre las relaciones de la tablas al forzar restricciones de las llaves foráneas. Un registro haciendo referencia a otra tabla, debe de hacer referencia a un registro existente en esa otra tabla. El <em>referential integrity</em> puede ser violado de una <em>tabla B</em> a una <em>tabla A</em> de dos maneras:</p>
+<ul class="simple">
+<li><p>Si se elimina un registro que se utiliza como <em>PK</em> en la tabla <em>A</em> y existe una <em>FK</em> en la tabla <em>B</em> que hace referencia a ese registro.</p></li>
+<li><p>Si se inserta un registro <em>FK</em> en la tabla <em>B</em> que hace referencia a un <em>PK</em> en la tabla <em>A</em> que no existe.</p></li>
+</ul>
+<br/>
+<hr class="docutils" />
+</section>
+</section>
+<section id="restricciones-de-columnas">
+<span id="teoria-sql-restricciones"></span><h4>Restricciones de columnas<a class="headerlink" href="#restricciones-de-columnas" title="Link to this heading">#</a></h4>
+<p>Las restricciones de columnas se utilizan para especificar reglas para las columnas en una tabla en una base de datos y forman parte de la definición de los <em>schema</em>. Ayudan a la consistencia y calidad de los datos. A continuación se exploran algunas restricciones comunes.</p>
+<section id="not-null">
+<h5>NOT-NULL<a class="headerlink" href="#not-null" title="Link to this heading">#</a></h5>
+<p>Es una restricción que se pone a las columnas para indicar que la columna no puede contener valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, si se añade esa restricción a una columna que ya existe, entonces es necesario que no tenga ningún <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Ningún valor futuro de la columna podrá ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</section>
+<section id="unique">
+<h5>UNIQUE<a class="headerlink" href="#unique" title="Link to this heading">#</a></h5>
+<p>La restricción de <em>únicos</em> es una restricción para no permite que haya duplicados en una columna, a excepción de los valores <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Si se quiere añadir esta restricción a la columna de una tabla que ya existe es necesario que esa columna no tenga ningún valor repetido. Ningún valor futuro podrá repetirse en la misma columna.</p>
+</section>
+<section id="primary-key">
+<h5>PRIMARY KEY<a class="headerlink" href="#primary-key" title="Link to this heading">#</a></h5>
+<p>Es una restricción que se aplica a una columna o un conjunto de columnas que identifican de manera única a cada fila de una tabla. Es una combinación de las restricciones <em>NOT-NULL</em> y <em>UNIQUE</em>. Solo puede haber una <em>primary key</em> (simple o múltiple) por tabla.</p>
+</section>
+<section id="foreing-key">
+<h5>FOREING KEY<a class="headerlink" href="#foreing-key" title="Link to this heading">#</a></h5>
+<p>Es una restricción que se aplica a una columna e indica que los valores de esa columna hacen referencia a una fila en otra tabla o en la misma tabla. Son columnas en tablas cuyos valores se encuentran en otra tabla como <em>primary key</em>, sus dominios deben de ser los mismos, cada valor en <em>FK</em> debe existen en <em>PK</em> o debe ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Una tabla puede tener varias columnas <em>FK</em>.</p>
+</section>
+<section id="check">
+<h5>CHECK<a class="headerlink" href="#check" title="Link to this heading">#</a></h5>
+<p>Es una restricción que sirve para asegurarse que los valores de una columna cumplan una determinada condición <em>boolena</em>. Utiliza una expresión booleana para evaluar los valores antes de que sean insertados en una columna de una tabla. Si la condición se viola se arrojará un error y no se permitirá el ingreso del valor en la columna.</p>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="otras-opciones-de-columnas">
+<h4>Otras Opciones de Columnas<a class="headerlink" href="#otras-opciones-de-columnas" title="Link to this heading">#</a></h4>
+<section id="default">
+<h5>DEFAULT<a class="headerlink" href="#default" title="Link to this heading">#</a></h5>
+<p>Establece un valor por default en una columna si ningún valor se define.</p>
+</section>
+<section id="create-index">
+<h5>CREATE INDEX<a class="headerlink" href="#create-index" title="Link to this heading">#</a></h5>
+<p>Usado para crear y recuperar datos de una base de datos de manera sencilla.</p>
+</section>
+<section id="serial">
+<span id="theory-sql-tablas-serial"></span><h5>SERIAL<a class="headerlink" href="#serial" title="Link to this heading">#</a></h5>
+<p>Es un pseudo tipo de dato, que se utiliza para definir auto incrementos en las columnas, para ello se crea un objeto <code class="docutils literal notranslate"><span class="pre">SEQUENCE</span></code> que genera una secuencia de número enteros. Existen tres tipos de datos <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SMALLSERIAL</span></code>: 1 a 32,767.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SERIAL</span></code>: 1 a 2,147,483,647</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BIGSERIAL</span></code>: 1 a 9,223,372,036,854,775,807.</p></li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Al insertar valores a una tabla, las columnas que se hayan declarado como <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> se deben de omitir o utilizar la palabra <code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code>.</p>
+</div>
+<p>Para obtener el nombre de la secuencia de una coluna tipo <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code>, se utiliza:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Recuperar nombre de una columna SERIAL</span>
+<span class="n">pg_get_serial_sequence</span><span class="p">(</span><span class="s1">&#39;table_name&#39;</span><span class="p">,</span><span class="s1">&#39;col_name&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Para conocer el valor más reciente generado por una secuencia se utiliza:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Recuperar última valor de una secuencia.</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">currval</span><span class="p">(</span><span class="n">pg_get_serial_sequence</span><span class="p">(</span><span class="s1">&#39;table_name&#39;</span><span class="p">,</span><span class="s1">&#39;col_name&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+</section>
+<section id="teoria-sql-tablas-identity-column">
+<span id="identity-column"></span><h5>IDENTITY COLUMN<a class="headerlink" href="#teoria-sql-tablas-identity-column" title="Link to this heading">#</a></h5>
+<p>Es una restricción, que se utiliza para definir auto incrementos en las columnas, para ello se crea un objeto <code class="docutils literal notranslate"><span class="pre">SEQUENCE</span></code> subyacente que genera una secuencia de número enteros.</p>
+<p>En caso de que una columna haya sido definida con <code class="docutils literal notranslate"><span class="pre">GENERATED</span> <span class="pre">ALWAYS</span> <span class="pre">AS</span> <span class="pre">IDENTITY</span></code> para poder insertar o actualizar datos es necesario usar (ejemplo <code class="docutils literal notranslate"><span class="pre">INSERT</span></code>):</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Insertar o actualizar identity column</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="p">(</span><span class="n">col_id</span><span class="p">,</span><span class="w"> </span><span class="n">col2</span><span class="p">)</span>
+<span class="k">OVERRIDING</span><span class="w"> </span><span class="k">SYSTEM</span><span class="w"> </span><span class="n">VALUE</span><span class="w"> </span>
+<span class="k">VALUES</span><span class="p">(</span><span class="n">val1</span><span class="p">,</span><span class="w"> </span><span class="n">val2</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>col_id</em> es la columna <code class="docutils literal notranslate"><span class="pre">IDENTITY</span> <span class="pre">COLUMN</span></code>.</p></li>
+<li><p>Si no se hubiera puesto <code class="docutils literal notranslate"><span class="pre">OVERRIDING</span> <span class="pre">SYSTEM</span> <span class="pre">VALUE</span></code> se hubiera generado un error, porque no es posible insertar valores a una columna con <code class="docutils literal notranslate"><span class="pre">GENERATED</span> <span class="pre">ALWAYS</span> <span class="pre">AS</span> <span class="pre">IDENTITY</span></code>.</p></li>
+</ul>
+<p>Como <code class="docutils literal notranslate"><span class="pre">GENERATED</span> <span class="pre">AS</span> <span class="pre">IDENTITY</span></code> utiliza un objeto <code class="docutils literal notranslate"><span class="pre">SEQUENCE</span></code>, es posible especificar las características de la secuencia, para ello solo poner entre paréntesis las características después de definir la columna (ejemplo con <code class="docutils literal notranslate"><span class="pre">START</span> <span class="pre">WITH</span></code> e <code class="docutils literal notranslate"><span class="pre">INCREMENT</span> <span class="pre">BY</span></code>):</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Especificar secuencia en un identity column</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="p">(</span>
+<span class="w">   </span><span class="n">col1_id</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="k">GENERATED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">IDENTITY</span>
+<span class="p">(</span><span class="k">START</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">N1</span><span class="w"> </span><span class="k">INCREMENT</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">N2</span><span class="p">),</span>
+<span class="w">   </span><span class="n">col2</span><span class="w"> </span><span class="k">type</span><span class="p">,</span>
+<span class="w"> </span><span class="p">...</span><span class="w"> </span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Todas las opciones son:</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="nb">SMALLINT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nb">BIGINT</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="p">]</span>
+<span class="p">[</span><span class="w"> </span><span class="k">INCREMENT</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="k">increment</span><span class="w"> </span><span class="p">]</span>
+<span class="p">[</span><span class="w"> </span><span class="k">MINVALUE</span><span class="w"> </span><span class="k">minvalue</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">NO</span><span class="w"> </span><span class="k">MINVALUE</span><span class="w"> </span><span class="p">]</span><span class="w"> </span>
+<span class="p">[</span><span class="w"> </span><span class="k">MAXVALUE</span><span class="w"> </span><span class="k">maxvalue</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">NO</span><span class="w"> </span><span class="k">MAXVALUE</span><span class="w"> </span><span class="p">]</span>
+<span class="p">[</span><span class="w"> </span><span class="k">START</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="k">start</span><span class="w"> </span><span class="p">]</span><span class="w"> </span>
+<span class="p">[</span><span class="w"> </span><span class="k">CACHE</span><span class="w"> </span><span class="k">cache</span><span class="w"> </span><span class="p">]</span><span class="w"> </span>
+<span class="p">[</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="k">NO</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="k">CYCLE</span><span class="w"> </span><span class="p">]</span>
+<span class="p">[</span><span class="w"> </span><span class="n">OWNED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="k">table_name</span><span class="p">.</span><span class="k">column_name</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">NONE</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="p">]</span>
+</pre></div>
+</div>
+<br/>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tablas-temporales">
+<h3>Tablas temporales<a class="headerlink" href="#tablas-temporales" title="Link to this heading">#</a></h3>
+<p>Son tablas que pueden ser vistas solo por el usuario que las creó y están disponibles hasta que se termine la sesión. Una vez que la sesión se termine la tabla es eliminada automáticamente. Algunas características de estas tablas son:</p>
+<ul class="simple">
+<li><p>Usadas para manipulación en el corto plazo o para procedimientos intermedios.</p></li>
+<li><p>Son específicas de una sesión y no son visibles para otro usuarios aparte del que la creó.</p></li>
+<li><p>Pueden mejorar el desempeño al reducir la necesidad de consultas complejas.</p></li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="views">
+<h3>Views<a class="headerlink" href="#views" title="Link to this heading">#</a></h3>
+<p>Las <em>views</em> o tabas virtuales son tablas cuyo contenido está definido por una consulta <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>, básicamente son el <em>result set</em> de un <em>query</em> y los usuarios pueden hacer uso de esta tabla virtual de la misma manera como lo harían con cualquier otra tabla.</p>
+<p>Constan de un conjunto de columnas y filas de datos con un nombre. No existe como conjunto de valores de datos almacenados en una base de datos (no ocupan memoria física). Las filas y las columnas de datos proceden de tablas a las que se hace referencia en la consulta que define la <em>view</em> y se producen de forma dinámica cuando se hace referencia a la <em>view</em>. Si se actualizan los datos en las tablas en las que está basada la <em>view</em>, también se actualizarán los datos de la <em>view</em>.</p>
+<p><strong>Beneficios</strong>:</p>
+<ul class="simple">
+<li><p>No ocupan memoria física.</p></li>
+<li><p>Es una forma de control de acceso, al permitir esconder columnas y restringir lo que los usuarios pueden ver.</p></li>
+<li><p>Reducen la complejidad de <em>queries</em>, al poder reutilizar código.</p></li>
+</ul>
+<br/>
+<p>Las tablas virtuales pueden tener las siguientes características:</p>
+<ul class="simple">
+<li><p><em>Aggregation</em>: Pueden incluir funciones para hacer <em>aggregates</em> como <code class="docutils literal notranslate"><span class="pre">SUM()</span></code>, <code class="docutils literal notranslate"><span class="pre">AVG()</span></code>, <code class="docutils literal notranslate"><span class="pre">COUNT()</span></code>, <code class="docutils literal notranslate"><span class="pre">MIN()</span></code>, <code class="docutils literal notranslate"><span class="pre">MAX()</span></code>, <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>, etc.</p></li>
+<li><p><em>Joins</em>: Pueden incluir <em>joins</em> de tablas tales como <code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span></code>, <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code>, <code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">JOIN</span></code>, <code class="docutils literal notranslate"><span class="pre">FULL</span> <span class="pre">JOIN</span></code>, etc.</p></li>
+<li><p>Condicionales: Pueden contener condicionales tales como <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>, <code class="docutils literal notranslate"><span class="pre">HAVING</span></code>, <code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code>, <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">NULL</span></code>, <code class="docutils literal notranslate"><span class="pre">AND</span></code>, <code class="docutils literal notranslate"><span class="pre">OR</span></code>, operadores de comparación, etc.</p></li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="materialized-views">
+<h3>Materialized views<a class="headerlink" href="#materialized-views" title="Link to this heading">#</a></h3>
+<p>Son tablas virtuales que se han materializado, es decir, que se crearán como una tabla nueva y se almacenarán en memoria. Son útiles en caso de que la <em>view</em> no se actualice seguido, por ejemplo, en <em>OLAP</em>. Algunas características son:</p>
+<ul class="simple">
+<li><p>Almacenan los resultados del <em>query</em>, no el <em>query</em>.</p></li>
+<li><p>Consultar una tabla virtual materializada implica acceder a los resultados almacenados del <em>query</em>, no a ejecutar el <em>query</em>.</p></li>
+<li><p>Las tablas virtuales materializadas se deben de refrescar cada cierto tiempo.</p></li>
+</ul>
+<p>¿Cuándo usar tablas virtuales materializadas?</p>
+<ul class="simple">
+<li><p><em>Queries</em> que tardan mucho en ejecutarse.</p></li>
+<li><p>Los resultados del <em>query</em> no cambian constantemente.</p></li>
+<li><p>Con <em>Data warehouses</em>.</p></li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="stored-procedures">
+<h3>Stored procedures<a class="headerlink" href="#stored-procedures" title="Link to this heading">#</a></h3>
+<p>Los procedimientos o <em>stored procedure</em> son una colección de consultas de SQL precompiladas que pueden ser almacenadas y reutilizadas posteriormente. Aceptan parámetros de entrada, ejecutan acciones y devuelven un estatus de éxito y parámetros de salida. No estrictamente tienen que regresar un valor, pero si lo hacen puede ser de cualquier tipo, excepto tablas. Son útiles para tareas repetitivas. Se almacenan en la base de datos para poder ser reutilizados.</p>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="database-roles">
+<h3>Database roles<a class="headerlink" href="#database-roles" title="Link to this heading">#</a></h3>
+<p>Los roles son un recurso de SQL para administrar permisos de acceso. Un rol es una entidad que contiene la siguiente información:</p>
+<ul class="simple">
+<li><p>Define los privilegios del rol (sentencias).</p></li>
+<li><p>Interacción con el sistema de autentificación del cliente (contraseña).</p></li>
+</ul>
+<p>Los roles se pueden asignar a uno o más usuarios. Los roles son globales a través de toda la base de datos.</p>
+<p>Cuando se crea una base de datos nueva, automáticamente se crea un <em>user</em> llamado <em>postgres</em>, él es el administrador del database y tiene los siguientes privilegios:</p>
+<ul class="simple">
+<li><p>Crear databases.</p></li>
+<li><p>Eliminar databases.</p></li>
+<li><p>Insertar nuevos registros.</p></li>
+<li><p>Eliminar registros.</p></li>
+<li><p>Crear tablas.</p></li>
+<li><p>Eliminar tablas.</p></li>
+<li><p>Entre muchos otros.</p></li>
+</ul>
+<p>Se pueden crear <em>users-roles</em> adicionales que puedan: Agregar registros, hacer <em>queries</em>, editar registros, etc.</p>
+<p>Beneficios y desventajas:</p>
+<ul class="simple">
+<li><p>Beneficios:</p>
+<ul>
+<li><p>Los roles se quedan definidos aún después de eliminar usuarios.</p></li>
+<li><p>Los roles pueden ser definidos antes que las cuentas de los usuarios.</p></li>
+<li><p>Ahorra tiempo de DBAs</p></li>
+</ul>
+</li>
+<li><p>Desventajas:</p>
+<ul>
+<li><p>En ocasiones un rol puede otorgar demasiados privilegios a un usuario en particular. Es recomendable tener cuidado al asignar los roles a los usuarios.</p></li>
+</ul>
+</li>
+</ul>
+<br/>
+<hr class="docutils" />
+<section id="grupos">
+<h4>Grupos<a class="headerlink" href="#grupos" title="Link to this heading">#</a></h4>
+<p>Es un tipo de rol, en esencia los roles pueden funcionar como un rol de usuario o como grupo de roles de usuarios.</p>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="particiones">
+<h3>Particiones<a class="headerlink" href="#particiones" title="Link to this heading">#</a></h3>
+<p>Las particiones son una posible solución a tablas que se vuelven muy grandes y pesadas, estas tablas pueden provocar que los <em>queries</em> se vuelvan más lentos, así también como las actualizaciones. Las particiones permiten dividir la tabla en partes más pequeñas (particiones). Las particiones pertenecen a la parte física del modelo de datos.</p>
+<section id="verticalmente">
+<h4>Verticalmente<a class="headerlink" href="#verticalmente" title="Link to this heading">#</a></h4>
+<p>En una partición verticial se separan las tablas en otras que contendrán diferentes columnas, aun cuando el modelo ya esté normalizado. Las nuevas tablas deben de tener la misma columna de ids para poder unirlas mediante <code class="docutils literal notranslate"><span class="pre">JOIN</span></code>s.</p>
+</section>
+<section id="horizontalmente">
+<h4>Horizontalmente<a class="headerlink" href="#horizontalmente" title="Link to this heading">#</a></h4>
+<p>En una partición horizontal se divide la tabla de manera horizontal, de manera que las nuevas tablas contendrán diferentes filas. Se debe de mantener el formato de las tablas para poder unirlas mediante <code class="docutils literal notranslate"><span class="pre">UNION</span></code>.</p>
+<p>Cuando se realiza una partición horizontal y se distribuye en diferentes computadoras se llama <em>sharding</em>.</p>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="indices">
+<h3>Índices<a class="headerlink" href="#indices" title="Link to this heading">#</a></h3>
+<p>Es un método de crear <em>keys</em> ordenadas para columnas para mejorar la velocidad en la búsqueda de datos. En las columnas que normalmente se usa son aquellas que servirían como filtro o las <em>primary keys</em>. Se recomienda usar en tablas muy grandes. No se recomienda usar en tablas que se actualizan frecuentemente ni en columnas con muchos <code class="docutils literal notranslate"><span class="pre">NULL</span></code>s.</p>
+<p>Index:</p>
+<ul class="simple">
+<li><p>Crear índices en columnas de tipo <em>Integer</em>.</p></li>
+<li><p>El orden de las columnas importa.</p></li>
+<li><p>La columna debe de ser <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">NULL</span></code>.</p></li>
+<li><p>Solo crear cuando sea necesario.</p></li>
+</ul>
+<br/>
+</section>
+</section>
+<hr class="docutils" />
+<section id="comandos-de-sql">
+<h2>Comandos de SQL<a class="headerlink" href="#comandos-de-sql" title="Link to this heading">#</a></h2>
+<p>Los comandos de SQL son instrucciones, se usan para comunicarse con la base de datos y para realizar acciones específicas, funciones y queries. Existen cinco principales tipos de comandos en SQL:</p>
+<ul class="simple">
+<li><p><strong>Data Definition Language (DDL)</strong>: Son las sentencias relacionados con crear, alterar o eliminar información, están asociados a todo el database o al sever. Estos comandos son <em>‘auto-committed’</em>, lo que significan que los cambios se guardan permanentemente. Las principales sentencias son <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, <code class="docutils literal notranslate"><span class="pre">ALTER</span></code>, <code class="docutils literal notranslate"><span class="pre">DROP</span></code> y <code class="docutils literal notranslate"><span class="pre">TRUNCATE</span></code>.</p></li>
+<li><p><strong>Data Manipulation Language (DML)</strong>: Son las sentencias para manipular la información de las tablas, son responsables de todas las modificaciones en la base de datos. Estos comandos son <em>‘not auto-committed’</em>, lo que significan que los cambios son reversibles. Las principales sentencias son <code class="docutils literal notranslate"><span class="pre">INSERT</span></code>, <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> y <code class="docutils literal notranslate"><span class="pre">DELETE</span></code>.</p></li>
+<li><p><strong>Data Control Language (DCL)</strong>: Son las sentencias relacionados con otorgar o quitar privilegios a los usuarios para manipular las bases de datos. Las principales sentencias son <code class="docutils literal notranslate"><span class="pre">GRANT</span></code> y <code class="docutils literal notranslate"><span class="pre">REVOKE</span></code>.</p></li>
+<li><p><strong>Transaction Control Language (TCL)</strong>: Son las sentencias que solo se pueden usar con comandos <em>DML</em>, se realizan automáticamente. Las principales sentencias son <code class="docutils literal notranslate"><span class="pre">COMMIT</span></code>, <code class="docutils literal notranslate"><span class="pre">ROLLBACK</span></code> y <code class="docutils literal notranslate"><span class="pre">SAVEPOINT</span></code>.</p></li>
+<li><p><strong>Data Query Language (DQL)</strong>: Son las sentencias para obtener datos de la base de datos. La unica sentencia es <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>.</p></li>
+</ul>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="queries">
+<h2>Queries<a class="headerlink" href="#queries" title="Link to this heading">#</a></h2>
+<p>Un <em>query</em> es una solicitud de información en una base de datos. Los <em>queries</em> están constituidos por <em>sentencias</em> y <em>clausulas</em>, que son palabras especiales que realizan determinada acción.</p>
+<ul class="simple">
+<li><p><strong>Sentencias</strong>: Representan un instrucción completa que es enviada a un servidor de una base de datos para realizar una operación específica. la principal sentencia es <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> (DQL).</p></li>
+<li><p><strong>Clasulas</strong>: Son componentes de una sentencia de SQL que provee de instrucciones o condiciones adicionales a la operación que se realizará. Algunas de las clausulas que destacan son <code class="docutils literal notranslate"><span class="pre">FROM</span></code>, <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>, <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>, <code class="docutils literal notranslate"><span class="pre">JOIN</span></code>, etc.</p></li>
+</ul>
+<p>SQL no es sensible a mayúsculas y minúsculas, pero se recomienda poner los <em>statements</em>, <em>clausulas</em>, <em>funciones</em> y cualquier otro tipo de <em>keyword</em> en mayúsculas.</p>
+<br/>
+<hr class="docutils" />
+<section id="orden-al-escribir-queries">
+<h3>Orden al escribir queries<a class="headerlink" href="#orden-al-escribir-queries" title="Link to this heading">#</a></h3>
+<p>Al escribir queries en PostgreSQL se debe respetar el siguiente orden:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FROM</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">JOIN</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WHERE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HAVING</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIMIT</span></code></p></li>
+</ol>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="orden-de-ejecucion-de-un-query">
+<h3>Orden de ejecución de un query<a class="headerlink" href="#orden-de-ejecucion-de-un-query" title="Link to this heading">#</a></h3>
+<p>El orden con el que se ejecutan las sentencias en un query de consulta es:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FROM</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">JOIN</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WHERE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HAVING</span></code></p></li>
+</ul>
+</li>
+<li><p><em>Aggregate functions</em> (<code class="docutils literal notranslate"><span class="pre">SUM</span></code>, <code class="docutils literal notranslate"><span class="pre">COUNT</span></code>, <code class="docutils literal notranslate"><span class="pre">AVG</span></code>, etc.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIMIT</span></code></p></li>
+</ol>
+<br/>
+</section>
+<hr class="docutils" />
+<section id="mejores-practicas-al-escribir-queries">
+<h3>Mejores prácticas al escribir queries<a class="headerlink" href="#mejores-practicas-al-escribir-queries" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Finalizar el query con punto y coma (<code class="docutils literal notranslate"><span class="pre">;</span></code>).</p></li>
+<li><p>Utiliza alias (<code class="docutils literal notranslate"><span class="pre">AS</span></code>) siempre.</p></li>
+<li><p>Especificar explícitamente el tipo de <em>JOIN</em> (solo usar <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> es lo mismo que usar <code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span></code>, pero se recomienda explícitamente decir qué tipo de <em>JOIN</em> es).</p></li>
+<li><p>Los alias de las tablas en <em>JOIN</em> se recomienda que sean la primer letra o una corta abreviación del nombre de la palabra.</p></li>
+<li><p>Usar comentarios para decir qué hace el <em>query</em> y aspectos importantes. Ya sean simples (<code class="docutils literal notranslate"><span class="pre">--</span></code>) o de múltiples líneas (<code class="docutils literal notranslate"><span class="pre">/*</span> <span class="pre">texto</span> <span class="pre">*/</span></code>).</p></li>
+<li><p>Poner en mayúsculas los comandos de SQL, ejemplo, <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>, <code class="docutils literal notranslate"><span class="pre">FROM</span></code>, <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>, etc.</p></li>
+<li><p>Procurar no poner todo en una solo línea, como los <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> y <code class="docutils literal notranslate"><span class="pre">ON</span></code> o las columnas en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>.</p></li>
+<li><p>Identar las líneas, por ejemplo, múltiples columnas en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>.</p></li>
+<li><p>Se recomienda usar <em>snake_case</em>, esto es, para nombres largos usar ‘_’ como separador de palabra. Ejemplo, “esto_es_un_ejemplo”, en lugar de “estoesunejemplo” o “EstoEsUnEjemplo” (no usar <em>CamelCase</em>).</p></li>
+<li><p>Usar <code class="docutils literal notranslate"><span class="pre">IN</span></code> o <code class="docutils literal notranslate"><span class="pre">ANY(ARRAY(...))</span></code> en lugar de <code class="docutils literal notranslate"><span class="pre">OR</span></code> anidados y <code class="docutils literal notranslate"><span class="pre">BETWEEN</span></code> en lugar de dos <code class="docutils literal notranslate"><span class="pre">AND</span></code>.</p></li>
+<li><p>No abusar de los comentarios.</p></li>
+<li><p>De preferencia no usar <code class="docutils literal notranslate"><span class="pre">*</span></code> en <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>. Limitar los resultados.</p></li>
+<li><p>No usar SQL como un lenguaje de programación, no lo es.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./parts/teoria"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="teoria.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Teoría</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../postgresql/postgre-index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">PostgreSQL</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rdbms">RDBMS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schemas">Schemas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tablas">Tablas</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#keys">Keys</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#restricciones-de-integridad">Restricciones de integridad</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#integridad-del-dominio">Integridad del dominio</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#integridad-de-la-entidad">Integridad de la entidad</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#integridad-referencial">Integridad referencial</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#restricciones-de-columnas">Restricciones de columnas</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#not-null">NOT-NULL</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#unique">UNIQUE</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#primary-key">PRIMARY KEY</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#foreing-key">FOREING KEY</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#check">CHECK</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-opciones-de-columnas">Otras Opciones de Columnas</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#default">DEFAULT</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#create-index">CREATE INDEX</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#serial">SERIAL</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#teoria-sql-tablas-identity-column">IDENTITY COLUMN</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tablas-temporales">Tablas temporales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#views">Views</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#materialized-views">Materialized views</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stored-procedures">Stored procedures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-roles">Database roles</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#grupos">Grupos</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particiones">Particiones</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verticalmente">Verticalmente</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#horizontalmente">Horizontalmente</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indices">Índices</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comandos-de-sql">Comandos de SQL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#queries">Queries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-al-escribir-queries">Orden al escribir queries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-de-ejecucion-de-un-query">Orden de ejecución de un query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mejores-practicas-al-escribir-queries">Mejores prácticas al escribir queries</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nebok
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
