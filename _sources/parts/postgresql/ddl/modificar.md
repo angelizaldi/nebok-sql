@@ -284,7 +284,7 @@ USING func_name()
 ```
 - En lugar de `TYPE` se puede utilizar `SET DATA`.
 - _table_name_ es el nombre de la tabla.
-- _new_type_ es el nuevo tipo de dato, ver {doc}`../tipos_de_datos`.
+- _new_type_ es el nuevo tipo de dato, ver {doc}`../tipos-de-datos`.
 - Para modificar más de una columna a la vez usar la clausula las veces necesarias, usando una coma después de cada una.
 - Se puede modificar el tipo y los valores de una columna usando alguna función en específico (solo en PostgreSQL):
     - _func_name_ normalmente será una función de conversión. También es posible utilizar `col_name::new_type`.
